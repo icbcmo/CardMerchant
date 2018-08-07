@@ -13,7 +13,8 @@ import {NativeStorage} from "@ionic-native/native-storage";
 })
 export class MyApp {
   //rootPage:any = TabsPage;
-  rootPage:any = SigninPage;
+  //rootPage:any = SigninPage;
+  rootPage:any=null;
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, jpush: JPush,
               nativeStorage: NativeStorage) {
@@ -25,7 +26,10 @@ export class MyApp {
         jpush.init();
         jpush.setDebugMode(true);
         console.log("Myapp:");
-        nativeStorage.getItem("SESSIONID").then(data=>console.log(data));
+        //nativeStorage.getItem("SESSIONID").then(data=>console.log(data));
+        this.rootPage = SigninPage;
+
+
     });
   }
 }
