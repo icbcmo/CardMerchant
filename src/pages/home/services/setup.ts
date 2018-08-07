@@ -58,6 +58,7 @@ export class Setup implements OnInit{
 	
 	closeModalAdd(){
 		this.openModalAdd = false;
+		this.openModalMgt = true;
 	}
 	
 	submitForm(){
@@ -69,6 +70,7 @@ export class Setup implements OnInit{
 		};
 		console.log(data);
 		this.cardMerchantService.addUser(data).toPromise().then(data=> {
+			data = Object(data);
 			console.log(data);
 			if(data.code == 0){
 				alert('提交成功');
