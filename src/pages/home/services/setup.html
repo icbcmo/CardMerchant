@@ -18,17 +18,11 @@
   </ion-navbar>
 </ion-header>
 <ion-content *ngIf="!openModalMgt && !openModalAdd" >
-	<ion-row class="row custom" (click)="openUserMgt()" >
-		<ion-col>
-			<ion-row class="row">
-				<ion-icon name="people" role="img" class="icon icon-ios ion-ios-people left-icon" aria-label="people"></ion-icon>
-				<span>用户管理</span>
-			</ion-row>
-		</ion-col>
-		<ion-col class="right-item" >
-			<ion-icon class="icon ion-ios-arrow-forward icon-custom" ></ion-icon>
-		</ion-col>
-	</ion-row>
+	<button class="item item-block item-ios" ion-item="" (click)="openUserMgt()">
+		<ion-icon color="secondary" item-start="" name="people" role="img" class="icon icon-ios icon-ios-secondary ion-ios-people item-icon" aria-label="call"></ion-icon>
+		用户管理
+		<div class="button-effect"></div>
+	</button>
 </ion-content>
 <ion-content *ngIf="openModalMgt" style="padding-top: 1rem;" >
 	<ion-list class="list" >

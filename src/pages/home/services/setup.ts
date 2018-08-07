@@ -63,13 +63,21 @@ export class Setup implements OnInit{
 	submitForm(){
 		var data = {
 			sessionid: localStorage.getItem('SESSIONID'),
-			mobile: this.Mobile.value,
-			name: this.Name.value,
-			departmentid: this.Departmentid.value
+			mobile: Object(this.Mobile).value,
+			name: Object(this.Name).value,
+			departmentid: Object(this.Departmentid).value
 		};
 		console.log(data);
 		this.cardMerchantService.addUser(data).toPromise().then(data=> {
 			console.log(data);
+			if(data.code == 0){
+				alert('提交成功');
+				this.openModalAdd = false;
+			}else{
+				alert(data.message);
+				this.openModalAdd = false;
+			}
+			
 		});
 	}
 
