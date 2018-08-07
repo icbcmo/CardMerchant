@@ -31,13 +31,21 @@ export class SigninPage implements OnInit{
     ionViewWillEnter(){
         console.log("SigninPage ionViewWillEnter")
 
-        this.nativeStorage.getItem("SESSIONID").then(data=>{
-            this.cardMerchantService.checkLoginSession(data).toPromise().then(data=>{
-                console.log(data);
-                if(Object(data).code == "0")
-                    this.navCtrl.push(TabsPage);
+        // this.nativeStorage.getItem("SESSIONID").then(data=>{
+        //     this.cardMerchantService.checkLoginSession(data).toPromise().then(data=>{
+        //         console.log(data);
+        //         if(Object(data).code == "0")
+        //             this.navCtrl.push(TabsPage);
+        //
+        //     })
+        // })
+        let sessionid = localStorage.getItem("SESSIONID")
 
-            })
+        this.cardMerchantService.checkLoginSession(sessionid).toPromise().then(data=>{
+            console.log(data);
+            if(Object(data).code == "0")
+                this.navCtrl.push(TabsPage);
+
         })
     }
 
@@ -89,7 +97,8 @@ export class SigninPage implements OnInit{
 				
 			localStorage.setItem('UID', Object(Object(data).data).uid);
 			localStorage.setItem('SESSIONID', Object(Object(data).data).sessionid);
-			
+			//可以把merchantId等信息都存于localStorage,后续功能会用到
+
             if(Object(data).code === "0")
                 this.navCtrl.push(TabsPage);
             else if(Object(data).code === "1")
