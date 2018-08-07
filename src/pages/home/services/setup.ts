@@ -70,11 +70,11 @@ export class Setup implements OnInit{
 		console.log(data);
 		this.cardMerchantService.addUser(data).toPromise().then(data=> {
 			console.log(data);
-			if(data.code == 0){
+			if(Object(data).code == 0){
 				alert('提交成功');
 				this.openModalAdd = false;
 			}else{
-				alert(data.message);
+				alert(Object(data).message);
 				this.openModalAdd = false;
 			}
 			
