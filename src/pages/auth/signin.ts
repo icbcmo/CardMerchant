@@ -5,6 +5,7 @@ import { AlertController } from 'ionic-angular';
 import {CardMerchantService} from "../../service/card-merchant.service";
 import {NativeStorage} from "@ionic-native/native-storage";
 
+declare var localStorage: any;
 
 @Component({
     selector: 'page-signin',
