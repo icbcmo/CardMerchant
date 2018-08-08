@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import {CardMerchantService} from '../../service/card-merchant.service';
 import { NativeStorage } from '@ionic-native/native-storage';
+import {SigninPage} from "../auth/signin";
 
 @Component({
   selector: 'page-contact',
@@ -75,5 +76,8 @@ export class ContactPage {
               error => console.error(error)
           );
   }
-
+  test5() {
+      localStorage.clear();
+      this.navCtrl.push(SigninPage);
+  }
 }
