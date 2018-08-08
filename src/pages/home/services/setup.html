@@ -17,20 +17,26 @@
     <ion-title style="text-align:center;"  >新增用户</ion-title>
   </ion-navbar>
 </ion-header>
-<ion-content *ngIf="!openModalMgt && !openModalAdd" >
+<ion-content *ngIf="!openModalMgt && !openModalAdd" style="margin-top:62px;" >
 	<button class="item item-block item-ios" ion-item="" (click)="openUserMgt()">
 		<ion-icon color="secondary" item-start="" name="people" role="img" class="icon icon-ios icon-ios-secondary ion-ios-people item-icon" aria-label="call"></ion-icon>
 		用户管理
 		<div class="button-effect"></div>
 	</button>
 </ion-content>
-<ion-content *ngIf="openModalMgt" style="padding-top: 1rem;" >
+<ion-content *ngIf="openModalMgt && BacktoUserMgt" style="margin-top:62px;" >
 	<ion-list>
 		<ion-item>user1</ion-item>
 		<ion-item>user2</ion-item>
 	</ion-list>
 </ion-content>
-<ion-content *ngIf="openModalAdd" style="padding-top: 6rem;" >
+<ion-content *ngIf="openModalMgt && !BacktoUserMgt" style="margin-top:62px;" >
+	<ion-list>
+		<ion-item>user1</ion-item>
+		<ion-item>user2</ion-item>
+	</ion-list>
+</ion-content>
+<ion-content *ngIf="openModalAdd" style="margin-top:62px;" >
 	<ion-list>
 
 		<ion-item>
@@ -45,6 +51,15 @@
 			<ion-label floating>部门编号</ion-label>
 			<ion-input name="departmentid" type="text" #departmentid ></ion-input>
 		</ion-item>
+		
+		<ion-item>
+			<ion-label floating>门店</ion-label>
+			<ion-select class="select select-ios ng-pristine ng-valid ng-touched" #shopid >
+				<ion-option>门店1</ion-option>
+				<ion-option>门店2</ion-option>
+			</ion-select>
+		</ion-item>
+		
     
 	</ion-list>
 

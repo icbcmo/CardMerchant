@@ -14,12 +14,14 @@ export class Setup implements OnInit{
 	@ViewChild('mobile') Mobile: ElementRef;
 	@ViewChild('name') Name: ElementRef;
 	@ViewChild('departmentid') Departmentid: ElementRef;
+	@ViewChild('shopid') Shopid: ElementRef;
 	
 	openModalMgt: Boolean;
 	openModalAdd: Boolean;
 	mobile: any;
 	name: any;
 	departmentid: any;
+	BacktoUserMgt: Boolean = false;
 
     constructor(
         public platform: Platform,
@@ -59,6 +61,7 @@ export class Setup implements OnInit{
 	closeModalAdd(){
 		this.openModalAdd = false;
 		this.openModalMgt = true;
+		this.BacktoUserMgt = true;
 	}
 	
 	submitForm(){
@@ -66,17 +69,17 @@ export class Setup implements OnInit{
 			sessionid: localStorage.getItem('SESSIONID'),
 			mobile: Object(this.Mobile).value,
 			name: Object(this.Name).value,
-			departmentid: Object(this.Departmentid).value
+			departmentid: Object(this.Departmentid).value,
+			shopid: Object(this.Shopid).value
 		};
 		console.log(data);
 		this.cardMerchantService.addUser(data).toPromise().then(data=> {
-			data = Object(data);
-			console.log(data);
-			if(data.code == 0){
+			console.log(Object(data));
+			if(Object(data).code == 0){
 				alert('提交成功');
 				this.openModalAdd = false;
 			}else{
-				alert(data.message);
+				alert(Object(data).message);
 				this.openModalAdd = false;
 			}
 			
