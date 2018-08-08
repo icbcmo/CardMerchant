@@ -47,16 +47,11 @@
 			<ion-label floating>姓名</ion-label>
 			<ion-input name="name" type="text" #name ></ion-input>
 		</ion-item>
-		<ion-item>
-			<ion-label floating>部门编号</ion-label>
-			<ion-input name="departmentid" type="text" #departmentid ></ion-input>
-		</ion-item>
 		
 		<ion-item>
 			<ion-label floating>门店</ion-label>
-			<ion-select class="select select-ios ng-pristine ng-valid ng-touched" #shopid >
-				<ion-option>门店1</ion-option>
-				<ion-option>门店2</ion-option>
+			<ion-select class="select select-ios ng-pristine ng-valid ng-touched" #departmentid >
+				<ion-option *ngFor="let shop of shopList" value="{{shop.departmentId}}" >{{shop.departmentName}}</ion-option>
 			</ion-select>
 		</ion-item>
 		

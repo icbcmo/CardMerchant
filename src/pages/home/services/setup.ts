@@ -22,6 +22,8 @@ export class Setup implements OnInit{
 	name: any;
 	departmentid: any;
 	BacktoUserMgt: Boolean = false;
+	
+	shopList: any;
 
     constructor(
         public platform: Platform,
@@ -36,6 +38,15 @@ export class Setup implements OnInit{
     ngOnInit() {
 		this.openModalMgt = false;
 		this.openModalAdd = false;
+		var data = {
+			merchantId: localStorage.getItem('MERCHANTID'),
+			sessionId: localStorage.getItem('SESSIONID')
+		};
+		console.log(data);
+		this.cardMerchantService.getShopList(data).toPromise().then(data=> {
+			console.log(Object(data));
+			this.shopList = Object(data).data[0];
+		});
 	}
 
     dismiss() {
@@ -70,7 +81,6 @@ export class Setup implements OnInit{
 			mobile: Object(this.Mobile).value,
 			name: Object(this.Name).value,
 			departmentid: Object(this.Departmentid).value,
-			shopid: Object(this.Shopid).value
 		};
 		console.log(data);
 		this.cardMerchantService.addUser(data).toPromise().then(data=> {

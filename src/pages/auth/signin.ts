@@ -99,6 +99,7 @@ export class SigninPage implements OnInit{
 			localStorage.setItem('UID', Object(Object(data).data).uid);
 			localStorage.setItem('SESSIONID', Object(Object(data).data).sessionid);
 			//可以把merchantId等信息都存于localStorage,后续功能会用到
+			localStorage.setItem('MERCHANTID', Object(Object(data).data).merchantId);
 
             if(Object(data).code === "0")
                 this.navCtrl.push(TabsPage);
