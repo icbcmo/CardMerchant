@@ -118,7 +118,7 @@ export class SigninPage implements OnInit{
 
     eyeOnOff(){
         this.eyetype = this.eyetype == 'eye-off'?'eye':'eye-off';
-        this.passwordtype = this.passwordtype == 'password'? 'text':'password';
+        this.passwordtype = this.passwordtype == 'password'? 'tel':'password';
 
     }
 
