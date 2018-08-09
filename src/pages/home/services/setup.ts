@@ -1,99 +1,35 @@
 
 import {Component, OnInit, ElementRef, ViewChild} from '@angular/core';
-import { ModalController, Platform, NavParams, ViewController } from 'ionic-angular';
+import { ModalController, Platform } from 'ionic-angular';
 import {CardMerchantService} from "../../../service/card-merchant.service";
 import {NativeStorage} from "@ionic-native/native-storage";
+import { Router } from '@angular/router';
 
 declare var localStorage: any;
 
 @Component({
-  selector: 'page-home',
+  selector: 'page-setup',
   templateUrl: 'setup.html',
 })
-export class Setup implements OnInit{
-	@ViewChild('mobile') Mobile: ElementRef;
-	@ViewChild('name') Name: ElementRef;
-	@ViewChild('departmentid') Departmentid: ElementRef;
-	@ViewChild('shopid') Shopid: ElementRef;
-	
-	openModalMgt: Boolean;
-	openModalAdd: Boolean;
-	mobile: any;
-	name: any;
-	departmentid: any;
-	BacktoUserMgt: Boolean = false;
-	
-	shopList: any;
 
+export class SetupPage implements OnInit{
+	
     constructor(
         public platform: Platform,
-        public params: NavParams,
-        public viewCtrl: ViewController,
 		public cardMerchantService: CardMerchantService,
-		private nativeStorage: NativeStorage
+		private nativeStorage: NativeStorage,
+		private router: Router
     ) {
     }
 
 
     ngOnInit() {
-		this.openModalMgt = false;
-		this.openModalAdd = false;
-		var data = {
-			merchantId: localStorage.getItem('MERCHANTID'),
-			sessionId: localStorage.getItem('SESSIONID')
-		};
-		console.log(data);
-		this.cardMerchantService.getShopList(data).toPromise().then(data=> {
-			console.log(Object(data));
-			this.shopList = Object(data).data[0];
-		});
-	}
 
-    dismiss() {
-        this.viewCtrl.dismiss();
-    }
+		
+	}
 	
 	openUserMgt(){
-		console.log('clicked');
-		this.openModalMgt = true;
-		this.openModalAdd = false;
-	}
-	
-	addUser(){
-		console.log('clicked');
-		this.openModalAdd = true;
-		this.openModalMgt = false;
-	}
-	
-	closeModalMgt(){
-		this.openModalMgt = false;
-	}
-	
-	closeModalAdd(){
-		this.openModalAdd = false;
-		this.openModalMgt = true;
-		this.BacktoUserMgt = true;
-	}
-	
-	submitForm(){
-		var data = {
-			sessionid: localStorage.getItem('SESSIONID'),
-			mobile: Object(this.Mobile).value,
-			name: Object(this.Name).value,
-			departmentid: Object(this.Departmentid).value,
-		};
-		console.log(data);
-		this.cardMerchantService.addUser(data).toPromise().then(data=> {
-			console.log(Object(data));
-			if(Object(data).code == 0){
-				console.log('提交成功');
-				this.openModalAdd = false;
-			}else{
-				alert(Object(data).message);
-				this.openModalAdd = false;
-			}
-			
-		});
+		this.router.navigate(['usermgt']);
 	}
 
 }

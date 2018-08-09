@@ -1,5 +1,4 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
-import { NavController } from 'ionic-angular';
 
 declare let echarts;
 
@@ -26,7 +25,7 @@ export class AboutPage implements OnInit{
         { name: 'age' }
     ];
 
-  constructor(public navCtrl: NavController) {
+  constructor() {
         this.showType ='charts';
 
   }

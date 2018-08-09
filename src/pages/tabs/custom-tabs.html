@@ -1,0 +1,8 @@
+<div class="tabbar show-tabbar" role="tablist" style="bottom: 0px;">
+	<a class="custom-button has-title has-icon disable-hover"  [ngClass]="{'active':activeTabIndex == i,'':activeTabIndex != i}" *ngFor="let item of items;let i = index" routerLink="{{item.url}}" (click)="onTabChange(i)" >
+		<ion-icon class="tab-button-icon icon icon-md ion-md-{{item.classname}}" role="img" aria-label="home" ></ion-icon>
+		<span class="tab-button-text">{{item.title}}</span>
+		<div class="button-effect"></div>
+	</a>
+	<div class="tab-highlight"></div>
+</div>

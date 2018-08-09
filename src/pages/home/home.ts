@@ -1,6 +1,6 @@
 
 import {Component, OnInit} from '@angular/core';
-import { NavController,ModalController } from 'ionic-angular';
+import { ModalController } from 'ionic-angular';
 import {Store, select} from '@ngrx/store';
 import {Observable} from 'rxjs/Observable';
 
@@ -8,13 +8,13 @@ import {CounterActions} from '../../actions/counter.actions';
 import {AppState} from '../../app/app.status';
 import {CounterService} from "../../service/counter.service";
 import {Refund} from "./services/refund";
-import {Setup} from "./services/setup";
 import {Binsarch} from "./services/binsarch";
 import {Wrongtrx} from "./services/wrongtrx";
 import {Custservice} from "./services/custservice";
 import {Qrcode} from "./qrcode/qrcode";
 import { JPush } from "@jiguang-ionic/jpush";
 import { Device } from "@ionic-native/device";
+import { Router } from '@angular/router';
 
 const EventSource: any = window['EventSource'];
 
@@ -34,12 +34,12 @@ export class HomePage implements OnInit{
 
 
     constructor(
-        public navCtrl: NavController,
         private store: Store<AppState> ,
         private counterService:CounterService,
         public jpush: JPush,
         device: Device,
-        public modalCtrl: ModalController
+        public modalCtrl: ModalController,
+		private router: Router
     ) {
         this.devicePlatform = device.platform;
 
@@ -235,9 +235,8 @@ export class HomePage implements OnInit{
         modal.present();
     }
 	
-	openSetupModal() {
-        let modal = this.modalCtrl.create(Setup);
-        modal.present();
+	goSetup() {
+        this.router.navigate(['setup']);
     }
 
 }

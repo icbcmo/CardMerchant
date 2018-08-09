@@ -1,64 +1,14 @@
-<ion-header *ngIf="!openModalMgt && !openModalAdd">
+<ion-header>
   <ion-navbar>
-    <button ion-button start (click)="dismiss()">返回</button>
+    <button ion-button start (click)="closeModalMgt()">返回</button>
     <ion-title style="text-align:center;" >设置</ion-title>
   </ion-navbar>
 </ion-header>
-<ion-header *ngIf="openModalMgt">
-  <ion-navbar>
-    <button ion-button start (click)="closeModalMgt()">返回</button>
-    <ion-title style="text-align:center;" >用户管理</ion-title>
-	<button ion-button end (click)="addUser()">新增</button>
-  </ion-navbar>
-</ion-header>
-<ion-header *ngIf="openModalAdd">
-  <ion-navbar>
-    <button ion-button start (click)="closeModalAdd()">返回</button>
-    <ion-title style="text-align:center;"  >新增用户</ion-title>
-  </ion-navbar>
-</ion-header>
-<ion-content *ngIf="!openModalMgt && !openModalAdd" style="margin-top:62px;" >
+
+<ion-content>
 	<button class="item item-block item-ios" ion-item="" (click)="openUserMgt()">
 		<ion-icon color="secondary" item-start="" name="people" role="img" class="icon icon-ios icon-ios-secondary ion-ios-people item-icon" aria-label="call"></ion-icon>
 		用户管理
 		<div class="button-effect"></div>
 	</button>
-</ion-content>
-<ion-content *ngIf="openModalMgt && BacktoUserMgt" style="margin-top:62px;" >
-	<ion-list>
-		<ion-item>user1</ion-item>
-		<ion-item>user2</ion-item>
-	</ion-list>
-</ion-content>
-<ion-content *ngIf="openModalMgt && !BacktoUserMgt" style="margin-top:62px;" >
-	<ion-list>
-		<ion-item>user1</ion-item>
-		<ion-item>user2</ion-item>
-	</ion-list>
-</ion-content>
-<ion-content *ngIf="openModalAdd" style="margin-top:62px;" >
-	<ion-list>
-
-		<ion-item>
-			<ion-label floating>手机号</ion-label>
-			<ion-input name="mobile" type="number"  #mobile ></ion-input>
-		</ion-item>
-		<ion-item>
-			<ion-label floating>姓名</ion-label>
-			<ion-input name="name" type="text" #name ></ion-input>
-		</ion-item>
-		
-		<ion-item>
-			<ion-label floating>门店</ion-label>
-			<ion-select class="select select-ios ng-pristine ng-valid ng-touched" #departmentid >
-				<ion-option *ngFor="let shop of shopList" value="{{shop.departmentId}}" >{{shop.departmentName}}</ion-option>
-			</ion-select>
-		</ion-item>
-		
-    
-	</ion-list>
-
-  <div padding>
-    <button ion-button color="primary" (click)="submitForm()" block>提交</button>
-  </div>
 </ion-content>

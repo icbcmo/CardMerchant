@@ -3,11 +3,16 @@ import {BrowserModule} from '@angular/platform-browser';
 import {IonicApp, IonicModule, IonicErrorHandler} from 'ionic-angular';
 import {MyApp} from './app.component';
 
+import {IndexPage} from '../pages/index/index';
 import {AboutPage} from '../pages/about/about';
 import {ContactPage} from '../pages/contact/contact';
 import {HomePage} from '../pages/home/home';
-import {TabsPage} from '../pages/tabs/tabs';
+import {CustomTabsPage} from '../pages/tabs/custom-tabs';
 import {SigninPage} from "../pages/auth/signin";
+import {SetupPage} from "../pages/home/services/setup";
+import {UserMgtPage} from "../pages/home/services/usermgt";
+import {AddUserPage} from "../pages/home/services/adduser";
+import {UserDetailPage} from "../pages/home/services/userdetail";
 import {StatusBar} from '@ionic-native/status-bar';
 import {SplashScreen} from '@ionic-native/splash-screen';
 
@@ -27,7 +32,6 @@ import {JPush} from '@jiguang-ionic/jpush';
 import {Binsarch} from "../pages/home/services/binsarch";
 import {Custservice} from "../pages/home/services/custservice";
 import {Refund} from "../pages/home/services/refund";
-import {Setup} from "../pages/home/services/setup";
 import {Wrongtrx} from "../pages/home/services/wrongtrx";
 import {Qrcode} from "../pages/home/qrcode/qrcode";
 import { QRCodeModule } from 'angular2-qrcode';
@@ -35,18 +39,24 @@ import { Camera } from '@ionic-native/camera';
 import {NativeStorage} from "@ionic-native/native-storage";
 import { Device } from '@ionic-native/device';
 //import {CounterService,Sse} from "../service/counter.service";
+import { AppRoutingModule }     from './app-routing.module';
+
 @NgModule({
     declarations: [
         MyApp,
+		IndexPage,
         AboutPage,
         ContactPage,
         HomePage,
-        TabsPage,
+        CustomTabsPage,
         SigninPage,
         Binsarch,
         Custservice,
         Refund,
-		Setup,
+		SetupPage,
+		UserMgtPage,
+		AddUserPage,
+		UserDetailPage,
         Wrongtrx,
         Qrcode
     ],
@@ -61,21 +71,25 @@ import { Device } from '@ionic-native/device';
         NxModule.forRoot(),
         StoreModule.forFeature('counter', counterReducer, {initialState: counterInitialState}),
         EffectsModule.forFeature([CounterEffects]),
-        NgxDatatableModule
-
+        NgxDatatableModule,
+		AppRoutingModule
     ],
     bootstrap: [IonicApp],
     entryComponents: [
         MyApp,
+		IndexPage,
         AboutPage,
         ContactPage,
         HomePage,
-        TabsPage,
+        CustomTabsPage,
         SigninPage,
         Binsarch,
         Custservice,
         Refund,
-		Setup,
+		SetupPage,
+		UserMgtPage,
+		AddUserPage,
+		UserDetailPage,
         Wrongtrx,
         Qrcode
     ],
