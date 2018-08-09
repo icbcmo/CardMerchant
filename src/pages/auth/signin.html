@@ -22,7 +22,7 @@
                 <ion-icon name="arrow-dropright" item-start></ion-icon>
                 驗證碼
             </ion-label>
-            <ion-input #mypassword [type]="passwordtype" placeholder="Password Input" (keyup)="checkEnter($event,myaccount.value, mypassword.value)" ></ion-input>
+            <ion-input #mypassword [type]="passwordtype" pattern="[0-9]*" inputmode="numeric" placeholder="Password Input" (keyup)="checkEnter($event,myaccount.value, mypassword.value)" ></ion-input>
             <ion-icon [name]="eyetype" item-end (click)="eyeOnOff()"></ion-icon>
 
         </ion-item>
