@@ -94,7 +94,12 @@ export class HomePage implements OnInit{
             false
         );
 
-
+        //this.cleanTags();
+        let mytags=[];
+        mytags.push(localStorage.getItem("MERCHANTID"));
+        mytags.push(localStorage.getItem("DEPARTMENTID"));
+        console.log(mytags)
+        this.setTags(mytags);
 
     }
 
@@ -130,9 +135,9 @@ export class HomePage implements OnInit{
         });
     }
 
-    setTags() {
+    setTags(tags) {
         this.jpush
-            .setTags({ sequence: this.sequence++, tags: ["Tag1", "Tag2"] })
+            .setTags({ sequence: this.sequence++, tags: tags })
             .then(this.tagResultHandler)
             .catch(this.errorHandler);
     }
