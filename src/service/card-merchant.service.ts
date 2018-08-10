@@ -68,6 +68,16 @@ export class CardMerchantService {
 
         return this.http.get(url);
     }
+	
+	addrefund(data) {
+		let str = JSON.stringify(data);
+		let sign = this.getSignInit(str);
+		let merCert = encodeURIComponent(this.publicKey);
+        let url = this.gwUrl + 'cardmerchant/addrefund' + '?sign=' + sign + '&merCert=' + merCert;
+        console.log(url);
+
+        return this.http.post(url,data);
+    }
 
     sendVerifyCode_rsa(mobile:any){
 
