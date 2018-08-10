@@ -31,5 +31,9 @@ export class SetupPage implements OnInit{
 	openUserMgt(){
 		this.router.navigate(['usermgt']);
 	}
+	
+	goBack(){
+		history.back();
+	}
 
 }

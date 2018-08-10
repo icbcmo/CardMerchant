@@ -38,7 +38,7 @@ export class UserDetailPage implements OnInit{
 	}
 	
 	goBack(){
-		history.back(-1);
+		history.back();
 	}
 
 }

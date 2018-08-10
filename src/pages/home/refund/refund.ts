@@ -1,8 +1,6 @@
 
 import {Component, OnInit} from '@angular/core';
-import { ModalController, Platform, NavParams, ViewController } from 'ionic-angular';
-
-
+import { ViewController } from 'ionic-angular';
 
 @Component({
   selector: 'page-home',
@@ -10,11 +8,8 @@ import { ModalController, Platform, NavParams, ViewController } from 'ionic-angu
 })
 export class Refund implements OnInit{
 
-
     constructor(
-        public platform: Platform,
-        public params: NavParams,
-        public viewCtrl: ViewController
+        public viewCtrl: ViewController,
     ) {
     }
 

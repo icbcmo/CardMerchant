@@ -12,36 +12,40 @@
     </ion-item>
     <ion-item>
       <ion-label floating>商戶名稱</ion-label>
-      <ion-input type="text"></ion-input>
+      <ion-input type="text" #merchantname ></ion-input>
+    </ion-item>
+	<ion-item>
+      <ion-label floating>部门名稱</ion-label>
+      <ion-input type="text" #departmentname ></ion-input>
     </ion-item>
     <ion-item>
       <ion-label floating>退款卡號</ion-label>
-      <ion-input type="text"></ion-input>
+      <ion-input type="text" #refundcardno4 ></ion-input>
     </ion-item>
     <ion-item>
       <ion-label floating>交易日期</ion-label>
-      <ion-input type="text"></ion-input>
+      <ion-input type="text" #trxdate ></ion-input>
     </ion-item>
     <ion-item>
       <ion-label floating>授權號</ion-label>
-      <ion-input type="text"></ion-input>
+      <ion-input type="text" #authno ></ion-input>
     </ion-item>
     <ion-item>
       <ion-label floating>原交易金額</ion-label>
-      <ion-input type="text"></ion-input>
+      <ion-input type="text" #trxamount ></ion-input>
     </ion-item>
     <ion-item>
       <ion-label floating>退款金額</ion-label>
-      <ion-input type="text"></ion-input>
+      <ion-input type="text" #refundamount ></ion-input>
     </ion-item>
     <ion-item>
       <ion-label floating>申請人/聯絡電話</ion-label>
-      <ion-input type="text"></ion-input>
+      <ion-input type="text" #applymobile ></ion-input>
     </ion-item>
   </ion-list>
 
   <div padding>
-    <button ion-button color="primary" block>提交</button>
+    <button ion-button color="primary" (click)="submitForm()" block>提交</button>
   </div>
 
 </ion-content>

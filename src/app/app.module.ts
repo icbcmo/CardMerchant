@@ -31,7 +31,7 @@ import {NgxDatatableModule} from '@swimlane/ngx-datatable';
 import {JPush} from '@jiguang-ionic/jpush';
 import {Binsarch} from "../pages/home/services/binsarch";
 import {Custservice} from "../pages/home/services/custservice";
-import {Refund} from "../pages/home/services/refund";
+import {Refund} from "../pages/home/refund/refund";
 import {Wrongtrx} from "../pages/home/services/wrongtrx";
 import {Qrcode} from "../pages/home/qrcode/qrcode";
 import { QRCodeModule } from 'angular2-qrcode';
