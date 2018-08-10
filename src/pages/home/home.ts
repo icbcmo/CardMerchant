@@ -16,6 +16,7 @@ import {Qrcode} from "./qrcode/qrcode";
 import { JPush } from "@jiguang-ionic/jpush";
 import { Device } from "@ionic-native/device";
 import { Router } from '@angular/router';
+import {SetupPage} from "./services/setup";
 
 const EventSource: any = window['EventSource'];
 
@@ -256,7 +257,9 @@ export class HomePage implements OnInit{
     }
 	
 	goSetup() {
-        this.router.navigate(['setup']);
+        //this.router.navigate(['setup']);
+        let modal = this.modalCtrl.create(SetupPage);
+        modal.present();
     }
 
 }
