@@ -50,7 +50,7 @@ export class AddUserPage implements OnInit{
 			console.log(Object(data));
 			if(Object(data).code == 0){
 				console.log('提交成功');
-				history.back(-1);
+				history.back();
 			}else{
 				alert(Object(data).message);
 			}
@@ -58,7 +58,7 @@ export class AddUserPage implements OnInit{
 	}
 	
 	goBack(){
-		history.back(-1);
+		history.back();
 	}
 
 }
