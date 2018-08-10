@@ -33,7 +33,7 @@ export class SetupPage implements OnInit{
 	}
 	
 	goBack(){
-		history.back();
+        this.router.navigate(['index/home']);
 	}
 
 }
