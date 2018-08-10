@@ -15,6 +15,9 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+
+
+
 * ::-webkit-scrollbar {
   display: none;
 }
@@ -47,3 +50,12 @@
   font-size: 24px;
   color: #aaaaaa;
 }
+
+
+ion-app, ion-nav, ion-tab, ion-tabs, .app-root {
+    top: 12px;
+    bottom: 12px;
+    height: auto; 
+}
+
+
