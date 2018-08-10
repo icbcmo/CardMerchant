@@ -39,22 +39,26 @@ export class AddUserPage implements OnInit{
 
 	
 	submitForm(){
-		var data = {
-			sessionid: localStorage.getItem('SESSIONID'),
-			mobile: Object(this.Mobile).value,
-			name: Object(this.Name).value,
-			departmentid: Object(this.Departmentid).value,
-		};
-		console.log(data);
-		this.cardMerchantService.addUser(data).toPromise().then(data=> {
-			console.log(Object(data));
-			if(Object(data).code == 0){
-				console.log('提交成功');
-				history.back();
-			}else{
-				alert(Object(data).message);
-			}
-		});
+		if(!/^\d{8}$/.test(Object(this.Mobile).value)){
+			alert("手机号至少8位");
+		}else{
+			var data = {
+				sessionid: localStorage.getItem('SESSIONID'),
+				mobile: Object(this.Mobile).value,
+				name: Object(this.Name).value,
+				departmentid: Object(this.Departmentid).value,
+			};
+			console.log(data);
+			this.cardMerchantService.addUser(data).toPromise().then(data=> {
+				console.log(Object(data));
+				if(Object(data).code == 0){
+					console.log('提交成功');
+					history.back();
+				}else{
+					alert(Object(data).message);
+				}
+			});
+		}
 	}
 	
 	goBack(){

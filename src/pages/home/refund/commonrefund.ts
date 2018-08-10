@@ -1,14 +1,13 @@
 
 import {Component, OnInit, ElementRef, ViewChild} from '@angular/core';
-import { ModalController, Platform, NavParams, ViewController } from 'ionic-angular';
 import {CardMerchantService} from "../../../service/card-merchant.service";
 
 
 @Component({
-  selector: 'page-home',
-  templateUrl: 'refund.html',
+  selector: 'page-commonrefund',
+  templateUrl: 'commonrefund.html'
 })
-export class Refund implements OnInit{
+export class CommonRefundPage implements OnInit{
 	@ViewChild('merchantname') merchantname: ElementRef;
 	@ViewChild('departmentname') departmentname: ElementRef;
 	@ViewChild('refundcardno4') refundcardno4: ElementRef;
@@ -19,15 +18,13 @@ export class Refund implements OnInit{
 	@ViewChild('applymobile') applymobile: ElementRef;
 
     constructor(
-        public platform: Platform,
-        public params: NavParams,
-        public viewCtrl: ViewController,
 		public cardMerchantService: CardMerchantService
     ) {
     }
 
 
-    ngOnInit() {}
+    ngOnInit() {
+	}
 	
 	submitForm(){
 		var data = {
@@ -56,8 +53,8 @@ export class Refund implements OnInit{
 		});
 	}
 
-    dismiss() {
-        this.viewCtrl.dismiss();
+    goBack() {
+        history.back();
     }
 
 }

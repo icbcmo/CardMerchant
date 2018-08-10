@@ -32,6 +32,10 @@ import {JPush} from '@jiguang-ionic/jpush';
 import {Binsarch} from "../pages/home/services/binsarch";
 import {Custservice} from "../pages/home/services/custservice";
 import {Refund} from "../pages/home/refund/refund";
+import {CommonRefundPage} from "../pages/home/refund/commonrefund";
+import {WeixinRefundPage} from "../pages/home/refund/weixinrefund";
+import {RefundVerifyPage} from "../pages/home/refund/refundverify";
+import {RefundProgressPage} from "../pages/home/refund/refundprogress";
 import {Wrongtrx} from "../pages/home/services/wrongtrx";
 import {Qrcode} from "../pages/home/qrcode/qrcode";
 import { QRCodeModule } from 'angular2-qrcode';
@@ -53,6 +57,10 @@ import { AppRoutingModule }     from './app-routing.module';
         Binsarch,
         Custservice,
         Refund,
+		CommonRefundPage,
+		WeixinRefundPage,
+		RefundVerifyPage,
+		RefundProgressPage,
 		SetupPage,
 		UserMgtPage,
 		AddUserPage,
@@ -86,6 +94,10 @@ import { AppRoutingModule }     from './app-routing.module';
         Binsarch,
         Custservice,
         Refund,
+		CommonRefundPage,
+		WeixinRefundPage,
+		RefundVerifyPage,
+		RefundProgressPage,
 		SetupPage,
 		UserMgtPage,
 		AddUserPage,

@@ -7,16 +7,16 @@
 <ion-content>
   <ion-list>
     <ion-item>
-      <a routerLink="/commonrefund" >普通退款</a>
+      <a (click)="goCommonRefund()" >普通退款</a>
     </ion-item>
 	<ion-item>
-      <a routerLink="/weixinrefund" >微信退款</a>
+      <a (click)="goWeixinRefund()" >微信退款</a>
     </ion-item>
 	<ion-item>
-      <a routerLink="/refundverify" >退款审批</a>
+      <a (click)="goRefundVerify()" >退款审批</a>
     </ion-item>
 	<ion-item>
-      <a routerLink="/refundprogress" >退款进度</a>
+      <a (click)="goRefundProgress()" >退款进度</a>
     </ion-item>
   </ion-list>
 </ion-content>

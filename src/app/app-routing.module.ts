@@ -10,6 +10,10 @@ import {SetupPage} from "../pages/home/services/setup";
 import {UserMgtPage} from "../pages/home/services/usermgt";
 import {AddUserPage} from "../pages/home/services/adduser";
 import {UserDetailPage} from "../pages/home/services/userdetail";
+import {CommonRefundPage} from "../pages/home/refund/commonrefund";
+import {WeixinRefundPage} from "../pages/home/refund/weixinrefund";
+import {RefundVerifyPage} from "../pages/home/refund/refundverify";
+import {RefundProgressPage} from "../pages/home/refund/refundprogress";
 
 const routes: Routes = [
 	{ path: '', redirectTo: '/signin', pathMatch: 'full' },
@@ -25,7 +29,11 @@ const routes: Routes = [
 	{ path: 'setup', component: SetupPage },
 	{ path: 'usermgt', component: UserMgtPage },
 	{ path: 'adduser', component: AddUserPage },
-	{ path: 'userdetail', component: UserDetailPage }
+	{ path: 'userdetail', component: UserDetailPage },
+	{ path: 'commonrefund', component: CommonRefundPage },
+	{ path: 'weixinrefund', component: WeixinRefundPage },
+	{ path: 'refundverify', component: RefundVerifyPage },
+	{ path: 'refundprogress', component: RefundProgressPage }
 ];
 
 @NgModule({
