@@ -10,6 +10,7 @@ import {CounterService} from "../../service/counter.service";
 import {Refund} from "./refund/refund";
 import {Binsarch} from "./services/binsarch";
 import {Wrongtrx} from "./services/wrongtrx";
+import {Camera, CameraOptions} from '@ionic-native/camera';
 import {Custservice} from "./services/custservice";
 import {Qrcode} from "./qrcode/qrcode";
 import { JPush } from "@jiguang-ionic/jpush";
@@ -36,6 +37,7 @@ export class HomePage implements OnInit{
     constructor(
         private store: Store<AppState> ,
         private counterService:CounterService,
+        private camera: Camera,
         public jpush: JPush,
         device: Device,
         public modalCtrl: ModalController,
@@ -208,7 +210,25 @@ export class HomePage implements OnInit{
 
     ngOnInit() {}
 
+    openCamera(){
+        //手機上使用部分開始
+        const options: CameraOptions = {
+            quality: 80,
+            targetWidth: 600,
+            targetHeight: 1200,
+            //allowEdit: true,
+            sourceType: 1,
+            destinationType: this.camera.DestinationType.DATA_URL,
+            encodingType: this.camera.EncodingType.JPEG,
+            mediaType: this.camera.MediaType.PICTURE
+        };
 
+        this.camera.getPicture(options).then((imageData) => {
+            let base64Image = imageData;
+            base64Image = 'data:image/jpeg;base64,' + base64Image;
+            console.log(base64Image);
+        });
+    }
 
     openRefundModal() {
         let modal = this.modalCtrl.create(Refund);

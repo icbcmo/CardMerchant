@@ -38,6 +38,7 @@ import {RefundVerifyPage} from "../pages/home/refund/refundverify";
 import {RefundProgressPage} from "../pages/home/refund/refundprogress";
 import {Wrongtrx} from "../pages/home/services/wrongtrx";
 import {Qrcode} from "../pages/home/qrcode/qrcode";
+import {TabsPage} from "../pages/tabs/tabs";
 import { QRCodeModule } from 'angular2-qrcode';
 import { Camera } from '@ionic-native/camera';
 import {NativeStorage} from "@ionic-native/native-storage";
@@ -55,6 +56,7 @@ import { AppRoutingModule }     from './app-routing.module';
         CustomTabsPage,
         SigninPage,
         Binsarch,
+        TabsPage,
         Custservice,
         Refund,
 		CommonRefundPage,
@@ -91,6 +93,7 @@ import { AppRoutingModule }     from './app-routing.module';
         HomePage,
         CustomTabsPage,
         SigninPage,
+        TabsPage,
         Binsarch,
         Custservice,
         Refund,
