@@ -8,7 +8,7 @@ import { ModalController, Platform, NavParams, ViewController } from 'ionic-angu
   selector: 'page-home',
   templateUrl: 'binsearch.html',
 })
-export class Binsarch implements OnInit{
+export class Binsearch implements OnInit{
 
 
     constructor(

@@ -1,10 +1,10 @@
 
 import {Component, OnInit, ElementRef, ViewChild} from '@angular/core';
-import { ModalController, Platform,NavController } from 'ionic-angular';
+import { ModalController, Platform,NavController, ViewController } from 'ionic-angular';
 import {CardMerchantService} from "../../../service/card-merchant.service";
 import {NativeStorage} from "@ionic-native/native-storage";
 import { Router } from '@angular/router';
-import {Qrcode} from "../qrcode/qrcode";
+import {UserMgt} from "./usermgt";
 
 declare var localStorage: any;
 
@@ -13,7 +13,7 @@ declare var localStorage: any;
   templateUrl: 'setup.html'
 })
 
-export class SetupPage implements OnInit{
+export class Setup implements OnInit{
 	
     constructor(
         public platform: Platform,
@@ -21,7 +21,7 @@ export class SetupPage implements OnInit{
         public modalCtrl: ModalController,
         public navCtrl: NavController,
 		private nativeStorage: NativeStorage,
-		//private router: Router
+		public viewCtrl: ViewController
     ) {
     }
 
@@ -32,17 +32,12 @@ export class SetupPage implements OnInit{
 	}
 	
 	openUserMgt(){
-		//this.router.navigate(['usermgt']);
-
-        let modal = this.modalCtrl.create(Qrcode);
+        let modal = this.modalCtrl.create(UserMgt);
         modal.present();
-
 	}
 	
 	goBack(){
-        //this.router.navigate(['index/home']);
-
-        this.navCtrl.pop();
+		this.viewCtrl.dismiss();
 	}
 
 }

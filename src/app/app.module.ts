@@ -3,16 +3,15 @@ import {BrowserModule} from '@angular/platform-browser';
 import {IonicApp, IonicModule, IonicErrorHandler} from 'ionic-angular';
 import {MyApp} from './app.component';
 
-import {IndexPage} from '../pages/index/index';
 import {AboutPage} from '../pages/about/about';
 import {ContactPage} from '../pages/contact/contact';
 import {HomePage} from '../pages/home/home';
-import {CustomTabsPage} from '../pages/tabs/custom-tabs';
+import {TabsPage} from '../pages/tabs/tabs';
 import {SigninPage} from "../pages/auth/signin";
-import {SetupPage} from "../pages/home/services/setup";
-import {UserMgtPage} from "../pages/home/services/usermgt";
-import {AddUserPage} from "../pages/home/services/adduser";
-import {UserDetailPage} from "../pages/home/services/userdetail";
+import {Setup} from "../pages/home/setup/setup";
+import {UserMgt} from "../pages/home/setup/usermgt";
+import {AddUser} from "../pages/home/setup/adduser";
+import {UserDetail} from "../pages/home/setup/userdetail";
 import {StatusBar} from '@ionic-native/status-bar';
 import {SplashScreen} from '@ionic-native/splash-screen';
 
@@ -27,46 +26,44 @@ import {CounterEffects} from '../effects/counter.effects';
 import {HttpClientModule} from '@angular/common/http';
 import {CounterService} from "../service/counter.service";
 import {CardMerchantService} from "../service/card-merchant.service";
+import {TipService} from '../service/tip.service';
 import {NgxDatatableModule} from '@swimlane/ngx-datatable';
 import {JPush} from '@jiguang-ionic/jpush';
-import {Binsarch} from "../pages/home/services/binsarch";
-import {Custservice} from "../pages/home/services/custservice";
+import {Binsearch} from "../pages/home/binsearch/binsearch";
+import {Custservice} from "../pages/home/custservice/custservice";
 import {Refund} from "../pages/home/refund/refund";
-import {CommonRefundPage} from "../pages/home/refund/commonrefund";
-import {WeixinRefundPage} from "../pages/home/refund/weixinrefund";
-import {RefundVerifyPage} from "../pages/home/refund/refundverify";
-import {RefundProgressPage} from "../pages/home/refund/refundprogress";
-import {Wrongtrx} from "../pages/home/services/wrongtrx";
+import {CommonRefund} from "../pages/home/refund/commonrefund";
+import {WeixinRefund} from "../pages/home/refund/weixinrefund";
+import {RefundVerify} from "../pages/home/refund/refundverify";
+import {RefundProgress} from "../pages/home/refund/refundprogress";
+import {Wrongtrx} from "../pages/home/wrongtrx/wrongtrx";
 import {Qrcode} from "../pages/home/qrcode/qrcode";
-import {TabsPage} from "../pages/tabs/tabs";
 import { QRCodeModule } from 'angular2-qrcode';
 import { Camera } from '@ionic-native/camera';
 import {NativeStorage} from "@ionic-native/native-storage";
 import { Device } from '@ionic-native/device';
 //import {CounterService,Sse} from "../service/counter.service";
-import { AppRoutingModule }     from './app-routing.module';
 
 @NgModule({
     declarations: [
         MyApp,
-		IndexPage,
         AboutPage,
         ContactPage,
         HomePage,
-        CustomTabsPage,
+        TabsPage,
         SigninPage,
-        Binsarch,
+        Binsearch,
         TabsPage,
         Custservice,
         Refund,
-		CommonRefundPage,
-		WeixinRefundPage,
-		RefundVerifyPage,
-		RefundProgressPage,
-		SetupPage,
-		UserMgtPage,
-		AddUserPage,
-		UserDetailPage,
+		CommonRefund,
+		WeixinRefund,
+		RefundVerify,
+		RefundProgress,
+		Setup,
+		UserMgt,
+		AddUser,
+		UserDetail,
         Wrongtrx,
         Qrcode
     ],
@@ -81,30 +78,27 @@ import { AppRoutingModule }     from './app-routing.module';
         NxModule.forRoot(),
         StoreModule.forFeature('counter', counterReducer, {initialState: counterInitialState}),
         EffectsModule.forFeature([CounterEffects]),
-        NgxDatatableModule,
-		AppRoutingModule
+        NgxDatatableModule
     ],
     bootstrap: [IonicApp],
     entryComponents: [
         MyApp,
-		IndexPage,
         AboutPage,
         ContactPage,
         HomePage,
-        CustomTabsPage,
         SigninPage,
         TabsPage,
-        Binsarch,
+        Binsearch,
         Custservice,
         Refund,
-		CommonRefundPage,
-		WeixinRefundPage,
-		RefundVerifyPage,
-		RefundProgressPage,
-		SetupPage,
-		UserMgtPage,
-		AddUserPage,
-		UserDetailPage,
+		CommonRefund,
+		WeixinRefund,
+		RefundVerify,
+		RefundProgress,
+		Setup,
+		UserMgt,
+		AddUser,
+		UserDetail,
         Wrongtrx,
         Qrcode
     ],
@@ -115,6 +109,7 @@ import { AppRoutingModule }     from './app-routing.module';
         JPush,
         CounterService,//Sse,
         CardMerchantService,
+		TipService,
         NativeStorage,
         Device,
         {provide: ErrorHandler, useClass: IonicErrorHandler}

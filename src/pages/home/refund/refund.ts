@@ -1,17 +1,23 @@
 
 import {Component, OnInit} from '@angular/core';
-import { ViewController } from 'ionic-angular';
-import { Router } from '@angular/router';
+import { ModalController, Platform,NavController, ViewController } from 'ionic-angular';
+import {CommonRefund} from "./commonrefund";
+import {WeixinRefund} from "./weixinrefund";
+import {RefundVerify} from "./refundverify";
+import {RefundProgress} from "./refundprogress";
+import {NativeStorage} from "@ionic-native/native-storage";
 
 @Component({
   selector: 'page-home',
-  templateUrl: 'refund.html',
+  templateUrl: 'refund.html'
 })
 export class Refund implements OnInit{
 
     constructor(
         public viewCtrl: ViewController,
-		private router: Router
+		public modalCtrl: ModalController,
+        public navCtrl: NavController,
+		private nativeStorage: NativeStorage
     ) {
     }
 
@@ -19,23 +25,23 @@ export class Refund implements OnInit{
     ngOnInit() {}
 	
 	goCommonRefund(){
-		this.viewCtrl.dismiss();
-		this.router.navigate(['commonrefund']);
+		let modal = this.modalCtrl.create(CommonRefund);
+        modal.present();
 	}
 	
 	goWeixinRefund(){
-		this.viewCtrl.dismiss();
-		this.router.navigate(['weixinrefund']);
+		let modal = this.modalCtrl.create(WeixinRefund);
+        modal.present();
 	}
 	
 	goRefundVerify(){
-		this.dismiss();
-		this.router.navigate(['refundverify']);
+		let modal = this.modalCtrl.create(RefundVerify);
+        modal.present();
 	}
 	
 	goRefundProgress(){
-		this.viewCtrl.dismiss();
-		this.router.navigate(['refundprogress']);
+		let modal = this.modalCtrl.create(RefundProgress);
+        modal.present();
 	}
 
     dismiss() {

@@ -1,9 +1,10 @@
 
 import {Component, OnInit} from '@angular/core';
-import { Platform } from 'ionic-angular';
+import { ModalController, Platform,NavController, ViewController } from 'ionic-angular';
 import {CardMerchantService} from "../../../service/card-merchant.service";
 import {NativeStorage} from "@ionic-native/native-storage";
-import { Router } from '@angular/router';
+import {AddUser} from "./adduser";
+import {UserDetail} from "./userdetail";
 
 declare var localStorage: any;
 
@@ -12,14 +13,16 @@ declare var localStorage: any;
   templateUrl: 'usermgt.html'
 })
 
-export class UserMgtPage implements OnInit{
+export class UserMgt implements OnInit{
 	userList: any;
 
     constructor(
         public platform: Platform,
 		public cardMerchantService: CardMerchantService,
 		private nativeStorage: NativeStorage,
-		private router: Router
+		public viewCtrl: ViewController,
+		public modalCtrl: ModalController,
+        public navCtrl: NavController
     ) {
     }
 
@@ -35,15 +38,20 @@ export class UserMgtPage implements OnInit{
 	
 	openUserDetail(user){
 		console.log(user);
-		this.router.navigate(['userdetail', {userid: user.currpeople, username: user.field2}]);
+		let modal = this.modalCtrl.create(UserDetail);
+        modal.present();
+		//this.router.navigate(['userdetail', {userid: user.currpeople, username: user.field2}]);
+		
 	}
 	
 	addUser(){
-		this.router.navigate(['adduser']);
+		let modal = this.modalCtrl.create(AddUser);
+        modal.present();
 	}
 	
 	goBack(){
-		history.back();
+		//this.viewCtrl.dismiss();
+		this.navCtrl.pop();
 	}
 
 }

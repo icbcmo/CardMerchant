@@ -1,9 +1,8 @@
 
 import {Component, OnInit} from '@angular/core';
-import { Platform } from 'ionic-angular';
 import {CardMerchantService} from "../../../service/card-merchant.service";
 import {NativeStorage} from "@ionic-native/native-storage";
-import { Router, ActivatedRoute } from '@angular/router';
+import { ModalController, Platform,NavController, ViewController } from 'ionic-angular';
 
 declare var localStorage: any;
 
@@ -12,24 +11,24 @@ declare var localStorage: any;
   templateUrl: 'userdetail.html'
 })
 
-export class UserDetailPage implements OnInit{
+export class UserDetail implements OnInit{
 	user: any;
 
     constructor(
         public platform: Platform,
 		public cardMerchantService: CardMerchantService,
 		private nativeStorage: NativeStorage,
-		private router: Router,
-		private activatedRoute: ActivatedRoute
+		public viewCtrl: ViewController,
+		public modalCtrl: ModalController,
+        public navCtrl: NavController
     ) {
     }
 
 
     ngOnInit() {
-		
 		this.user = {
-			userid: this.activatedRoute.snapshot.params['userid'],
-			username: this.activatedRoute.snapshot.params['username']
+			username: '啥活动',
+			userid: 100
 		}
 	}
 	
@@ -38,7 +37,7 @@ export class UserDetailPage implements OnInit{
 	}
 	
 	goBack(){
-		history.back();
+		this.viewCtrl.dismiss();
 	}
 
 }

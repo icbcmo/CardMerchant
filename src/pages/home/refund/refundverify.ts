@@ -1,13 +1,14 @@
 
 import {Component, OnInit, ElementRef, ViewChild} from '@angular/core';
 import {CardMerchantService} from "../../../service/card-merchant.service";
-
+import { ViewController } from 'ionic-angular';
+import { AlertController, LoadingController } from 'ionic-angular';
 
 @Component({
   selector: 'page-refundverify',
   templateUrl: 'refundverify.html',
 })
-export class RefundVerifyPage implements OnInit{
+export class RefundVerify implements OnInit{
 	@ViewChild('merchantname') merchantname: ElementRef;
 	@ViewChild('departmentname') departmentname: ElementRef;
 	@ViewChild('refundcardno4') refundcardno4: ElementRef;
@@ -18,7 +19,10 @@ export class RefundVerifyPage implements OnInit{
 	@ViewChild('applymobile') applymobile: ElementRef;
 
     constructor(
-		public cardMerchantService: CardMerchantService
+		public cardMerchantService: CardMerchantService,
+		public viewCtrl: ViewController,
+		public loadingCtrl: LoadingController,
+		private alertCtrl: AlertController
     ) {
     }
 
@@ -44,16 +48,25 @@ export class RefundVerifyPage implements OnInit{
 		this.cardMerchantService.addrefund(data).toPromise().then(data=> {
 			console.log(Object(data));
 			if(Object(data).code == 0){
-				console.log('提交成功');
-				history.back();
+				let loading = this.loadingCtrl.create({
+						content: '提交成功'
+					});
+					loading.present();
+					setTimeout( () => {
+						loading.dismiss();
+						this.viewCtrl.dismiss();
+					}, 1500);
 			}else{
-				alert(Object(data).message);
+				this.alertCtrl.create({
+						message: Object(data).message,
+						buttons: ['确定']
+					}).present();
 			}
 		});
 	}
 
     goBack() {
-        history.back();
+        this.viewCtrl.dismiss();
     }
 
 }

@@ -43,8 +43,10 @@
       <ion-input type="text" #applymobile ></ion-input>
     </ion-item>
 	<ion-item>
-      <ion-label floating (click)="openCamera()" >拍照</ion-label>
-	  <img id="imgview" *ngIf="needView" src="" width="100" height="100" #imgview />
+		<button ion-button (click)="openCamera()" >拍照</button>
+		<div *ngIf="needView" class="pic-wrapper" >
+			<img [src]="base64Image" width="100" height="100" />
+		</div>
     </ion-item>
   </ion-list>
 

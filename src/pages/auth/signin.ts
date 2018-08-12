@@ -3,6 +3,8 @@ import { AlertController } from 'ionic-angular';
 import {CardMerchantService} from "../../service/card-merchant.service";
 import {NativeStorage} from "@ionic-native/native-storage";
 import { Router } from '@angular/router';
+import { NavController } from 'ionic-angular';
+import {TabsPage} from "../tabs/tabs";
 
 declare var localStorage: any;
 
@@ -20,7 +22,7 @@ export class SigninPage implements OnInit{
                 private alertCtrl: AlertController,
                 public cardMerchantService: CardMerchantService,
                 private nativeStorage: NativeStorage,
-				private router: Router) 
+				public navCtrl: NavController) 
 	{
 					
         console.log("SigninPage constructor")
@@ -46,8 +48,7 @@ export class SigninPage implements OnInit{
         this.cardMerchantService.checkLoginSession(sessionid).toPromise().then(data=>{
             console.log(data);
             if(Object(data).code == "0")
-                //this.navCtrl.push(TabsPage);
-				this.router.navigate(['index/home']);
+                this.navCtrl.push(TabsPage);
         })
     }
 
@@ -103,8 +104,7 @@ export class SigninPage implements OnInit{
 			localStorage.setItem('MERCHANTID', Object(Object(data).data).merchantId);
 
             if(Object(data).code === "0")
-                //this.navCtrl.push(TabsPage);
-				this.router.navigate(['index/home']);
+                this.navCtrl.push(TabsPage);
             else if(Object(data).code === "1")
                 alert("手機號碼不合法")
             else if(Object(data).code === "2")

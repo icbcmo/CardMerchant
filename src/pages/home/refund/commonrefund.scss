@@ -1,3 +1,16 @@
 page-commonrefund {
-
+	.toolbar-content{
+		display: flex;
+	}
+	.toolbar-title{
+		text-align: center;
+	}
+	.pic-wrapper{
+		width: 100px;
+		height: 100px;
+		overflow: hidden;
+		img{
+			object-fit: cover;
+		}
+	}
 }

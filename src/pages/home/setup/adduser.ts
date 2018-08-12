@@ -1,9 +1,10 @@
 
 import {Component, OnInit, ElementRef, ViewChild} from '@angular/core';
-import { Platform } from 'ionic-angular';
+import { ModalController, Platform,NavController, ViewController } from 'ionic-angular';
 import {CardMerchantService} from "../../../service/card-merchant.service";
 import {NativeStorage} from "@ionic-native/native-storage";
 import { AlertController, LoadingController } from 'ionic-angular';
+import {TipService} from '../../../service/tip.service';
 
 declare var localStorage: any;
 
@@ -12,7 +13,7 @@ declare var localStorage: any;
   templateUrl: 'adduser.html'
 })
 
-export class AddUserPage implements OnInit{
+export class AddUser implements OnInit{
 	shopList: any;
 	@ViewChild('mobile') Mobile: ElementRef;
 	@ViewChild('name') Name: ElementRef;
@@ -23,7 +24,11 @@ export class AddUserPage implements OnInit{
 		public cardMerchantService: CardMerchantService,
 		private nativeStorage: NativeStorage,
 		private alertCtrl: AlertController,
-		public loadingCtrl: LoadingController
+		public loadingCtrl: LoadingController,
+		public viewCtrl: ViewController,
+		public modalCtrl: ModalController,
+        public navCtrl: NavController,
+		public tipService: TipService
     ) {
     }
 
@@ -43,20 +48,7 @@ export class AddUserPage implements OnInit{
 	
 	submitForm(){
 		if(!/^\d{8,11}$/.test(Object(this.Mobile).value)){
-			//this.alertCtrl.create({
-				//title: '手机号至少8位',
-				//subTitle: '手机号至少8位',
-				//message: '手机号至少8位',
-				//buttons: ['确定']
-			//}).present();
-			let loading = this.loadingCtrl.create({
-				spinner: 'hide',
-				content: '手机号至少8位'
-			});
-			loading.present();
-			setTimeout(function(){
-				loading.dismiss();
-			},1500);
+			this.tipService.show('手机号至少8位');
 		}else{
 			var data = {
 				sessionid: localStorage.getItem('SESSIONID'),
@@ -73,17 +65,21 @@ export class AddUserPage implements OnInit{
 				console.log(Object(data));
 				loading.dismiss();
 				if(Object(data).code == 0){
-					console.log('提交成功');
-					history.back();
+					this.tipService.show('提交成功').then( () => {
+						this.viewCtrl.dismiss();
+					});
 				}else{
-					alert(Object(data).message);
+					this.alertCtrl.create({
+						message: Object(data).message,
+						buttons: ['确定']
+					}).present();
 				}
 			});
 		}
 	}
 	
 	goBack(){
-		history.back();
+		this.viewCtrl.dismiss();
 	}
 
 }

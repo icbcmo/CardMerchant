@@ -8,15 +8,14 @@ import {CounterActions} from '../../actions/counter.actions';
 import {AppState} from '../../app/app.status';
 import {CounterService} from "../../service/counter.service";
 import {Refund} from "./refund/refund";
-import {Binsarch} from "./services/binsarch";
-import {Wrongtrx} from "./services/wrongtrx";
+import {Binsearch} from "./binsearch/binsearch";
+import {Wrongtrx} from "./wrongtrx/wrongtrx";
 import {Camera, CameraOptions} from '@ionic-native/camera';
-import {Custservice} from "./services/custservice";
+import {Custservice} from "./custservice/custservice";
 import {Qrcode} from "./qrcode/qrcode";
 import { JPush } from "@jiguang-ionic/jpush";
 import { Device } from "@ionic-native/device";
-import { Router } from '@angular/router';
-import {SetupPage} from "./services/setup";
+import {Setup} from "./setup/setup";
 
 const EventSource: any = window['EventSource'];
 
@@ -42,7 +41,6 @@ export class HomePage implements OnInit{
         public jpush: JPush,
         device: Device,
         public modalCtrl: ModalController,
-		private router: Router
     ) {
         this.devicePlatform = device.platform;
 
@@ -237,7 +235,7 @@ export class HomePage implements OnInit{
     }
 
     openBinsarchModal() {
-        let modal = this.modalCtrl.create(Binsarch);
+        let modal = this.modalCtrl.create(Binsearch);
         modal.present();
     }
 
@@ -257,8 +255,7 @@ export class HomePage implements OnInit{
     }
 	
 	goSetup() {
-        //this.router.navigate(['setup']);
-        let modal = this.modalCtrl.create(SetupPage);
+        let modal = this.modalCtrl.create(Setup);
         modal.present();
     }
 
