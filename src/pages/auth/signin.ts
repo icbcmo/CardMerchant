@@ -5,6 +5,8 @@ import {NativeStorage} from "@ionic-native/native-storage";
 import { Router } from '@angular/router';
 import { NavController } from 'ionic-angular';
 import {TabsPage} from "../tabs/tabs";
+import {Device} from "@ionic-native/device";
+import {JPush} from "@jiguang-ionic/jpush";
 
 declare var localStorage: any;
 
@@ -14,35 +16,25 @@ declare var localStorage: any;
 })
 export class SigninPage implements OnInit{
 
-    @ViewChild('eyes') eyes: ElementRef;
-    @ViewChild('ps') ps: ElementRef;
-    eyetype = 'eye-off'
-    passwordtype = 'password'
+
+    // @ViewChild('eyes') eyes: ElementRef;
+    // @ViewChild('ps') ps: ElementRef;
+    // eyetype = 'eye-off'
+    // passwordtype = 'password'
     constructor(
                 private alertCtrl: AlertController,
                 public cardMerchantService: CardMerchantService,
                 private nativeStorage: NativeStorage,
-				public navCtrl: NavController) 
+				public navCtrl: NavController,
+                public jpush: JPush,
+                device: Device)
 	{
-					
         console.log("SigninPage constructor")
 
     }
 
-    //沟崽子们
-
-
     ionViewWillEnter(){
         console.log("SigninPage ionViewWillEnter")
-
-        // this.nativeStorage.getItem("SESSIONID").then(data=>{
-        //     this.cardMerchantService.checkLoginSession(data).toPromise().then(data=>{
-        //         console.log(data);
-        //         if(Object(data).code == "0")
-        //             this.navCtrl.push(TabsPage);
-        //
-        //     })
-        // })
         let sessionid = localStorage.getItem("SESSIONID")
 
         this.cardMerchantService.checkLoginSession(sessionid).toPromise().then(data=>{
@@ -60,11 +52,11 @@ export class SigninPage implements OnInit{
 
 
     }
-    checkEnter(event,acc,psw){
-        console.log(event)
-        if(event.keyCode == 13)
-            this.signin(acc,psw);
-    }
+    // checkEnter(event,acc,psw){
+    //     console.log(event)
+    //     if(event.keyCode == 13)
+    //         this.signin(acc,psw);
+    // }
 
     send(mobile) {
         console.log("test click!")
@@ -74,34 +66,16 @@ export class SigninPage implements OnInit{
     }
 
     signin(acc,psw){
-        console.log(acc,psw)
-        // if(acc == '1' && psw == '1')
-        //     this.navCtrl.push(TabsPage);
-        // else if(acc !='1')
-        //     this.presentAlert('account do not exist!')
-        // else if(acc =='1' && psw != '1')
-        //     this.presentAlert('wrong password!')
+
         console.log("test2 click!")
         this.cardMerchantService.checkVerifyCode_rsa(acc,psw).toPromise().then(data=> {
             console.log(data);
-            console.log(Object(data).message);
-            console.log(Object(Object(data).data).uid);
-            console.log(Object(Object(data).data).sessionid);
-            /* this.nativeStorage.setItem('UID', Object(Object(data).data).uid)
-                .then(
-                    () => console.log('Stored UID!'),
-                    error => console.error('Error storing item', error)
-                );
-            this.nativeStorage.setItem('SESSIONID', Object(Object(data).data).sessionid)
-                .then(
-                    () => console.log('Stored SESSIONID!'),
-                    error => console.error('Error storing item', error)
-                ); */
-				
+
 			localStorage.setItem('UID', Object(Object(data).data).uid);
 			localStorage.setItem('SESSIONID', Object(Object(data).data).sessionid);
 			//可以把merchantId等信息都存于localStorage,后续功能会用到
 			localStorage.setItem('MERCHANTID', Object(Object(data).data).merchantId);
+			localStorage.setItem('DEPARTMENTID', Object(Object(data).data).departmentId);
 
             if(Object(data).code === "0")
                 this.navCtrl.push(TabsPage);
@@ -116,11 +90,11 @@ export class SigninPage implements OnInit{
         });
     }
 
-    eyeOnOff(){
-        this.eyetype = this.eyetype == 'eye-off'?'eye':'eye-off';
-        this.passwordtype = this.passwordtype == 'password'? 'tel':'password';
-
-    }
+    // eyeOnOff(){
+    //     this.eyetype = this.eyetype == 'eye-off'?'eye':'eye-off';
+    //     this.passwordtype = this.passwordtype == 'password'? 'tel':'password';
+    //
+    // }
 
     presentAlert(note) {
         let alert = this.alertCtrl.create({

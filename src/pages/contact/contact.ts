@@ -60,20 +60,16 @@ export class ContactPage {
   }
 
   users = [];
-  test4() {
-      this.nativeStorage.getItem('SESSIONID')
-          .then(
-              data => {
-                  console.log(data);
-                  this.cardMerchantService.getSecondUsers(data).toPromise().then(data => {
-                      console.log(data);
-                      console.log((Object(data).data)[0].FIELD1);
-                      this.users = Object(data).data;
-                  });
-              },
-              error => console.error(error)
-          );
-  }
+    test4() {
+        let ss = localStorage.getItem('SESSIONID');
+
+        this.cardMerchantService.getSecondUsers(ss).toPromise().then(data => {
+            console.log(data);
+            console.log((Object(data).data)[0].FIELD1);
+            this.users = Object(data).data;
+        });
+
+    }
   test5() {
       localStorage.clear();
       //this.navCtrl.push(SigninPage);
