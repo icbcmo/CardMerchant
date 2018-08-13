@@ -8,6 +8,15 @@
 
 <ion-content>
 	<ion-list>
-		<ion-item *ngFor="let user of userList" (click)="openUserDetail(user)" >{{user.field2}}</ion-item>
+		<ion-item class="item item-block item-ios" *ngFor="let user of userList" (click)="openUserDetail(user)">
+			<ion-icon color="primary" item-start="" name="ionic" role="img" class="icon icon-ios icon-ios-primary ion-ios-ionic item-icon" aria-label="ionic"></ion-icon>
+			<div>
+				<div>{{user.field2}}</div>
+				<div>13311098817</div>
+				<div>76637637637dhshdsdshd</div>
+			</div>
+			<button ion-button="" item-end="" outline="" (click)="delUser(user.userid)" class="disable-hover item-button button button-ios button-outline button-outline-ios"><span class="button-inner">删除</span><div class="button-effect"></div></button>
+			<div class="button-effect"></div>
+		</ion-item>
 	</ion-list>
 </ion-content>
