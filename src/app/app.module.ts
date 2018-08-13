@@ -42,8 +42,8 @@ import { QRCodeModule } from 'angular2-qrcode';
 import { Camera } from '@ionic-native/camera';
 import {NativeStorage} from "@ionic-native/native-storage";
 import { Device } from '@ionic-native/device';
-import {IndexPage} from "../pages/index";
 //import {CounterService,Sse} from "../service/counter.service";
+import {Machine} from "../pages/home/machine/machine";
 
 @NgModule({
     declarations: [
@@ -55,7 +55,6 @@ import {IndexPage} from "../pages/index";
         SigninPage,
         Binsearch,
         TabsPage,
-        IndexPage,
         Custservice,
         Refund,
 		CommonRefund,
@@ -67,7 +66,8 @@ import {IndexPage} from "../pages/index";
 		AddUser,
 		UserDetail,
         Wrongtrx,
-        Qrcode
+        Qrcode,
+		Machine
     ],
     imports: [
         HttpClientModule,
@@ -93,7 +93,6 @@ import {IndexPage} from "../pages/index";
         Binsearch,
         Custservice,
         Refund,
-        IndexPage,
 		CommonRefund,
 		WeixinRefund,
 		RefundVerify,
@@ -103,7 +102,8 @@ import {IndexPage} from "../pages/index";
 		AddUser,
 		UserDetail,
         Wrongtrx,
-        Qrcode
+        Qrcode,
+		Machine
     ],
     providers: [
         StatusBar,

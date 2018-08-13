@@ -16,6 +16,7 @@ import {Qrcode} from "./qrcode/qrcode";
 import { JPush } from "@jiguang-ionic/jpush";
 import { Device } from "@ionic-native/device";
 import {Setup} from "./setup/setup";
+import {Machine} from "./machine/machine";
 
 const EventSource: any = window['EventSource'];
 
@@ -258,6 +259,11 @@ export class HomePage implements OnInit{
         let modal = this.modalCtrl.create(Qrcode);
         modal.present();
     }
+	
+	openMachineRequestModal(){
+		let modal = this.modalCtrl.create(Machine);
+        modal.present();
+	}
 	
 	goSetup() {
         let modal = this.modalCtrl.create(Setup);

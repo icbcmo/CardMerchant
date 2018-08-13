@@ -22,10 +22,11 @@
       <ion-label floating>退款卡號</ion-label>
       <ion-input type="text" #refundcardno4 ></ion-input>
     </ion-item>
-    <ion-item>
+    <button ion-item class="item-ios" >
       <ion-label floating>交易日期</ion-label>
-      <ion-input type="text" #trxdate ></ion-input>
-    </ion-item>
+	  <ion-datetime displayFormat="YYYY-MM-DD" pickerFormat="YYYY-MM-DD" [(ngModel)]="tradeDate"></ion-datetime>
+      <!-- <ion-input type="text" #trxdate ></ion-input> -->
+    </button>
     <ion-item>
       <ion-label floating>授權號</ion-label>
       <ion-input type="text" #authno ></ion-input>
