@@ -15,8 +15,7 @@
 				<div>{{user.field1}}</div>
 				<div>{{user.field6}}</div>
 			</div>
-			<button ion-button="" item-end="" outline="" (click)="delUser($event,user.userid)" class="disable-hover item-button button button-ios button-outline button-outline-ios"><span class="button-inner">删除</span><div class="button-effect"></div></button>
-			<div class="button-effect"></div>
+			<ion-icon item-end name="trash" class="icon ion-ios-trash-outline" (click)="delUser($event,user.userid)" ></ion-icon>
 		</ion-item>
 	</ion-list>
 </ion-content>

@@ -57,7 +57,22 @@ export class UserMgt implements OnInit{
 		e.stopPropagation();
 		this.alertCtrl.create({
 						message: '您确定要删除用户？',
-						buttons: ['确定']
+						buttons: [
+						{
+							text: '取消',
+							role: 'cancel',
+							handler: () => {
+								console.log('Cancel clicked');
+							}
+						},
+						{
+							text: '确定',
+							role: 'confirm',
+							handler: () => {
+								console.log('confirm clicked');
+								//call deluser api
+							}
+						}]
 					}).present();
 	}
 	

@@ -5,4 +5,11 @@ page-usermgt{
 	.toolbar-title{
 		text-align:center;
 	}
+	.button-outline-md {
+		border-width: 0;
+	}
+	
+	.ion-ios-trash-outline:before {
+		content: "\f4c4";
+	}
 }

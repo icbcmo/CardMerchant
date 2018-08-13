@@ -78,6 +78,16 @@ export class CardMerchantService {
 
         return this.http.post(url,data);
     }
+	
+	addwechatrefund(data) {
+		let str = JSON.stringify(data);
+		let sign = this.getSignInit(str);
+		let merCert = encodeURIComponent(this.publicKey);
+        let url = this.gwUrl + 'cardmerchant/addwechatrefund' + '?sign=' + sign + '&merCert=' + merCert;
+        console.log(url);
+
+        return this.http.post(url,data);
+    }
 
     sendVerifyCode_rsa(mobile:any){
 
