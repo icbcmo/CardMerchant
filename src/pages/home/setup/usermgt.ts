@@ -5,6 +5,8 @@ import {CardMerchantService} from "../../../service/card-merchant.service";
 import {NativeStorage} from "@ionic-native/native-storage";
 import {AddUser} from "./adduser";
 import {UserDetail} from "./userdetail";
+import { AlertController, LoadingController } from 'ionic-angular';
+import {TipService} from '../../../service/tip.service';
 
 declare var localStorage: any;
 
@@ -22,7 +24,10 @@ export class UserMgt implements OnInit{
 		private nativeStorage: NativeStorage,
 		public viewCtrl: ViewController,
 		public modalCtrl: ModalController,
-        public navCtrl: NavController
+        public navCtrl: NavController,
+		private alertCtrl: AlertController,
+		public loadingCtrl: LoadingController,
+		public tipService: TipService
     ) {
     }
 
@@ -38,15 +43,22 @@ export class UserMgt implements OnInit{
 	
 	openUserDetail(user){
 		console.log(user);
-		let modal = this.modalCtrl.create(UserDetail);
+		let modal = this.modalCtrl.create(UserDetail, {user:user});
         modal.present();
-		//this.router.navigate(['userdetail', {userid: user.currpeople, username: user.field2}]);
-		
 	}
 	
 	addUser(){
 		let modal = this.modalCtrl.create(AddUser);
         modal.present();
+	}
+	
+	delUser(e,userid){
+		console.log(e);
+		e.stopPropagation();
+		this.alertCtrl.create({
+						message: '您确定要删除用户？',
+						buttons: ['确定']
+					}).present();
 	}
 	
 	goBack(){
