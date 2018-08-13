@@ -67,11 +67,11 @@ export class Machine implements OnInit{
 			machinemerchantname: localStorage.getItem("MERCHANTNAME"),
 			machinedepartmentid: localStorage.getItem("DEPARTMENTID"),
 			machinedepartmentname: localStorage.getItem("DEPARTMENTNAME"),
-			machinerequesttype: Object(this.refundcardno4).value,
-			machineno: Object(this.refundcardno4).value,
-			machineapplyname: Object(this.refundcardno4).value,
-			machineapplymobile: Object(this.refundcardno4).value,
-			machinerequestdesc: Object(this.refundcardno4).value,
+			machinerequesttype: Object(this.machinerequesttype).value,
+			machineno: Object(this.machineno).value,
+			machineapplyname: Object(this.machineapplyname).value,
+			machineapplymobile: Object(this.machineapplymobile).value,
+			machinerequestdesc: Object(this.machinerequestdesc).value,
 			machineattach: this.base64Image
 		};
 		console.log(data);
