@@ -79,7 +79,7 @@ export class Machine implements OnInit{
 				content: 'Please wait...'
 			});
 		loading.present();
-		this.cardMerchantService.addrefund(data).toPromise().then(data=> {
+		this.cardMerchantService.addmachinerequest(data).toPromise().then(data=> {
 			console.log(Object(data));
 			loading.dismiss();
 			if(Object(data).code == 0){
