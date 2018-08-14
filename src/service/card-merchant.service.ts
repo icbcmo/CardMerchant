@@ -22,10 +22,6 @@ export class CardMerchantService {
 
     private gwUrl = 'http://202.175.59.29:10443/gwinternet/cardmerchant-svc/';
 
-    addmachinerequest():any{
-
-    }
-
     getSignInit(str:any) :any{
 
         let rsa = jsrsasign.KEYUTIL.getKey(this.privateKey);
@@ -90,6 +86,11 @@ export class CardMerchantService {
         console.log(url);
 
         return this.http.post(url,data);
+    }
+
+
+    addmachinerequest(data):any{
+
     }
 
     sendVerifyCode_rsa(mobile:any){
