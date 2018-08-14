@@ -98,11 +98,6 @@ export class CardMerchantService {
         return this.http.post(url,data);
 	}
 
-
-    addmachinerequest(data):any{
-
-    }
-
     sendVerifyCode_rsa(mobile:any){
 
         let data= {
