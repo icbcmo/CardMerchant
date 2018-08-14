@@ -1,89 +1,96 @@
-<ion-header>
-  <ion-navbar>
-    <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
-  </ion-navbar>
+<ion-header class="page-home-header">
+  <ion-grid class="grid1">
+      <ion-row class="row1">
+        <ion-col>
+          <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
+        </ion-col>
+      </ion-row>
+      <ion-row class="row2">
+        <ion-col>
+          <div class="top">
+            <img class="image1" src="assets/imgs/index_fn1.png" alt="掃碼" (click)="openCamera()">
+          </div>
+          <p class="bottom">掃碼</p>
+        </ion-col>
+        <ion-col>
+          <div class="top">
+            <img class="image1" src="assets/imgs/index_fn2.png" alt="收款" (click)="openQrcodeModal()">
+          </div>
+          <p class="bottom">收款</p>
+        </ion-col>
+        <ion-col>
+          <div class="top">
+            <img class="image1" src="assets/imgs/index_fn3.png" alt="訂單">
+            <span class="title">12</span>
+          </div>
+          <p class="bottom">訂單</p>
+        </ion-col>
+        <ion-col>
+          <div class="top">
+            <img class="image1" src="assets/imgs/index_fn4.png" alt="設置" (click)="goSetup()">
+          </div>
+          <p class="bottom">設置</p>
+        </ion-col>
+      </ion-row>
+      <ion-row class="row3">
+        <ion-col>
+          <div class="news">
+            <span class="span1">最新消息：</span>
+            <span class="span2">一條為方便客戶溝通聯絡時間的在線交流APP方便快捷利於攜帶出門旅行之利器</span>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  <ion-grid class="grid2">
+    <ion-row class="row1">
+      <ion-col>
+        <span class="circle">●</span>基本服務
+      </ion-col>
+    </ion-row>
+    <ion-row class="row2">
+      <ion-col col-3>
+        <div class="top">
+          <img class="image1" src="assets/imgs/index_pa1.png" alt="查詢卡號" (click)="openBinsarchModal()">
+        </div>
+        <p class="bottom">查詢卡號</p>
+      </ion-col>
+      <ion-col col-3>
+        <div class="top">
+          <img class="image1" src="assets/imgs/index_pa2.png" alt="退款" (click)="openRefundModal()">
+        </div>
+        <p class="bottom">退款</p>
+      </ion-col>
+      <ion-col col-3>
+        <div class="top">
+          <img class="image1" src="assets/imgs/index_pa3.png" alt="差錯交易" (click)="openWrongtrxModal()">
+        </div>
+        <p class="bottom">差錯交易</p>
+      </ion-col>
+      <ion-col col-3>
+        <div class="top">
+          <img class="image1" src="assets/imgs/index_pa4.png" alt="客服" (click)="openCustserviceModal()">
+        </div>
+        <p class="bottom">客服</p>
+      </ion-col>
+      <ion-col col-3>
+        <div class="top">
+          <img class="image1" src="assets/imgs/index_pa3.png" alt="机器报修" (click)="openMachineRequestModal()">
+        </div>
+        <p class="bottom">机器报修</p>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-header>
-<ion-content>
-  <div style="height: 90px; background-color: #607483;">
-    <ion-grid style="padding-left: 10px; padding-right: 10px;">
-      <ion-row style="color: #ffffff;">
-        <ion-col style="text-align:  center;line-height:  40px; padding: 0px;">
-          <ion-icon name="ios-qr-scanner" style="font-size: 40px;" (click)="openCamera()"></ion-icon>
-        </ion-col>
-        <ion-col style="text-align:  center;line-height:  40px; padding: 0px;">
-          <ion-icon name="ios-barcode-outline" style="font-size: 40px;" (click)="openQrcodeModal()"></ion-icon>
-        </ion-col>
-        <ion-col style="text-align:  center;line-height:  40px; padding: 0px;">
-          <ion-icon name="ios-clipboard-outline" style="font-size: 40px;margin-left: 15px;"></ion-icon><ion-badge color="secondary" style="z-index: 100;margin-left:  -15px;">10</ion-badge>
-        </ion-col>
-        <ion-col style="text-align:  center;line-height:  40px; padding: 0px;">
-          <ion-icon name="ios-contact-outline" style="font-size: 40px;" (click)="goSetup()"></ion-icon>
-        </ion-col>
-      </ion-row>
-      <ion-row style="color: #ffffff;">
-        <ion-col style="text-align:  center;line-height:  20px; padding: 0px;">
-          掃碼
-        </ion-col>
-        <ion-col style="text-align:  center;line-height:  20px; padding: 0px;">
-          收款
-        </ion-col>
-        <ion-col style="text-align:  center;line-height:  20px; padding: 0px;">
-          訂單
-        </ion-col>
-        <ion-col style="text-align:  center;line-height:  20px; padding: 0px;">
-          設置
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-  </div>
-  <div>
-    <ion-grid>
-      <ion-row>
-        <ion-col style="border-bottom-width:  1px;border-bottom-style:  solid;border-bottom-color:  #eeeeee;color: #607483;">
-            <div style="width: 6px; background-color: #ff7b7b; height: 20px; float: left;"></div><div style="float: left">&nbsp;基本服務</div>
-        </ion-col>
-      </ion-row>
-      <ion-row style="text-align: center; height: 50px;">
-        <ion-col>
-          <a (click)="openBinsarchModal()"><i class="fa fa-credit-card-alt" aria-hidden="true" padding style="font-size: 22px; background: linear-gradient(to right, #6eb845, #6eb84566);-webkit-background-clip: text;color: transparent;"></i></a><br>
-        </ion-col>
-        <ion-col>
-          <a (click)="openRefundModal()"><i class="fa fa-refresh" aria-hidden="true" padding style="font-size: 26px; background: linear-gradient(to right, #ed4238, #ed423866);-webkit-background-clip: text;color: transparent;"></i></a><br>
-        </ion-col>
-        <ion-col>
-          <a (click)="openWrongtrxModal()"><i class="fa fa-check-square-o" aria-hidden="true" padding style="font-size: 26px; background: linear-gradient(to right, #2eb2a5, #2eb2a566);-webkit-background-clip: text;color: transparent;"></i></a><br>
-        </ion-col>
-        <ion-col>
-          <a (click)="openCustserviceModal()"><i class="fa fa-user-o" aria-hidden="true" padding style="font-size: 26px; background: linear-gradient(to right, #2681b8, #2681b866);-webkit-background-clip: text;color: transparent;"></i></a><br>
-        </ion-col>
-      </ion-row>
-      <ion-row style="text-align: center;">
-        <ion-col>
-          <span style="font-size: 14px; color: #424242;">查詢卡號</span>
-        </ion-col>
-        <ion-col>
-          <span style="font-size: 14px; color: #424242;">退款</span>
-        </ion-col>
-        <ion-col>
-          <span style="font-size: 14px; color: #424242;">差錯交易</span>
-        </ion-col>
-        <ion-col>
-          <span style="font-size: 14px; color: #424242;">客服</span>
-        </ion-col>
-      </ion-row>
-	  <ion-row style="text-align: center; height: 50px;">
-        <ion-col>
-          <a (click)="openMachineRequestModal()"><i class="fa fa-credit-card-alt" aria-hidden="true" padding style="font-size: 22px; background: linear-gradient(to right, #6eb845, #6eb84566);-webkit-background-clip: text;color: transparent;"></i></a><br>
-        </ion-col>
-	  </ion-row>
-	  <ion-row style="text-align: center;">
-        <ion-col>
-          <span style="font-size: 14px; color: #424242;">机器报修</span>
-        </ion-col>
-	  </ion-row>
-    </ion-grid>
-  </div>
-  <ion-list>
+
+<ion-content class="page-home-content">
+  <ion-grid class="grid1">
+    <ion-row class="row1">
+      <ion-col>
+        <img src="assets/imgs/banner.png" style="border-radius: 6px;" width="100%" alt="">
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <!--<ion-list>
     <ion-item>
       <div>Registration Id: {{registrationId}}</div>
       <button ion-button full (click)="getRegistrationID()">Get Registration Id</button>
@@ -107,5 +114,5 @@
     <ion-item>
       <button ion-button full (click)="addLocalNotification()">Trigger local notification after 5 seconds</button>
     </ion-item>
-  </ion-list>
+  </ion-list>-->
 </ion-content>

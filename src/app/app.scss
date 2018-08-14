@@ -41,14 +41,21 @@
 }
 
 .tabs-ios .tabbar{
-  background-color: #f6f9fa;
-  -webkit-box-shadow: -1px 1px 8px 0px #aaaaaa;
-  padding-bottom: 5px;
-}
-
-.tabs-ios .tab-button-icon{
-  font-size: 24px;
-  color: #aaaaaa;
+  background-color: #fff; box-shadow: 0px 1px 10px 2px #ddd; border-top: 0; padding-bottom: 5px;
+  .tab-button{
+    @for $i from 1 to 4 {
+      .tab-button-icon[ng-reflect-name=tab-tab#{$i}] {
+        background: url("../assets/imgs/index_tab#{$i}_1.png") no-repeat center; background-size: 24px;
+        &.tab-button-icon[ng-reflect-is-active=true]{
+          background: url("../assets/imgs/index_tab#{$i}_2.png") no-repeat center;  background-size: 24px;
+        }
+      }
+    }
+    .tab-button-text{color: #ccc;}
+    &[aria-selected=true]{
+      .tab-button-text{color: #333;}
+    }
+  }
 }
 
 
