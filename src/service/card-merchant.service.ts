@@ -22,6 +22,9 @@ export class CardMerchantService {
 
     private gwUrl = 'http://202.175.59.29:10443/gwinternet/cardmerchant-svc/';
 
+    addmachinerequest():any{
+
+    }
 
     getSignInit(str:any) :any{
 
