@@ -14,7 +14,7 @@ import {AddUser} from "../pages/home/setup/adduser";
 import {UserDetail} from "../pages/home/setup/userdetail";
 import {StatusBar} from '@ionic-native/status-bar';
 import {SplashScreen} from '@ionic-native/splash-screen';
-
+import {IndexPage} from '../pages/index/index';
 import {EffectsModule} from '@ngrx/effects';
 import {StoreModule} from '@ngrx/store';
 import {StoreDevtoolsModule} from '@ngrx/store-devtools';
@@ -55,6 +55,7 @@ import {Machine} from "../pages/home/machine/machine";
         SigninPage,
         Binsearch,
         TabsPage,
+        IndexPage,
         Custservice,
         Refund,
 		CommonRefund,
@@ -90,6 +91,7 @@ import {Machine} from "../pages/home/machine/machine";
         HomePage,
         SigninPage,
         TabsPage,
+        IndexPage,
         Binsearch,
         Custservice,
         Refund,
