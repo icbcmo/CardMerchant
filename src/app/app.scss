@@ -51,11 +51,27 @@
     //    }
     //  }
     //}
-    @for $i from 1 to 4 {
-      .tab-button-icon:nth-child(#{$i}) {
-        background: url("../assets/imgs/index_tab#{$i}_1.png") no-repeat center #000; background-size: 24px;
-        &[ng-reflect-is-active=true]{
-          background: url("../assets/imgs/index_tab#{$i}_2.png") no-repeat center;  background-size: 24px;
+    &:nth-child(1) {
+      .tab-button-icon{
+        background: url("../assets/imgs/index_tab1_1.png") no-repeat center; background-size: 24px;
+        &.ion-ios-tab-tab1{
+          background: url("../assets/imgs/index_tab1_2.png") no-repeat center;  background-size: 24px;
+        }
+      }
+    }
+    &:nth-child(2) {
+      .tab-button-icon {
+        background: url("../assets/imgs/index_tab2_1.png") no-repeat center; background-size: 24px;
+        &.ion-ios-tab-tab2 {
+          background: url("../assets/imgs/index_tab2_2.png") no-repeat center; background-size: 24px;
+        }
+      }
+    }
+    &:nth-child(3) {
+      .tab-button-icon {
+        background: url("../assets/imgs/index_tab3_1.png") no-repeat center; background-size: 24px;
+        &.ion-ios-tab-tab3 {
+          background: url("../assets/imgs/index_tab3_2.png") no-repeat center; background-size: 24px;
         }
       }
     }
