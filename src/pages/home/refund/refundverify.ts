@@ -21,8 +21,8 @@ export class RefundVerify implements OnInit{
 		private alertCtrl: AlertController,
 		public modalCtrl: ModalController,
         public navCtrl: NavController,
-		private nativeStorage: NativeStorage,
-		public tipService: TipService
+		public tipService: TipService,
+		private nativeStorage: NativeStorage
     ) {
     }
 
@@ -80,6 +80,10 @@ export class RefundVerify implements OnInit{
 	goDisplay(picurl){
 		let modal = this.modalCtrl.create(ShowImage, {picurl: picurl});
         modal.present();
+	}
+	
+	getItems(e){
+		console.log(e);
 	}
 
     goBack() {
