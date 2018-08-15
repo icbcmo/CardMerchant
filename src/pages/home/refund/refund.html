@@ -2,21 +2,16 @@
   <ion-navbar>
     <button ion-button start (click)="dismiss()">返回</button>
     <ion-title>退款</ion-title>
+	<button ion-button end icon-only (click)="goRefund()" >
+        <ion-icon  name="add" class="icon ion-ios-add" ></ion-icon>
+    </button>
   </ion-navbar>
 </ion-header>
 <ion-content>
   <ion-list>
-    <ion-item>
-      <a (click)="goCommonRefund()" >普通退款</a>
-    </ion-item>
-	<ion-item>
-      <a (click)="goWeixinRefund()" >微信退款</a>
-    </ion-item>
-	<ion-item>
-      <a (click)="goRefundVerify()" >退款审批</a>
-    </ion-item>
-	<ion-item>
-      <a (click)="goRefundProgress()" >退款进度</a>
-    </ion-item>
+		<button ion-item class="item item-block item-ios" *ngFor="let item of items" (click)="openRefundDetail(item)">
+			{{item.datetime}}/{{item.currpeople}}
+			<div class="button-effect"></div>
+		</button>
   </ion-list>
 </ion-content>

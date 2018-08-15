@@ -32,6 +32,8 @@ import {JPush} from '@jiguang-ionic/jpush';
 import {Binsearch} from "../pages/home/binsearch/binsearch";
 import {Custservice} from "../pages/home/custservice/custservice";
 import {Refund} from "../pages/home/refund/refund";
+import {RefundType} from "../pages/home/refund/refundtype";
+import {RefundDetail} from "../pages/home/refund/refunddetail";
 import {CommonRefund} from "../pages/home/refund/commonrefund";
 import {WeixinRefund} from "../pages/home/refund/weixinrefund";
 import {RefundVerify} from "../pages/home/refund/refundverify";
@@ -58,6 +60,8 @@ import {Machine} from "../pages/home/machine/machine";
         IndexPage,
         Custservice,
         Refund,
+		RefundType,
+		RefundDetail,
 		CommonRefund,
 		WeixinRefund,
 		RefundVerify,
@@ -95,6 +99,8 @@ import {Machine} from "../pages/home/machine/machine";
         Binsearch,
         Custservice,
         Refund,
+		RefundType,
+		RefundDetail,
 		CommonRefund,
 		WeixinRefund,
 		RefundVerify,

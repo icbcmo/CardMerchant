@@ -68,6 +68,16 @@ export class CardMerchantService {
         return this.http.get(url);
     }
 	
+	getrequestlist(data) {
+		let str = "field1="+data.field1+"&sessionid="+data.sessionid;
+		let sign = this.getSignInit(str);
+		let merCert = encodeURIComponent(this.publicKey);
+        let url = this.gwUrl + 'cardmerchant/getrequestlist?' + str + '&sign=' + sign + '&merCert=' + merCert;
+        console.log(url);
+
+        return this.http.get(url);
+    }
+	
 	addrefund(data) {
 		let str = JSON.stringify(data);
 		let sign = this.getSignInit(str);

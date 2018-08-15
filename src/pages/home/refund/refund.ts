@@ -1,46 +1,67 @@
 
 import {Component, OnInit} from '@angular/core';
 import { ModalController, Platform,NavController, ViewController } from 'ionic-angular';
-import {CommonRefund} from "./commonrefund";
-import {WeixinRefund} from "./weixinrefund";
-import {RefundVerify} from "./refundverify";
-import {RefundProgress} from "./refundprogress";
+import {CardMerchantService} from "../../../service/card-merchant.service";
+import {RefundType} from "./refundtype";
+import {RefundDetail} from "./refunddetail";
 import {NativeStorage} from "@ionic-native/native-storage";
+import { AlertController, LoadingController } from 'ionic-angular';
+import {TipService} from '../../../service/tip.service';
 
 @Component({
-  selector: 'page-home',
+  selector: 'page-refund',
   templateUrl: 'refund.html'
 })
 export class Refund implements OnInit{
-
+	items: any;
+	
     constructor(
         public viewCtrl: ViewController,
 		public modalCtrl: ModalController,
         public navCtrl: NavController,
-		private nativeStorage: NativeStorage
+		private nativeStorage: NativeStorage,
+		public loadingCtrl: LoadingController,
+		private alertCtrl: AlertController,
+		public tipService: TipService,
+		public cardMerchantService: CardMerchantService
     ) {
     }
 
 
-    ngOnInit() {}
+    ngOnInit() {
+		
+		var data = {
+			sessionid: localStorage.getItem('SESSIONID'),
+			field1: 1  //1-退款列表 2-机器问题列表
+		};
+		console.log(data);
+		let loading = this.loadingCtrl.create({
+				content: 'Please wait...'
+			});
+		loading.present();
+		this.cardMerchantService.getrequestlist(data).toPromise().then(data=> {
+			console.log(Object(data));
+			loading.dismiss();
+			if(Object(data).code == 0){
+				this.items = Object(data).data;
+			}else{
+				this.alertCtrl.create({
+						message: Object(data).message,
+						buttons: ['确定']
+					}).present();
+			}
+			this.items = [ {datetime: '2018-08-15',currpeople: 'dwkdjwsd'},{datetime: '2018-08-15',currpeople: 'dwkdjwsd'}];
+			console.log(this);
+		});
+	}
 	
-	goCommonRefund(){
-		let modal = this.modalCtrl.create(CommonRefund);
+	goRefund(){
+		let modal = this.modalCtrl.create(RefundType);
         modal.present();
 	}
 	
-	goWeixinRefund(){
-		let modal = this.modalCtrl.create(WeixinRefund);
-        modal.present();
-	}
-	
-	goRefundVerify(){
-		let modal = this.modalCtrl.create(RefundVerify);
-        modal.present();
-	}
-	
-	goRefundProgress(){
-		let modal = this.modalCtrl.create(RefundProgress);
+	openRefundDetail(item){
+		let modal = this.modalCtrl.create(RefundDetail, {item: item});
         modal.present();
 	}
 
