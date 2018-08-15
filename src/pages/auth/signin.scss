@@ -1,0 +1,22 @@
+page-signin {
+  .content{
+    .grid1{
+      margin-top: 50px;
+      .row1{
+        text-align: center; margin-bottom: 20px;
+        .image1{width: 90px;}
+      }
+      .row2{
+        .col{
+          display: flex; align-items: center; border-bottom: 1px solid #ebebeb;
+          .image1{width: 12px;margin-right: 12px; margin-top: -1px;}
+          .image2{width: 14px;margin-right: 10px; margin-top: -1px;}
+        }
+      }
+      .row3{
+        margin-top: 20px;
+        .button-ios{height: 2.5em; border-radius: 6px;}
+      }
+    }
+  }
+}
