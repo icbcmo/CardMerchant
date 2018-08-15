@@ -46,6 +46,8 @@ import {NativeStorage} from "@ionic-native/native-storage";
 import { Device } from '@ionic-native/device';
 //import {CounterService,Sse} from "../service/counter.service";
 import {Machine} from "../pages/home/machine/machine";
+import {MachineRequest} from "../pages/home/machine/machinerequest";
+import {MachineRequestDetail} from "../pages/home/machine/machinerequestdetail";
 
 @NgModule({
     declarations: [
@@ -72,7 +74,9 @@ import {Machine} from "../pages/home/machine/machine";
 		UserDetail,
         Wrongtrx,
         Qrcode,
-		Machine
+		Machine,
+		MachineRequest,
+		MachineRequestDetail
     ],
     imports: [
         HttpClientModule,
@@ -111,7 +115,9 @@ import {Machine} from "../pages/home/machine/machine";
 		UserDetail,
         Wrongtrx,
         Qrcode,
-		Machine
+		Machine,
+		MachineRequest,
+		MachineRequestDetail
     ],
     providers: [
         StatusBar,

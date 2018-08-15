@@ -1,17 +1,14 @@
-page-machine{
+page-refund {
 	.toolbar-content{
 		display: flex;
 	}
 	.toolbar-title{
 		text-align: center;
 	}
-	.pic-wrapper{
-		width: 100px;
-		height: 100px;
-		overflow: hidden;
-		img{
-			object-fit: cover;
-		}
+	ion-icon {
+		font-size: 2.2em;
+		color: white;
+		line-height: 52px;
+		margin-right: 0.5rem;
 	}
-	
 }
