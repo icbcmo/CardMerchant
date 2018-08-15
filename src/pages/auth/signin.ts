@@ -80,13 +80,13 @@ export class SigninPage implements OnInit{
             if(Object(data).code === "0")
                 this.navCtrl.push(TabsPage);
             else if(Object(data).code === "1")
-                alert("手機號碼不合法")
+                this.presentAlert("手機號碼不合法")
             else if(Object(data).code === "2")
-                alert("驗證碼不正確")
+                this.presentAlert("驗證碼不正確")
             else if (Object(data).code === "3")
-                alert("驗證碼已過期，請重新獲取")
+                this.presentAlert("驗證碼已過期，請重新獲取")
             else
-                alert("網絡故障，請稍後再試")
+                this.presentAlert("網絡故障，請稍後再試")
         });
     }
 
@@ -100,7 +100,7 @@ export class SigninPage implements OnInit{
         let alert = this.alertCtrl.create({
             title: 'Error',
             subTitle: note,
-            buttons: ['Dismiss']
+            buttons: ['OK']
         });
         alert.present();
     }
