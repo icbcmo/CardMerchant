@@ -1,19 +1,20 @@
 
 import {Component, OnInit} from '@angular/core';
-import { ModalController, Platform,NavController, ViewController, AlertController, LoadingController } from 'ionic-angular';
+import { ModalController, Platform,NavController, ViewController } from 'ionic-angular';
 import {CardMerchantService} from "../../../service/card-merchant.service";
 import {RefundType} from "./refundtype";
 import {RefundDetail} from "./refunddetail";
 import {RefundProgress} from "./refundprogress";
 import {RefundVerify} from "./refundverify";
 import {NativeStorage} from "@ionic-native/native-storage";
+import { AlertController, LoadingController } from 'ionic-angular';
 import {TipService} from '../../../service/tip.service';
 
 @Component({
-  selector: 'page-refund',
-  templateUrl: 'refund.html'
+  selector: 'page-showimage',
+  templateUrl: 'showimage.html'
 })
-export class Refund implements OnInit{
+export class ShowImage implements OnInit{
 	items: any;
 	
     constructor(

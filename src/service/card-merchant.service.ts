@@ -58,6 +58,27 @@ export class CardMerchantService {
         return this.http.post(url,data);
     }
 	
+	deleteseconduser(data){
+		let str = JSON.stringify(data);
+		let sign = this.getSignInit(str);
+		let merCert = encodeURIComponent(this.publicKey);
+        let url = this.gwUrl + 'cardmerchant/deleteseconduser' + '?sign=' + sign + '&merCert=' + merCert;
+        console.log(url);
+
+        return this.http.post(url,data);
+	}
+	
+	//审批
+	approverequest(data){
+		let str = JSON.stringify(data);
+		let sign = this.getSignInit(str);
+		let merCert = encodeURIComponent(this.publicKey);
+        let url = this.gwUrl + 'cardmerchant/approverequest' + '?sign=' + sign + '&merCert=' + merCert;
+        console.log(url);
+
+        return this.http.post(url,data);
+	}
+	
 	getShopList(data) {
 		let str = "merchantId="+data.merchantId+"&sessionId="+data.sessionId;
 		let sign = this.getSignInit(str);

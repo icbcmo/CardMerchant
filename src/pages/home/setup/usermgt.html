@@ -9,13 +9,16 @@
 <ion-content>
 	<ion-list>
 		<ion-item class="item item-block item-ios" *ngFor="let user of userList" (click)="openUserDetail(user)">
-			<ion-icon color="primary" item-start="" name="ionic" role="img" class="icon icon-ios icon-ios-primary ion-ios-ionic item-icon" aria-label="ionic"></ion-icon>
+			<!-- <ion-icon color="primary" item-start="" name="ionic" role="img" class="icon icon-ios icon-ios-primary ion-ios-ionic item-icon" aria-label="ionic"></ion-icon> -->
+			<ion-avatar item-start>
+				<img src="../assets/imgs/juana.gif">
+			</ion-avatar>
 			<div>
 				<div>{{user.field2}}</div>
 				<div>{{user.field1}}</div>
 				<div>{{user.field6}}</div>
 			</div>
-			<ion-icon item-end name="trash" class="icon ion-ios-trash-outline" (click)="delUser($event,user.userid)" ></ion-icon>
+			<ion-icon item-end name="trash" class="icon ion-ios-trash-outline" (click)="delUser($event,user.sequence)" ></ion-icon>
 		</ion-item>
 	</ion-list>
 </ion-content>

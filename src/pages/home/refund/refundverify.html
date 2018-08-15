@@ -5,47 +5,24 @@
   </ion-navbar>
 </ion-header>
 <ion-content>
-  <ion-list>
-    <ion-item>
-      <ion-label floating>MID</ion-label>
-      <ion-input type="text"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label floating>商戶名稱</ion-label>
-      <ion-input type="text" #merchantname ></ion-input>
-    </ion-item>
-	<ion-item>
-      <ion-label floating>部门名稱</ion-label>
-      <ion-input type="text" #departmentname ></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label floating>退款卡號</ion-label>
-      <ion-input type="text" #refundcardno4 ></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label floating>交易日期</ion-label>
-      <ion-input type="text" #trxdate ></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label floating>授權號</ion-label>
-      <ion-input type="text" #authno ></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label floating>原交易金額</ion-label>
-      <ion-input type="text" #trxamount ></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label floating>退款金額</ion-label>
-      <ion-input type="text" #refundamount ></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label floating>申請人/聯絡電話</ion-label>
-      <ion-input type="text" #applymobile ></ion-input>
-    </ion-item>
-  </ion-list>
+	<ion-list>
+		<ion-item>
+			<h2>MID：工商银行</h2>
+			<h3>卡号：123456</h3>
+			<button ion-button class=""  item-end >
+				<ion-icon name="film" (click)="goDisplay('/abc')" >影像</ion-icon>
+				<ion-icon name="create" (click)="goApprove('123456')" >审批</ion-icon>
+			</button>
+		</ion-item>
 
-  <div padding>
-    <button ion-button color="primary" (click)="submitForm()" block>提交</button>
-  </div>
+		<ion-item *ngFor="let item of items" >
+			<h2>MID：工商银行</h2>
+			<h3>卡号：{{item.field5}}</h3>
+			<button ion-button class=""  item-end >
+				<ion-icon name="film" (click)="goDisplay(item.field6)" >影像</ion-icon>
+				<ion-icon name="create" (click)="goApprove(item.sequence)" >审批</ion-icon>
+			</button>
+		</ion-item>
+	</ion-list>
 
 </ion-content>

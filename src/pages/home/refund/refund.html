@@ -6,6 +6,14 @@
         <ion-icon  name="add" class="icon ion-ios-add" ></ion-icon>
     </button>
   </ion-navbar>
+  <ion-toolbar>
+      <button ion-button start (click)="goRefundProgress()" >
+        退款进度
+      </button>
+      <button ion-button end (click)="goRefundVerify()" >
+        退款审批
+      </button>
+  </ion-toolbar>
 </ion-header>
 <ion-content>
   <ion-list>

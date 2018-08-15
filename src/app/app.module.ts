@@ -38,6 +38,7 @@ import {CommonRefund} from "../pages/home/refund/commonrefund";
 import {WeixinRefund} from "../pages/home/refund/weixinrefund";
 import {RefundVerify} from "../pages/home/refund/refundverify";
 import {RefundProgress} from "../pages/home/refund/refundprogress";
+import {ShowImage} from "../pages/home/refund/showimage";
 import {Wrongtrx} from "../pages/home/wrongtrx/wrongtrx";
 import {Qrcode} from "../pages/home/qrcode/qrcode";
 import { QRCodeModule } from 'angular2-qrcode';
@@ -68,6 +69,7 @@ import {MachineRequestDetail} from "../pages/home/machine/machinerequestdetail";
 		WeixinRefund,
 		RefundVerify,
 		RefundProgress,
+		ShowImage,
 		Setup,
 		UserMgt,
 		AddUser,
@@ -109,6 +111,7 @@ import {MachineRequestDetail} from "../pages/home/machine/machinerequestdetail";
 		WeixinRefund,
 		RefundVerify,
 		RefundProgress,
+		ShowImage,
 		Setup,
 		UserMgt,
 		AddUser,

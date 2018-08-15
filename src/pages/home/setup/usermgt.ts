@@ -69,8 +69,29 @@ export class UserMgt implements OnInit{
 							text: '确定',
 							role: 'confirm',
 							handler: () => {
-								console.log('confirm clicked');
-								//call deluser api
+								var data = {
+									Sessionid: localStorage.getItem('SESSIONID'),
+									deleteuid: userid
+								};
+								console.log(data);
+								let loading = this.loadingCtrl.create({
+									content: 'Please wait...'
+								});
+								loading.present();
+								this.cardMerchantService.deleteseconduser(data).toPromise().then(data=> {
+									console.log(Object(data));
+									loading.dismiss();
+									if(Object(data).code == 0){
+										this.tipService.show('提交成功').then( () => {
+											this.viewCtrl.dismiss();
+										});
+									}else{
+										this.alertCtrl.create({
+											message: Object(data).message,
+											buttons: ['确定']
+										}).present();
+									}
+								});
 							}
 						}]
 					}).present();
