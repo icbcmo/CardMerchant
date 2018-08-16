@@ -1,14 +1,16 @@
 <ion-header>
-  <ion-navbar>
-    <button ion-button start (click)="goBack()">返回</button>
-    <ion-title style="text-align:center;" >设置</ion-title>
-  </ion-navbar>
+	<ion-navbar>
+		<button ion-button small clear (click)="goBack()">
+			<ion-icon ios="ios-arrow-back"></ion-icon>
+		</button>
+		<ion-title>设置</ion-title>
+	</ion-navbar>
 </ion-header>
 
 <ion-content>
-	<button class="item item-block item-ios" ion-item="" (click)="openUserMgt()">
-		<ion-icon color="secondary" item-start="" name="people" role="img" class="icon icon-ios icon-ios-secondary ion-ios-people item-icon" aria-label="call"></ion-icon>
-		用户管理
-		<div class="button-effect"></div>
-	</button>
+	<ion-list no-lines class="item_list">
+		<button ion-item (click)="openUserMgt()">
+			用户管理
+		</button>
+	</ion-list>
 </ion-content>

@@ -1,11 +1,13 @@
 <ion-header>
-  <ion-navbar>
-    <button ion-button start (click)="dismiss()">返回</button>
-    <ion-title>机器报修</ion-title>
-	<button ion-button end icon-only (click)="goMachineRequest()" >
-        <ion-icon  name="add" class="icon ion-ios-add" ></ion-icon>
-    </button>
-  </ion-navbar>
+    <ion-navbar>
+        <button ion-button small clear (click)="dismiss()">
+            <ion-icon ios="ios-arrow-back"></ion-icon>
+        </button>
+        <ion-title>机器报修</ion-title>
+        <button ion-button small clear (click)="goMachineRequest()">
+            <ion-icon ios="md-add"></ion-icon>
+        </button>
+    </ion-navbar>
 </ion-header>
 <ion-content>
   <ion-list>

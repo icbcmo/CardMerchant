@@ -1,35 +1,33 @@
 <ion-header>
   <ion-navbar>
-    <button ion-button start (click)="dismiss()">返回</button>
-    <ion-title></ion-title>
+    <button ion-button small clear (click)="dismiss()">
+      <ion-icon ios="ios-arrow-back"></ion-icon>
+    </button>
+    <ion-title>二維碼</ion-title>
   </ion-navbar>
 </ion-header>
 <ion-content>
-  <table width="100%" style="background-image: url('./assets/imgs/titlebk.png');background-size: 100%;background-repeat:  no-repeat;">
-    <tr>
-      <td align="center" height="600px">
-        <div style="text-align:  center;height:  500px;background-color:  rgba(255, 255, 255, 0.8); width: 320px;box-shadow:  0 3px 5px -1px rgba(0,0,0,.2), 0 6px 10px 0 rgba(0,0,0,.14), 0 1px 48px 0 rgba(0,0,0,.12);border-radius:  30px;">
-          <table width="100%">
-            <tr>
-              <td align="center" height="60px">
-
-              </td>
-            </tr>
-            <tr>
-              <td align="center" height="60px" style="color: #607483; font-size: 16px;">
-                請掃描以下二維碼
-              </td>
-            </tr>
-            <tr>
-              <td align="center">
-                <div style="background-image: url('./assets/imgs/qrborder.png');background-size: 100%;width:200px;height:  200px;line-height: 340px;">
-                  <qr-code [value]="'All QR Code data goes here!'" [size]="150"></qr-code>
-                </div>
-              </td>
-            </tr>
-          </table>
+  <ion-grid class="grid1">
+    <ion-row class="row1">
+      <ion-col col-10 offset-1>
+        <div class="qr_bg">
+          <div class="top">
+            <img src="../assets/imgs/qrcode_bg1.png" class="image1" alt="">
+            <div class="title">請掃描以下二維碼</div>
+          </div>
+          <div class="bottom">
+            <img src="../assets/imgs/qrcode_bg2.png" class="image1" alt="">
+            <div class="con">
+              <qr-code [value]="'All QR Code data goes here!'" [size]="500"></qr-code>
+            </div>
+          </div>
         </div>
-      </td>
-    </tr>
-  </table>
+      </ion-col>
+    </ion-row>
+    <ion-row class="row2">
+      <ion-col col-10 offset-1>
+        <img src="../assets/imgs/banner.png" class="image1">
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

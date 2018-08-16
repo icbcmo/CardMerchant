@@ -1,14 +1,16 @@
 <ion-header>
-  <ion-navbar>
-    <button ion-button start (click)="dismiss()">返回</button>
-    <ion-title>退款</ion-title>
-  </ion-navbar>
+    <ion-navbar>
+        <button ion-button small clear (click)="dismiss()">
+            <ion-icon ios="ios-arrow-back"></ion-icon>
+        </button>
+        <ion-title>退款</ion-title>
+    </ion-navbar>
 </ion-header>
 <ion-content>
-  <ion-list>
-      <a ion-item (click)="goCommonRefund()" >普通退款</a>
-      <a ion-item (click)="goWeixinRefund()" >微信退款</a>
-      <a ion-item (click)="goRefundVerify()" >退款审批</a>
-      <a ion-item (click)="goRefundProgress()" >退款进度</a>
-  </ion-list>
+    <ion-list>
+        <a ion-item (click)="goCommonRefund()" >普通退款</a>
+        <a ion-item (click)="goWeixinRefund()" >微信退款</a>
+        <a ion-item (click)="goRefundVerify()" >退款审批</a>
+        <a ion-item (click)="goRefundProgress()" >退款进度</a>
+    </ion-list>
 </ion-content>
