@@ -12,12 +12,9 @@ import {ShowImage} from "./showimage";
 })
 export class RefundVerify implements OnInit{
 	items: any;
-<<<<<<< HEAD:src/pages/home/refund/refundverify.ts
-	
-=======
+
 	refund: any;
 
->>>>>>> e6a85e97a0b39dd557c27c77ee960d991613544c:src/pages/home/refund/refundlist.ts
     constructor(
         public viewCtrl: ViewController,
 		public modalCtrl: ModalController,
@@ -70,13 +67,8 @@ export class RefundVerify implements OnInit{
 			}
 			
 		}, ()=>{
-<<<<<<< HEAD:src/pages/home/refund/refundverify.ts
-			loading.dismiss();
-			loading = this.loadingCtrl.create({
-=======
 			loading1.dismiss();
 			let loading2 = this.loadingCtrl.create({
->>>>>>> e6a85e97a0b39dd557c27c77ee960d991613544c:src/pages/home/refund/refundlist.ts
 				spinner: 'hide',
 				content: '网络故障',
 				duration: 2000
