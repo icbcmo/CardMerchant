@@ -2,10 +2,6 @@
 import {Component, OnInit} from '@angular/core';
 import { ModalController, Platform,NavController, ViewController } from 'ionic-angular';
 import {CardMerchantService} from "../../../service/card-merchant.service";
-import {RefundType} from "./refundtype";
-import {RefundDetail} from "./refunddetail";
-import {RefundProgress} from "./refundprogress";
-import {RefundVerify} from "./refundverify";
 import {NativeStorage} from "@ionic-native/native-storage";
 import { AlertController, LoadingController } from 'ionic-angular';
 import {TipService} from '../../../service/tip.service';
@@ -55,26 +51,6 @@ export class ShowImage implements OnInit{
 			this.items = [ {datetime: '2018-08-15',currpeople: 'dwkdjwsd'},{datetime: '2018-08-15',currpeople: 'dwkdjwsd'}];
 			console.log(this);
 		});
-	}
-	
-	goRefund(){
-		let modal = this.modalCtrl.create(RefundType);
-        modal.present();
-	}
-	
-	openRefundDetail(item){
-		let modal = this.modalCtrl.create(RefundDetail, {item: item});
-        modal.present();
-	}
-	
-	goRefundProgress(){
-		let modal = this.modalCtrl.create(RefundProgress);
-        modal.present();
-	}
-	
-	goRefundVerify(){
-		let modal = this.modalCtrl.create(RefundVerify);
-        modal.present();
 	}
 
     dismiss() {

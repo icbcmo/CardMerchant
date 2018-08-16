@@ -2,45 +2,21 @@
   <ion-navbar>
     <button ion-button start (click)="dismiss()">返回</button>
     <ion-title>退款</ion-title>
-	<button ion-button end icon-only (click)="goRefund()" >
-        <ion-icon  name="add" class="icon ion-ios-add" ></ion-icon>
-    </button>
   </ion-navbar>
 </ion-header>
 <ion-content>
-	<div padding>
-		<ion-segment [(ngModel)]="refund">
-			<ion-segment-button value="progress">
-				退款进度
-			</ion-segment-button>
-			<ion-segment-button value="approve">
-				退款审批
-			</ion-segment-button>
-		</ion-segment>
-	</div>
-
-<div [ngSwitch]="refund">
-  <ion-list *ngSwitchCase="'progress'">
-		<ion-item *ngFor="let item of items" >
-			<h3>MID：工商银行</h3>
-			<h2>卡号：{{item.field5}}</h2>
-			<button ion-button class="" item-end>
-				{{item.status}}
-			</button>
-		</ion-item>
+  <ion-list>
+    <ion-item>
+      <a (click)="goCommonRefund()" >普通退款</a>
+    </ion-item>
+	<ion-item>
+      <a (click)="goWeixinRefund()" >微信退款</a>
+    </ion-item>
+	<ion-item>
+      <a (click)="goRefundVerify()" >退款审批</a>
+    </ion-item>
+	<ion-item>
+      <a (click)="goRefundProgress()" >退款进度</a>
+    </ion-item>
   </ion-list>
-
-  <ion-list *ngSwitchCase="'approve'">
-		<ion-item *ngFor="let item of items" >
-			<h2>MID：工商银行</h2>
-			<h3>卡号：{{item.field5}}</h3>
-			<button ion-button class=""  item-end >
-				<ion-icon name="film" (click)="goDisplay(item.field6)" >影像</ion-icon>
-				<ion-icon name="create" (click)="goApprove(item.sequence)" >审批</ion-icon>
-			</button>
-		</ion-item>
-  </ion-list>
-</div>
-
-  
 </ion-content>

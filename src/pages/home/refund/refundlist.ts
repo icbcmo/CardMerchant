@@ -1,33 +1,36 @@
 
-import {Component, OnInit, ElementRef, ViewChild} from '@angular/core';
-import {CardMerchantService} from "../../../service/card-merchant.service";
+import {Component, OnInit} from '@angular/core';
 import { ModalController, Platform,NavController, ViewController, AlertController, LoadingController } from 'ionic-angular';
-import {ShowImage} from "./showimage";
+import {CardMerchantService} from "../../../service/card-merchant.service";
+import {RefundDetail} from "./refunddetail";
 import {NativeStorage} from "@ionic-native/native-storage";
 import {TipService} from '../../../service/tip.service';
+import {ShowImage} from "./showimage";
 
 @Component({
-  selector: 'page-refundverify',
-  templateUrl: 'refundverify.html',
+  selector: 'page-refundlist',
+  templateUrl: 'refundlist.html'
 })
-export class RefundVerify implements OnInit{
-	
+export class RefundList implements OnInit{
 	items: any;
+	refund: any;
 	
     constructor(
-		public cardMerchantService: CardMerchantService,
-		public viewCtrl: ViewController,
-		public loadingCtrl: LoadingController,
-		private alertCtrl: AlertController,
+        public viewCtrl: ViewController,
 		public modalCtrl: ModalController,
         public navCtrl: NavController,
+		private nativeStorage: NativeStorage,
+		public loadingCtrl: LoadingController,
+		private alertCtrl: AlertController,
 		public tipService: TipService,
-		private nativeStorage: NativeStorage
+		public cardMerchantService: CardMerchantService
     ) {
     }
 
 
     ngOnInit() {
+		this.refund = 'progress';
+		
 		var data = {
 			sessionid: localStorage.getItem('SESSIONID'),
 			field1: 1  //1-退款列表 2-机器问题列表
@@ -42,13 +45,33 @@ export class RefundVerify implements OnInit{
 			loading.dismiss();
 			if(Object(data).code == 0){
 				this.items = Object(data).data;
+				if(this.items.length > 0){
+					for(var i=0;i<this.items.length;i++){
+						switch(this.items[i].status) {
+							case '0':
+								this.items[i].status = '已审批';
+								break;
+							case '1':
+								this.items[i].status = '审批中';
+								break;
+							default:
+								break;
+						}
+					}
+				}
 			}else{
 				this.alertCtrl.create({
 						message: Object(data).message,
 						buttons: ['确定']
 					}).present();
 			}
+			
 		});
+	}
+	
+	openRefundDetail(item){
+		let modal = this.modalCtrl.create(RefundDetail, {item: item});
+        modal.present();
 	}
 	
 	goApprove(requestid){
@@ -81,12 +104,8 @@ export class RefundVerify implements OnInit{
 		let modal = this.modalCtrl.create(ShowImage, {picurl: picurl});
         modal.present();
 	}
-	
-	getItems(e){
-		console.log(e);
-	}
 
-    goBack() {
+    dismiss() {
         this.viewCtrl.dismiss();
     }
 

@@ -32,12 +32,10 @@ import {JPush} from '@jiguang-ionic/jpush';
 import {Binsearch} from "../pages/home/binsearch/binsearch";
 import {Custservice} from "../pages/home/custservice/custservice";
 import {Refund} from "../pages/home/refund/refund";
-import {RefundType} from "../pages/home/refund/refundtype";
+import {RefundList} from "../pages/home/refund/refundlist";
 import {RefundDetail} from "../pages/home/refund/refunddetail";
 import {CommonRefund} from "../pages/home/refund/commonrefund";
 import {WeixinRefund} from "../pages/home/refund/weixinrefund";
-import {RefundVerify} from "../pages/home/refund/refundverify";
-import {RefundProgress} from "../pages/home/refund/refundprogress";
 import {ShowImage} from "../pages/home/refund/showimage";
 import {Wrongtrx} from "../pages/home/wrongtrx/wrongtrx";
 import {Qrcode} from "../pages/home/qrcode/qrcode";
@@ -63,12 +61,10 @@ import {MachineRequestDetail} from "../pages/home/machine/machinerequestdetail";
         IndexPage,
         Custservice,
         Refund,
-		RefundType,
+		RefundList,
 		RefundDetail,
 		CommonRefund,
 		WeixinRefund,
-		RefundVerify,
-		RefundProgress,
 		ShowImage,
 		Setup,
 		UserMgt,
@@ -105,12 +101,10 @@ import {MachineRequestDetail} from "../pages/home/machine/machinerequestdetail";
         Binsearch,
         Custservice,
         Refund,
-		RefundType,
+		RefundList,
 		RefundDetail,
 		CommonRefund,
 		WeixinRefund,
-		RefundVerify,
-		RefundProgress,
 		ShowImage,
 		Setup,
 		UserMgt,
