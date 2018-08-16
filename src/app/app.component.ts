@@ -4,6 +4,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import {SigninPage} from "../pages/auth/signin";
+//import {TabsPage} from "../pages/tabs/tabs";
 import { JPush } from '@jiguang-ionic/jpush';
 import {NativeStorage} from "@ionic-native/native-storage";
 
@@ -27,6 +28,7 @@ export class MyApp {
         console.log("Myapp:");
         //nativeStorage.getItem("SESSIONID").then(data=>console.log(data));
 		this.rootPage = SigninPage;
+		//this.rootPage = TabsPage;
     });
   }
 }

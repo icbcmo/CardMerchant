@@ -80,7 +80,8 @@ export class CommonRefund implements OnInit{
 		};
 		console.log(data);
 		let loading = this.loadingCtrl.create({
-				content: 'Please wait...'
+				content: 'Please wait...',
+				duration: 5000
 			});
 		loading.present();
 		this.cardMerchantService.addrefund(data).toPromise().then(data=> {
@@ -96,6 +97,14 @@ export class CommonRefund implements OnInit{
 						buttons: ['确定']
 					}).present();
 			}
+		}, ()=>{
+			loading.dismiss();
+			loading = this.loadingCtrl.create({
+				spinner: 'hide',
+				content: '网络故障',
+				duration: 2000
+			});
+			loading.present();
 		});
 	}
 

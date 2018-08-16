@@ -1,9 +1,7 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
-import { AlertController } from 'ionic-angular';
 import {CardMerchantService} from "../../service/card-merchant.service";
 import {NativeStorage} from "@ionic-native/native-storage";
-import { Router } from '@angular/router';
-import { NavController } from 'ionic-angular';
+import { NavController, AlertController, LoadingController } from 'ionic-angular';
 import {TabsPage} from "../tabs/tabs";
 import {Device} from "@ionic-native/device";
 import {JPush} from "@jiguang-ionic/jpush";
@@ -22,15 +20,15 @@ export class SigninPage implements OnInit{
     // eyetype = 'eye-off'
     // passwordtype = 'password'
     constructor(
-                private alertCtrl: AlertController,
+				private alertCtrl: AlertController,
+				public loadingCtrl: LoadingController,
                 public cardMerchantService: CardMerchantService,
                 private nativeStorage: NativeStorage,
 				public navCtrl: NavController,
                 public jpush: JPush,
-                device: Device)
-	{
+                device: Device
+	){
         console.log("SigninPage constructor")
-
     }
 
     ionViewWillEnter(){
@@ -67,10 +65,16 @@ export class SigninPage implements OnInit{
 
     signin(acc,psw){
 
-        console.log("test2 click!")
+        console.log("test2 click!");
+		let loading = this.loadingCtrl.create({
+				content: 'Please wait...',
+				duration: 5000
+			});
+		loading.present();
+		
         this.cardMerchantService.checkVerifyCode_rsa(acc,psw).toPromise().then(data=> {
             console.log(data);
-
+			loading.dismiss();
 			localStorage.setItem('UID', Object(Object(data).data).uid);
 			localStorage.setItem('SESSIONID', Object(Object(data).data).sessionid);
 			//可以把merchantId等信息都存于localStorage,后续功能会用到
@@ -87,7 +91,15 @@ export class SigninPage implements OnInit{
                 this.presentAlert("驗證碼已過期，請重新獲取")
             else
                 this.presentAlert("網絡故障，請稍後再試")
-        });
+        }, ()=>{
+			loading.dismiss();
+			loading = this.loadingCtrl.create({
+				spinner: 'hide',
+				content: '网络故障',
+				duration: 2000
+			});
+			loading.present();
+		});
     }
 
     // eyeOnOff(){

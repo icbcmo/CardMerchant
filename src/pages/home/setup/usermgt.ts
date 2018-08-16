@@ -1,11 +1,10 @@
 
 import {Component, OnInit} from '@angular/core';
-import { ModalController, Platform,NavController, ViewController } from 'ionic-angular';
+import { ModalController, Platform,NavController, ViewController, AlertController, LoadingController } from 'ionic-angular';
 import {CardMerchantService} from "../../../service/card-merchant.service";
 import {NativeStorage} from "@ionic-native/native-storage";
 import {AddUser} from "./adduser";
 import {UserDetail} from "./userdetail";
-import { AlertController, LoadingController } from 'ionic-angular';
 import {TipService} from '../../../service/tip.service';
 
 declare var localStorage: any;
@@ -34,9 +33,30 @@ export class UserMgt implements OnInit{
 
     ngOnInit() {
 		var data = localStorage.getItem('SESSIONID');
+		let loading = this.loadingCtrl.create({
+				content: 'Please wait...',
+				duration: 5000
+			});
+		loading.present();
 		this.cardMerchantService.getSecondUsers(data).toPromise().then(data => {
             console.log(data);
-            this.userList = Object(data).data;
+			loading.dismiss();
+			if(Object(data).code == 0){
+				this.userList = Object(data).data;
+			}else{
+				this.alertCtrl.create({
+						message: Object(data).message,
+						buttons: ['确定']
+					}).present();
+			}
+		}, ()=>{
+			loading.dismiss();
+			loading = this.loadingCtrl.create({
+				spinner: 'hide',
+				content: '网络故障',
+				duration: 2000
+			});
+			loading.present();
 		});
 	}
 

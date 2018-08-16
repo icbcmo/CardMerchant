@@ -1,8 +1,7 @@
 
 import {Component, OnInit, ElementRef, ViewChild} from '@angular/core';
 import {CardMerchantService} from "../../../service/card-merchant.service";
-import { ViewController } from 'ionic-angular';
-import { AlertController, LoadingController } from 'ionic-angular';
+import { ViewController,  AlertController, LoadingController } from 'ionic-angular';
 import {TipService} from '../../../service/tip.service';
 
 @Component({
@@ -46,8 +45,14 @@ export class WeixinRefund implements OnInit{
 			wechatapplypicture: this.base64Image
 		};
 		console.log(data);
+		let loading = this.loadingCtrl.create({
+				content: 'Please wait...',
+				duration: 5000
+			});
+		loading.present();
 		this.cardMerchantService.addwechatrefund(data).toPromise().then(data=> {
 			console.log(Object(data));
+			loading.dismiss();
 			if(Object(data).code == 0){
 				this.tipService.show('提交成功').then( () => {
 						this.viewCtrl.dismiss();
@@ -58,6 +63,14 @@ export class WeixinRefund implements OnInit{
 						buttons: ['确定']
 					}).present();
 			}
+		}, ()=>{
+			loading.dismiss();
+			loading = this.loadingCtrl.create({
+				spinner: 'hide',
+				content: '网络故障',
+				duration: 2000
+			});
+			loading.present();
 		});
 	}
 
