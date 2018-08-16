@@ -2,6 +2,7 @@
 import {Component, OnInit} from '@angular/core';
 import { ModalController, Platform,NavController, ViewController, AlertController, LoadingController } from 'ionic-angular';
 import {CardMerchantService} from "../../../service/card-merchant.service";
+import {Refund} from "./refund";
 import {RefundDetail} from "./refunddetail";
 import {NativeStorage} from "@ionic-native/native-storage";
 import {TipService} from '../../../service/tip.service';
@@ -102,6 +103,11 @@ export class RefundList implements OnInit{
 	
 	goDisplay(picurl){
 		let modal = this.modalCtrl.create(ShowImage, {picurl: picurl});
+        modal.present();
+	}
+	
+	goRefund(){
+		let modal = this.modalCtrl.create(Refund);
         modal.present();
 	}
 

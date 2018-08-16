@@ -12,6 +12,7 @@ import {TipService} from '../../../service/tip.service';
 export class WeixinRefund implements OnInit{
 	base64Image: any;
 	needView: Boolean = true;
+	tradeDate: any;
 	
 	@ViewChild('wechattrxno') wechattrxno: ElementRef;
 	@ViewChild('wechattrxdate') wechattrxdate: ElementRef;
@@ -39,7 +40,7 @@ export class WeixinRefund implements OnInit{
 			wechatmerchantname: localStorage.getItem("MERCHANTNAME"),
 			wechattid: localStorage.getItem("WECHATTID"),
 			wechattrxno: Object(this.wechattrxno).value,
-			wechattrxdate: Object(this.wechattrxdate).value,
+			wechattrxdate: this.tradeDate,
 			wechattrxamount: Object(this.wechattrxamount).value,
 			wechatapplymobile: Object(this.wechatapplymobile).value,
 			wechatapplypicture: this.base64Image

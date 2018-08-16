@@ -10,10 +10,11 @@
       <ion-label floating>交易编号</ion-label>
       <ion-input type="text" #wechattrxno ></ion-input>
     </ion-item>
-    <ion-item>
+    <button ion-item class="item-ios" >
       <ion-label floating>交易日期</ion-label>
-      <ion-input class="input-date" type="text" #wechattrxdate placeholder="请按格式yyyy-mm-dd输入日期" ></ion-input>
-    </ion-item>
+	  <ion-datetime displayFormat="YYYY-MM-DD" pickerFormat="YYYY-MM-DD" [(ngModel)]="tradeDate"></ion-datetime>
+      <!-- <ion-input class="input-date" type="text" #wechattrxdate placeholder="请按格式yyyy-mm-dd输入日期" ></ion-input> -->
+    </button>
     <ion-item>
       <ion-label floating>原交易金額</ion-label>
       <ion-input type="text" #wechattrxamount ></ion-input>
