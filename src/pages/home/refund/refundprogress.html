@@ -1,0 +1,17 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button start (click)="dismiss()">返回</button>
+    <ion-title>退款进度</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  <ion-list>
+		<ion-item *ngFor="let item of items" >
+			<h3>MID：工商银行</h3>
+			<h2>卡号：{{item.field5}}</h2>
+			<button ion-button class="" item-end>
+				{{item.status}}
+			</button>
+		</ion-item>
+  </ion-list>
+</ion-content>

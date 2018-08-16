@@ -32,6 +32,10 @@ export class UserMgt implements OnInit{
 
 
     ngOnInit() {
+		
+	}
+	
+	ionViewWillEnter(){
 		var data = localStorage.getItem('SESSIONID');
 		let loading = this.loadingCtrl.create({
 				content: 'Please wait...',
@@ -59,11 +63,10 @@ export class UserMgt implements OnInit{
 			loading.present();
 		});
 	}
-
 	
 	openUserDetail(user){
 		console.log(user);
-		let modal = this.modalCtrl.create(UserDetail, {user:user});
+		let modal = this.modalCtrl.create(UserDetail, {user:user}, {cssClass:"slide-in-right ng-enter ng-enter-active"});
         modal.present();
 	}
 	

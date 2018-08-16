@@ -3,7 +3,8 @@ import {Component, OnInit} from '@angular/core';
 import { ModalController, Platform,NavController, ViewController } from 'ionic-angular';
 import {CommonRefund} from "./commonrefund";
 import {WeixinRefund} from "./weixinrefund";
-import {RefundList} from "./refundlist";
+import {RefundVerify} from "./refundverify";
+import {RefundProgress} from "./refundprogress";
 import {NativeStorage} from "@ionic-native/native-storage";
 
 @Component({
@@ -34,12 +35,12 @@ export class Refund implements OnInit{
 	}
 	
 	goRefundVerify(){
-		let modal = this.modalCtrl.create(RefundList);
+		let modal = this.modalCtrl.create(RefundVerify);
         modal.present();
 	}
 	
 	goRefundProgress(){
-		let modal = this.modalCtrl.create(RefundList);
+		let modal = this.modalCtrl.create(RefundProgress);
         modal.present();
 	}
 

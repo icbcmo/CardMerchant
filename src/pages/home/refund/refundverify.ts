@@ -2,19 +2,16 @@
 import {Component, OnInit} from '@angular/core';
 import { ModalController, Platform,NavController, ViewController, AlertController, LoadingController } from 'ionic-angular';
 import {CardMerchantService} from "../../../service/card-merchant.service";
-import {Refund} from "./refund";
-import {RefundDetail} from "./refunddetail";
 import {NativeStorage} from "@ionic-native/native-storage";
 import {TipService} from '../../../service/tip.service';
 import {ShowImage} from "./showimage";
 
 @Component({
-  selector: 'page-refundlist',
-  templateUrl: 'refundlist.html'
+  selector: 'page-refundverify',
+  templateUrl: 'refundverify.html'
 })
-export class RefundList implements OnInit{
+export class RefundVerify implements OnInit{
 	items: any;
-	refund: any;
 	
     constructor(
         public viewCtrl: ViewController,
@@ -30,7 +27,6 @@ export class RefundList implements OnInit{
 
 
     ngOnInit() {
-		this.refund = 'progress';
 		
 		var data = {
 			sessionid: localStorage.getItem('SESSIONID'),
@@ -70,18 +66,13 @@ export class RefundList implements OnInit{
 			
 		}, ()=>{
 			loading.dismiss();
-			let loading = this.loadingCtrl.create({
+			loading = this.loadingCtrl.create({
 				spinner: 'hide',
 				content: '网络故障',
 				duration: 2000
 			});
 			loading.present();
 		});
-	}
-	
-	openRefundDetail(item){
-		let modal = this.modalCtrl.create(RefundDetail, {item: item});
-        modal.present();
 	}
 	
 	goApprove(requestid){
@@ -115,10 +106,6 @@ export class RefundList implements OnInit{
         modal.present();
 	}
 	
-	goRefund(){
-		let modal = this.modalCtrl.create(Refund);
-        modal.present();
-	}
 
     dismiss() {
         this.viewCtrl.dismiss();

@@ -1,0 +1,15 @@
+page-refundprogress {
+	.toolbar-content{
+		display: flex;
+		justify-content: space-between;
+	}
+	.toolbar-title{
+		text-align: center;
+	}
+	ion-icon {
+		font-size: 2.2em;
+		color: white;
+		line-height: 52px;
+		margin-right: 0.5rem;
+	}
+}

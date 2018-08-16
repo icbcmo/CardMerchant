@@ -1,18 +1,16 @@
 
 import {Component, OnInit} from '@angular/core';
-import { ModalController, Platform,NavController, ViewController } from 'ionic-angular';
+import { ModalController, Platform,NavController, ViewController, AlertController, LoadingController } from 'ionic-angular';
 import {CardMerchantService} from "../../../service/card-merchant.service";
-import {MachineRequest} from "./machinerequest";
-import {MachineRequestDetail} from "./machinerequestdetail";
 import {NativeStorage} from "@ionic-native/native-storage";
-import { AlertController, LoadingController } from 'ionic-angular';
 import {TipService} from '../../../service/tip.service';
+import {ShowImage} from "./showimage";
 
 @Component({
-  selector: 'page-machine',
-  templateUrl: 'machine.html'
+  selector: 'page-refundprogress',
+  templateUrl: 'refundprogress.html'
 })
-export class Machine implements OnInit{
+export class RefundProgress implements OnInit{
 	items: any;
 	
     constructor(
@@ -30,16 +28,14 @@ export class Machine implements OnInit{
 
     ngOnInit() {
 		
-	}
-	
-	ionViewWillEnter(){
 		var data = {
 			sessionid: localStorage.getItem('SESSIONID'),
-			field1: 2  //1-退款列表 2-机器问题列表
+			field1: 1  //1-退款列表 2-机器问题列表
 		};
 		console.log(data);
 		let loading = this.loadingCtrl.create({
-				content: 'Please wait...'
+				content: 'Please wait...',
+				duration: 5000
 			});
 		loading.present();
 		this.cardMerchantService.getrequestlist(data).toPromise().then(data=> {
@@ -47,26 +43,37 @@ export class Machine implements OnInit{
 			loading.dismiss();
 			if(Object(data).code == 0){
 				this.items = Object(data).data;
+				if(this.items.length > 0){
+					for(var i=0;i<this.items.length;i++){
+						switch(this.items[i].status) {
+							case '0':
+								this.items[i].status = '已审批';
+								break;
+							case '1':
+								this.items[i].status = '审批中';
+								break;
+							default:
+								break;
+						}
+					}
+				}
 			}else{
 				this.alertCtrl.create({
 						message: Object(data).message,
 						buttons: ['确定']
 					}).present();
 			}
+			
+		}, ()=>{
+			loading.dismiss();
+			loading = this.loadingCtrl.create({
+				spinner: 'hide',
+				content: '网络故障',
+				duration: 2000
+			});
+			loading.present();
 		});
 	}
-	
-	goMachineRequest(){
-		let modal = this.modalCtrl.create(MachineRequest);
-        modal.present();
-	}
-	
-	openMachineRequestDetail(item){
-		let modal = this.modalCtrl.create(MachineRequestDetail, {item: item});
-        modal.present();
-	}
-	
-	
 
     dismiss() {
         this.viewCtrl.dismiss();
