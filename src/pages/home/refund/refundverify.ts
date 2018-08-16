@@ -12,12 +12,7 @@ import {ShowImage} from "./showimage";
 })
 export class RefundVerify implements OnInit{
 	items: any;
-<<<<<<< HEAD:src/pages/home/refund/refundverify.ts
 	
-=======
-	refund: any;
-
->>>>>>> e6a85e97a0b39dd557c27c77ee960d991613544c:src/pages/home/refund/refundlist.ts
     constructor(
         public viewCtrl: ViewController,
 		public modalCtrl: ModalController,
@@ -38,14 +33,14 @@ export class RefundVerify implements OnInit{
 			field1: 1  //1-退款列表 2-机器问题列表
 		};
 		console.log(data);
-		let loading1 = this.loadingCtrl.create({
+		let loading = this.loadingCtrl.create({
 				content: 'Please wait...',
 				duration: 5000
 			});
-		loading1.present();
+		loading.present();
 		this.cardMerchantService.getrequestlist(data).toPromise().then(data=> {
 			console.log(Object(data));
-			loading1.dismiss();
+			loading.dismiss();
 			if(Object(data).code == 0){
 				this.items = Object(data).data;
 				if(this.items.length > 0){
@@ -70,18 +65,13 @@ export class RefundVerify implements OnInit{
 			}
 			
 		}, ()=>{
-<<<<<<< HEAD:src/pages/home/refund/refundverify.ts
 			loading.dismiss();
 			loading = this.loadingCtrl.create({
-=======
-			loading1.dismiss();
-			let loading2 = this.loadingCtrl.create({
->>>>>>> e6a85e97a0b39dd557c27c77ee960d991613544c:src/pages/home/refund/refundlist.ts
 				spinner: 'hide',
 				content: '网络故障',
 				duration: 2000
 			});
-			loading2.present();
+			loading.present();
 		});
 	}
 	
