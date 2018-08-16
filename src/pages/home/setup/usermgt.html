@@ -1,9 +1,13 @@
 <ion-header>
-  <ion-navbar>
-    <button ion-button start (click)="goBack()">返回</button>
-    <ion-title style="text-align:center;" >用户管理</ion-title>
-	<button ion-button end (click)="addUser()">新增</button>
-  </ion-navbar>
+	<ion-navbar>
+		<button ion-button small clear (click)="goBack()">
+			<ion-icon ios="ios-arrow-back"></ion-icon>
+		</button>
+		<ion-title>用戶管理</ion-title>
+		<button ion-button small clear (click)="addUser()">
+			<ion-icon ios="md-add"></ion-icon>
+		</button>
+	</ion-navbar>
 </ion-header>
 
 <ion-content>

@@ -1,3 +1,34 @@
-page-home {
-
+page-qrcode {
+  .header-ios{
+    background: transparent;
+    .toolbar-ios{
+      .toolbar-background-ios{
+        background: transparent;
+      }
+    }
+  }
+  .content-ios{
+    background: url("../assets/imgs/qrcode_bg.png") no-repeat center #fff; background-size: cover;
+    .row1{
+      margin-top: 20px;
+      .qr_bg{
+        .top{
+          position: relative;
+          .image1{vertical-align: top;}
+          .title{position: absolute; left: 0; right: 0; top: 0; bottom: 0; display: flex; align-items: center; justify-content: center;}
+        }
+        .bottom{
+          position: relative;
+          .con{
+            position: absolute; left: 0; right: 0; top: 0; bottom: 0; display: flex; align-items: center; text-align: center;
+            qr-code{display: inline-block;}
+            img{width: 70%; height: auto;}
+          }
+        }
+      }
+    }
+    .row2{
+      .image1{width: 100%; border-radius: 6px; border: 1px solid #fff; height: 50px;}
+    }
+  }
 }

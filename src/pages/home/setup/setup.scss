@@ -1,8 +1,11 @@
 page-setup {
-	.toolbar-content{
-		display: flex;
-	}
-	.toolbar-title{
-		text-align:center;
+	.content{
+		background-color: #f3f3f3;
+		.item_list{
+			padding: 0 10px;
+			.item{
+				border-radius: 6px; margin-top: 10px; font-size: 1.4rem; min-height: 4rem; border: 1px solid #eaeaea;
+			}
+		}
 	}
 }

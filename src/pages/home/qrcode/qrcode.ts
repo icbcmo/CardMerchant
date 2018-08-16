@@ -5,7 +5,7 @@ import { ModalController, Platform, NavParams, ViewController } from 'ionic-angu
 
 
 @Component({
-  selector: 'page-home',
+  selector: 'page-qrcode',
   templateUrl: 'qrcode.html',
 })
 export class Qrcode implements OnInit{

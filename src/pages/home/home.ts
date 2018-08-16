@@ -96,8 +96,14 @@ export class HomePage implements OnInit{
 
         //this.cleanTags();
         let mytags=[];
+        mytags.push(localStorage.getItem("MERCHANTCIF"));
         mytags.push(localStorage.getItem("MERCHANTID"));
         mytags.push(localStorage.getItem("DEPARTMENTID"));
+        mytags.push(localStorage.getItem("UID"));
+        mytags.push(localStorage.getItem("MOBILE"));
+        mytags.push(localStorage.getItem("LEVEL"));
+        mytags.push(localStorage.getItem("TERMINALID"));
+        mytags.push(localStorage.getItem("WECHATTID"));
         console.log(mytags)
         this.setTags(mytags);
 
