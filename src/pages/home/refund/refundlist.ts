@@ -15,7 +15,7 @@ import {ShowImage} from "./showimage";
 export class RefundList implements OnInit{
 	items: any;
 	refund: any;
-	
+
     constructor(
         public viewCtrl: ViewController,
 		public modalCtrl: ModalController,
@@ -37,14 +37,14 @@ export class RefundList implements OnInit{
 			field1: 1  //1-退款列表 2-机器问题列表
 		};
 		console.log(data);
-		let loading = this.loadingCtrl.create({
+		let loading1 = this.loadingCtrl.create({
 				content: 'Please wait...',
 				duration: 5000
 			});
-		loading.present();
+		loading1.present();
 		this.cardMerchantService.getrequestlist(data).toPromise().then(data=> {
 			console.log(Object(data));
-			loading.dismiss();
+			loading1.dismiss();
 			if(Object(data).code == 0){
 				this.items = Object(data).data;
 				if(this.items.length > 0){
@@ -69,13 +69,13 @@ export class RefundList implements OnInit{
 			}
 			
 		}, ()=>{
-			loading.dismiss();
-			let loading = this.loadingCtrl.create({
+			loading1.dismiss();
+			let loading2 = this.loadingCtrl.create({
 				spinner: 'hide',
 				content: '网络故障',
 				duration: 2000
 			});
-			loading.present();
+			loading2.present();
 		});
 	}
 	
