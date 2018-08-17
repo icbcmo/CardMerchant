@@ -29,7 +29,7 @@
       background: transparent; border: 0;
     }
     .toolbar-content{
-      justify-content: space-between;
+      justify-content: space-between; display: flex;
     }
     .toolbar-title{
       color: #ffffff; font-weight: inherit; font-size: 1.5rem;
