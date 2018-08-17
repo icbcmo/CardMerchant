@@ -82,7 +82,10 @@ import {MachineRequestDetail} from "../pages/home/machine/machinerequestdetail";
         HttpClientModule,
         BrowserModule,
         QRCodeModule,
-        IonicModule.forRoot(MyApp),
+        IonicModule.forRoot(MyApp,{
+            backButtonText: '返回', iconMode: 'ios',//安卓icon强制使用ios的icon以及样式
+            mode: 'ios',//样式强制使用ios样式
+        }),
         StoreModule.forRoot(reducers),
         EffectsModule.forRoot([]),
         StoreDevtoolsModule.instrument({maxAge: 25}),
