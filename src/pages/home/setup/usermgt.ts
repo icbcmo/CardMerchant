@@ -66,7 +66,7 @@ export class UserMgt implements OnInit{
 	
 	openUserDetail(user){
 		console.log(user);
-		let modal = this.modalCtrl.create(UserDetail, {user:user}, {cssClass:"slide-in-right ng-enter ng-enter-active"});
+		let modal = this.modalCtrl.create(UserDetail, {user:user});
         modal.present();
 	}
 	
