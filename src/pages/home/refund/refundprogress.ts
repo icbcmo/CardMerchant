@@ -33,14 +33,8 @@ export class RefundProgress implements OnInit{
 			field1: 1  //1-退款列表 2-机器问题列表
 		};
 		console.log(data);
-		let loading = this.loadingCtrl.create({
-				content: 'Please wait...',
-				duration: 2000
-			});
-		loading.present();
 		this.cardMerchantService.getrequestlist(data).toPromise().then(data=> {
 			console.log(Object(data));
-			loading.dismiss();
 			if(Object(data).code == 0){
 				this.items = Object(data).data;
 				if(this.items.length > 0){
@@ -65,13 +59,11 @@ export class RefundProgress implements OnInit{
 			}
 			
 		}, ()=>{
-			loading.dismiss();
-			loading = this.loadingCtrl.create({
+			this.loadingCtrl.create({
 				spinner: 'hide',
 				content: '网络故障',
 				duration: 2000
-			});
-			loading.present();
+			}).present();
 		});
 	}
 

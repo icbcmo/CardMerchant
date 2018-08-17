@@ -49,12 +49,11 @@ export class Machine implements OnInit{
 					}).present();
 			}
 		}, ()=>{
-			loading = this.loadingCtrl.create({
+			this.loadingCtrl.create({
 				spinner: 'hide',
 				content: '网络故障',
 				duration: 2000
-			});
-			loading.present();
+			}).present();
 		});
 	}
 	
