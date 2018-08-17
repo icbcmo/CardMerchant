@@ -22,35 +22,32 @@
   display: none;
 }
 
-.header-ios .toolbar-ios:last-child .toolbar-background-ios{
-  //background: transparent;
-  border-color: #627280;
+.header-ios{
+  padding-top: 24px; background: url("../assets/imgs/index_header.png") no-repeat center; background-size: cover;
+  .toolbar-ios{
+    .toolbar-background-ios{
+      background: transparent; border: 0;
+    }
+    .toolbar-content{
+      justify-content: space-between;
+    }
+    .toolbar-title{
+      color: #ffffff; font-weight: inherit; font-size: 1.5rem;
+    }
+    .button-ios{
+      color: #fff;
+      .icon{font-size: 1.7em;}
+    }
+  }
 }
 
-.toolbar-title-ios .toolbar-title{
-  font-size:  16px;
-  color:  #55687f;
-}
 
-.toolbar-background{
-  background-color: #627280;
-}
 
-.toolbar-title{
-  color: #ffffff;
-}
+.button-block{height: 2.5em; border-radius: 6px;}
 
 .tabs-ios .tabbar{
   background-color: #fff; box-shadow: 0px 1px 10px 2px #ddd; border-top: 0; padding-bottom: 5px;
   .tab-button{
-    //@for $i from 1 to 4 {
-    //  .tab-button-icon[ng-reflect-name=tab-tab#{$i}] {
-    //    background: url("../assets/imgs/index_tab#{$i}_1.png") no-repeat center; background-size: 24px;
-    //    &.tab-button-icon[ng-reflect-is-active=true]{
-    //      background: url("../assets/imgs/index_tab#{$i}_2.png") no-repeat center;  background-size: 24px;
-    //    }
-    //  }
-    //}
     &:nth-child(1) {
       .tab-button-icon{
         background: url("../assets/imgs/index_tab1_1.png") no-repeat center; background-size: 24px;
@@ -81,4 +78,8 @@
     }
   }
 }
+
+
+
+
 
