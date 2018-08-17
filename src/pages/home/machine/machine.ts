@@ -49,11 +49,7 @@ export class Machine implements OnInit{
 					}).present();
 			}
 		}, ()=>{
-<<<<<<< HEAD
 			this.loadingCtrl.create({
-=======
-			let loading = this.loadingCtrl.create({
->>>>>>> 9ea5c67ee56bb72bcfcc9487180735073930a656
 				spinner: 'hide',
 				content: '网络故障',
 				duration: 2000
