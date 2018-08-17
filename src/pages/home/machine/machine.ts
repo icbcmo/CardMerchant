@@ -38,13 +38,8 @@ export class Machine implements OnInit{
 			field1: 2  //1-退款列表 2-机器问题列表
 		};
 		console.log(data);
-		let loading = this.loadingCtrl.create({
-				content: 'Please wait...'
-			});
-		loading.present();
 		this.cardMerchantService.getrequestlist(data).toPromise().then(data=> {
 			console.log(Object(data));
-			loading.dismiss();
 			if(Object(data).code == 0){
 				this.items = Object(data).data;
 			}else{
@@ -53,6 +48,13 @@ export class Machine implements OnInit{
 						buttons: ['确定']
 					}).present();
 			}
+		}, ()=>{
+			loading = this.loadingCtrl.create({
+				spinner: 'hide',
+				content: '网络故障',
+				duration: 2000
+			});
+			loading.present();
 		});
 	}
 	

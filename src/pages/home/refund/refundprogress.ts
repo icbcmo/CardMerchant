@@ -35,7 +35,7 @@ export class RefundProgress implements OnInit{
 		console.log(data);
 		let loading = this.loadingCtrl.create({
 				content: 'Please wait...',
-				duration: 5000
+				duration: 2000
 			});
 		loading.present();
 		this.cardMerchantService.getrequestlist(data).toPromise().then(data=> {
