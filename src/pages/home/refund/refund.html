@@ -7,10 +7,24 @@
     </ion-navbar>
 </ion-header>
 <ion-content>
-    <ion-list>
-        <a ion-item (click)="goCommonRefund()" >普通退款</a>
-        <a ion-item (click)="goWeixinRefund()" >微信退款</a>
-        <a ion-item (click)="goRefundVerify()" >退款审批</a>
-        <a ion-item (click)="goRefundProgress()" >退款进度</a>
+    <ion-list no-lines class="item_list">
+        <button ion-item (click)="goCommonRefund()">
+            普通退款
+        </button>
+    </ion-list>
+    <ion-list no-lines class="item_list">
+        <button ion-item (click)="goWeixinRefund()">
+            微信退款
+        </button>
+    </ion-list>
+    <ion-list no-lines class="item_list">
+        <button ion-item (click)="goRefundVerify()">
+            退款审批
+        </button>
+    </ion-list>
+    <ion-list no-lines class="item_list">
+        <button ion-item (click)="goRefundProgress()">
+            退款进度
+        </button>
     </ion-list>
 </ion-content>

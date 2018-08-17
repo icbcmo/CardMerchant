@@ -1,27 +1,29 @@
 <ion-header>
   <ion-navbar>
-    <button ion-button start (click)="goBack()">返回</button>
+    <button ion-button small clear (click)="goBack()">
+      <ion-icon ios="ios-arrow-back"></ion-icon>
+    </button>
     <ion-title>微信退款</ion-title>
   </ion-navbar>
 </ion-header>
 <ion-content>
-  <ion-list>
+  <ion-list class="input_list">
     <ion-item>
-      <ion-label floating>交易编号</ion-label>
-      <ion-input type="text" #wechattrxno ></ion-input>
+      <ion-label>交易编号</ion-label>
+      <ion-input type="text" placeholder="請輸入交易编号" #wechattrxno ></ion-input>
     </ion-item>
     <button ion-item class="item-ios" >
-      <ion-label floating>交易日期</ion-label>
+      <ion-label>交易日期</ion-label>
 	  <ion-datetime displayFormat="YYYY-MM-DD" pickerFormat="YYYY-MM-DD" [(ngModel)]="tradeDate"></ion-datetime>
       <!-- <ion-input class="input-date" type="text" #wechattrxdate placeholder="请按格式yyyy-mm-dd输入日期" ></ion-input> -->
     </button>
     <ion-item>
-      <ion-label floating>原交易金額</ion-label>
-      <ion-input type="text" #wechattrxamount ></ion-input>
+      <ion-label>原交易金額</ion-label>
+      <ion-input type="text" placeholder="請輸入原交易金額" #wechattrxamount ></ion-input>
     </ion-item>
     <ion-item>
-      <ion-label floating>申請人/聯絡電話</ion-label>
-      <ion-input type="text" #wechatapplymobile ></ion-input>
+      <ion-label >申請人/聯絡電話</ion-label>
+      <ion-input type="text" placeholder="請輸入申請人/聯絡電話" #wechatapplymobile ></ion-input>
     </ion-item>
 	<ion-item>
 		<button ion-button (click)="openCamera()" >拍照</button>
