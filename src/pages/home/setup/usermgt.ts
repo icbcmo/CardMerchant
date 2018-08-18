@@ -37,14 +37,8 @@ export class UserMgt implements OnInit{
 	
 	ionViewWillEnter(){
 		var data = localStorage.getItem('SESSIONID');
-		let loading = this.loadingCtrl.create({
-				content: 'Please wait...',
-				duration: 5000
-			});
-		loading.present();
 		this.cardMerchantService.getSecondUsers(data).toPromise().then(data => {
             console.log(data);
-			loading.dismiss();
 			if(Object(data).code == 0){
 				this.userList = Object(data).data;
 			}else{
@@ -54,19 +48,17 @@ export class UserMgt implements OnInit{
 					}).present();
 			}
 		}, ()=>{
-			loading.dismiss();
-			loading = this.loadingCtrl.create({
+			this.loadingCtrl.create({
 				spinner: 'hide',
 				content: '网络故障',
 				duration: 2000
-			});
-			loading.present();
+			}).present();
 		});
 	}
 	
 	openUserDetail(user){
 		console.log(user);
-		let modal = this.modalCtrl.create(UserDetail, {user:user}, {cssClass:"slide-in-right ng-enter ng-enter-active"});
+		let modal = this.modalCtrl.create(UserDetail, {user:user});
         modal.present();
 	}
 	

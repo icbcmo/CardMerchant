@@ -136,4 +136,5 @@ import {MachineRequestDetail} from "../pages/home/machine/machinerequestdetail";
     ]
 })
 export class AppModule {
+
 }
