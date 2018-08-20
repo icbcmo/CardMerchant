@@ -38,7 +38,9 @@
     "@nrwl/nx": "^1.0.3",
     "@swimlane/ngx-datatable": "^13.0.1",
     "angular2-qrcode": "^2.0.1",
+    "cordova-android": "6.4.0",
     "cordova-browser": "^5.0.3",
+    "cordova-ios": "4.5.4",
     "cordova-plugin-add-swift-support": "^1.7.2",
     "cordova-plugin-camera": "^4.0.3",
     "cordova-plugin-device": "^2.0.2",
@@ -57,8 +59,7 @@
     "jsrsasign": "^8.0.12",
     "rxjs": "^5.5.11",
     "sw-toolbox": "3.6.0",
-    "zone.js": "0.8.26",
-    "cordova-ios": "4.5.4"
+    "zone.js": "0.8.26"
   },
   "devDependencies": {
     "@ionic/app-scripts": "3.1.10",
@@ -101,7 +102,8 @@
     },
     "platforms": [
       "ios",
-      "browser"
+      "browser",
+      "android"
     ]
   }
 }
