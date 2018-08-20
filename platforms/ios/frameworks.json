@@ -1,4 +1,7 @@
 {
+    "ImageIO.framework": 1,
+    "CoreLocation.framework": 1,
+    "AVFoundation.framework": 1,
     "WebKit.framework": 1,
     "libz.tbd": 2,
     "CFNetwork.framework": 1,
@@ -10,8 +13,5 @@
     "Security.framework": 1,
     "AdSupport.framework": 1,
     "UserNotifications.framework": 1,
-    "libresolv.tbd": 1,
-    "ImageIO.framework": 1,
-    "CoreLocation.framework": 1,
-    "AVFoundation.framework": 1
+    "libresolv.tbd": 1
 }
