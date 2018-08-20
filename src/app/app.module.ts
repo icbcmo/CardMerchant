@@ -45,6 +45,7 @@ import { QRCodeModule } from 'angular2-qrcode';
 import { Camera } from '@ionic-native/camera';
 import {NativeStorage} from "@ionic-native/native-storage";
 import { Device } from '@ionic-native/device';
+import {OrderList} from '../pages/home/order/orderlist';
 //import {CounterService,Sse} from "../service/counter.service";
 import {Machine} from "../pages/home/machine/machine";
 import {MachineRequest} from "../pages/home/machine/machinerequest";
@@ -61,6 +62,7 @@ import {MachineRequestDetail} from "../pages/home/machine/machinerequestdetail";
         Binsearch,
         TabsPage,
         IndexPage,
+        OrderList,
         Custservice,
         Refund,
 		RefundVerify,
@@ -105,6 +107,7 @@ import {MachineRequestDetail} from "../pages/home/machine/machinerequestdetail";
         SigninPage,
         TabsPage,
         IndexPage,
+        OrderList,
         Binsearch,
         Custservice,
         Refund,
