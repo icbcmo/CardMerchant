@@ -4,6 +4,7 @@ import {CardMerchantService} from "../../../service/card-merchant.service";
 import { ViewController,  AlertController, LoadingController } from 'ionic-angular';
 import {TipService} from '../../../service/tip.service';
 import {BaseDate} from '../../../service/BaseDate.service';
+import {Camera, CameraOptions} from "@ionic-native/camera";
 
 @Component({
   selector: 'page-weixinrefund',
@@ -17,13 +18,20 @@ export class WeixinRefund implements OnInit{
 	@ViewChild('wechattrxno') wechattrxno: ElementRef;
 	@ViewChild('wechattrxdate') wechattrxdate: ElementRef;
 	@ViewChild('wechattrxamount') wechattrxamount: ElementRef;
+<<<<<<< HEAD
 	@ViewChild('wechatapplymobile') wechatapplymobile: ElementRef;
 	@ViewChild('wechatapplyname') wechatapplyname: ElementRef;
+=======
+    @ViewChild('wechatapplymobile') wechatapplymobile: ElementRef;
+	@ViewChild('wechatapplyname') wechatapplyname: ElementRef;
+	@ViewChild('name') name: ElementRef;
+>>>>>>> 6f9c3970ce29660f8702166aa2f64ef23a29adf0
 
     constructor(
 		public cardMerchantService: CardMerchantService,
 		public viewCtrl: ViewController,
 		public loadingCtrl: LoadingController,
+        private camera: Camera,
 		private alertCtrl: AlertController,
 		public tipService: TipService
     ) {
