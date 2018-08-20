@@ -8,15 +8,16 @@ import {CounterActions} from '../../actions/counter.actions';
 import {AppState} from '../../app/app.status';
 import {CounterService} from "../../service/counter.service";
 import {Refund} from "./refund/refund";
-import {Binsearch} from "./binsearch/binsearch";
 import {Wrongtrx} from "./wrongtrx/wrongtrx";
+import {OrderRefund} from "./refund/orderrefund";
 import {Camera, CameraOptions} from '@ionic-native/camera';
-import {Custservice} from "./custservice/custservice";
 import {Qrcode} from "./qrcode/qrcode";
 import { JPush } from "@jiguang-ionic/jpush";
 import { Device } from "@ionic-native/device";
 import {Setup} from "./setup/setup";
 import {Machine} from "./machine/machine";
+import {OrderList} from "./order/orderlist";
+
 
 const EventSource: any = window['EventSource'];
 
@@ -34,7 +35,8 @@ export interface User {
 })
 export class HomePage implements OnInit{
 
-
+	orderNum: any;
+	
     constructor(
         private store: Store<AppState> ,
         private counterService:CounterService,
@@ -218,8 +220,14 @@ export class HomePage implements OnInit{
             this.jpush.addLocalNotificationForIOS(5, "Hello JPush", 1, "localNoti1");
         }
     }
+	
+	updateOrderNum(num){  // Jpush调此方法更新订单数量
+		this.orderNum = num;
+	}
 
-    ngOnInit() {}
+    ngOnInit() {
+		this.orderNum = 12;  //模拟订单数量更新
+	}
 
     openCamera(){
         //手機上使用部分開始
@@ -246,18 +254,18 @@ export class HomePage implements OnInit{
         modal.present();
     }
 
-    openBinsarchModal() {
-        let modal = this.modalCtrl.create(Binsearch);
-        modal.present();
-    }
-
     openWrongtrxModal() {
         let modal = this.modalCtrl.create(Wrongtrx);
         modal.present();
     }
+	
+	openOrderRefundModal() {
+        let modal = this.modalCtrl.create(OrderRefund);
+        modal.present();
+    }
 
     openCustserviceModal() {
-        let modal = this.modalCtrl.create(Custservice);
+        let modal = this.modalCtrl.create(Machine);
         modal.present();
     }
 
@@ -266,14 +274,14 @@ export class HomePage implements OnInit{
         modal.present();
     }
 	
-	openMachineRequestModal(){
-		let modal = this.modalCtrl.create(Machine);
-        modal.present();
-	}
-	
 	goSetup() {
         let modal = this.modalCtrl.create(Setup);
         modal.present();
     }
+	
+	openOrderList(){
+		let modal = this.modalCtrl.create(OrderList);
+        modal.present();
+	}
 
 }

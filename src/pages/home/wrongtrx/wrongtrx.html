@@ -10,12 +10,12 @@
   <ion-list>
     <ion-item>
       <ion-label floating>賬單號</ion-label>
-      <ion-input type="text"></ion-input>
+      <ion-input type="text" #billno ></ion-input>
     </ion-item>
   </ion-list>
 
   <div padding>
-    <button ion-button color="primary" block>查詢</button>
+    <button ion-button color="primary" (click)="submitForm()" block>查詢</button>
   </div>
 
 </ion-content>

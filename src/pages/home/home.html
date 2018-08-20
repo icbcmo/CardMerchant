@@ -18,10 +18,10 @@
           </div>
           <p class="bottom">收款</p>
         </ion-col>
-        <ion-col>
+        <ion-col (click)="openOrderList()" >
           <div class="top">
             <img class="image1" src="assets/imgs/index_fn3.png" alt="訂單">
-            <span class="title">12</span>
+            <span class="title">{{orderNum}}</span>
           </div>
           <p class="bottom">訂單</p>
         </ion-col>
@@ -50,12 +50,6 @@
     <ion-row class="row2">
       <ion-col col-3>
         <div class="top">
-          <img class="image1" src="assets/imgs/index_pa1.png" alt="查詢卡號" (click)="openBinsarchModal()">
-        </div>
-        <p class="bottom">查詢卡號</p>
-      </ion-col>
-      <ion-col col-3>
-        <div class="top">
           <img class="image1" src="assets/imgs/index_pa2.png" alt="退款" (click)="openRefundModal()">
         </div>
         <p class="bottom">退款</p>
@@ -66,17 +60,17 @@
         </div>
         <p class="bottom">差錯交易</p>
       </ion-col>
+	  <ion-col>
+        <div class="top">
+          <img class="image1" src="assets/imgs/index_pa3.png" alt="调单/退款" (click)="openOrderRefundModal()">
+        </div>
+        <p class="bottom">调单/退款</p>
+      </ion-col>
       <ion-col col-3>
         <div class="top">
           <img class="image1" src="assets/imgs/index_pa4.png" alt="客服" (click)="openCustserviceModal()">
         </div>
         <p class="bottom">客服</p>
-      </ion-col>
-      <ion-col col-3>
-        <div class="top">
-          <img class="image1" src="assets/imgs/index_pa3.png" alt="机器报修" (click)="openMachineRequestModal()">
-        </div>
-        <p class="bottom">机器报修</p>
       </ion-col>
     </ion-row>
   </ion-grid>

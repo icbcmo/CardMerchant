@@ -22,13 +22,20 @@
       <ion-input type="text" placeholder="請輸入原交易金額" #wechattrxamount ></ion-input>
     </ion-item>
     <ion-item>
-      <ion-label >申請人/聯絡電話</ion-label>
-      <ion-input type="text" placeholder="請輸入申請人/聯絡電話" #wechatapplymobile ></ion-input>
+      <ion-label >申請人</ion-label>
+      <ion-input type="text" placeholder="請輸入申請人" #wechatapplyname ></ion-input>
+    </ion-item>
+	<ion-item>
+      <ion-label >聯絡電話</ion-label>
+      <ion-input type="text" placeholder="請輸入申請人聯絡電話" #wechatapplymobile ></ion-input>
     </ion-item>
 	<ion-item>
 		<button ion-button (click)="openCamera()" >拍照</button>
-		<div *ngIf="needView" class="pic-wrapper" >
-			<img [src]="base64Image" width="100" height="100" />
+		<div *ngIf="needView" class="row" >
+			<div class="pic-wrapper" *ngFor="let picture of pictures;let i = index" >
+				<img [src]="picture" />
+				<div class="delete" (click)="delPic(i)" >x</div>
+			</div>
 		</div>
     </ion-item>
   </ion-list>
