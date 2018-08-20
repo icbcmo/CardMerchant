@@ -101,11 +101,11 @@ export class HomePage implements OnInit{
         mytags.push(localStorage.getItem("MERCHANTCIF"));
         mytags.push(localStorage.getItem("MERCHANTID"));
         mytags.push(localStorage.getItem("DEPARTMENTID"));
-        mytags.push(localStorage.getItem("UID"));
-        mytags.push(localStorage.getItem("MOBILE"));
+        mytags.push(localStorage.getItem("WECHATMERCHANTID"));
         mytags.push(localStorage.getItem("LEVEL"));
-        mytags.push(localStorage.getItem("TERMINALID"));
-        mytags.push(localStorage.getItem("WECHATTID"));
+        mytags.push(localStorage.getItem("MOBILE"));
+        mytags.push(localStorage.getItem("UID"));
+        mytags.push(localStorage.getItem("UID2"));
         console.log(mytags)
         this.setTags(mytags);
 
