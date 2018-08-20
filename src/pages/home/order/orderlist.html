@@ -1,0 +1,19 @@
+<ion-header>
+    <ion-navbar>
+        <button ion-button small clear (click)="dismiss()">
+            <ion-icon ios="ios-arrow-back"></ion-icon>
+        </button>
+        <ion-title>订单列表</ion-title>
+        <button ion-button small clear (click)="goMachineRequest()">
+            <ion-icon ios="md-add"></ion-icon>
+        </button>
+    </ion-navbar>
+</ion-header>
+<ion-content>
+  <ion-list>
+		<button ion-item class="item item-block item-ios" *ngFor="let item of items" (click)="openMachineRequestDetail(item)">
+			{{item.datetime}}/{{item.currpeople}}
+			<div class="button-effect"></div>
+		</button>
+  </ion-list>
+</ion-content>
