@@ -96,15 +96,15 @@ export class HomePage implements OnInit{
 
         //this.cleanTags();
         let mytags=[];
-        mytags.push(localStorage.getItem("MERCHANTCIF"));
-        mytags.push(localStorage.getItem("MERCHANTID"));
-        mytags.push(localStorage.getItem("DEPARTMENTID"));
-        mytags.push(localStorage.getItem("WECHATMERCHANTID"));
-        mytags.push(localStorage.getItem("LEVEL"));
-        mytags.push(localStorage.getItem("MOBILE"));
-        mytags.push(localStorage.getItem("UID"));
-        mytags.push(localStorage.getItem("UID2"));
-        console.log(mytags)
+        mytags.push(localStorage.getItem("MERCHANTCIF").toString());
+        mytags.push(localStorage.getItem("MERCHANTID").toString());
+        mytags.push(localStorage.getItem("DEPARTMENTID").toString());
+        mytags.push(localStorage.getItem("WECHATMERCHANTID").toString());
+        mytags.push(localStorage.getItem("LEVEL").toString());
+        mytags.push(localStorage.getItem("MOBILE").toString());
+        mytags.push(localStorage.getItem("UID").toString());
+        mytags.push(localStorage.getItem("UID2").toString());
+        console.log(mytags);
         this.setTags(mytags);
 
     }
