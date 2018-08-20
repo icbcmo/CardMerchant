@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import {CardMerchantService} from '../../service/card-merchant.service';
 import { NativeStorage } from '@ionic-native/native-storage';
 import {SigninPage} from "../auth/signin";
+import {NavController,ModalController} from "ionic-angular";
 
 @Component({
   selector: 'page-contact',
@@ -11,8 +12,9 @@ import {SigninPage} from "../auth/signin";
 export class ContactPage {
 
   constructor(public cardMerchantService: CardMerchantService,
-              private nativeStorage: NativeStorage) {
-
+              private nativeStorage: NativeStorage,
+              public navCtrl: NavController,
+              public modalCtrl: ModalController){
 
   }
 
@@ -72,6 +74,7 @@ export class ContactPage {
     }
   test5() {
       localStorage.clear();
-      //this.navCtrl.push(SigninPage);
+      let modal = this.modalCtrl.create(SigninPage);
+      modal.present();
   }
 }
