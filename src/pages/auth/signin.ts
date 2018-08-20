@@ -77,10 +77,13 @@ export class SigninPage implements OnInit{
 			loading.dismiss();
 			localStorage.setItem('UID', Object(Object(data).data).uid);
 			localStorage.setItem('SESSIONID', Object(Object(data).data).sessionid);
-			//可以把merchantId等信息都存于localStorage,后续功能会用到
+			localStorage.setItem('WECHATMERCHANTID', Object(Object(data).data).wechatMerchantId);
 			localStorage.setItem('MERCHANTID', Object(Object(data).data).merchantId);
+			localStorage.setItem('MERCHANTNAME', Object(Object(data).data).merchantName);
 			localStorage.setItem('DEPARTMENTID', Object(Object(data).data).departmentId);
 			localStorage.setItem('DEPARTMENTNAME', Object(Object(data).data).departmentName);
+			localStorage.setItem('MOBILE', Object(Object(data).data).mobile);
+			localStorage.setItem('NAME', Object(Object(data).data).name);
 
             if(Object(data).code === "0")
                 this.navCtrl.push(TabsPage);
