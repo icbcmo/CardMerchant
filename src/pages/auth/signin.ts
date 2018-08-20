@@ -75,12 +75,19 @@ export class SigninPage implements OnInit{
         this.cardMerchantService.checkVerifyCode_rsa(acc,psw).toPromise().then(data=> {
             console.log(data);
 			loading.dismiss();
-			localStorage.setItem('UID', Object(Object(data).data).uid);
-			localStorage.setItem('SESSIONID', Object(Object(data).data).sessionid);
-			//可以把merchantId等信息都存于localStorage,后续功能会用到
-			localStorage.setItem('MERCHANTID', Object(Object(data).data).merchantId);
-			localStorage.setItem('DEPARTMENTID', Object(Object(data).data).departmentId);
-			localStorage.setItem('DEPARTMENTNAME', Object(Object(data).data).departmentName);
+            localStorage.setItem('MERCHANTCIF', Object(Object(data).data).merchantCif);
+            localStorage.setItem('MERCHANTCIFNAME', Object(Object(data).data).merchantCifName);
+            localStorage.setItem('MERCHANTID', Object(Object(data).data).merchantId);
+            localStorage.setItem('MERCHANTNAME', Object(Object(data).data).merchantName);
+            localStorage.setItem('DEPARTMENTID', Object(Object(data).data).departmentId);
+            localStorage.setItem('DEPARTMENTNAME', Object(Object(data).data).departmentName);
+            localStorage.setItem('WECHATMERCHANTID', Object(Object(data).data).wechatMerchantId);
+            localStorage.setItem('LEVEL', Object(Object(data).data).level);
+            localStorage.setItem('SESSIONID', Object(Object(data).data).sessionid);
+            localStorage.setItem('MOBILE', Object(Object(data).data).mobile);
+            localStorage.setItem('NAME', Object(Object(data).data).name);
+            localStorage.setItem('UID', Object(Object(data).data).uid);
+            localStorage.setItem('UID2', Object(Object(data).data).uid2);
 
             if(Object(data).code === "0")
                 this.navCtrl.push(TabsPage);
