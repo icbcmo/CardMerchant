@@ -18,14 +18,8 @@ export class WeixinRefund implements OnInit{
 	@ViewChild('wechattrxno') wechattrxno: ElementRef;
 	@ViewChild('wechattrxdate') wechattrxdate: ElementRef;
 	@ViewChild('wechattrxamount') wechattrxamount: ElementRef;
-<<<<<<< HEAD
-	@ViewChild('wechatapplymobile') wechatapplymobile: ElementRef;
-	@ViewChild('wechatapplyname') wechatapplyname: ElementRef;
-=======
     @ViewChild('wechatapplymobile') wechatapplymobile: ElementRef;
 	@ViewChild('wechatapplyname') wechatapplyname: ElementRef;
-	@ViewChild('name') name: ElementRef;
->>>>>>> 6f9c3970ce29660f8702166aa2f64ef23a29adf0
 
     constructor(
 		public cardMerchantService: CardMerchantService,
