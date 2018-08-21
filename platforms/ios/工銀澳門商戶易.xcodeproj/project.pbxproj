@@ -5,7 +5,6 @@
 	};
 	objectVersion = 46;
 	objects = {
-
 /* Begin PBXBuildFile section */
 		0207DA581B56EA530066E2B4 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0207DA571B56EA530066E2B4 /* Images.xcassets */; };
 		0C2299EDB732448AA6F83828 /* GCDWebServerFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = 044EEB59B7124468808DEBF0 /* GCDWebServerFunctions.m */; };
@@ -59,6 +58,7 @@
 		FB8EB030768C4526B86D8F58 /* libresolv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F521E4227CE4286BBCAE92B /* libresolv.tbd */; settings = {ATTRIBUTES = (Weak, ); }; };
 		FBB5A22E2DCF499DBAD81F35 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADE0E05EAA694AF69BE1D3B7 /* Security.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		FC300B355A1746BD9B8BC863 /* CDVCamera.m in Sources */ = {isa = PBXBuildFile; fileRef = 35988D88419743A9A13E4540 /* CDVCamera.m */; };
+		72F27BEAAE294557924E02DB /* CDVInAppBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D5D112BF87940F6937F3C13 /* CDVInAppBrowser.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -182,6 +182,8 @@
 		F103FDD4196C48BB96986DFE /* GCDWebServerConnection.m */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.objc; name = GCDWebServerConnection.m; path = "cordova-plugin-ionic-webview/GCDWebServerConnection.m"; sourceTree = "<group>"; };
 		F840E1F0165FE0F500CFE078 /* config.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = config.xml; path = "工銀澳門商戶易/config.xml"; sourceTree = "<group>"; };
 		FD288B5E383A4DFCB18C1C2D /* GCDWebServerStreamedResponse.h */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.h; name = GCDWebServerStreamedResponse.h; path = "cordova-plugin-ionic-webview/GCDWebServerStreamedResponse.h"; sourceTree = "<group>"; };
+		4D5D112BF87940F6937F3C13 /* CDVInAppBrowser.m */ = {isa = PBXFileReference; name = "CDVInAppBrowser.m"; path = "cordova-plugin-inappbrowser/CDVInAppBrowser.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
+		A97892D48E914DBCADA19765 /* CDVInAppBrowser.h */ = {isa = PBXFileReference; name = "CDVInAppBrowser.h"; path = "cordova-plugin-inappbrowser/CDVInAppBrowser.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -379,6 +381,8 @@
 				AF3F10A4E1814F49A441AEF4 /* JPushPlugin.h */,
 				2009BBA51BDC4F638A39E972 /* AppDelegate+JPush.h */,
 				736B684DEC3A45CF99A5C583 /* JPUSHService.h */,
+				4D5D112BF87940F6937F3C13 /* CDVInAppBrowser.m */,
+				A97892D48E914DBCADA19765 /* CDVInAppBrowser.h */,
 			);
 			name = Plugins;
 			path = "工銀澳門商戶易/Plugins";
@@ -534,6 +538,7 @@
 				71B9C3F3CFF04990A564C422 /* CDVViewController+SplashScreen.m in Sources */,
 				687A5C4EEDB84A918A0D4F5E /* JPushPlugin.m in Sources */,
 				785272470A464DCD8D1D1E95 /* AppDelegate+JPush.m in Sources */,
+				72F27BEAAE294557924E02DB /* CDVInAppBrowser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

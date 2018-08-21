@@ -45,6 +45,9 @@
     <feature name="JPushPlugin">
         <param name="ios-package" value="JPushPlugin" />
     </feature>
+    <feature name="InAppBrowser">
+        <param name="ios-package" value="CDVInAppBrowser" />
+    </feature>
     <name>工銀澳門商戶易</name>
     <description>工銀澳門商戶易</description>
     <author email="hi@ionicframework" href="http://ionicframework.com/">Ionic Framework Team</author>

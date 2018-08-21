@@ -35,6 +35,10 @@
             {
               "xml": "<feature name=\"JPushPlugin\"><param name=\"android-package\" value=\"cn.jiguang.cordova.push.JPushPlugin\" /></feature>",
               "count": 1
+            },
+            {
+              "xml": "<feature name=\"InAppBrowser\"><param name=\"android-package\" value=\"org.apache.cordova.inappbrowser.InAppBrowser\" /></feature>",
+              "count": 1
             }
           ]
         }
@@ -217,6 +221,9 @@
     "jpush-phonegap-plugin": {
       "APP_KEY": "38ed55f30a5df83d4729ea55",
       "PACKAGE_NAME": "com.icbc.MerchantE"
+    },
+    "cordova-plugin-inappbrowser": {
+      "PACKAGE_NAME": "com.icbc.MerchantE"
     }
   },
   "dependent_plugins": {},
@@ -310,6 +317,15 @@
       "clobbers": [
         "JPush"
       ]
+    },
+    {
+      "id": "cordova-plugin-inappbrowser.inappbrowser",
+      "file": "plugins/cordova-plugin-inappbrowser/www/inappbrowser.js",
+      "pluginId": "cordova-plugin-inappbrowser",
+      "clobbers": [
+        "cordova.InAppBrowser.open",
+        "window.open"
+      ]
     }
   ],
   "plugin_metadata": {
@@ -323,6 +339,7 @@
     "cordova-plugin-qrscanner": "2.6.0",
     "cordova-plugin-splashscreen": "5.0.2",
     "cordova-plugin-whitelist": "1.3.3",
-    "jpush-phonegap-plugin": "3.4.1"
+    "jpush-phonegap-plugin": "3.4.1",
+    "cordova-plugin-inappbrowser": "3.0.0"
   }
 }

@@ -785,7 +785,7 @@ var ContactPage = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__refund_refund__ = __webpack_require__(382);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__wrongtrx_wrongtrx__ = __webpack_require__(389);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__refund_orderrefund__ = __webpack_require__(390);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__ionic_native_camera__ = __webpack_require__(74);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__ionic_native_camera__ = __webpack_require__(96);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__qrcode_qrcode__ = __webpack_require__(391);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__jiguang_ionic_jpush__ = __webpack_require__(97);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__ionic_native_device__ = __webpack_require__(172);
@@ -1021,14 +1021,10 @@ var HomePage = /** @class */ (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'page-home',template:/*ion-inline-start:"/Users/xiongfeizhao/Documents/CardMerchant/src/pages/home/home.html"*/'<ion-header class="page-home-header">\n  <ion-grid class="grid1">\n      <ion-row class="row1">\n        <ion-col>\n          <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>\n        </ion-col>\n      </ion-row>\n      <ion-row class="row2">\n        <ion-col>\n          <div class="top">\n            <img class="image1" src="assets/imgs/index_fn1.png" alt="掃碼" (click)="openCamera()">\n          </div>\n          <p class="bottom">掃碼</p>\n        </ion-col>\n        <ion-col>\n          <div class="top">\n            <img class="image1" src="assets/imgs/index_fn2.png" alt="收款" (click)="openQrcodeModal()">\n          </div>\n          <p class="bottom">收款</p>\n        </ion-col>\n        <ion-col (click)="openOrderList()" >\n          <div class="top">\n            <img class="image1" src="assets/imgs/index_fn3.png" alt="訂單">\n            <span class="title">{{orderNum}}</span>\n          </div>\n          <p class="bottom">訂單</p>\n        </ion-col>\n        <ion-col>\n          <div class="top">\n            <img class="image1" src="assets/imgs/index_fn4.png" alt="設置" (click)="goSetup()">\n          </div>\n          <p class="bottom">設置</p>\n        </ion-col>\n      </ion-row>\n      <ion-row class="row3">\n        <ion-col>\n          <div class="news">\n            <span class="span1">最新消息：</span>\n            <span class="span2">一條為方便客戶溝通聯絡時間的在線交流APP方便快捷利於攜帶出門旅行之利器</span>\n          </div>\n        </ion-col>\n      </ion-row>\n    </ion-grid>\n  <ion-grid class="grid2">\n    <ion-row class="row1">\n      <ion-col>\n        <span class="circle">●</span>基本服務\n      </ion-col>\n    </ion-row>\n    <ion-row class="row2">\n      <ion-col col-3>\n        <div class="top">\n          <img class="image1" src="assets/imgs/index_pa2.png" alt="退款" (click)="openRefundModal()">\n        </div>\n        <p class="bottom">退款</p>\n      </ion-col>\n      <ion-col col-3>\n        <div class="top">\n          <img class="image1" src="assets/imgs/index_pa3.png" alt="差錯交易" (click)="openWrongtrxModal()">\n        </div>\n        <p class="bottom">差錯交易</p>\n      </ion-col>\n	  <ion-col>\n        <div class="top">\n          <img class="image1" src="assets/imgs/index_pa3.png" alt="调单/退款" (click)="openOrderRefundModal()">\n        </div>\n        <p class="bottom">调单/退款</p>\n      </ion-col>\n      <ion-col col-3>\n        <div class="top">\n          <img class="image1" src="assets/imgs/index_pa4.png" alt="客服" (click)="openCustserviceModal()">\n        </div>\n        <p class="bottom">客服</p>\n      </ion-col>\n    </ion-row>\n  </ion-grid>\n</ion-header>\n\n<ion-content class="page-home-content">\n  <ion-grid class="grid1">\n    <ion-row class="row1">\n      <ion-col>\n        <img src="assets/imgs/banner.png" style="border-radius: 6px;" width="100%" alt="">\n      </ion-col>\n    </ion-row>\n  </ion-grid>\n  <!--<ion-list>\n    <ion-item>\n      <div>Registration Id: {{registrationId}}</div>\n      <button ion-button full (click)="getRegistrationID()">Get Registration Id</button>\n    </ion-item>\n\n    <ion-item>\n      <button ion-button full (click)="setTags()">Set tags - Tag1, Tag2</button>\n      <button ion-button full (click)="addTags()">Add tags - Tag3, Tag4</button>\n      <button ion-button full (click)="checkTagBindState()">Check tag bind state - Tag1</button>\n      <button ion-button full (click)="deleteTags()">Delete tags - Tag4</button>\n      <button ion-button full (click)="getAllTags()">Get all tags</button>\n      <button ion-button full (click)="cleanTags()">Clean tags</button>\n    </ion-item>\n\n    <ion-item>\n      <button ion-button full (click)="setAlias()">Set Alias - TestAlias</button>\n      <button ion-button full (click)="getAlias()">Get Alias</button>\n      <button ion-button full (click)="deleteAlias()">Delete Alias</button>\n    </ion-item>\n\n    <ion-item>\n      <button ion-button full (click)="addLocalNotification()">Trigger local notification after 5 seconds</button>\n    </ion-item>\n  </ion-list>-->\n</ion-content>\n'/*ion-inline-end:"/Users/xiongfeizhao/Documents/CardMerchant/src/pages/home/home.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__ngrx_store__["h" /* Store */],
-            __WEBPACK_IMPORTED_MODULE_3__service_counter_service__["a" /* CounterService */],
-            __WEBPACK_IMPORTED_MODULE_7__ionic_native_camera__["a" /* Camera */],
-            __WEBPACK_IMPORTED_MODULE_9__jiguang_ionic_jpush__["a" /* JPush */],
-            __WEBPACK_IMPORTED_MODULE_10__ionic_native_device__["a" /* Device */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* ModalController */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__ngrx_store__["h" /* Store */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__ngrx_store__["h" /* Store */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3__service_counter_service__["a" /* CounterService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__service_counter_service__["a" /* CounterService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_7__ionic_native_camera__["a" /* Camera */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_7__ionic_native_camera__["a" /* Camera */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_9__jiguang_ionic_jpush__["a" /* JPush */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_9__jiguang_ionic_jpush__["a" /* JPush */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_10__ionic_native_device__["a" /* Device */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_10__ionic_native_device__["a" /* Device */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* ModalController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* ModalController */]) === "function" && _f || Object])
     ], HomePage);
     return HomePage;
+    var _a, _b, _c, _d, _e, _f;
 }());
 
 //# sourceMappingURL=home.js.map
@@ -1113,7 +1109,7 @@ var Refund = /** @class */ (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CommonRefund; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__service_card_merchant_service__ = __webpack_require__(17);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_camera__ = __webpack_require__(74);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_camera__ = __webpack_require__(96);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ionic_angular__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__service_tip_service__ = __webpack_require__(25);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__service_BaseDate_service__ = __webpack_require__(384);
@@ -1250,48 +1246,44 @@ var CommonRefund = /** @class */ (function () {
     };
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["ViewChild"])('merchantname'),
-        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_0__angular_core__["ElementRef"])
+        __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["ElementRef"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["ElementRef"]) === "function" && _a || Object)
     ], CommonRefund.prototype, "merchantname", void 0);
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["ViewChild"])('departmentname'),
-        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_0__angular_core__["ElementRef"])
+        __metadata("design:type", typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["ElementRef"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["ElementRef"]) === "function" && _b || Object)
     ], CommonRefund.prototype, "departmentname", void 0);
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["ViewChild"])('refundcardno4'),
-        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_0__angular_core__["ElementRef"])
+        __metadata("design:type", typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["ElementRef"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["ElementRef"]) === "function" && _c || Object)
     ], CommonRefund.prototype, "refundcardno4", void 0);
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["ViewChild"])('authno'),
-        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_0__angular_core__["ElementRef"])
+        __metadata("design:type", typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["ElementRef"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["ElementRef"]) === "function" && _d || Object)
     ], CommonRefund.prototype, "authno", void 0);
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["ViewChild"])('trxamount'),
-        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_0__angular_core__["ElementRef"])
+        __metadata("design:type", typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["ElementRef"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["ElementRef"]) === "function" && _e || Object)
     ], CommonRefund.prototype, "trxamount", void 0);
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["ViewChild"])('refundamount'),
-        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_0__angular_core__["ElementRef"])
+        __metadata("design:type", typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["ElementRef"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["ElementRef"]) === "function" && _f || Object)
     ], CommonRefund.prototype, "refundamount", void 0);
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["ViewChild"])('applymobile'),
-        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_0__angular_core__["ElementRef"])
+        __metadata("design:type", typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["ElementRef"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["ElementRef"]) === "function" && _g || Object)
     ], CommonRefund.prototype, "applymobile", void 0);
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["ViewChild"])('applyname'),
-        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_0__angular_core__["ElementRef"])
+        __metadata("design:type", typeof (_h = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["ElementRef"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["ElementRef"]) === "function" && _h || Object)
     ], CommonRefund.prototype, "applyname", void 0);
     CommonRefund = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-commonrefund',template:/*ion-inline-start:"/Users/xiongfeizhao/Documents/CardMerchant/src/pages/home/refund/commonrefund.html"*/'<ion-header>\n  <ion-navbar>\n    <button ion-button small clear (click)="goBack()">\n      <ion-icon ios="ios-arrow-back"></ion-icon>\n    </button>\n    <ion-title>退款</ion-title>\n  </ion-navbar>\n</ion-header>\n<ion-content>\n  <ion-list class="input_list">\n\n    <ion-item>\n      <ion-label>商戶名稱</ion-label>\n      <ion-input type="text" placeholder="請輸入商戶名稱" #merchantname ></ion-input>\n    </ion-item>\n	<ion-item>\n      <ion-label>部门名稱</ion-label>\n      <ion-input type="text" placeholder="請輸入部门名稱" #departmentname ></ion-input>\n    </ion-item>\n    <ion-item>\n      <ion-label>退款卡號</ion-label>\n      <ion-input type="text" placeholder="請輸入退款卡號" #refundcardno4 ></ion-input>\n    </ion-item>\n    <button ion-item class="item-ios" >\n      <ion-label>交易日期</ion-label>\n	  <ion-datetime displayFormat="YYYY-MM-DD" pickerFormat="YYYY-MM-DD" [(ngModel)]="tradeDate"></ion-datetime>\n      <!-- <ion-input type="text" #trxdate ></ion-input> -->\n    </button>\n    <ion-item>\n      <ion-label>授權號</ion-label>\n      <ion-input type="text" placeholder="請輸入授權號" #authno ></ion-input>\n    </ion-item>\n    <ion-item>\n      <ion-label>原交易金額</ion-label>\n      <ion-input type="text" placeholder="請輸入原交易金額" #trxamount ></ion-input>\n    </ion-item>\n    <ion-item>\n      <ion-label>退款金額</ion-label>\n      <ion-input type="text" placeholder="請輸入退款金額" #refundamount ></ion-input>\n    </ion-item>\n    <ion-item>\n      <ion-label>NAME</ion-label>\n      <ion-input type="text" placeholder="請輸入NAME" #name ></ion-input>\n    </ion-item>\n	<ion-item>\n      <ion-label>MOBILE</ion-label>\n      <ion-input type="text" placeholder="請輸入MOBILE" #applymobile ></ion-input>\n    </ion-item>\n	<ion-item>\n		<button ion-button (click)="openCamera()" >拍照</button>\n		<div *ngIf="needView" class="row" >\n			<div class="pic-wrapper" *ngFor="let picture of pictures;let i = index" >\n				<img [src]="picture" />\n				<div class="delete" (click)="delPic(i)" >x</div>\n			</div>\n		</div>\n    </ion-item>\n\n  </ion-list>\n\n  <div padding>\n    <button ion-button color="primary" (click)="submitForm()" block>提交</button>\n  </div>\n\n</ion-content>\n'/*ion-inline-end:"/Users/xiongfeizhao/Documents/CardMerchant/src/pages/home/refund/commonrefund.html"*/
+            selector: 'page-commonrefund',template:/*ion-inline-start:"/Users/xiongfeizhao/Documents/CardMerchant/src/pages/home/refund/commonrefund.html"*/'<ion-header>\n  <ion-navbar>\n    <button ion-button small clear (click)="goBack()">\n      <ion-icon ios="ios-arrow-back"></ion-icon>\n    </button>\n    <ion-title>退款</ion-title>\n  </ion-navbar>\n</ion-header>\n<ion-content>\n  <ion-list class="input_list">\n\n    <ion-item>\n      <ion-label>商戶名稱</ion-label>\n      <ion-input type="text" placeholder="請輸入商戶名稱" #merchantname ></ion-input>\n    </ion-item>\n	<ion-item>\n      <ion-label>部门名稱</ion-label>\n      <ion-input type="text" placeholder="請輸入部门名稱" #departmentname ></ion-input>\n    </ion-item>\n    <ion-item>\n      <ion-label>退款卡號后4位</ion-label>\n      <ion-input type="text" placeholder="请输入退款卡号后4位" #refundcardno4 ></ion-input>\n    </ion-item>\n    <button ion-item class="item-ios" >\n      <ion-label>交易日期</ion-label>\n	  <ion-datetime displayFormat="YYYY-MM-DD" pickerFormat="YYYY-MM-DD" [(ngModel)]="tradeDate"></ion-datetime>\n      <!-- <ion-input type="text" #trxdate ></ion-input> -->\n    </button>\n    <ion-item>\n      <ion-label>授權號</ion-label>\n      <ion-input type="text" placeholder="請輸入授權號" #authno ></ion-input>\n    </ion-item>\n    <ion-item>\n      <ion-label>原交易金額</ion-label>\n      <ion-input type="text" placeholder="請輸入原交易金額" #trxamount ></ion-input>\n    </ion-item>\n    <ion-item>\n      <ion-label>退款金額</ion-label>\n      <ion-input type="text" placeholder="請輸入退款金額" #refundamount ></ion-input>\n    </ion-item>\n    <ion-item>\n      <ion-label>NAME</ion-label>\n      <ion-input type="text" placeholder="請輸入NAME" #name ></ion-input>\n    </ion-item>\n	<ion-item>\n      <ion-label>MOBILE</ion-label>\n      <ion-input type="text" placeholder="請輸入MOBILE" #applymobile ></ion-input>\n    </ion-item>\n	<ion-item>\n		<button ion-button (click)="openCamera()" >拍照</button>\n		<div *ngIf="needView" class="row" >\n			<div class="pic-wrapper" *ngFor="let picture of pictures;let i = index" >\n				<img [src]="picture" />\n				<div class="delete" (click)="delPic(i)" >x</div>\n			</div>\n		</div>\n    </ion-item>\n\n  </ion-list>\n\n  <div padding>\n    <button ion-button color="primary" (click)="submitForm()" block>提交</button>\n  </div>\n\n</ion-content>\n'/*ion-inline-end:"/Users/xiongfeizhao/Documents/CardMerchant/src/pages/home/refund/commonrefund.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__service_card_merchant_service__["a" /* CardMerchantService */],
-            __WEBPACK_IMPORTED_MODULE_2__ionic_native_camera__["a" /* Camera */],
-            __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["j" /* ViewController */],
-            __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["e" /* LoadingController */],
-            __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["a" /* AlertController */],
-            __WEBPACK_IMPORTED_MODULE_4__service_tip_service__["a" /* TipService */]])
+        __metadata("design:paramtypes", [typeof (_j = typeof __WEBPACK_IMPORTED_MODULE_1__service_card_merchant_service__["a" /* CardMerchantService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__service_card_merchant_service__["a" /* CardMerchantService */]) === "function" && _j || Object, typeof (_k = typeof __WEBPACK_IMPORTED_MODULE_2__ionic_native_camera__["a" /* Camera */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__ionic_native_camera__["a" /* Camera */]) === "function" && _k || Object, typeof (_l = typeof __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["j" /* ViewController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["j" /* ViewController */]) === "function" && _l || Object, typeof (_m = typeof __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["e" /* LoadingController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["e" /* LoadingController */]) === "function" && _m || Object, typeof (_o = typeof __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["a" /* AlertController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["a" /* AlertController */]) === "function" && _o || Object, typeof (_p = typeof __WEBPACK_IMPORTED_MODULE_4__service_tip_service__["a" /* TipService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__service_tip_service__["a" /* TipService */]) === "function" && _p || Object])
     ], CommonRefund);
     return CommonRefund;
+    var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l, _m, _o, _p;
 }());
 
 //# sourceMappingURL=commonrefund.js.map
@@ -1349,7 +1341,7 @@ var BaseDate = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__service_tip_service__ = __webpack_require__(25);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__service_BaseDate_service__ = __webpack_require__(384);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_native_camera__ = __webpack_require__(74);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_native_camera__ = __webpack_require__(96);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1471,36 +1463,32 @@ var WeixinRefund = /** @class */ (function () {
     };
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["ViewChild"])('wechattrxno'),
-        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_0__angular_core__["ElementRef"])
+        __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["ElementRef"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["ElementRef"]) === "function" && _a || Object)
     ], WeixinRefund.prototype, "wechattrxno", void 0);
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["ViewChild"])('wechattrxdate'),
-        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_0__angular_core__["ElementRef"])
+        __metadata("design:type", typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["ElementRef"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["ElementRef"]) === "function" && _b || Object)
     ], WeixinRefund.prototype, "wechattrxdate", void 0);
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["ViewChild"])('wechattrxamount'),
-        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_0__angular_core__["ElementRef"])
+        __metadata("design:type", typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["ElementRef"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["ElementRef"]) === "function" && _c || Object)
     ], WeixinRefund.prototype, "wechattrxamount", void 0);
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["ViewChild"])('wechatapplymobile'),
-        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_0__angular_core__["ElementRef"])
+        __metadata("design:type", typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["ElementRef"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["ElementRef"]) === "function" && _d || Object)
     ], WeixinRefund.prototype, "wechatapplymobile", void 0);
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["ViewChild"])('wechatapplyname'),
-        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_0__angular_core__["ElementRef"])
+        __metadata("design:type", typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["ElementRef"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["ElementRef"]) === "function" && _e || Object)
     ], WeixinRefund.prototype, "wechatapplyname", void 0);
     WeixinRefund = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'page-weixinrefund',template:/*ion-inline-start:"/Users/xiongfeizhao/Documents/CardMerchant/src/pages/home/refund/weixinrefund.html"*/'<ion-header>\n  <ion-navbar>\n    <button ion-button small clear (click)="goBack()">\n      <ion-icon ios="ios-arrow-back"></ion-icon>\n    </button>\n    <ion-title>微信退款</ion-title>\n  </ion-navbar>\n</ion-header>\n<ion-content>\n  <ion-list class="input_list">\n    <ion-item>\n      <ion-label>交易编号</ion-label>\n      <ion-input type="text" placeholder="請輸入交易编号" #wechattrxno ></ion-input>\n    </ion-item>\n    <button ion-item class="item-ios" >\n      <ion-label>交易日期</ion-label>\n	  <ion-datetime displayFormat="YYYY-MM-DD" pickerFormat="YYYY-MM-DD" [(ngModel)]="tradeDate"></ion-datetime>\n      <!-- <ion-input class="input-date" type="text" #wechattrxdate placeholder="请按格式yyyy-mm-dd输入日期" ></ion-input> -->\n    </button>\n    <ion-item>\n      <ion-label>原交易金額</ion-label>\n      <ion-input type="text" placeholder="請輸入原交易金額" #wechattrxamount ></ion-input>\n    </ion-item>\n    <ion-item>\n      <ion-label >申請人</ion-label>\n      <ion-input type="text" placeholder="請輸入申請人" #wechatapplyname ></ion-input>\n    </ion-item>\n	<ion-item>\n      <ion-label >聯絡電話</ion-label>\n      <ion-input type="text" placeholder="請輸入申請人聯絡電話" #wechatapplymobile ></ion-input>\n    </ion-item>\n	<ion-item>\n		<button ion-button (click)="openCamera()" >拍照</button>\n		<div *ngIf="needView" class="row" >\n			<div class="pic-wrapper" *ngFor="let picture of pictures;let i = index" >\n				<img [src]="picture" />\n				<div class="delete" (click)="delPic(i)" >x</div>\n			</div>\n		</div>\n    </ion-item>\n  </ion-list>\n\n  <div padding>\n    <button ion-button color="primary" (click)="submitForm()" block>提交</button>\n  </div>\n\n</ion-content>\n'/*ion-inline-end:"/Users/xiongfeizhao/Documents/CardMerchant/src/pages/home/refund/weixinrefund.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__service_card_merchant_service__["a" /* CardMerchantService */],
-            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["j" /* ViewController */],
-            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["e" /* LoadingController */],
-            __WEBPACK_IMPORTED_MODULE_5__ionic_native_camera__["a" /* Camera */],
-            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["a" /* AlertController */],
-            __WEBPACK_IMPORTED_MODULE_3__service_tip_service__["a" /* TipService */]])
+        __metadata("design:paramtypes", [typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_1__service_card_merchant_service__["a" /* CardMerchantService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__service_card_merchant_service__["a" /* CardMerchantService */]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["j" /* ViewController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["j" /* ViewController */]) === "function" && _g || Object, typeof (_h = typeof __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["e" /* LoadingController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["e" /* LoadingController */]) === "function" && _h || Object, typeof (_j = typeof __WEBPACK_IMPORTED_MODULE_5__ionic_native_camera__["a" /* Camera */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__ionic_native_camera__["a" /* Camera */]) === "function" && _j || Object, typeof (_k = typeof __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["a" /* AlertController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["a" /* AlertController */]) === "function" && _k || Object, typeof (_l = typeof __WEBPACK_IMPORTED_MODULE_3__service_tip_service__["a" /* TipService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__service_tip_service__["a" /* TipService */]) === "function" && _l || Object])
     ], WeixinRefund);
     return WeixinRefund;
+    var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l;
 }());
 
 //# sourceMappingURL=weixinrefund.js.map
@@ -2522,7 +2510,7 @@ var Machine = /** @class */ (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MachineRequest; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__service_card_merchant_service__ = __webpack_require__(17);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_camera__ = __webpack_require__(74);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_camera__ = __webpack_require__(96);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ionic_angular__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__service_tip_service__ = __webpack_require__(25);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -2905,18 +2893,20 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_40__pages_home_refund_orderrefund__ = __webpack_require__(390);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_41__pages_home_qrcode_qrcode__ = __webpack_require__(391);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_42_angular2_qrcode__ = __webpack_require__(722);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_43__ionic_native_camera__ = __webpack_require__(74);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_43__ionic_native_camera__ = __webpack_require__(96);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_44__ionic_native_native_storage__ = __webpack_require__(21);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_45__ionic_native_device__ = __webpack_require__(172);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_46__pages_home_machine_machine__ = __webpack_require__(396);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_47__pages_home_machine_machinerequest__ = __webpack_require__(397);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_48__pages_home_machine_machinerequestdetail__ = __webpack_require__(398);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_46__pages_home_order_orderlist__ = __webpack_require__(711);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_47__pages_home_machine_machine__ = __webpack_require__(396);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_48__pages_home_machine_machinerequest__ = __webpack_require__(397);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_49__pages_home_machine_machinerequestdetail__ = __webpack_require__(398);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -2982,6 +2972,7 @@ var AppModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_30__pages_home_binsearch_binsearch__["a" /* Binsearch */],
                 __WEBPACK_IMPORTED_MODULE_7__pages_tabs_tabs__["a" /* TabsPage */],
                 __WEBPACK_IMPORTED_MODULE_15__pages_index_index__["a" /* IndexPage */],
+                __WEBPACK_IMPORTED_MODULE_46__pages_home_order_orderlist__["a" /* OrderList */],
                 __WEBPACK_IMPORTED_MODULE_31__pages_home_custservice_custservice__["a" /* Custservice */],
                 __WEBPACK_IMPORTED_MODULE_32__pages_home_refund_refund__["a" /* Refund */],
                 __WEBPACK_IMPORTED_MODULE_33__pages_home_refund_refundverify__["a" /* RefundVerify */],
@@ -2997,9 +2988,9 @@ var AppModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_39__pages_home_wrongtrx_wrongtrx__["a" /* Wrongtrx */],
                 __WEBPACK_IMPORTED_MODULE_40__pages_home_refund_orderrefund__["a" /* OrderRefund */],
                 __WEBPACK_IMPORTED_MODULE_41__pages_home_qrcode_qrcode__["a" /* Qrcode */],
-                __WEBPACK_IMPORTED_MODULE_46__pages_home_machine_machine__["a" /* Machine */],
-                __WEBPACK_IMPORTED_MODULE_47__pages_home_machine_machinerequest__["a" /* MachineRequest */],
-                __WEBPACK_IMPORTED_MODULE_48__pages_home_machine_machinerequestdetail__["a" /* MachineRequestDetail */]
+                __WEBPACK_IMPORTED_MODULE_47__pages_home_machine_machine__["a" /* Machine */],
+                __WEBPACK_IMPORTED_MODULE_48__pages_home_machine_machinerequest__["a" /* MachineRequest */],
+                __WEBPACK_IMPORTED_MODULE_49__pages_home_machine_machinerequestdetail__["a" /* MachineRequestDetail */]
             ],
             imports: [
                 __WEBPACK_IMPORTED_MODULE_24__angular_common_http__["b" /* HttpClientModule */],
@@ -3028,6 +3019,7 @@ var AppModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_8__pages_auth_signin__["a" /* SigninPage */],
                 __WEBPACK_IMPORTED_MODULE_7__pages_tabs_tabs__["a" /* TabsPage */],
                 __WEBPACK_IMPORTED_MODULE_15__pages_index_index__["a" /* IndexPage */],
+                __WEBPACK_IMPORTED_MODULE_46__pages_home_order_orderlist__["a" /* OrderList */],
                 __WEBPACK_IMPORTED_MODULE_30__pages_home_binsearch_binsearch__["a" /* Binsearch */],
                 __WEBPACK_IMPORTED_MODULE_31__pages_home_custservice_custservice__["a" /* Custservice */],
                 __WEBPACK_IMPORTED_MODULE_32__pages_home_refund_refund__["a" /* Refund */],
@@ -3044,9 +3036,9 @@ var AppModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_39__pages_home_wrongtrx_wrongtrx__["a" /* Wrongtrx */],
                 __WEBPACK_IMPORTED_MODULE_40__pages_home_refund_orderrefund__["a" /* OrderRefund */],
                 __WEBPACK_IMPORTED_MODULE_41__pages_home_qrcode_qrcode__["a" /* Qrcode */],
-                __WEBPACK_IMPORTED_MODULE_46__pages_home_machine_machine__["a" /* Machine */],
-                __WEBPACK_IMPORTED_MODULE_47__pages_home_machine_machinerequest__["a" /* MachineRequest */],
-                __WEBPACK_IMPORTED_MODULE_48__pages_home_machine_machinerequestdetail__["a" /* MachineRequestDetail */]
+                __WEBPACK_IMPORTED_MODULE_47__pages_home_machine_machine__["a" /* Machine */],
+                __WEBPACK_IMPORTED_MODULE_48__pages_home_machine_machinerequest__["a" /* MachineRequest */],
+                __WEBPACK_IMPORTED_MODULE_49__pages_home_machine_machinerequestdetail__["a" /* MachineRequestDetail */]
             ],
             providers: [
                 __WEBPACK_IMPORTED_MODULE_13__ionic_native_status_bar__["a" /* StatusBar */],

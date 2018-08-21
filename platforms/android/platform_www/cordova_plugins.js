@@ -89,6 +89,15 @@ module.exports = [
     "clobbers": [
       "JPush"
     ]
+  },
+  {
+    "id": "cordova-plugin-inappbrowser.inappbrowser",
+    "file": "plugins/cordova-plugin-inappbrowser/www/inappbrowser.js",
+    "pluginId": "cordova-plugin-inappbrowser",
+    "clobbers": [
+      "cordova.InAppBrowser.open",
+      "window.open"
+    ]
   }
 ];
 module.exports.metadata = 
@@ -104,7 +113,8 @@ module.exports.metadata =
   "cordova-plugin-qrscanner": "2.6.0",
   "cordova-plugin-splashscreen": "5.0.2",
   "cordova-plugin-whitelist": "1.3.3",
-  "jpush-phonegap-plugin": "3.4.1"
+  "jpush-phonegap-plugin": "3.4.1",
+  "cordova-plugin-inappbrowser": "3.0.0"
 };
 // BOTTOM OF METADATA
 });

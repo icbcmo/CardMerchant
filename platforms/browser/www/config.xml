@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="cardMerchantICBCMO" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="com.icbc.MerchantE" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>工銀澳門商戶易</name>
     <description>工銀澳門商戶易</description>
     <author email="hi@ionicframework" href="http://ionicframework.com/">Ionic Framework Team</author>
