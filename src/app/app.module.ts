@@ -49,6 +49,7 @@ import { Device } from '@ionic-native/device';
 import {Machine} from "../pages/home/machine/machine";
 import {MachineRequest} from "../pages/home/machine/machinerequest";
 import {MachineRequestDetail} from "../pages/home/machine/machinerequestdetail";
+import {ReportDataService} from "../service/report-data.service";
 
 @NgModule({
     declarations: [
@@ -132,6 +133,7 @@ import {MachineRequestDetail} from "../pages/home/machine/machinerequestdetail";
         JPush,
         CounterService,//Sse,
         CardMerchantService,
+        ReportDataService,
 		TipService,
         NativeStorage,
         Device,
