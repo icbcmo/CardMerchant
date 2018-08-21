@@ -1,15 +1,41 @@
 page-orderlist {
-	.toolbar-content{
-		display: flex;
-		justify-content: space-between;
-	}
-	.toolbar-title{
-		text-align: center;
-	}
-	ion-icon {
-		font-size: 2.2em;
-		color: white;
-		line-height: 52px;
-		margin-right: 0.5rem;
+	.fl{float: left;}
+	.fr{float: right;}
+	> .content {
+		background-color: #f3f3f3;
+		.searchbar-ios {
+			padding: 10px 10px 0;
+			border: 0;
+			background: transparent;
+			.searchbar-input-container {
+				border: 1px solid #eaeaea;
+				border-radius: 6px;
+			}
+			.searchbar-search-icon {
+				background-image: url("../assets/imgs/search_red.png");
+				left: 10px;
+				top: 12px;
+			}
+			.searchbar-input::-webkit-input-placeholder {
+				color: #ccc;
+			}
+		}
+		.useList{
+			padding: 0 10px;
+			.item{
+				border: 0; border-radius: 8px; margin-top: 10px; border: 1px solid #eaeaea; font-size: 1.4rem; color: #666;
+				.item-inner{
+					border: 0;
+					.top{
+						font-size: 1.5rem; padding-bottom: 10px; border-bottom: 1px solid #eaeaea; color: #333;
+						.fr{color: #6e8bff; font-size: 1.6rem; line-height: 1.8rem;}
+					}
+					.bottom{
+						padding-top: 5px;
+						> p{font-size: 1.3rem; margin-top: 6px;}
+					}
+				}
+			}
+		}
 	}
 }
