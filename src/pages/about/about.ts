@@ -328,7 +328,7 @@ export class AboutPage implements OnInit{
 
             for(let j =0; j<totalList.length; j++){
                 if(tmp[i].departmentName == totalList[j].name){
-                    totalList[j].value= totalList[j].value + (parseInt(tmp[i].txnAmount)/100).toFixed(2);
+                    totalList[j].value= totalList[j].value + (parseInt(tmp[i].txnAmount));
                 }
             }
         }
@@ -337,6 +337,11 @@ export class AboutPage implements OnInit{
         console.log(tmp);
         console.log(departmantList);
         console.log(totalList);
+
+        for( let x=0;x<totalList.length;x++){
+
+            totalList[x].value = (parseInt(totalList[x].value)/100).toFixed(2);
+        }
 
         loading.dismiss();
         let option = {
