@@ -12,13 +12,13 @@ import {Wrongtrx} from "./wrongtrx/wrongtrx";
 import {OrderRefund} from "./refund/orderrefund";
 import {Camera, CameraOptions} from '@ionic-native/camera';
 import {QRScanner} from '@ionic-native/qr-scanner';
+import {ScanList} from './scan/scanlist';
 import {Qrcode} from "./qrcode/qrcode";
 import { JPush } from "@jiguang-ionic/jpush";
 import { Device } from "@ionic-native/device";
 import {Setup} from "./setup/setup";
 import {Machine} from "./machine/machine";
 import {OrderList} from "./order/orderlist";
-
 
 const EventSource: any = window['EventSource'];
 
@@ -42,6 +42,7 @@ export class HomePage implements OnInit{
         private store: Store<AppState> ,
         private counterService:CounterService,
         private camera: Camera,
+		private scanner: QRScanner,
         public jpush: JPush,
         device: Device,
         public modalCtrl: ModalController,
@@ -228,6 +229,8 @@ export class HomePage implements OnInit{
 
     ngOnInit() {
 		this.orderNum = 12;  //模拟订单数量更新
+		window.items = []; // 存储柜员多次扫码数据
+		window.pointsnum = 0; // 存储柜员多次扫码累计积分
 	}
 
     openCamera(){
@@ -251,16 +254,31 @@ export class HomePage implements OnInit{
     }
 	
 	openScanner(){
-		//QRScanner.prepare().then((status) => {
-            //console.log(status);
-        //});
-        this.QRScanner.scan().then((result) => {
-            console.log(result);
-        });
-		//QRScanner.cancelScan().then((status) => {
-            //console.log(status);
-        //});
+		var result = {
+			orderid: '12345678',
+			orderamount: 100,
+			orderdate: '2018-08-21',
+			pointsnum: 500
+		};
+		this.openScanListModal(result);
+        /* this.scanner.scan().subscribe(
+			(result) => {  // 扫码成功执行回调
+				console.log(result);
+				if(result){ //如果扫码结果有效
+					this.openScanListModal(result); // 跳转到积分列表页
+				}
+			},
+			(error) => {
+				console.log(error);
+			});
+		this.scanner.show().then(function(){}); //设置网页背景透明使摄像头拍照影像可见
+		*/
     }
+	
+	openScanListModal(result){
+		let modal = this.modalCtrl.create(ScanList, {result: result});
+        modal.present();
+	}
 
     openRefundModal() {
         let modal = this.modalCtrl.create(Refund);
