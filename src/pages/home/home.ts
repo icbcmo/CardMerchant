@@ -12,11 +12,8 @@ import {Wrongtrx} from "./wrongtrx/wrongtrx";
 import {OrderRefund} from "./refund/orderrefund";
 <<<<<<< HEAD
 import {Camera, CameraOptions} from '@ionic-native/camera';
-import {QRScanner} from '@ionic-native/qr-scanner';
 import {ScanList} from './scan/scanlist';
-=======
 import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner';
->>>>>>> d75276d569789df81d39b93812dedac55f5fabd8
 import {Qrcode} from "./qrcode/qrcode";
 import { JPush } from "@jiguang-ionic/jpush";
 import { Device } from "@ionic-native/device";
@@ -45,12 +42,8 @@ export class HomePage implements OnInit{
     constructor(
         private store: Store<AppState> ,
         private counterService:CounterService,
-<<<<<<< HEAD
         private camera: Camera,
-		private scanner: QRScanner,
-=======
         private qrScanner: QRScanner,
->>>>>>> d75276d569789df81d39b93812dedac55f5fabd8
         public jpush: JPush,
         device: Device,
         public modalCtrl: ModalController,
@@ -269,7 +262,7 @@ export class HomePage implements OnInit{
     }
 	
 	openScanner(){
-<<<<<<< HEAD
+		//模拟测试数据
 		var result = {
 			orderid: '12345678',
 			orderamount: 100,
@@ -277,32 +270,19 @@ export class HomePage implements OnInit{
 			pointsnum: 500
 		};
 		this.openScanListModal(result);
-        /* this.scanner.scan().subscribe(
-			(result) => {  // 扫码成功执行回调
-				console.log(result);
-				if(result){ //如果扫码结果有效
-					this.openScanListModal(result); // 跳转到积分列表页
-				}
-			},
-			(error) => {
-				console.log(error);
-			});
-		this.scanner.show().then(function(){}); //设置网页背景透明使摄像头拍照影像可见
-		*/
-=======
-        // Optionally request the permission early
+
         this.qrScanner.prepare()
             .then((status: QRScannerStatus) => {
                 if (status.authorized) {
                     // camera permission was granted
-
-
                     // start scanning
                     let scanSub = this.qrScanner.scan().subscribe((text: string) => {
                         console.log('Scanned something', text);
-
                         this.qrScanner.hide(); // hide camera preview
                         scanSub.unsubscribe(); // stop scanning
+						if(text){
+							this.openScanListModal(text); // 如果扫码有效跳转到积分列表页
+						}
                     });
 
                 } else if (status.denied) {
@@ -314,7 +294,6 @@ export class HomePage implements OnInit{
                 }
             })
             .catch((e: any) => console.log('Error is', e));
->>>>>>> d75276d569789df81d39b93812dedac55f5fabd8
     }
 	
 	openScanListModal(result){
