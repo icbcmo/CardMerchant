@@ -50,6 +50,7 @@ import {OrderList} from '../pages/home/order/orderlist';
 import {Machine} from "../pages/home/machine/machine";
 import {MachineRequest} from "../pages/home/machine/machinerequest";
 import {MachineRequestDetail} from "../pages/home/machine/machinerequestdetail";
+import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner';
 
 @NgModule({
     declarations: [
@@ -133,6 +134,7 @@ import {MachineRequestDetail} from "../pages/home/machine/machinerequestdetail";
         Camera,
         SplashScreen,
         JPush,
+        QRScanner,
         CounterService,//Sse,
         CardMerchantService,
 		TipService,
