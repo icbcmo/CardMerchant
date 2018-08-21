@@ -74,6 +74,34 @@
       </ion-col>
     </ion-row>
   </ion-grid>
+  <ion-grid class="grid2">
+    <ion-row class="row1">
+      <ion-col>
+        <span class="circle">●</span>收銀員獎勵計劃
+      </ion-col>
+    </ion-row>
+    <ion-row class="row2">
+      <ion-col col-3>
+        <div class="top">
+          <img class="image1" src="assets/imgs/index_pa2.png" alt="退款" (click)="openRefundModal()">
+        </div>
+        <p class="bottom">掃描獎勵</p>
+      </ion-col>
+      <ion-col col-3>
+        <div class="top">
+          <img class="image1" src="assets/imgs/index_pa3.png" alt="差錯交易" (click)="openWrongtrxModal()">
+        </div>
+        <p class="bottom">我的獎勵</p>
+      </ion-col>
+      <ion-col>
+        <div class="top">
+          <img class="image1" src="assets/imgs/index_pa3.png" alt="调单/退款" (click)="openOrderRefundModal()">
+        </div>
+        <p class="bottom">獎勵排名</p>
+      </ion-col>
+
+    </ion-row>
+  </ion-grid>
 </ion-header>
 
 <ion-content class="page-home-content">
