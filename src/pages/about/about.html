@@ -8,7 +8,10 @@
         數據圖表
       </ion-segment-button>
       <ion-segment-button value="data">
-        報表數據
+        POS報表數據
+      </ion-segment-button>
+      <ion-segment-button value="data2">
+        微信報表數據
       </ion-segment-button>
     </ion-segment>
   </div>
@@ -25,6 +28,32 @@
 
 
   <div [hidden]="showType !='data'" >
+    <!--<ngx-datatable-->
+            <!--[rows]="rows"-->
+
+            <!--[columns]="columns" [columnMode]="'force'" [reorderable]="false" class="bootstrap">-->
+    <!--</ngx-datatable>-->
+    <ion-list *ngFor="let data of DapaData ">
+      <ion-card>
+        <div class="card-title"> {{data.cardNo.substr(0,1)=='4'?'VISA':(data.cardNo.substr(0,1)=='5'?'MASTER':'CUP')}}</div>
+        <div class="card-title"> {{data.cardNo.substr(0,4)}}********{{data.cardNo.substr(-4)}}</div>
+        <div class="card-subtitle">交易金额{{data.txnAmount/100}}</div>
+        <div class="card-subtitle">小费金额{{data.feeAmount}}</div>
+        <div class="card-subtitle">交易日期{{data.txnDate}}</div>
+        <div class="card-subtitle">交易时间{{data.txnTime}}</div>
+        <div class="card-subtitle">交易流水号{{data.transactionRef}}</div>
+      </ion-card>
+    </ion-list>
+    <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+      <ion-infinite-scroll-content
+              loadingSpinner="bubbles"
+              loadingText="Loading more data...">
+      </ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+
+  </div>
+
+  <div [hidden]="showType !='data2'" >
     <ngx-datatable
             [rows]="rows"
 
