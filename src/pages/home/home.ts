@@ -10,7 +10,6 @@ import {CounterService} from "../../service/counter.service";
 import {Refund} from "./refund/refund";
 import {Wrongtrx} from "./wrongtrx/wrongtrx";
 import {OrderRefund} from "./refund/orderrefund";
-<<<<<<< HEAD
 import {Camera, CameraOptions} from '@ionic-native/camera';
 import {ScanList} from './scan/scanlist';
 import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner';
