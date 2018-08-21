@@ -1,9 +1,11 @@
 <ion-header>
-  <ion-navbar>
-    <button ion-button start (click)="dismiss()">返回</button>
-    <ion-title>影像预览</ion-title>
-  </ion-navbar>
+    <ion-navbar>
+        <button ion-button small clear (click)="dismiss()">
+            <ion-icon ios="ios-arrow-back"></ion-icon>
+        </button>
+        <ion-title>影像预览</ion-title>
+    </ion-navbar>
 </ion-header>
 <ion-content>
-	<img width="100%" height="100%" style="object-fit:cover;" src="{{picurl}}" />
+	<img src="{{picurl}}" />
 </ion-content>

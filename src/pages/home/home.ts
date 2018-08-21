@@ -10,7 +10,7 @@ import {CounterService} from "../../service/counter.service";
 import {Refund} from "./refund/refund";
 import {Wrongtrx} from "./wrongtrx/wrongtrx";
 import {OrderRefund} from "./refund/orderrefund";
-import {Camera, CameraOptions} from '@ionic-native/camera';
+import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner';
 import {Qrcode} from "./qrcode/qrcode";
 import { JPush } from "@jiguang-ionic/jpush";
 import { Device } from "@ionic-native/device";
@@ -40,7 +40,7 @@ export class HomePage implements OnInit{
     constructor(
         private store: Store<AppState> ,
         private counterService:CounterService,
-        private camera: Camera,
+        private qrScanner: QRScanner,
         public jpush: JPush,
         device: Device,
         public modalCtrl: ModalController,
@@ -98,14 +98,14 @@ export class HomePage implements OnInit{
 
         //this.cleanTags();
         let mytags=[];
-        mytags.push(localStorage.getItem("MERCHANTCIF").toString());
-        mytags.push(localStorage.getItem("MERCHANTID").toString());
-        mytags.push(localStorage.getItem("DEPARTMENTID").toString());
-        mytags.push(localStorage.getItem("WECHATMERCHANTID").toString());
-        mytags.push(localStorage.getItem("LEVEL").toString());
-        mytags.push(localStorage.getItem("MOBILE").toString());
-        mytags.push(localStorage.getItem("UID").toString());
-        mytags.push(localStorage.getItem("UID2").toString());
+        mytags.push(localStorage.getItem("MERCHANTCIF"));
+        mytags.push(localStorage.getItem("MERCHANTID"));
+        mytags.push(localStorage.getItem("DEPARTMENTID"));
+        mytags.push(localStorage.getItem("WECHATMERCHANTID"));
+        mytags.push(localStorage.getItem("LEVEL"));
+        mytags.push(localStorage.getItem("MOBILE"));
+        mytags.push(localStorage.getItem("UID"));
+        mytags.push(localStorage.getItem("UID2"));
         console.log(mytags);
         this.setTags(mytags);
 
@@ -231,22 +231,29 @@ export class HomePage implements OnInit{
 
     openCamera(){
         //手機上使用部分開始
-        const options: CameraOptions = {
-            quality: 80,
-            targetWidth: 600,
-            targetHeight: 1200,
-            //allowEdit: true,
-            sourceType: 1,
-            destinationType: this.camera.DestinationType.DATA_URL,
-            encodingType: this.camera.EncodingType.JPEG,
-            mediaType: this.camera.MediaType.PICTURE
-        };
+        this.qrScanner.prepare()
+            .then((status: QRScannerStatus) => {
+                if (status.authorized) {
+                    // camera permission was granted
 
-        this.camera.getPicture(options).then((imageData) => {
-            let base64Image = imageData;
-            base64Image = 'data:image/jpeg;base64,' + base64Image;
-            console.log(base64Image);
-        });
+
+                    // start scanning
+                    let scanSub = this.qrScanner.scan().subscribe((text: string) => {
+                        console.log('Scanned something', text);
+
+                        this.qrScanner.hide(); // hide camera preview
+                        scanSub.unsubscribe(); // stop scanning
+                    });
+
+                } else if (status.denied) {
+                    // camera permission was permanently denied
+                    // you must use QRScanner.openSettings() method to guide the user to the settings page
+                    // then they can grant the permission from there
+                } else {
+                    // permission was denied, but not permanently. You can ask for permission again at a later time.
+                }
+            })
+            .catch((e: any) => console.log('Error is', e));
     }
 
     openRefundModal() {

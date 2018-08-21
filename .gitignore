@@ -20,6 +20,7 @@ npm-debug.log*
 coverage/
 dist/
 node_modules/
+platforms/
 tmp/
 temp/
 hooks/
@@ -36,3 +37,5 @@ $RECYCLE.BIN/
 .DS_Store
 Thumbs.db
 UserInterfaceState.xcuserstate
+www\index.html
+

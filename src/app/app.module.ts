@@ -45,10 +45,12 @@ import { QRCodeModule } from 'angular2-qrcode';
 import { Camera } from '@ionic-native/camera';
 import {NativeStorage} from "@ionic-native/native-storage";
 import { Device } from '@ionic-native/device';
+import {OrderList} from '../pages/home/order/orderlist';
 //import {CounterService,Sse} from "../service/counter.service";
 import {Machine} from "../pages/home/machine/machine";
 import {MachineRequest} from "../pages/home/machine/machinerequest";
 import {MachineRequestDetail} from "../pages/home/machine/machinerequestdetail";
+import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner';
 import {ReportDataService} from "../service/report-data.service";
 
 @NgModule({
@@ -62,6 +64,7 @@ import {ReportDataService} from "../service/report-data.service";
         Binsearch,
         TabsPage,
         IndexPage,
+        OrderList,
         Custservice,
         Refund,
 		RefundVerify,
@@ -106,6 +109,7 @@ import {ReportDataService} from "../service/report-data.service";
         SigninPage,
         TabsPage,
         IndexPage,
+        OrderList,
         Binsearch,
         Custservice,
         Refund,
@@ -131,6 +135,7 @@ import {ReportDataService} from "../service/report-data.service";
         Camera,
         SplashScreen,
         JPush,
+        QRScanner,
         CounterService,//Sse,
         CardMerchantService,
         ReportDataService,

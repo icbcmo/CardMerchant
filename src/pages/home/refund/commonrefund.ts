@@ -80,49 +80,65 @@ export class CommonRefund implements OnInit{
 	}
 	
 	submitForm(){
-		var data = {
-			sessionid: localStorage.getItem('SESSIONID'),
-			merchantid: localStorage.getItem("MERCHANTID"),
-			merchantname: localStorage.getItem("MERCHANTNAME"),
-			departmentid: localStorage.getItem("DEPARTMENTID"),
-			departmentname: Object(this.departmentname).value,
-			refundcardno4: Object(this.refundcardno4).value,
-			trxdate: this.tradeDate,
-			authno: Object(this.authno).value,
-			trxamount: Object(this.trxamount).value,
-			refundamount: Object(this.refundamount).value,
-			applymobile: Object(this.applymobile).value,
-			applyname: Object(this.applyname).value,
-			picture: this.pictures
-		};
-		console.log(data);
-		let loading = this.loadingCtrl.create({
-				content: 'Please wait...',
-				duration: 5000
-			});
-		loading.present();
-		this.cardMerchantService.addrefund(data).toPromise().then(data=> {
-			console.log(Object(data));
-			loading.dismiss();
-			if(Object(data).code == 0){
-				this.tipService.show('提交成功').then( () => {
-						this.viewCtrl.dismiss();
-					});
-			}else{
-				this.alertCtrl.create({
-						message: Object(data).message,
-						buttons: ['确定']
+		this.alertCtrl.create({
+						message: '退款金额:' + Object(this.refundamount).value,
+						buttons: [
+							{
+								text: '返回修改',
+								handler: () => {
+									return;
+								}
+							},
+							{
+								text: '确认退款',
+								handler: () => {
+									var data = {
+										sessionid: localStorage.getItem('SESSIONID'),
+										merchantid: localStorage.getItem("MERCHANTID"),
+										merchantname: localStorage.getItem("MERCHANTNAME"),
+										departmentid: localStorage.getItem("DEPARTMENTID"),
+										departmentname: Object(this.departmentname).value,
+										refundcardno4: Object(this.refundcardno4).value,
+										trxdate: this.tradeDate,
+										authno: Object(this.authno).value,
+										trxamount: Object(this.trxamount).value,
+										refundamount: Object(this.refundamount).value,
+										applymobile: Object(this.applymobile).value,
+										applyname: Object(this.applyname).value,
+										picture: this.pictures
+									};
+									console.log(data);
+									let loading = this.loadingCtrl.create({
+											content: 'Please wait...',
+											duration: 5000
+										});
+									loading.present();
+									this.cardMerchantService.addrefund(data).toPromise().then(data=> {
+										console.log(Object(data));
+										loading.dismiss();
+										if(Object(data).code == 0){
+											this.tipService.show('提交成功').then( () => {
+													this.viewCtrl.dismiss();
+												});
+										}else{
+											this.alertCtrl.create({
+													message: Object(data).message,
+													buttons: ['确定']
+												}).present();
+										}
+									}, ()=>{
+										loading.dismiss();
+										loading = this.loadingCtrl.create({
+											spinner: 'hide',
+											content: '网络故障',
+											duration: 2000
+										});
+										loading.present();
+									});
+								}
+							}
+						]
 					}).present();
-			}
-		}, ()=>{
-			loading.dismiss();
-			loading = this.loadingCtrl.create({
-				spinner: 'hide',
-				content: '网络故障',
-				duration: 2000
-			});
-			loading.present();
-		});
 	}
 
     goBack() {

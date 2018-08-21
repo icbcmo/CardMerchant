@@ -8,26 +8,44 @@
 </ion-header>
 
 <ion-content>
-	<ion-list>
+	<ion-list class="input_list">
 
 		<ion-item>
-			<ion-label floating>手机号</ion-label>
-			<ion-input name="mobile" type="number"  #mobile ></ion-input>
+			<ion-label>手機號</ion-label>
+			<ion-input name="mobile" placeholder="請輸入手機號" type="number"  #mobile ></ion-input>
 		</ion-item>
 		<ion-item>
-			<ion-label floating>姓名</ion-label>
-			<ion-input name="name" type="text" #name ></ion-input>
+			<ion-label>姓名</ion-label>
+			<ion-input name="name" placeholder="請輸入姓名" type="text" #name ></ion-input>
 		</ion-item>
-		
 		<ion-item>
-			<ion-label floating>门店</ion-label>
+			<ion-label>门店</ion-label>
 			<ion-select class="select select-ios ng-pristine ng-valid ng-touched" #departmentid >
 				<ion-option *ngFor="let shop of shopList" value="{{shop.departmentId}}" >{{shop.departmentName}}</ion-option>
 			</ion-select>
 		</ion-item>
-		
-    
+
 	</ion-list>
+	<!--<ion-list>-->
+
+		<!--<ion-item>-->
+			<!--<ion-label floating>手机号</ion-label>-->
+			<!--<ion-input name="mobile" type="number"  #mobile ></ion-input>-->
+		<!--</ion-item>-->
+		<!--<ion-item>-->
+			<!--<ion-label floating>姓名</ion-label>-->
+			<!--<ion-input name="name" type="text" #name ></ion-input>-->
+		<!--</ion-item>-->
+		<!---->
+		<!--<ion-item>-->
+			<!--<ion-label floating>门店</ion-label>-->
+			<!--<ion-select class="select select-ios ng-pristine ng-valid ng-touched" #departmentid >-->
+				<!--<ion-option *ngFor="let shop of shopList" value="{{shop.departmentId}}" >{{shop.departmentName}}</ion-option>-->
+			<!--</ion-select>-->
+		<!--</ion-item>-->
+		<!---->
+    <!---->
+	<!--</ion-list>-->
 
   <div padding>
     <button ion-button color="primary" (click)="submitForm()" block>提交</button>
