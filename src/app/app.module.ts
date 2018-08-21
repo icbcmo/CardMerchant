@@ -46,6 +46,7 @@ import { Camera } from '@ionic-native/camera';
 import {NativeStorage} from "@ionic-native/native-storage";
 import { Device } from '@ionic-native/device';
 import {OrderList} from '../pages/home/order/orderlist';
+import {OrderdetailsPage} from '../pages/home/order/orderdetails';
 //import {CounterService,Sse} from "../service/counter.service";
 import {Machine} from "../pages/home/machine/machine";
 import {MachineRequest} from "../pages/home/machine/machinerequest";
@@ -67,6 +68,7 @@ import {CashierScan} from "../pages/home/cashier/scan/cashier-scan";
         TabsPage,
         IndexPage,
         OrderList,
+        OrderdetailsPage,
         Custservice,
         Refund,
 		RefundVerify,
@@ -113,6 +115,7 @@ import {CashierScan} from "../pages/home/cashier/scan/cashier-scan";
         TabsPage,
         IndexPage,
         OrderList,
+        OrderdetailsPage,
         Binsearch,
         Custservice,
         Refund,

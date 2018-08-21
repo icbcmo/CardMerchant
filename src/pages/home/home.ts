@@ -30,6 +30,7 @@ export interface User {
     asset:number;
 }
 
+
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html',
@@ -229,8 +230,6 @@ export class HomePage implements OnInit{
 
     ngOnInit() {
 		this.orderNum = 12;  //模拟订单数量更新
-		window.items = []; // 存储柜员多次扫码数据
-		window.pointsnum = 0; // 存储柜员多次扫码累计积分
 	}
 
     openCamera(){
@@ -261,15 +260,7 @@ export class HomePage implements OnInit{
     }
 	
 	openScanner(){
-		//模拟测试数据
-		var result = {
-			orderid: '12345678',
-			orderamount: 100,
-			orderdate: '2018-08-21',
-			pointsnum: 500
-		};
-		this.openScanListModal(result);
-
+		
         this.qrScanner.prepare()
             .then((status: QRScannerStatus) => {
                 if (status.authorized) {
@@ -295,8 +286,8 @@ export class HomePage implements OnInit{
             .catch((e: any) => console.log('Error is', e));
     }
 	
-	openScanListModal(result){
-		let modal = this.modalCtrl.create(ScanList, {result: result});
+	openScanListModal(){
+		let modal = this.modalCtrl.create(ScanList);
         modal.present();
 	}
 

@@ -5,6 +5,7 @@ import {CardMerchantService} from "../../../service/card-merchant.service";
 import {NativeStorage} from "@ionic-native/native-storage";
 import { AlertController, LoadingController } from 'ionic-angular';
 import {TipService} from '../../../service/tip.service';
+import {OrderdetailsPage} from './orderdetails';
 
 @Component({
   selector: 'page-orderlist',
@@ -62,8 +63,11 @@ export class OrderList implements OnInit{
 	openMachineRequestDetail(item){
 		
 	}
-	
-	
+
+    toDetails(){
+        let modal = this.modalCtrl.create(OrderdetailsPage);
+        modal.present();
+	}
 
     dismiss() {
         this.viewCtrl.dismiss();
