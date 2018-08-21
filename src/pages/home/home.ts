@@ -230,8 +230,6 @@ export class HomePage implements OnInit{
 
     ngOnInit() {
 		this.orderNum = 12;  //模拟订单数量更新
-		window.items = []; // 存储柜员多次扫码数据
-		window.pointsnum = 0; // 存储柜员多次扫码累计积分
 	}
 
     openCamera(){

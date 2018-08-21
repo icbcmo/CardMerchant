@@ -54,6 +54,49 @@ export class ScanList implements OnInit{
                         scanSub.unsubscribe(); // stop scanning
 						if(text){
 							
+							//添加一笔柜员扫码内容
+							this.cardMerchantService.addcounterpoints(data).toPromise().then(data=> {
+								console.log(Object(data));
+								if(Object(data).code == 0){
+									//每次扫码数据经后台检查确认有效才加入累计，防止重复扫码
+									window.items.push(Object(data).data);
+									this.items = window.items;
+									window.pointsnum += Object(data).points;
+									this.pointsnum = window.pointsnum;
+									//重新获取本周扫码历史明细
+									this.cardMerchantService.getscanweeklist180(data).toPromise().then(data=> {
+										console.log(Object(data));
+										if(Object(data).code == 0){
+											this.list = Object(data).data;
+										}else{
+											this.loadingCtrl.create({
+												spinner: 'hide',
+												content: Object(data).message,
+												duration: 2000
+											}).present();
+										}
+									}, ()=>{
+										this.loadingCtrl.create({
+											spinner: 'hide',
+											content: '网络故障',
+											duration: 2000
+										}).present();
+									});
+								}else{
+									this.loadingCtrl.create({
+										spinner: 'hide',
+										content: Object(data).message,
+										duration: 2000
+									}).present();
+								}
+							}, ()=>{
+								this.loadingCtrl.create({
+									spinner: 'hide',
+									content: '网络故障',
+									duration: 2000
+								}).present();
+							});
+							
 						}
                     });
 
@@ -66,48 +109,7 @@ export class ScanList implements OnInit{
                 }
             })
             .catch((e: any) => console.log('Error is', e));
-		//添加一笔柜员扫码内容
-		this.cardMerchantService.addcounterpoints(data).toPromise().then(data=> {
-			console.log(Object(data));
-			if(Object(data).code == 0){
-				//每次扫码数据经后台检查确认有效才加入累计，防止重复扫码
-				window.items.push(Object(data).data);
-				this.items = window.items;
-				window.pointsnum += Object(data).points;
-				this.pointsnum = window.pointsnum;
-				//重新获取本周扫码历史明细
-				this.cardMerchantService.getscanweeklist180(data).toPromise().then(data=> {
-					console.log(Object(data));
-					if(Object(data).code == 0){
-						this.list = Object(data).data;
-					}else{
-						this.loadingCtrl.create({
-							spinner: 'hide',
-							content: Object(data).message,
-							duration: 2000
-						}).present();
-					}
-				}, ()=>{
-					this.loadingCtrl.create({
-						spinner: 'hide',
-						content: '网络故障',
-						duration: 2000
-					}).present();
-				});
-			}else{
-				this.loadingCtrl.create({
-					spinner: 'hide',
-					content: Object(data).message,
-					duration: 2000
-				}).present();
-			}
-		}, ()=>{
-			this.loadingCtrl.create({
-				spinner: 'hide',
-				content: '网络故障',
-				duration: 2000
-			}).present();
-		});
+		
 		
 		//获取本周扫码历史明细
 		this.cardMerchantService.getscanweeklist180(data).toPromise().then(data=> {
