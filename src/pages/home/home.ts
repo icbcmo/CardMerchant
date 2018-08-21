@@ -10,9 +10,13 @@ import {CounterService} from "../../service/counter.service";
 import {Refund} from "./refund/refund";
 import {Wrongtrx} from "./wrongtrx/wrongtrx";
 import {OrderRefund} from "./refund/orderrefund";
+<<<<<<< HEAD
 import {Camera, CameraOptions} from '@ionic-native/camera';
 import {QRScanner} from '@ionic-native/qr-scanner';
 import {ScanList} from './scan/scanlist';
+=======
+import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner';
+>>>>>>> d75276d569789df81d39b93812dedac55f5fabd8
 import {Qrcode} from "./qrcode/qrcode";
 import { JPush } from "@jiguang-ionic/jpush";
 import { Device } from "@ionic-native/device";
@@ -41,8 +45,12 @@ export class HomePage implements OnInit{
     constructor(
         private store: Store<AppState> ,
         private counterService:CounterService,
+<<<<<<< HEAD
         private camera: Camera,
 		private scanner: QRScanner,
+=======
+        private qrScanner: QRScanner,
+>>>>>>> d75276d569789df81d39b93812dedac55f5fabd8
         public jpush: JPush,
         device: Device,
         public modalCtrl: ModalController,
@@ -235,25 +243,33 @@ export class HomePage implements OnInit{
 
     openCamera(){
         //手機上使用部分開始
-        const options: CameraOptions = {
-            quality: 80,
-            targetWidth: 600,
-            targetHeight: 1200,
-            //allowEdit: true,
-            sourceType: 1,
-            destinationType: this.camera.DestinationType.DATA_URL,
-            encodingType: this.camera.EncodingType.JPEG,
-            mediaType: this.camera.MediaType.PICTURE
-        };
+        this.qrScanner.prepare()
+            .then((status: QRScannerStatus) => {
+                if (status.authorized) {
+                    // camera permission was granted
 
-        this.camera.getPicture(options).then((imageData) => {
-            let base64Image = imageData;
-            base64Image = 'data:image/jpeg;base64,' + base64Image;
-            console.log(base64Image);
-        });
+
+                    // start scanning
+                    let scanSub = this.qrScanner.scan().subscribe((text: string) => {
+                        console.log('Scanned something', text);
+
+                        this.qrScanner.hide(); // hide camera preview
+                        scanSub.unsubscribe(); // stop scanning
+                    });
+
+                } else if (status.denied) {
+                    // camera permission was permanently denied
+                    // you must use QRScanner.openSettings() method to guide the user to the settings page
+                    // then they can grant the permission from there
+                } else {
+                    // permission was denied, but not permanently. You can ask for permission again at a later time.
+                }
+            })
+            .catch((e: any) => console.log('Error is', e));
     }
 	
 	openScanner(){
+<<<<<<< HEAD
 		var result = {
 			orderid: '12345678',
 			orderamount: 100,
@@ -273,6 +289,32 @@ export class HomePage implements OnInit{
 			});
 		this.scanner.show().then(function(){}); //设置网页背景透明使摄像头拍照影像可见
 		*/
+=======
+        // Optionally request the permission early
+        this.qrScanner.prepare()
+            .then((status: QRScannerStatus) => {
+                if (status.authorized) {
+                    // camera permission was granted
+
+
+                    // start scanning
+                    let scanSub = this.qrScanner.scan().subscribe((text: string) => {
+                        console.log('Scanned something', text);
+
+                        this.qrScanner.hide(); // hide camera preview
+                        scanSub.unsubscribe(); // stop scanning
+                    });
+
+                } else if (status.denied) {
+                    // camera permission was permanently denied
+                    // you must use QRScanner.openSettings() method to guide the user to the settings page
+                    // then they can grant the permission from there
+                } else {
+                    // permission was denied, but not permanently. You can ask for permission again at a later time.
+                }
+            })
+            .catch((e: any) => console.log('Error is', e));
+>>>>>>> d75276d569789df81d39b93812dedac55f5fabd8
     }
 	
 	openScanListModal(result){

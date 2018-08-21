@@ -19,6 +19,10 @@ export class AboutPage implements OnInit{
     start_n = 1;
     fetch_num = 20;
     DapaData =null;
+    chart1Data = null;
+    chart2Data = null;
+    date1:any;
+    date2:any;
     getyyyyMMdd(n){
         var d = new Date();
         d.setDate(d.getDate()+n);
@@ -40,16 +44,13 @@ export class AboutPage implements OnInit{
 
     doInfinite(infiniteScroll) {
         console.log('Begin async operation');
-        let date1 = this.getyyyyMMdd(0);
-        let date2 = this.getyyyyMMdd(-2000);
-        console.log(date1,"-",date2);
         this.start_n = this.start_n + this.fetch_num;
         let data = {
             sessionid:localStorage.getItem("SESSIONID"),
             merchantid:localStorage.getItem("MERCHANTID"),
             departmentid:localStorage.getItem("DEPARTMENTID"),
-            datestart:date2,
-            dateend:date1,
+            datestart:this.date2,
+            dateend:this.date1,
             start:this.start_n,
             fetchnum:this.fetch_num
         };
@@ -101,26 +102,25 @@ export class AboutPage implements OnInit{
           this.initChart1()
           this.initChart2()
       }
-      else if(this.showType == 'data'){
-          if(this.DapaData  === null){
+      else if(this.showType == 'posData'){
+          if(this.DapaData  === null || this.DapaData ==="" || this.DapaData === undefined ){
               let loading = this.loadingCtrl.create({
                   content: 'Please wait...',
-                  duration: 5000
+                  //duration: 5000
               });
               loading.present();
 
-              let date1 = this.getyyyyMMdd(0);
-              let date2 = this.getyyyyMMdd(-2000);
+              this.date1 = this.getyyyyMMdd(0);
+              this.date2 = this.getyyyyMMdd(-2000);
 
-              console.log(date1,"-",date2);
 
 
               let data = {
                   sessionid:localStorage.getItem("SESSIONID"),
                   merchantid:localStorage.getItem("MERCHANTID"),
                   departmentid:localStorage.getItem("DEPARTMENTID"),
-                  datestart:date2,
-                  dateend:date1,
+                  datestart:this.date2,
+                  dateend:this.date1,
                   start:this.start_n,
                   fetchnum:this.fetch_num
               };
@@ -142,7 +142,6 @@ export class AboutPage implements OnInit{
                   });
               }
           }
-
       }
     }
 
@@ -150,6 +149,49 @@ export class AboutPage implements OnInit{
   initChart1(){
       let myChart = echarts.init(this.chart1.nativeElement);
 
+      // let loading = this.loadingCtrl.create({
+      //     content: 'Please wait...',
+      //     duration: 5000
+      // });
+      // loading.present();
+
+      let data = {
+          sessionid:localStorage.getItem("SESSIONID"),
+          merchantid:localStorage.getItem("MERCHANTID"),
+          departmentid:localStorage.getItem("DEPARTMENTID"),
+          datestart:this.getyyyyMMdd(-7),
+          dateend:this.getyyyyMMdd(0),
+          start:1,
+          fetchnum:99999999
+      };
+
+      // if("FIRSTCLASS"===localStorage.getItem('LEVEL')){
+      //     this.reportDataService.getTrxInfoByMerchantId(data).toPromise().then(data=>{
+      //         console.log(data);
+      //         this.chart1Data = (Object(data).data)[0];
+      //         let dateList=[];
+      //         for(let i =0; i<this.chart1Data.length; i++){
+      //             if(dateList.indexOf(this.chart1Data[i].txnDate)<0)
+      //                 dateList.push(this.chart1Data[i].txnDate);
+      //
+      //             for(let j =0; j<dateList.length; j++){
+      //
+      //             }
+      //
+      //
+      //         }
+      //         loading.dismiss();
+      //         console.log(this.DapaData);
+      //     });
+      // }
+      // else if("SECONDCLASS" === localStorage.getItem('LEVEL')){
+      //     this.reportDataService.getTrxInfoByDepartmentId(data).toPromise().then(data=>{
+      //         console.log(data);
+      //         this.DapaData = (Object(data).data)[0];
+      //         loading.dismiss();
+      //         console.log(this.DapaData);
+      //     });
+      // }
       let option = {
           title: {
               text: ''
