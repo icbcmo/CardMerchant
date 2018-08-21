@@ -12,13 +12,10 @@ import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner';
 })
 export class ScanList implements OnInit{
 	items: any[] = [];
-	list: any;
+	list: any[] = [];
 	pointsnum: Number = 0;
 	tabs: any;
-	notSubmitted: Boolean = true;
-	
-	@ViewChild('cardno') Cardno: ElementRef;
-	
+		
     constructor(
         public viewCtrl: ViewController,
 		public modalCtrl: ModalController,
@@ -59,10 +56,8 @@ export class ScanList implements OnInit{
 								console.log(Object(data));
 								if(Object(data).code == 0){
 									//每次扫码数据经后台检查确认有效才加入累计，防止重复扫码
-									window.items.push(Object(data).data);
-									this.items = window.items;
-									window.pointsnum += Object(data).points;
-									this.pointsnum = window.pointsnum;
+									this.items.push(Object(data).data);
+									this.pointsnum += Object(data).points;
 									//重新获取本周扫码历史明细
 									this.cardMerchantService.getscanweeklist180(data).toPromise().then(data=> {
 										console.log(Object(data));
@@ -133,13 +128,11 @@ export class ScanList implements OnInit{
 	}
 	
 	submitForm(){
-		if(!/^\d{16}$/.test(Object(this.Cardno).value)){
-			this.tipService.show('卡号必须是16位');
-		}else{
+
 			var data = {
 				sessionid: localStorage.getItem('SESSIONID'),
-				cardno: Object(this.Cardno).value,
-				points: window.pointsnum
+				cardno: '2121212',
+				points: 500
 			};
 			console.log(data);
 			let loading = this.loadingCtrl.create({
@@ -152,11 +145,7 @@ export class ScanList implements OnInit{
 				loading.dismiss();
 				if(Object(data).code == 0){
 					this.tipService.show('提交成功').then( () => {
-						window.items = [];
-						window.pointsnum = 0;
-						this.items = [];
-						this.pointsnum = 0;
-						this.notSubmitted = false;
+						
 					});
 				}else{
 					this.alertCtrl.create({
@@ -173,7 +162,7 @@ export class ScanList implements OnInit{
 				});
 				loading.present();
 			});
-		}
+
 	}
 
     dismiss() {

@@ -270,9 +270,7 @@ export class HomePage implements OnInit{
                         console.log('Scanned something', text);
                         this.qrScanner.hide(); // hide camera preview
                         scanSub.unsubscribe(); // stop scanning
-						if(text){
-							this.openScanListModal(text); // 如果扫码有效跳转到积分列表页
-						}
+						
                     });
 
                 } else if (status.denied) {
