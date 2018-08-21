@@ -1,3 +1,20 @@
 page-about {
-
+  > .header{
+    > .nav{
+      background-color: #fff;
+      .segment-button{
+        border: 0; color: #999; height: 3.8rem; line-height: 3.6rem; border-right: 1px solid #eee; border-radius: 0; font-size: 1.4rem;
+        &:last-child{border-right: 0;}
+        &.segment-activated{background-color: #fff; color: #cc3333; border-bottom: 2px solid #cc3333;}
+      }
+    }
+  }
+  > .content{
+    background-color: #f3f3f3;
+    .charts{
+      position: absolute; left: 0; right: 0; top: 0; bottom: 0; display: flex; flex-direction: column; padding: 10px;
+      > .chart{flex: 1; background-color: #fff; border-radius: 6px;}
+      > .solid{height: 10px;}
+    }
+  }
 }
