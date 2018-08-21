@@ -147,91 +147,233 @@ export class AboutPage implements OnInit{
 
 
   initChart1(){
-      let myChart = echarts.init(this.chart1.nativeElement);
 
-      // let loading = this.loadingCtrl.create({
-      //     content: 'Please wait...',
-      //     duration: 5000
-      // });
-      // loading.present();
+      let loading = this.loadingCtrl.create({
+          content: 'Please wait...',
+          duration: 5000
+      });
+      loading.present();
 
       let data = {
           sessionid:localStorage.getItem("SESSIONID"),
           merchantid:localStorage.getItem("MERCHANTID"),
           departmentid:localStorage.getItem("DEPARTMENTID"),
-          datestart:this.getyyyyMMdd(-7),
-          dateend:this.getyyyyMMdd(0),
+          datestart:this.getyyyyMMdd(-1205),
+          dateend:this.getyyyyMMdd(-1198),
           start:1,
           fetchnum:99999999
       };
 
-      // if("FIRSTCLASS"===localStorage.getItem('LEVEL')){
-      //     this.reportDataService.getTrxInfoByMerchantId(data).toPromise().then(data=>{
-      //         console.log(data);
-      //         this.chart1Data = (Object(data).data)[0];
-      //         let dateList=[];
-      //         for(let i =0; i<this.chart1Data.length; i++){
-      //             if(dateList.indexOf(this.chart1Data[i].txnDate)<0)
-      //                 dateList.push(this.chart1Data[i].txnDate);
-      //
-      //             for(let j =0; j<dateList.length; j++){
-      //
-      //             }
-      //
-      //
-      //         }
-      //         loading.dismiss();
-      //         console.log(this.DapaData);
-      //     });
-      // }
-      // else if("SECONDCLASS" === localStorage.getItem('LEVEL')){
-      //     this.reportDataService.getTrxInfoByDepartmentId(data).toPromise().then(data=>{
-      //         console.log(data);
-      //         this.DapaData = (Object(data).data)[0];
-      //         loading.dismiss();
-      //         console.log(this.DapaData);
-      //     });
-      // }
+      if("FIRSTCLASS"===localStorage.getItem('LEVEL')){
+          this.reportDataService.getTrxInfoByMerchantId(data).toPromise().then(data=>{
+              console.log(data);
+              this.chart1Data = (Object(data).data)[0];
+              this.chart1setOption(loading);
+          });
+      }
+      else if("SECONDCLASS" === localStorage.getItem('LEVEL')){
+          this.reportDataService.getTrxInfoByDepartmentId(data).toPromise().then(data=>{
+              console.log(data);
+              this.chart1Data = (Object(data).data)[0];
+              this.chart1setOption(loading);
+          });
+      }
+
+  }
+
+  chart1setOption(loading){
+      let myChart = echarts.init(this.chart1.nativeElement);
+      let x_data=[];
+      let y_data=[];
+      let dateList=[];
+      let totalList=[];
+      for(let i =0; i<this.chart1Data.length; i++){
+
+          if(dateList.indexOf(this.chart1Data[i].txnDate)<0){
+              let date_total = {
+                  "trxdate":this.chart1Data[i].txnDate,
+                  "total":0
+              }
+              dateList.push(this.chart1Data[i].txnDate);
+              totalList.push(date_total);
+          }
+
+
+          for(let j =0; j<totalList.length; j++){
+              if(this.chart1Data[i].txnDate == totalList[j].trxdate){
+                  totalList[j].total= totalList[j].total + (parseInt(this.chart1Data[i].txnAmount));
+              }
+          }
+      }
+
+      for( let x=0;x<totalList.length;x++){
+          x_data.push(totalList[x].trxdate);
+          y_data.push((parseInt(totalList[x].total)/100).toFixed(2));
+      }
+      console.log(x_data);
+      console.log(y_data);
+      console.log(this.chart1Data);
+      console.log(dateList);
+
+      loading.dismiss();
+
       let option = {
           title: {
               text: ''
           },
           tooltip: {},
           legend: {
-              data:['销量']
+              data:['销售额']
           },
           xAxis: {
-              data: ["衬衫","羊毛衫","雪纺衫","裤子","高跟鞋","袜子"]
+              data: x_data,
+              axisLabel: {
+                  interval:0,
+                  rotate:90
+              }
+          },
+
+          grid: {
+
+              bottom:'35%'
           },
           yAxis: {},
           series: [{
-              name: '销量',
+              name: '销售额',
               type: 'bar',
-              data: [5, 20, 36, 10, 10, 20]
-          }]
+              data: y_data
+          }],
+
       };
+
+
+
+      myChart.on('click', (param)=> {
+          console.log(param);
+          this.chart2setOption(loading,param.name);
+
+      });
+
+
 
       myChart.setOption(option);
   }
 
+  initChart2(){
 
-    initChart2(){
+        let loading = this.loadingCtrl.create({
+            content: 'Please wait...',
+            duration: 5000
+        });
+        loading.present();
+
+        let data = {
+            sessionid:localStorage.getItem("SESSIONID"),
+            merchantid:localStorage.getItem("MERCHANTID"),
+            departmentid:localStorage.getItem("DEPARTMENTID"),
+            datestart:this.getyyyyMMdd(-1205),
+            dateend:this.getyyyyMMdd(-1198),
+            start:1,
+            fetchnum:99999999
+        };
+
+        if("FIRSTCLASS"===localStorage.getItem('LEVEL')){
+            this.reportDataService.getTrxInfoByMerchantId(data).toPromise().then(data=>{
+                console.log(data);
+                this.chart2Data = (Object(data).data)[0];
+                this.chart2setOption(loading,"");
+            });
+        }
+        else if("SECONDCLASS" === localStorage.getItem('LEVEL')){
+            this.reportDataService.getTrxInfoByDepartmentId(data).toPromise().then(data=>{
+                console.log(data);
+                this.chart2Data = (Object(data).data)[0];
+                this.chart2setOption(loading,"");
+            });
+        }
+
+
+    }
+
+    chart2setOption(loading,mytrxdate){
+        console.log(this.chart2Data);
         let myChart = echarts.init(this.chart2.nativeElement);
+        let departmantList=[];
+        let totalList=[];
+        let tmp=[];
+        let title="各分店近7天总销售情况"
 
-        let option = {
-            series: {
-                type: 'pie',
-                data: [{
-                    name: 'A',
-                    value: 10
-                }, {
-                    name: 'B',
-                    value: 20
-                }, {
-                    name: 'C',
-                    value: 30
-                }]
+        if(mytrxdate != ""){
+            for(let i =0; i<this.chart2Data.length; i++){
+                if(this.chart2Data[i].txnDate == mytrxdate)
+                    tmp.push(this.chart2Data[i]);
             }
+            title = mytrxdate+":各分店销售情况";
+        }
+        else{
+            tmp = this.chart2Data;
+        }
+
+        for(let i =0; i<tmp.length; i++){
+
+            if(departmantList.indexOf(tmp[i].departmentName)<0){
+                let department_total = {
+                    "name":tmp[i].departmentName,
+                    "value":0
+                }
+                departmantList.push(tmp[i].departmentName);
+                totalList.push(department_total);
+            }
+
+
+            for(let j =0; j<totalList.length; j++){
+                if(tmp[i].departmentName == totalList[j].name){
+                    totalList[j].value= totalList[j].value + (parseInt(tmp[i].txnAmount)/100).toFixed(2);
+                }
+            }
+        }
+
+
+        console.log(tmp);
+        console.log(departmantList);
+        console.log(totalList);
+
+        loading.dismiss();
+        let option = {
+            title:{
+                left: 'center',
+                top: 20,
+                text: title
+            },
+
+            series: {
+                name:'',
+                type: 'pie',
+                data: totalList,
+                radius: ['70%', '90%'],
+                avoidLabelOverlap: false,
+                label: {
+                    normal: {
+                        show: false,
+                        position: 'center',
+                        //formatter: "{a} :{b} \n销售总金额: {c} ({d}%)"
+                        formatter: "{b} \n 销售金额:{c}\n 占比:{d}%"
+                    },
+                    emphasis: {
+                        show: true,
+                        textStyle: {
+                            fontSize: '15',
+                            fontWeight: 'bold'
+                        }
+                    }
+                },
+                labelLine: {
+                    normal: {
+                        show: false
+                    }
+                }
+            }
+
         };
 
         myChart.setOption(option);
