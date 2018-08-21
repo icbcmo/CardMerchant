@@ -129,6 +129,36 @@ export class CardMerchantService {
         return this.http.post(url,data);
 	}
 	
+	addcounterpoints(data){
+		let str = JSON.stringify(data);
+		let sign = this.getSignInit(str);
+		let merCert = encodeURIComponent(this.publicKey);
+        let url = this.gwUrl + 'cardmerchant/addcounterpoints' + '?sign=' + sign + '&merCert=' + merCert;
+        console.log(url);
+
+        return this.http.post(url,data);
+	}
+	
+	newpointstomoney(data){
+		let str = JSON.stringify(data);
+		let sign = this.getSignInit(str);
+		let merCert = encodeURIComponent(this.publicKey);
+        let url = this.gwUrl + 'cardmerchant/newpointstomoney' + '?sign=' + sign + '&merCert=' + merCert;
+        console.log(url);
+
+        return this.http.post(url,data);
+	}
+	
+	getscanweeklist180(data){
+		let str = JSON.stringify(data);
+		let sign = this.getSignInit(str);
+		let merCert = encodeURIComponent(this.publicKey);
+        let url = this.gwUrl + 'cardmerchant/getscanweeklist180' + '?sign=' + sign + '&merCert=' + merCert;
+        console.log(url);
+
+        return this.http.post(url,data);
+	}
+	
 	//根据商户号查找交易列表，用于报表统计
 	getTrxInfoByMerchantId(data){ 
 		let str = JSON.stringify(data);
