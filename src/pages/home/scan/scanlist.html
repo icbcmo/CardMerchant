@@ -13,31 +13,47 @@
 	<div padding>
 		<ion-segment [(ngModel)]="tabs">
 			<ion-segment-button value="jifen">
-				积分
+				我的积分
 			</ion-segment-button>
 			<ion-segment-button value="history">
-				积分历史明细
+				扫码历史
 			</ion-segment-button>
 		</ion-segment>
 	</div>
 	<div [ngSwitch]="tabs">
 		<ion-list *ngSwitchCase="'jifen'">
-			<ion-item class="item item-block item-ios" *ngFor="let item of items" >
-				{{item.orderid}}
+			<ion-item>
+				{{pointsnum}}
 			</ion-item>
 			<ion-item>
-				积分总计：{{pointsnum}}
+				<button ion-button color="primary" (click)="openExchange()" block>兑换</button>
 			</ion-item>
-			<ion-item>
-				<ion-label>积分兑现</ion-label>
-				<ion-input name="mobile" placeholder="請輸入卡号" type="number"  #cardno ></ion-input>
+			<ion-item class="item item-block item-ios" >
+				<ion-grid>
+					<ion-row>
+						<ion-col>
+							分数
+						</ion-col>
+						<ion-col>
+							日期
+						</ion-col>
+						<ion-col>
+							状态
+						</ion-col>
+					</ion-row>
+					<ion-row *ngFor="let item of items"  >
+						<ion-col>
+							{{item.points}}
+						</ion-col>
+						<ion-col>
+							{{item.date}}
+						</ion-col>
+						<ion-col>
+							{{item.status}}
+						</ion-col>
+					</ion-row>
+				</ion-grid>
 			</ion-item>
-			<div padding>
-				<button ion-button color="primary" (click)="submitForm()" *ngIf="notSubmitted" block>提交</button>
-			</div>
-			<div class="helper" *ngIf="notSubmitted" >
-				可以返回到首页继续扫描二维码，累计积分一次提交换钱
-			</div>
 		</ion-list>
 		
 		<ion-list *ngSwitchCase="'history'">
