@@ -248,6 +248,25 @@ export class HomePage implements OnInit{
             console.log(base64Image);
         });
     }
+	
+	openScanner(){
+        const options: CameraOptions = {
+            quality: 80,
+            targetWidth: 600,
+            targetHeight: 1200,
+            //allowEdit: true,
+            sourceType: 1,
+            destinationType: this.camera.DestinationType.DATA_URL,
+            encodingType: this.camera.EncodingType.JPEG,
+            mediaType: this.camera.MediaType.PICTURE
+        };
+
+        this.camera.getPicture(options).then((imageData) => {
+            let base64Image = imageData;
+            base64Image = 'data:image/jpeg;base64,' + base64Image;
+            console.log(base64Image);
+        });
+    }
 
     openRefundModal() {
         let modal = this.modalCtrl.create(Refund);
