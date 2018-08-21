@@ -7,10 +7,10 @@
       <ion-segment-button value="charts">
         數據圖表
       </ion-segment-button>
-      <ion-segment-button value="data">
+      <ion-segment-button value="posData">
         POS報表數據
       </ion-segment-button>
-      <ion-segment-button value="data2">
+      <ion-segment-button value="wechatData">
         微信報表數據
       </ion-segment-button>
     </ion-segment>
@@ -27,7 +27,7 @@
   </div>
 
 
-  <div [hidden]="showType !='data'" >
+  <div [hidden]="showType !='posData'" >
     <!--<ngx-datatable-->
             <!--[rows]="rows"-->
 
@@ -53,7 +53,7 @@
 
   </div>
 
-  <div [hidden]="showType !='data2'" >
+  <div [hidden]="showType !='wechatData'" >
     <ngx-datatable
             [rows]="rows"
 
