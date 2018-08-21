@@ -328,7 +328,7 @@ export class AboutPage implements OnInit{
 
             for(let j =0; j<totalList.length; j++){
                 if(tmp[i].departmentName == totalList[j].name){
-                    totalList[j].value= totalList[j].value + (parseInt(tmp[i].txnAmount));
+                    totalList[j].value= totalList[j].value + (parseInt(tmp[i].txnAmount)/100).toFixed(2);
                 }
             }
         }
