@@ -24,6 +24,43 @@ export class MyReward implements OnInit{
         this.showType ='weekData';
 
     }
+    //沟崽子们
+    ionViewDidLoad(){
+        console.log('触发ionViewDidLoad');
+    }
+
+    ionViewWillEnter(){
+        console.log('触发ionViewWillEnter');
+        let loading = this.loadingCtrl.create({
+            content: 'Please wait...',
+        });
+        loading.present();
+
+        this.reportDataService.getScanWeekList156().toPromise().then(data=>{
+            console.log(data);
+            this.weekData = Object(Object(data).data);
+            this.myTotal = Object(data).message;
+            loading.dismiss();
+
+        });
+    }
+
+    ionViewDidEnter(){
+        console.log('触发ionViewDidEnter');
+    }
+
+    ionViewWillLeave(){
+        console.log('触发ionViewWillLeave');
+    }
+
+    ionViewDidLeave(){
+        console.log('触发ionViewDidLeave');
+    }
+
+    ionViewWillUnload(){
+        console.log('触发ionViewWillUnload');
+    }
+
     ngOnInit()
     {
         let loading = this.loadingCtrl.create({

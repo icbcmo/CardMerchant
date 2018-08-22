@@ -13,7 +13,8 @@
 
     我的積分
     {{myTotal}}
-    <ion-input #epoint  placeholder="epoint" [value]="canExchangeMaxPoints" type="number" [max]="canExchangeMaxPoints"></ion-input>
-    <button ion-button color="primary" (click)="doExchangeToCash()" >兑换</button>
+    <ion-input #epoint  placeholder="epoint" [value]="canExchangeMaxPoints" type="tel" [max]="canExchangeMaxPoints" ></ion-input>
+    <!--<ion-input #epoint  placeholder="epoint" [value]="canExchangeMaxPoints" type="number" [max]="canExchangeMaxPoints" step="100"></ion-input>-->
+    <button ion-button color="primary" (click)="doExchangeToCash(epoint.value)" >兑换</button>
 
 </ion-content>
