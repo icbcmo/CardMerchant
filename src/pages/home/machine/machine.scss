@@ -1,15 +1,11 @@
 page-machine {
-	.toolbar-content{
-		display: flex;
-		justify-content: space-between;
-	}
-	.toolbar-title{
-		text-align: center;
-	}
-	ion-icon {
-		font-size: 2.2em;
-		color: white;
-		line-height: 52px;
-		margin-right: 0.5rem;
+	.content{
+		background-color: #f3f3f3;
+		.item_list{
+			padding: 0 10px; margin: 0;
+			.item{
+				border-radius: 6px; margin-top: 10px; font-size: 1.4rem; min-height: 4rem; border: 1px solid #eaeaea;
+			}
+		}
 	}
 }
