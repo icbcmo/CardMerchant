@@ -10,14 +10,31 @@
   <ion-list class="input_list">
 
     <ion-item>
-      <ion-label>賬單號</ion-label>
-      <ion-input placeholder="請輸入賬單號" type="text" #billno ></ion-input>
+      <div style="line-height: 28px; white-space:normal;">
+        <span style="font-weight: bold;">如遇差错交易*，请按以下指引顺序进行操作：</span><br>
+        <br>
+        1.请在卡機上打印“上一筆交易”單據，核对是否為该笔差错交易。<br>
+        <br>
+        2.若交易单据显示的并非该笔差错交易，則重新進行一笔“1元”的交易（按该差错交易之卡種选择）。<br>
+        <br>
+        3.若此时客戶收到银行的消费短訊，则上一笔“差错交易”已实时冲正成功，可重新進行正常的刷卡支付（或現金支付）后，完成交易。<br>
+        <br>
+        4.若客戶依然收不到银行的消费短訊，並不代表沖正失敗，此時征询客戶同意，收集以下資料，銀行将依此作交易核實：<br>
+        <br>
+        A.卡號<br>
+        B.交易金額<br>
+        C.交易日期及時間<br>
+        D.客戶聯繫方式<br>
+        <br>
+        5.在没有“交易單據”給客戶簽名确认的前提下，请勿向客户提供商品／服务，待晚上進行結算後，再聯繫銀行查询详情，之後再聯繫客戶。<br>
+        <br>
+        *差错交易描述：刷卡后，客户收到银行的消费短讯，但卡机交易失败，未出卡纸，无法让客户签名确认交易。<br>
+      </div>
+      <div>
+
+      </div>
     </ion-item>
 
   </ion-list>
-
-  <div padding>
-    <button ion-button color="primary" (click)="submitForm()" block>查詢</button>
-  </div>
 
 </ion-content>

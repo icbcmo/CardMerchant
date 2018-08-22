@@ -8,10 +8,9 @@ import {ContactPage} from '../pages/contact/contact';
 import {HomePage} from '../pages/home/home';
 import {TabsPage} from '../pages/tabs/tabs';
 import {SigninPage} from "../pages/auth/signin";
-import {Setup} from "../pages/home/setup/setup";
-import {UserMgt} from "../pages/home/setup/usermgt";
-import {AddUser} from "../pages/home/setup/adduser";
-import {UserDetail} from "../pages/home/setup/userdetail";
+import {UserMgt} from "../pages/contact/setup/usermgt";
+import {AddUser} from "../pages/contact/setup/adduser";
+import {UserDetail} from "../pages/contact/setup/userdetail";
 import {StatusBar} from '@ionic-native/status-bar';
 import {SplashScreen} from '@ionic-native/splash-screen';
 import {IndexPage} from '../pages/index/index';
@@ -59,6 +58,7 @@ import {Qrscanner} from "../pages/home/qrscanner/qrscanner";
 import {MyReward} from "../pages/home/cashier/myreward/my-reward";
 import {MyRewardExchange} from "../pages/home/cashier/myreward/my-reward-exchange";
 import {Trxdata} from "../pages/home/trxdata/trxdata";
+import {Help} from "../pages/home/help/help";
 
 @NgModule({
     declarations: [
@@ -75,13 +75,13 @@ import {Trxdata} from "../pages/home/trxdata/trxdata";
         OrderdetailsPage,
         Custservice,
         Refund,
+        Help,
 		RefundVerify,
 		RefundProgress,
 		RefundDetail,
 		CommonRefund,
 		WeixinRefund,
 		ShowImage,
-		Setup,
 		UserMgt,
 		AddUser,
 		UserDetail,
@@ -135,7 +135,7 @@ import {Trxdata} from "../pages/home/trxdata/trxdata";
 		CommonRefund,
 		WeixinRefund,
 		ShowImage,
-		Setup,
+        Help,
 		UserMgt,
 		AddUser,
 		UserDetail,
