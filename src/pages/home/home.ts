@@ -11,13 +11,13 @@ import {Refund} from "./refund/refund";
 import {Wrongtrx} from "./wrongtrx/wrongtrx";
 import {OrderRefund} from "./refund/orderrefund";
 import {Camera, CameraOptions} from '@ionic-native/camera';
-import {ScanList} from './scan/scanlist';
 import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner';
 import {Qrcode} from "./qrcode/qrcode";
 import { JPush } from "@jiguang-ionic/jpush";
 import { Device } from "@ionic-native/device";
 import {Setup} from "./setup/setup";
 import {Machine} from "./machine/machine";
+import {CashierScan} from "./cashier/scan/cashier-scan";
 import {OrderList} from "./order/orderlist";
 
 const EventSource: any = window['EventSource'];
@@ -284,8 +284,8 @@ export class HomePage implements OnInit{
             .catch((e: any) => console.log('Error is', e));
     }
 	
-	openScanListModal(){
-		let modal = this.modalCtrl.create(ScanList);
+	openCashierScanModal(){
+		let modal = this.modalCtrl.create(CashierScan);
         modal.present();
 	}
 

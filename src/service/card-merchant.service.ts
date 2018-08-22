@@ -159,6 +159,17 @@ export class CardMerchantService {
         return this.http.post(url,data);
 	}
 	
+	//获取当天扫码明细接口
+	getScanDayList156(data){
+		let str = JSON.stringify(data);
+		let sign = this.getSignInit(str);
+		let merCert = encodeURIComponent(this.publicKey);
+        let url = this.gwUrl + 'cardmerchant/getScanDayList156' + '?sign=' + sign + '&merCert=' + merCert;
+        console.log(url);
+
+        return this.http.post(url,data);
+	 }
+	
 	//根据商户号查找交易列表，用于报表统计
 	getTrxInfoByMerchantId(data){ 
 		let str = JSON.stringify(data);

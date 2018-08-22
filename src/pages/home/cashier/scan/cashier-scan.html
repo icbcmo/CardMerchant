@@ -1,0 +1,69 @@
+<ion-header>
+    <ion-navbar>
+        <button ion-button small clear (click)="dismiss()">
+            <ion-icon ios="ios-arrow-back"></ion-icon>
+        </button>
+        <ion-title>订单积分</ion-title>
+    </ion-navbar>
+</ion-header>
+<ion-content>
+	<div padding>
+		<ion-segment [(ngModel)]="tabs">
+			<ion-segment-button value="jifen">
+				我的积分
+			</ion-segment-button>
+			<ion-segment-button value="history">
+				扫码历史
+			</ion-segment-button>
+		</ion-segment>
+	</div>
+	<div [ngSwitch]="tabs">
+		<ion-list *ngSwitchCase="'jifen'">
+			<ion-item>
+				{{pointsnum}}
+			</ion-item>
+			<ion-item>
+				<button ion-button color="primary" (click)="toCash()" block>兑换</button>
+			</ion-item>
+			<ion-item *ngIf="openInput" >
+				<ion-label>银行卡号</ion-label>
+				<ion-input name="cardno" placeholder="請輸入银行卡号" type="number"  #cardno ></ion-input>
+			</ion-item>
+			<ion-item *ngIf="openInput" >
+				<button ion-button color="primary" (click)="submitForm()" block>确定</button>
+			</ion-item>
+			<ion-item class="item item-block item-ios" >
+				<ion-grid>
+					<ion-row>
+						<ion-col>
+							分数
+						</ion-col>
+						<ion-col>
+							日期
+						</ion-col>
+						<ion-col>
+							状态
+						</ion-col>
+					</ion-row>
+					<ion-row *ngFor="let item of items"  >
+						<ion-col>
+							{{item.points}}
+						</ion-col>
+						<ion-col>
+							{{item.date}}
+						</ion-col>
+						<ion-col>
+							{{item.status}}
+						</ion-col>
+					</ion-row>
+				</ion-grid>
+			</ion-item>
+		</ion-list>
+		
+		<ion-list *ngSwitchCase="'history'">
+			<ion-item *ngFor="let item of historyList" >
+				{{item.orderid}}
+			</ion-item>
+		</ion-list>
+	</div>
+</ion-content>

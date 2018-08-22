@@ -52,7 +52,6 @@ import {Machine} from "../pages/home/machine/machine";
 import {MachineRequest} from "../pages/home/machine/machinerequest";
 import {MachineRequestDetail} from "../pages/home/machine/machinerequestdetail";
 import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner';
-import { ScanList } from '../pages/home/scan/scanlist';
 import {ReportDataService} from "../service/report-data.service";
 import {CashierScan} from "../pages/home/cashier/scan/cashier-scan";
 
@@ -87,7 +86,7 @@ import {CashierScan} from "../pages/home/cashier/scan/cashier-scan";
 		Machine,
 		MachineRequest,
 		MachineRequestDetail,
-		ScanList,CashierScan
+		CashierScan
     ],
     imports: [
         HttpClientModule,
@@ -135,7 +134,7 @@ import {CashierScan} from "../pages/home/cashier/scan/cashier-scan";
 		Machine,
 		MachineRequest,
 		MachineRequestDetail,
-		ScanList,CashierScan
+		CashierScan
     ],
     providers: [
         StatusBar,
