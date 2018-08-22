@@ -56,6 +56,7 @@ import { ScanList } from '../pages/home/scan/scanlist';
 import {ReportDataService} from "../service/report-data.service";
 import {CashierScan} from "../pages/home/cashier/scan/cashier-scan";
 import {RewardRanking} from "../pages/home/cashier/rewardranking/reward-ranking";
+import {Qrscanner} from "../pages/home/qrscanner/qrscanner";
 
 @NgModule({
     declarations: [
@@ -85,6 +86,7 @@ import {RewardRanking} from "../pages/home/cashier/rewardranking/reward-ranking"
         Wrongtrx,
 		OrderRefund,
         Qrcode,
+        Qrscanner,
 		Machine,
 		MachineRequest,
 		MachineRequestDetail,
@@ -133,6 +135,7 @@ import {RewardRanking} from "../pages/home/cashier/rewardranking/reward-ranking"
         Wrongtrx,
 		OrderRefund,
         Qrcode,
+        Qrscanner,
 		Machine,
 		MachineRequest,
 		MachineRequestDetail,
