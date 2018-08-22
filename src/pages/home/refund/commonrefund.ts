@@ -14,7 +14,7 @@ import {BaseDate} from '../../../service/BaseDate.service';
 export class CommonRefund implements OnInit{	
 	pictures: any[] = [];
 	tradeDate: any;
-	total: Number = 0;
+	total: any = 0;
 	
 	
 	@ViewChild('merchantname') merchantname: ElementRef;

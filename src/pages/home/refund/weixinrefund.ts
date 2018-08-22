@@ -13,7 +13,7 @@ import {Camera, CameraOptions} from "@ionic-native/camera";
 export class WeixinRefund implements OnInit{
 	pictures: any[] = [];
 	tradeDate: any;
-	total: Number = 0;
+	total: any = 0;
 	
 	@ViewChild('wechattrxno') wechattrxno: ElementRef;
 	@ViewChild('wechattrxdate') wechattrxdate: ElementRef;

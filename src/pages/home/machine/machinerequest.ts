@@ -13,7 +13,7 @@ import {TipService} from '../../../service/tip.service';
 export class MachineRequest implements OnInit{	
 	items: any;
 	pictures: any[] = [];
-	total: Number = 0;
+	total: any = 0;
 	
 	@ViewChild('machinerequesttype') machinerequesttype: ElementRef;
 	@ViewChild('machineno') machineno: ElementRef;
@@ -46,7 +46,7 @@ export class MachineRequest implements OnInit{
 	}
 	
 	openCamera(){
-		this.total = this.total +1 ;
+		this.total = this.total + 1 ;
         if(this.total > 4){
 			this.tipService.show('最多拍照上传4张');
 		}else{
@@ -111,7 +111,7 @@ export class MachineRequest implements OnInit{
 			machineapplyname: Object(this.machineapplyname).value,
 			machineapplymobile: Object(this.machineapplymobile).value,
 			machinerequestdesc: Object(this.machinerequestdesc).value,
-			machineattach: this.base64Image
+			machineattach: this.pictures
 		};
 		console.log(data);
 		let loading = this.loadingCtrl.create({
