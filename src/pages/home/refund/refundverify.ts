@@ -5,6 +5,7 @@ import {CardMerchantService} from "../../../service/card-merchant.service";
 import {NativeStorage} from "@ionic-native/native-storage";
 import {TipService} from '../../../service/tip.service';
 import {ShowImage} from "./showimage";
+import {RefundDetail} from "./refunddetail";
 
 @Component({
   selector: 'page-refundverify',
@@ -107,7 +108,11 @@ export class RefundVerify implements OnInit{
         modal.present();
 	}
 	
-
+	goRefundDetail(item){
+		let modal = this.modalCtrl.create(RefundDetail, {item: item});
+        modal.present();
+	}
+	
     dismiss() {
         this.viewCtrl.dismiss();
     }
