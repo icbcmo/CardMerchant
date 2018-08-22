@@ -31,9 +31,12 @@
       <ion-input type="text" #machinerequestdesc ></ion-input>
     </ion-item>
 	<ion-item>
-		<button ion-button (click)="openCamera()" >拍照/附件</button>
-		<div *ngIf="needView" class="pic-wrapper" >
-			<img [src]="base64Image" width="100" height="100" />
+		<button ion-button (click)="openCamera()" >拍照</button>
+		<div class="row custom" >
+			<div class="pic-wrapper" *ngFor="let picture of pictures;let i = index" >
+				<img [src]="picture.data" />
+				<div *ngIf="picture.btn" class="delete" (click)="delPic(i)" >x</div>
+			</div>
 		</div>
     </ion-item>
   </ion-list>

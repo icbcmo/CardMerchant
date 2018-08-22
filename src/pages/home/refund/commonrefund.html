@@ -48,10 +48,10 @@
     </ion-item>
 	<ion-item>
 		<button ion-button (click)="openCamera()" >拍照</button>
-		<div *ngIf="needView" class="row" >
+		<div class="row custom" >
 			<div class="pic-wrapper" *ngFor="let picture of pictures;let i = index" >
-				<img [src]="picture" />
-				<div class="delete" (click)="delPic(i)" >x</div>
+				<img [src]="picture.data" />
+				<div *ngIf="picture.btn" class="delete" (click)="delPic(i)" >x</div>
 			</div>
 		</div>
     </ion-item>
