@@ -56,6 +56,7 @@ import { ScanList } from '../pages/home/scan/scanlist';
 import {ReportDataService} from "../service/report-data.service";
 import {CashierScan} from "../pages/home/cashier/scan/cashier-scan";
 import {RewardRanking} from "../pages/home/cashier/rewardranking/reward-ranking";
+import {MyReward} from "../pages/home/cashier/myreward/my-reward";
 
 @NgModule({
     declarations: [
@@ -88,7 +89,7 @@ import {RewardRanking} from "../pages/home/cashier/rewardranking/reward-ranking"
 		Machine,
 		MachineRequest,
 		MachineRequestDetail,
-		ScanList,CashierScan,RewardRanking
+		ScanList,CashierScan,RewardRanking,MyReward
     ],
     imports: [
         HttpClientModule,
@@ -136,7 +137,7 @@ import {RewardRanking} from "../pages/home/cashier/rewardranking/reward-ranking"
 		Machine,
 		MachineRequest,
 		MachineRequestDetail,
-		ScanList,CashierScan,RewardRanking
+		ScanList,CashierScan,RewardRanking,MyReward
     ],
     providers: [
         StatusBar,

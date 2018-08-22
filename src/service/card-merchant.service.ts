@@ -245,4 +245,26 @@ export class CardMerchantService {
 
         return this.http.get(url);
     }
+
+    addCounterPoints(sessionid:any, orderid:any, orderamount:any, orderdate:any, pointsnum:any){
+        let data= {
+            "orderamount":orderamount,
+            "orderdate":orderdate,
+            "orderid":orderid,
+            "pointsnum":pointsnum,
+            "sessionid":sessionid
+        };
+
+        let str = JSON.stringify(data);
+        console.log("str:" ,str);
+
+        let sign = this.getSignInit(str);
+        let merCert = encodeURIComponent(this.publicKey);
+
+        let url = this.gwUrl+'cardmerchant/addcounterpoints'
+            +'?sign='+sign+'&merCert='+merCert;
+        console.log(url);
+
+        return this.http.post(url,data,this.httpOptions);
+    }
 }
