@@ -16,7 +16,7 @@ import {Qrscanner} from "./qrscanner/qrscanner";
 import {Qrcode} from "./qrcode/qrcode";
 import { JPush } from "@jiguang-ionic/jpush";
 import { Device } from "@ionic-native/device";
-import {Setup} from "../contact/setup/setup";
+import {Help} from "./help/help";
 import {Machine} from "./machine/machine";
 import {CashierScan} from "./cashier/scan/cashier-scan";
 import {OrderList} from "./order/orderlist";
@@ -324,7 +324,7 @@ export class HomePage implements OnInit{
     }
 	
 	goSetup() {
-        let modal = this.modalCtrl.create(Setup);
+        let modal = this.modalCtrl.create(Help);
         modal.present();
     }
 	
