@@ -4,6 +4,7 @@ import {CardMerchantService} from "../../../service/card-merchant.service";
 import {NativeStorage} from "@ionic-native/native-storage";
 import { ModalController, Platform,NavController, ViewController, NavParams, AlertController, LoadingController } from 'ionic-angular';
 import {TipService} from '../../../service/tip.service';
+import {ShowImage} from './showimage';
 
 declare var localStorage: any;
 
@@ -34,6 +35,12 @@ export class RefundDetail implements OnInit{
     ngOnInit() {
 		console.log(this.params.get('item'));
 		this.item = this.params.get('item');
+		this.item['pictures']=[
+			{data:'../../../assets/imgs/refundverify1_1.png'},
+			{data:'../../../assets/imgs/refundverify1_1.png'},
+			{data:'../../../assets/imgs/refundverify1_1.png'},
+			{data:'../../../assets/imgs/refundverify1_1.png'}
+		];
 		this.btn = this.params.get('btn');
 	}
 	
@@ -70,6 +77,11 @@ export class RefundDetail implements OnInit{
 				});
 				loading.present();
 			});
+	}
+	
+	showPicture(data){
+		let modal = this.modalCtrl.create(ShowImage, {data:data});
+        modal.present();
 	}
 	
 	goBack(){
