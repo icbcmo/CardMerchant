@@ -104,14 +104,22 @@ export class HomePage implements OnInit{
 
         //this.cleanTags();
         let mytags=[];
-        mytags.push(localStorage.getItem("MERCHANTCIF"));
-        mytags.push(localStorage.getItem("MERCHANTID"));
-        mytags.push(localStorage.getItem("DEPARTMENTID"));
-        mytags.push(localStorage.getItem("WECHATMERCHANTID"));
-        mytags.push(localStorage.getItem("LEVEL"));
-        mytags.push(localStorage.getItem("MOBILE"));
-        mytags.push(localStorage.getItem("UID"));
-        mytags.push(localStorage.getItem("UID2"));
+        if(localStorage.getItem("MERCHANTCIF") != "")
+            mytags.push(localStorage.getItem("MERCHANTCIF"));
+        if(localStorage.getItem("MERCHANTID") != "")
+            mytags.push(localStorage.getItem("MERCHANTID"));
+        if(localStorage.getItem("DEPARTMENTID") != "")
+            mytags.push(localStorage.getItem("DEPARTMENTID"));
+        if(localStorage.getItem("WECHATMERCHANTID") != "")
+            mytags.push(localStorage.getItem("WECHATMERCHANTID"));
+        if(localStorage.getItem("LEVEL") != "")
+            mytags.push(localStorage.getItem("LEVEL"));
+        if(localStorage.getItem("MOBILE") != "")
+            mytags.push(localStorage.getItem("MOBILE"));
+        if(localStorage.getItem("UID") != "")
+            mytags.push(localStorage.getItem("UID"));
+        if(localStorage.getItem("UID2") != "")
+            mytags.push(localStorage.getItem("UID2"));
         console.log(mytags);
         this.setTags(mytags);
 

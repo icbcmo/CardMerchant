@@ -12,6 +12,7 @@ export class MyReward implements OnInit{
     showType = 'weekData';
     weekData =[];
     dayData =[];
+    myTotal = 0;
     myWeekData:any;
     myDayData:any;
 
@@ -30,41 +31,44 @@ export class MyReward implements OnInit{
         this.reportDataService.getScanWeekList156().toPromise().then(data=>{
             console.log(data);
             this.weekData = Object(Object(data).data);
-
+            this.myTotal = Object(data).message;
             loading.dismiss();
 
         });
     }
 
-    showWhat()
-    {
-        let loading = this.loadingCtrl.create({
-            content: 'Please wait...',
-        });
-        loading.present();
-
-        console.log(this.showType);
-        if(this.showType == 'weekData'){
-            this.reportDataService.getScanWeekList156().toPromise().then(data=>{
-                console.log(data);
-                this.weekData = Object(Object(data).data);
-
-                loading.dismiss();
-
-            });
-
-
-        }
-        else if(this.showType == 'todayData'){
-            this.reportDataService.getScanDayList156().toPromise().then(data=>{
-                console.log(data);
-                this.dayData = Object(Object(data).data);
-
-                loading.dismiss();
-
-            });
-        }
+    toCash(){
+        console.log("toCash click");
     }
+    // showWhat()
+    // {
+    //     let loading = this.loadingCtrl.create({
+    //         content: 'Please wait...',
+    //     });
+    //     loading.present();
+    //
+    //     console.log(this.showType);
+    //     if(this.showType == 'weekData'){
+    //         this.reportDataService.getScanWeekList156().toPromise().then(data=>{
+    //             console.log(data);
+    //             this.weekData = Object(Object(data).data);
+    //
+    //             loading.dismiss();
+    //
+    //         });
+    //
+    //
+    //     }
+    //     else if(this.showType == 'todayData'){
+    //         this.reportDataService.getScanDayList156().toPromise().then(data=>{
+    //             console.log(data);
+    //             this.dayData = Object(Object(data).data);
+    //
+    //             loading.dismiss();
+    //
+    //         });
+    //     }
+    // }
 
     goBack() {
         this.viewCtrl.dismiss();
