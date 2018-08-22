@@ -80,8 +80,8 @@ export class ContactPage {
   }
 
   test6() {
-      let ss = localStorage.getItem('SESSIONID');
-      this.cardMerchantService.addCounterPoints(ss,'321113322','44','20180504','99').toPromise().then(
+
+      this.cardMerchantService.addCounterPoints('321113322','44','20180504','99').toPromise().then(
           data => {
               console.log(data);
           }
