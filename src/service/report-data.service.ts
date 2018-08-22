@@ -63,4 +63,22 @@ export class ReportDataService {
         return this.http.get(url);
     }
 
+    getScanWeekRanking156() {
+        let str = "sessionid="+localStorage.getItem('SESSIONID');
+        let sign = this.getSignInit(str);
+        let merCert = encodeURIComponent(this.publicKey);
+        let url = this.gwUrl + 'cardmerchant/getscanweekranking180?' + str + '&sign=' + sign + '&merCert=' + merCert;
+        console.log(url);
+        return this.http.get(url);
+    }
+
+    getScanDayRanking156() {
+        let str = "sessionid="+localStorage.getItem('SESSIONID');
+        let sign = this.getSignInit(str);
+        let merCert = encodeURIComponent(this.publicKey);
+        let url = this.gwUrl + 'cardmerchant/getscandayranking180?' + str + '&sign=' + sign + '&merCert=' + merCert;
+        console.log(url);
+        return this.http.get(url);
+    }
+
 }

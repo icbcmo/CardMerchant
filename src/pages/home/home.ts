@@ -19,6 +19,7 @@ import { Device } from "@ionic-native/device";
 import {Setup} from "./setup/setup";
 import {Machine} from "./machine/machine";
 import {OrderList} from "./order/orderlist";
+import {RewardRanking} from "./cashier/rewardranking/reward-ranking";
 
 const EventSource: any = window['EventSource'];
 
@@ -324,4 +325,8 @@ export class HomePage implements OnInit{
         modal.present();
 	}
 
+    openRewardRankingModal(){
+        let modal = this.modalCtrl.create(RewardRanking);
+        modal.present();
+    }
 }

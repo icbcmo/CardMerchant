@@ -75,6 +75,7 @@ export class SigninPage implements OnInit{
         this.cardMerchantService.checkVerifyCode_rsa(acc,psw).toPromise().then(data=> {
             console.log(data);
 			loading.dismiss();
+			//localStorage.clear();
             localStorage.setItem('MERCHANTCIF', Object(Object(data).data).merchantCif);
             localStorage.setItem('MERCHANTCIFNAME', Object(Object(data).data).merchantCifName);
             localStorage.setItem('MERCHANTID', Object(Object(data).data).merchantId);

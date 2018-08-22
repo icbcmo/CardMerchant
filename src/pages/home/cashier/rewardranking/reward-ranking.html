@@ -1,0 +1,48 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>交易報表</ion-title>
+    </ion-navbar>
+    <div class="nav">
+        <ion-segment [(ngModel)]="showType" color="primary" (ionChange)="showWhat()">
+
+            <ion-segment-button value="weekData">
+                本週排行榜
+            </ion-segment-button>
+            <ion-segment-button value="todayData">
+                今天排行榜
+            </ion-segment-button>
+        </ion-segment>
+    </div>
+</ion-header>
+
+
+<ion-content>
+
+
+
+    <div [hidden]="showType !='weekData'" >
+
+        <ion-list *ngFor="let data of weekData ">
+
+            <ion-item>
+                {{data.R_POINTS}},
+                ****{{data.MOBILE.substr(-4)}},
+                {{data.SUM_POINTS}}
+            </ion-item>
+        </ion-list>
+
+    </div>
+
+    <div [hidden]="showType !='todayData'" >
+        <ion-list *ngFor="let data of dayData ">
+
+            <ion-item>
+                {{data.R_POINTS}},
+                ****{{data.MOBILE.substr(-4)}},
+                {{data.SUM_POINTS}}
+            </ion-item>
+        </ion-list>
+    </div>
+
+
+</ion-content>
