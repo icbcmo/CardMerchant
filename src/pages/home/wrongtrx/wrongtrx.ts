@@ -23,5 +23,8 @@ export class Wrongtrx implements OnInit{
 
     ngOnInit() {}
 
+    goBack(){
+        this.viewCtrl.dismiss();
+    }
 
 }

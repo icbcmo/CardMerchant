@@ -1,26 +1,29 @@
 <ion-header>
-  <ion-navbar>
-    <button ion-button start (click)="dismiss()">返回</button>
-    <ion-title>调单/退款</ion-title>
-  </ion-navbar>
+	<ion-navbar>
+		<button ion-button small clear (click)="dismiss()">
+			<ion-icon ios="ios-arrow-back"></ion-icon>
+		</button>
+		<ion-title>调单/退款</ion-title>
+	</ion-navbar>
 </ion-header>
 <ion-content>
-  <ion-list>
-		<ion-item>
-			<h2>MID：工商银行</h2>
-			<h3>卡号：2122323233</h3>
-			<button ion-button class=""  item-end >
-				<ion-icon name="film" (click)="goDisplay('./assets/imgs/logo.png')" >影像</ion-icon>
-				<ion-icon name="create" (click)="goApprove('123456')" >审批</ion-icon>
-			</button>
+	<ion-searchbar placeholder="請輸入搜索內容"></ion-searchbar>
+		<ion-list class="useList">
+		<ion-item *ngFor="let item of items" (click)="goRefundDetail(item)" >
+			<div class="left">
+				<p class="p1">MID：工商银行</p>
+				<p class="p2">卡号：{{item.field5}}</p>
+			</div>
+			<div class="right" item-end>
+				<div class="div1 bg1" (click)="goDisplay(item.field6)">
+
+					<p class="p1">影像</p>
+				</div>
+				<div class="div1 bg2" (click)="goApprove(item.sequence)">
+
+					<p class="p1">审批</p>
+				</div>
+			</div>
 		</ion-item>
-		<ion-item *ngFor="let item of items" >
-			<h2>MID：工商银行</h2>
-			<h3>卡号：{{item.field5}}</h3>
-			<button ion-button class=""  item-end >
-				<ion-icon name="film" (click)="goDisplay(item.field6)" >影像</ion-icon>
-				<ion-icon name="create" (click)="goApprove(item.sequence)" >审批</ion-icon>
-			</button>
-		</ion-item>
-  </ion-list>
+	</ion-list>
 </ion-content>
