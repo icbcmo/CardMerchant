@@ -14,7 +14,7 @@ import {BaseDate} from '../../../service/BaseDate.service';
 export class CommonRefund implements OnInit{	
 	pictures: any[] = [];
 	tradeDate: any;
-	total: Number = 0;
+	total: number = 0;
 	
 	
 	@ViewChild('merchantname') merchantname: ElementRef;
@@ -91,7 +91,7 @@ export class CommonRefund implements OnInit{
 	
 	delPic(index){
 		this.pictures.splice(index,1,{data:'../../../assets/imgs/refundverify1_1.png',btn:false,id:index});
-		this.total = this.total - 1 ;
+		this.total = (this.total -1);
 	}
 	
 	submitForm(){
