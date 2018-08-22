@@ -143,6 +143,11 @@
 				{{item.field12}}
 			</ion-col>
 		</ion-row>
+		<ion-row>
+			<ion-col *ngFor="let pic of item.pictures;let i=index" >
+				<img [src]="pic.data" (click)="showPicture(pic.data)" />
+			</ion-col>
+		</ion-row>
 	</ion-grid>
 	<div *ngIf="btn" padding>
 		<button ion-button color="primary" (click)="goApprove()" block>审批</button>

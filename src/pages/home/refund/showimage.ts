@@ -7,7 +7,7 @@ import { ViewController, NavParams } from 'ionic-angular';
   templateUrl: 'showimage.html'
 })
 export class ShowImage implements OnInit{
-	picurl: any;
+	data: any;
 	
     constructor(
         public viewCtrl: ViewController,
@@ -17,8 +17,7 @@ export class ShowImage implements OnInit{
 
 
     ngOnInit() {
-		this.picurl = this.params.get('picurl');
-		this.picurl = './assets/imgs/juana.gif';
+		this.data = this.params.get('data');
 	}
 
     dismiss() {

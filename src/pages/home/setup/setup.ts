@@ -27,7 +27,6 @@ export class Setup implements OnInit{
 
 
     ngOnInit() {
-
 		
 	}
 	
