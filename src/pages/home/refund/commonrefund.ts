@@ -16,7 +16,6 @@ export class CommonRefund implements OnInit{
 	tradeDate: any;
 	total: any = 0;
 	
-	
 	@ViewChild('merchantname') merchantname: ElementRef;
 	@ViewChild('departmentname') departmentname: ElementRef;
 	@ViewChild('refundcardno4') refundcardno4: ElementRef;
@@ -91,7 +90,7 @@ export class CommonRefund implements OnInit{
 	
 	delPic(index){
 		this.pictures.splice(index,1,{data:'../../../assets/imgs/refundverify1_1.png',btn:false,id:index});
-		this.total = this.total - 1 ;
+		this.total = (this.total -1);
 	}
 	
 	submitForm(){
