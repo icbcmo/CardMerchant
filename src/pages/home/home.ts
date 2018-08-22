@@ -21,6 +21,7 @@ import {Machine} from "./machine/machine";
 import {CashierScan} from "./cashier/scan/cashier-scan";
 import {OrderList} from "./order/orderlist";
 import {RewardRanking} from "./cashier/rewardranking/reward-ranking";
+import {MyReward} from "./cashier/myreward/my-reward";
 
 const EventSource: any = window['EventSource'];
 
@@ -103,14 +104,22 @@ export class HomePage implements OnInit{
 
         //this.cleanTags();
         let mytags=[];
-        mytags.push(localStorage.getItem("MERCHANTCIF"));
-        mytags.push(localStorage.getItem("MERCHANTID"));
-        mytags.push(localStorage.getItem("DEPARTMENTID"));
-        mytags.push(localStorage.getItem("WECHATMERCHANTID"));
-        mytags.push(localStorage.getItem("LEVEL"));
-        mytags.push(localStorage.getItem("MOBILE"));
-        mytags.push(localStorage.getItem("UID"));
-        mytags.push(localStorage.getItem("UID2"));
+        if(localStorage.getItem("MERCHANTCIF") != "")
+            mytags.push(localStorage.getItem("MERCHANTCIF"));
+        if(localStorage.getItem("MERCHANTID") != "")
+            mytags.push(localStorage.getItem("MERCHANTID"));
+        if(localStorage.getItem("DEPARTMENTID") != "")
+            mytags.push(localStorage.getItem("DEPARTMENTID"));
+        if(localStorage.getItem("WECHATMERCHANTID") != "")
+            mytags.push(localStorage.getItem("WECHATMERCHANTID"));
+        if(localStorage.getItem("LEVEL") != "")
+            mytags.push(localStorage.getItem("LEVEL"));
+        if(localStorage.getItem("MOBILE") != "")
+            mytags.push(localStorage.getItem("MOBILE"));
+        if(localStorage.getItem("UID") != "")
+            mytags.push(localStorage.getItem("UID"));
+        if(localStorage.getItem("UID2") != "")
+            mytags.push(localStorage.getItem("UID2"));
         console.log(mytags);
         this.setTags(mytags);
 
@@ -235,16 +244,58 @@ export class HomePage implements OnInit{
 	}
 	
 	openScanner(){
-		
-		let modal = this.modalCtrl.create(Qrscanner);
-        (window.document.querySelector('ion-nav') as HTMLElement).style.display = "none";
-        modal.present();
+        // Optionally request the permission early
+        this.qrScanner.prepare()
+            .then((status: QRScannerStatus) => {
+                if (status.authorized) {
+                    // camera permission was granted
+                    let scanSub = this.qrScanner.scan().subscribe((text: string) => {});
+                    this.qrScanner.hide();
+                    scanSub.unsubscribe();
+                    let modal = this.modalCtrl.create(Qrscanner);
+                    modal.onDidDismiss(()=> {
+                        this.qrScanner.destroy();
+                        (window.document.querySelector('ion-nav') as HTMLElement).style.display = "";
+                    });
+                    (window.document.querySelector('ion-nav') as HTMLElement).style.display = "none";
+                    modal.present();
+                } else if (status.denied) {
+                    // camera permission was permanently denied
+                    // you must use QRScanner.openSettings() method to guide the user to the settings page
+                    // then they can grant the permission from there
+                } else {
+                    // permission was denied, but not permanently. You can ask for permission again at a later time.
+                }
+            })
+            .catch((e: any) => console.log('Error is', e));
 		
     }
 	
 	openCashierScanModal(){
-        let modal = this.modalCtrl.create(CashierScan);
-        modal.present();
+        // Optionally request the permission early
+        this.qrScanner.prepare()
+            .then((status: QRScannerStatus) => {
+                if (status.authorized) {
+                    // camera permission was granted
+                    let scanSub = this.qrScanner.scan().subscribe((text: string) => {});
+                    this.qrScanner.hide();
+                    scanSub.unsubscribe();
+                    let modal = this.modalCtrl.create(CashierScan);
+                    modal.onDidDismiss(()=> {
+                        this.qrScanner.destroy();
+                        (window.document.querySelector('ion-nav') as HTMLElement).style.display = "";
+                    });
+                    (window.document.querySelector('ion-nav') as HTMLElement).style.display = "none";
+                    modal.present();
+                } else if (status.denied) {
+                    // camera permission was permanently denied
+                    // you must use QRScanner.openSettings() method to guide the user to the settings page
+                    // then they can grant the permission from there
+                } else {
+                    // permission was denied, but not permanently. You can ask for permission again at a later time.
+                }
+            })
+            .catch((e: any) => console.log('Error is', e));
     }
 
     openRefundModal() {
@@ -284,6 +335,10 @@ export class HomePage implements OnInit{
 
     openRewardRankingModal(){
         let modal = this.modalCtrl.create(RewardRanking);
+        modal.present();
+    }
+    openMyRewardModal(){
+        let modal = this.modalCtrl.create(MyReward);
         modal.present();
     }
 }

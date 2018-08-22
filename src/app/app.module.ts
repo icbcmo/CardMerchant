@@ -56,6 +56,7 @@ import {ReportDataService} from "../service/report-data.service";
 import {CashierScan} from "../pages/home/cashier/scan/cashier-scan";
 import {RewardRanking} from "../pages/home/cashier/rewardranking/reward-ranking";
 import {Qrscanner} from "../pages/home/qrscanner/qrscanner";
+import {MyReward} from "../pages/home/cashier/myreward/my-reward";
 
 @NgModule({
     declarations: [
@@ -85,12 +86,14 @@ import {Qrscanner} from "../pages/home/qrscanner/qrscanner";
         Wrongtrx,
 		OrderRefund,
         Qrcode,
+        Qrscanner,
 		Machine,
 		MachineRequest,
 		MachineRequestDetail,
 		Qrscanner,
 		CashierScan,
-		RewardRanking
+		RewardRanking,
+        MyReward
     ],
     imports: [
         HttpClientModule,
@@ -135,12 +138,14 @@ import {Qrscanner} from "../pages/home/qrscanner/qrscanner";
         Wrongtrx,
 		OrderRefund,
         Qrcode,
+        Qrscanner,
 		Machine,
 		MachineRequest,
 		MachineRequestDetail,
 		Qrscanner,
 		CashierScan,
-		RewardRanking
+		RewardRanking,
+        MyReward
     ],
     providers: [
         StatusBar,

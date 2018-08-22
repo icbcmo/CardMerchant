@@ -1,0 +1,102 @@
+<!--
+<ion-header>
+
+    <ion-navbar>
+        <button ion-button small clear (click)="goBack()">
+            <ion-icon ios="ios-arrow-back"></ion-icon>
+        </button>
+        <ion-title>排名</ion-title>
+    </ion-navbar>
+    <div class="nav">
+        <ion-segment [(ngModel)]="showType" color="primary" (ionChange)="showWhat()">
+
+            <ion-segment-button value="weekData">
+                本週排行榜
+            </ion-segment-button>
+            <ion-segment-button value="todayData">
+                今天排行榜
+            </ion-segment-button>
+        </ion-segment>
+    </div>
+</ion-header>
+
+
+<ion-content>
+
+
+
+    <div [hidden]="showType !='weekData'" >
+
+        <ion-list *ngFor="let data of weekData ">
+            <ion-item>
+               order id: {{data.FIELD3}},
+               order amount: {{data.FIELD4}},
+               order date: {{data.FIELD5}},
+               got points: {{data.FIELD6}},
+               scan date: {{data.DATETIME}},
+
+            </ion-item>
+
+        </ion-list>
+
+    </div>
+
+    <div [hidden]="showType !='todayData'" >
+
+        <ion-list *ngFor="let data of dayData ">
+            <ion-item>
+                order id:  {{data.field3}},
+                order amount: {{data.field4}},
+                order date: {{data.field5}},
+                got points: {{data.field6}},
+                scan date: {{data.datetime}},
+
+            </ion-item>
+
+
+        </ion-list>
+    </div>
+
+
+</ion-content>
+-->
+
+
+<ion-header>
+
+    <ion-navbar>
+        <button ion-button small clear (click)="goBack()">
+            <ion-icon ios="ios-arrow-back"></ion-icon>
+        </button>
+        <ion-title>我的獎勵</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+
+
+    我的積分
+    {{myTotal}}
+    <button ion-button color="primary" (click)="toCash()" >兑换</button>
+
+    <div  >
+
+        <ion-list *ngFor="let data of weekData ">
+            <ion-item>
+                order id: {{data.FIELD3}},
+                order amount: {{data.FIELD4}},
+                order date: {{data.FIELD5}},
+                got points: {{data.FIELD6}},
+                scan date: {{data.DATETIME}},
+
+            </ion-item>
+
+        </ion-list>
+
+    </div>
+
+
+
+</ion-content>
