@@ -129,79 +129,7 @@ export class CardMerchantService {
         return this.http.post(url,data);
 	}
 	
-	addcounterpoints(data){
-		let str = JSON.stringify(data);
-		let sign = this.getSignInit(str);
-		let merCert = encodeURIComponent(this.publicKey);
-        let url = this.gwUrl + 'cardmerchant/addcounterpoints' + '?sign=' + sign + '&merCert=' + merCert;
-        console.log(url);
 
-        return this.http.post(url,data);
-	}
-	
-	newpointstomoney(data){
-		let str = JSON.stringify(data);
-		let sign = this.getSignInit(str);
-		let merCert = encodeURIComponent(this.publicKey);
-        let url = this.gwUrl + 'cardmerchant/newpointstomoney' + '?sign=' + sign + '&merCert=' + merCert;
-        console.log(url);
-
-        return this.http.post(url,data);
-	}
-	
-	getscanweeklist180(data){
-		let str = JSON.stringify(data);
-		let sign = this.getSignInit(str);
-		let merCert = encodeURIComponent(this.publicKey);
-        let url = this.gwUrl + 'cardmerchant/getscanweeklist180' + '?sign=' + sign + '&merCert=' + merCert;
-        console.log(url);
-
-        return this.http.post(url,data);
-	}
-	
-	//获取当天扫码明细接口
-	getScanDayList156(data){
-		let str = JSON.stringify(data);
-		let sign = this.getSignInit(str);
-		let merCert = encodeURIComponent(this.publicKey);
-        let url = this.gwUrl + 'cardmerchant/getScanDayList156' + '?sign=' + sign + '&merCert=' + merCert;
-        console.log(url);
-
-        return this.http.post(url,data);
-	 }
-	
-	//根据商户号查找交易列表，用于报表统计
-	getTrxInfoByMerchantId(data){ 
-		let str = JSON.stringify(data);
-		let sign = this.getSignInit(str);
-		let merCert = encodeURIComponent(this.publicKey);
-        let url = this.gwUrl + 'cardmerchant/getTrxInfoByMerchantId' + '?sign=' + sign + '&merCert=' + merCert;
-        console.log(url);
-
-        return this.http.post(url,data);
-	}
-	
-	//根据商户CIF查找交易列表
-	getTrxInfoByMerchantCif(data){ 
-		let str = JSON.stringify(data);
-		let sign = this.getSignInit(str);
-		let merCert = encodeURIComponent(this.publicKey);
-        let url = this.gwUrl + 'cardmerchant/getTrxInfoByMerchantCif' + '?sign=' + sign + '&merCert=' + merCert;
-        console.log(url);
-
-        return this.http.post(url,data);
-	}
-	
-	//根据商户部門編號查找交易列表
-	getTrxInfoByDepartmentId(data){ 
-		let str = JSON.stringify(data);
-		let sign = this.getSignInit(str);
-		let merCert = encodeURIComponent(this.publicKey);
-        let url = this.gwUrl + 'cardmerchant/getTrxInfoByDepartmentId' + '?sign=' + sign + '&merCert=' + merCert;
-        console.log(url);
-
-        return this.http.post(url,data);
-	}
 
 
     sendVerifyCode_rsa(mobile:any){
@@ -257,13 +185,13 @@ export class CardMerchantService {
         return this.http.get(url);
     }
 
-    addCounterPoints(sessionid:any, orderid:any, orderamount:any, orderdate:any, pointsnum:any){
+    addCounterPoints( orderid:any, orderamount:any, orderdate:any, pointsnum:any){
         let data= {
             "orderamount":orderamount,
             "orderdate":orderdate,
             "orderid":orderid,
             "pointsnum":pointsnum,
-            "sessionid":sessionid
+            "sessionid":localStorage.getItem("SESSIONID")
         };
 
         let str = JSON.stringify(data);
@@ -273,6 +201,24 @@ export class CardMerchantService {
         let merCert = encodeURIComponent(this.publicKey);
 
         let url = this.gwUrl+'cardmerchant/addcounterpoints'
+            +'?sign='+sign+'&merCert='+merCert;
+        console.log(url);
+
+        return this.http.post(url,data,this.httpOptions);
+    }
+    newPointsToMoney(points:any){
+        let data= {
+            "points":points,
+            "sessionid":localStorage.getItem("SESSIONID")
+        };
+
+        let str = JSON.stringify(data);
+        console.log("str:" ,str);
+
+        let sign = this.getSignInit(str);
+        let merCert = encodeURIComponent(this.publicKey);
+
+        let url = this.gwUrl+'cardmerchant/newpointstomoney'
             +'?sign='+sign+'&merCert='+merCert;
         console.log(url);
 
