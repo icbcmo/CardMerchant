@@ -57,6 +57,7 @@ import {CashierScan} from "../pages/home/cashier/scan/cashier-scan";
 import {RewardRanking} from "../pages/home/cashier/rewardranking/reward-ranking";
 import {Qrscanner} from "../pages/home/qrscanner/qrscanner";
 import {MyReward} from "../pages/home/cashier/myreward/my-reward";
+import {MyRewardExchange} from "../pages/home/cashier/myreward/my-reward-exchange";
 
 @NgModule({
     declarations: [
@@ -93,7 +94,8 @@ import {MyReward} from "../pages/home/cashier/myreward/my-reward";
 		Qrscanner,
 		CashierScan,
 		RewardRanking,
-        MyReward
+        MyReward,
+        MyRewardExchange
     ],
     imports: [
         HttpClientModule,
@@ -145,7 +147,8 @@ import {MyReward} from "../pages/home/cashier/myreward/my-reward";
 		Qrscanner,
 		CashierScan,
 		RewardRanking,
-        MyReward
+        MyReward,
+        MyRewardExchange
     ],
     providers: [
         StatusBar,

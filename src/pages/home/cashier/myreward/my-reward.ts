@@ -1,6 +1,7 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
-import {LoadingController,ViewController} from "ionic-angular";
+import {LoadingController, NavController, ViewController} from "ionic-angular";
 import {ReportDataService} from "../../../../service/report-data.service";
+import {MyRewardExchange} from "./my-reward-exchange";
 declare var localStorage: any;
 
 @Component({
@@ -16,8 +17,10 @@ export class MyReward implements OnInit{
     myWeekData:any;
     myDayData:any;
 
-    constructor(public reportDataService:ReportDataService,public loadingCtrl: LoadingController
-        ,public viewCtrl: ViewController){
+    constructor(public reportDataService:ReportDataService,
+                public loadingCtrl: LoadingController,
+                public viewCtrl: ViewController,
+                public navCtrl: NavController){
         this.showType ='weekData';
 
     }
@@ -39,6 +42,8 @@ export class MyReward implements OnInit{
 
     toCash(){
         console.log("toCash click");
+        this.navCtrl.push(MyRewardExchange,{total:this.myTotal})
+
     }
     // showWhat()
     // {

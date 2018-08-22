@@ -1,0 +1,19 @@
+<ion-header>
+
+    <ion-navbar>
+
+        <ion-title>兌換</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+
+
+    我的積分
+    {{myTotal}}
+    <ion-input #epoint  placeholder="epoint" [value]="canExchangeMaxPoints" type="number" [max]="canExchangeMaxPoints"></ion-input>
+    <button ion-button color="primary" (click)="doExchangeToCash()" >兑换</button>
+
+</ion-content>
