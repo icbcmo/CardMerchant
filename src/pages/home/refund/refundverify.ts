@@ -68,7 +68,8 @@ export class RefundVerify implements OnInit{
 		});
 	}
 	
-	goApprove(requestid){
+	goApprove(e, requestid){
+		e.stopPropagation();
 		var data = {
 			Sessionid: localStorage.getItem('SESSIONID'),
 			requestid: requestid
