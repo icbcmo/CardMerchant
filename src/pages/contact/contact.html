@@ -27,10 +27,17 @@
       <button (click)="test3()">get UID</button>
       <button (click)="test4()">get second users</button>
     </ion-item>
+    <ion-item>
+      <ion-input #c1 type="text" placeholder="orderid" ></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input #c2 type="text" placeholder="points" ></ion-input>
+    </ion-item>
+
       <ion-item>
 
       <button (click)="test5()">log out</button>
-        <button (click)="test6()">get merchant info</button>
+        <button (click)="test6()">add point</button>
       </ion-item>
   </ion-list>
   <tr *ngFor="let content of users">

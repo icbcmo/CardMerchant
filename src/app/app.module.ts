@@ -52,11 +52,11 @@ import {Machine} from "../pages/home/machine/machine";
 import {MachineRequest} from "../pages/home/machine/machinerequest";
 import {MachineRequestDetail} from "../pages/home/machine/machinerequestdetail";
 import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner';
-import { ScanList } from '../pages/home/scan/scanlist';
 import {ReportDataService} from "../service/report-data.service";
 import {CashierScan} from "../pages/home/cashier/scan/cashier-scan";
 import {RewardRanking} from "../pages/home/cashier/rewardranking/reward-ranking";
 import {Qrscanner} from "../pages/home/qrscanner/qrscanner";
+import {MyReward} from "../pages/home/cashier/myreward/my-reward";
 
 @NgModule({
     declarations: [
@@ -86,11 +86,13 @@ import {Qrscanner} from "../pages/home/qrscanner/qrscanner";
         Wrongtrx,
 		OrderRefund,
         Qrcode,
-        Qrscanner,
 		Machine,
 		MachineRequest,
 		MachineRequestDetail,
-		ScanList,CashierScan,RewardRanking
+		Qrscanner,
+		CashierScan,
+		RewardRanking,
+        MyReward
     ],
     imports: [
         HttpClientModule,
@@ -135,11 +137,13 @@ import {Qrscanner} from "../pages/home/qrscanner/qrscanner";
         Wrongtrx,
 		OrderRefund,
         Qrcode,
-        Qrscanner,
 		Machine,
 		MachineRequest,
 		MachineRequestDetail,
-		ScanList,CashierScan,RewardRanking
+		Qrscanner,
+		CashierScan,
+		RewardRanking,
+        MyReward
     ],
     providers: [
         StatusBar,

@@ -81,4 +81,23 @@ export class ReportDataService {
         return this.http.get(url);
     }
 
+
+    getScanWeekList156() {
+        let str = "sessionid="+localStorage.getItem('SESSIONID');
+        let sign = this.getSignInit(str);
+        let merCert = encodeURIComponent(this.publicKey);
+        let url = this.gwUrl + 'cardmerchant/getscanweeklist180?' + str + '&sign=' + sign + '&merCert=' + merCert;
+        console.log(url);
+        return this.http.get(url);
+    }
+
+    getScanDayList156() {
+        let str = "sessionid="+localStorage.getItem('SESSIONID');
+        let sign = this.getSignInit(str);
+        let merCert = encodeURIComponent(this.publicKey);
+        let url = this.gwUrl + 'cardmerchant/getscandaylist180?' + str + '&sign=' + sign + '&merCert=' + merCert;
+        console.log(url);
+        return this.http.get(url);
+    }
+
 }

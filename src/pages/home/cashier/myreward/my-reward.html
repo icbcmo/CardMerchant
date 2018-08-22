@@ -26,33 +26,33 @@
 
     <div [hidden]="showType !='weekData'" >
 
-        <div *ngIf="myWeekData == undefined">本週暫無排名</div>
-        <div *ngIf="myWeekData != undefined">你當前排名：{{myWeekData.R_POINTS}},
-            ****{{myWeekData.MOBILE.substr(-4)}},
-            {{myWeekData.SUM_POINTS}}</div>
         <ion-list *ngFor="let data of weekData ">
-
             <ion-item>
-                {{data.R_POINTS}},
-                ****{{data.MOBILE.substr(-4)}},
-                {{data.SUM_POINTS}}
+               order id: {{data.FIELD3}},
+               order amount: {{data.FIELD4}},
+               order date: {{data.FIELD5}},
+               got points: {{data.FIELD6}},
+               scan date: {{data.DATETIME}},
+
             </ion-item>
+
         </ion-list>
 
     </div>
 
     <div [hidden]="showType !='todayData'" >
-        <div *ngIf="myDayData == undefined">今天暫無排名</div>
-        <div *ngIf="myDayData != undefined">你當前排名：{{myDayData.R_POINTS}},
-            ****{{myDayData.MOBILE.substr(-4)}},
-            {{myDayData.SUM_POINTS}}</div>
-        <ion-list *ngFor="let data of dayData ">
 
+        <ion-list *ngFor="let data of dayData ">
             <ion-item>
-                {{data.R_POINTS}},
-                ****{{data.MOBILE.substr(-4)}},
-                {{data.SUM_POINTS}}
+                order id:  {{data.field3}},
+                order amount: {{data.field4}},
+                order date: {{data.field5}},
+                got points: {{data.field6}},
+                scan date: {{data.datetime}},
+
             </ion-item>
+
+
         </ion-list>
     </div>
 

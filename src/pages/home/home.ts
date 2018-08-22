@@ -11,7 +11,6 @@ import {Refund} from "./refund/refund";
 import {Wrongtrx} from "./wrongtrx/wrongtrx";
 import {OrderRefund} from "./refund/orderrefund";
 import {Camera, CameraOptions} from '@ionic-native/camera';
-import {ScanList} from './scan/scanlist';
 import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner';
 import {Qrscanner} from "./qrscanner/qrscanner";
 import {Qrcode} from "./qrcode/qrcode";
@@ -19,8 +18,10 @@ import { JPush } from "@jiguang-ionic/jpush";
 import { Device } from "@ionic-native/device";
 import {Setup} from "./setup/setup";
 import {Machine} from "./machine/machine";
+import {CashierScan} from "./cashier/scan/cashier-scan";
 import {OrderList} from "./order/orderlist";
 import {RewardRanking} from "./cashier/rewardranking/reward-ranking";
+import {MyReward} from "./cashier/myreward/my-reward";
 
 const EventSource: any = window['EventSource'];
 
@@ -235,8 +236,15 @@ export class HomePage implements OnInit{
 	}
 	
 	openScanner(){
-        let modal = this.modalCtrl.create(Qrscanner);
+		
+		let modal = this.modalCtrl.create(Qrscanner);
         (window.document.querySelector('ion-nav') as HTMLElement).style.display = "none";
+        modal.present();
+		
+    }
+	
+	openCashierScanModal(){
+        let modal = this.modalCtrl.create(CashierScan);
         modal.present();
     }
 
@@ -277,6 +285,10 @@ export class HomePage implements OnInit{
 
     openRewardRankingModal(){
         let modal = this.modalCtrl.create(RewardRanking);
+        modal.present();
+    }
+    openMyRewardModal(){
+        let modal = this.modalCtrl.create(MyReward);
         modal.present();
     }
 }

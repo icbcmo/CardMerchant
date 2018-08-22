@@ -78,4 +78,13 @@ export class ContactPage {
       let modal = this.modalCtrl.create(SigninPage);
       modal.present();
   }
+
+  test6() {
+      let ss = localStorage.getItem('SESSIONID');
+      this.cardMerchantService.addCounterPoints(ss,'321113322','44','20180504','99').toPromise().then(
+          data => {
+              console.log(data);
+          }
+      )
+  }
 }
