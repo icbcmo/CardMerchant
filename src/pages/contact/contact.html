@@ -1,48 +1,24 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>
-      Contact
-    </ion-title>
+    <ion-title>我的信息</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content>
-  <ion-list>
-    <ion-list-header>Follow us on Twitter</ion-list-header>
-    <ion-item>
-      <ion-icon name="ionic" item-start></ion-icon>
-      @ionicframework
-    </ion-item>
-    <ion-item>
-      <ion-input #mobile1 type="tel" placeholder="Mobile Input" ></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-input #verifycode1 type="tel" placeholder="VerifyCode Input" ></ion-input>
-    </ion-item>
-    <ion-item>
-      <button (click)="test(mobile1.value)">send verifycode</button>
-      <button (click)="test2(mobile1.value,verifycode1.value)">check verifycode</button>
-      <!--<button (click)="test('66767311')">send verifycode</button>-->
-      <!--<button (click)="test2('66767311','960938')">check verifycode</button>-->
-      <button (click)="test3()">get UID</button>
-      <button (click)="test4()">get second users</button>
-    </ion-item>
-    <ion-item>
-      <ion-input #c1 type="text" placeholder="orderid" ></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-input #c2 type="text" placeholder="points" ></ion-input>
-    </ion-item>
-
-      <ion-item>
-
-      <button (click)="test5()">log out</button>
-        <button (click)="test6()">add point</button>
-      </ion-item>
+  <ion-list no-lines class="item_list">
+    <button ion-item (click)="openUserMgt()">
+      用戶管理
+    </button>
   </ion-list>
-  <tr *ngFor="let content of users">
-    <td>{{content.FIELD1}}</td>
-    <td>{{content.FIELD6}}</td>
-    <td>{{content.FIELD3}}</td>
-  </tr>
+  <ion-list no-lines class="item_list">
+    <button  ion-button color="primary" (click)="test5()" style="
+    width: 94%;
+    position: absolute;
+    bottom: 20px;
+    left: 10px;
+    right: 10px;
+">
+      退出登錄
+    </button>
+  </ion-list>
 </ion-content>

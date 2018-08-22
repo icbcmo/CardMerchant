@@ -16,7 +16,7 @@ import {Qrscanner} from "./qrscanner/qrscanner";
 import {Qrcode} from "./qrcode/qrcode";
 import { JPush } from "@jiguang-ionic/jpush";
 import { Device } from "@ionic-native/device";
-import {Setup} from "./setup/setup";
+import {Setup} from "../contact/setup/setup";
 import {Machine} from "./machine/machine";
 import {CashierScan} from "./cashier/scan/cashier-scan";
 import {OrderList} from "./order/orderlist";
