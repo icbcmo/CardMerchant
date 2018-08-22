@@ -12,7 +12,7 @@ import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner';
 })
 export class ScanList implements OnInit{
 	items: any[] = [];
-	list: any[] = [];
+	historyList: any[] = [];
 	pointsnum: Number = 0;
 	tabs: any;
 		
@@ -32,14 +32,6 @@ export class ScanList implements OnInit{
 
     ngOnInit() {
 		this.tabs = 'jifen';
-		var data = {
-			sessionid: localStorage.getItem('SESSIONID'),
-			orderid:'212222',
-			orderamount: 100,
-			orderdate: '2018-08-21',
-			pointsnum: 500
-		};
-		console.log(data);
 		this.qrScanner.prepare()
             .then((status: QRScannerStatus) => {
                 if (status.authorized) {
@@ -48,10 +40,17 @@ export class ScanList implements OnInit{
                     let scanSub = this.qrScanner.scan().subscribe((text: string) => {
                         console.log('Scanned something', text);
                         this.qrScanner.hide(); // hide camera preview
-                        scanSub.unsubscribe(); // stop scanning
+                        //scanSub.unsubscribe(); // stop scanning
 						if(text){
-							
 							//添加一笔柜员扫码内容
+							var obj = JSON.parse(text);
+							var data = {
+								sessionid: localStorage.getItem('SESSIONID'),
+								orderid: obj.orderid,
+								orderamount: obj.orderamount,
+								orderdate: obj.orderdate,
+								pointsnum: obj.orderdate
+							};
 							this.cardMerchantService.addcounterpoints(data).toPromise().then(data=> {
 								console.log(Object(data));
 								if(Object(data).code == 0){
@@ -62,39 +61,14 @@ export class ScanList implements OnInit{
 									this.cardMerchantService.getscanweeklist180(data).toPromise().then(data=> {
 										console.log(Object(data));
 										if(Object(data).code == 0){
-											this.list = Object(data).data;
-										}else{
-											this.loadingCtrl.create({
-												spinner: 'hide',
-												content: Object(data).message,
-												duration: 2000
-											}).present();
+											this.historyList = Object(data).data;
 										}
-									}, ()=>{
-										this.loadingCtrl.create({
-											spinner: 'hide',
-											content: '网络故障',
-											duration: 2000
-										}).present();
 									});
-								}else{
-									this.loadingCtrl.create({
-										spinner: 'hide',
-										content: Object(data).message,
-										duration: 2000
-									}).present();
 								}
-							}, ()=>{
-								this.loadingCtrl.create({
-									spinner: 'hide',
-									content: '网络故障',
-									duration: 2000
-								}).present();
+								this.qrScanner.show(); // show camera preview
 							});
-							
 						}
                     });
-
                 } else if (status.denied) {
                     // camera permission was permanently denied
                     // you must use QRScanner.openSettings() method to guide the user to the settings page
@@ -107,23 +81,12 @@ export class ScanList implements OnInit{
 		
 		
 		//获取本周扫码历史明细
-		this.cardMerchantService.getscanweeklist180(data).toPromise().then(data=> {
+		var params = {};
+		this.cardMerchantService.getscanweeklist180(params).toPromise().then(data=> {
 			console.log(Object(data));
 			if(Object(data).code == 0){
-				this.list = Object(data).data;
-			}else{
-				this.loadingCtrl.create({
-					spinner: 'hide',
-					content: Object(data).message,
-					duration: 2000
-				}).present();
+				this.historyList = Object(data).data;
 			}
-		}, ()=>{
-			this.loadingCtrl.create({
-				spinner: 'hide',
-				content: '网络故障',
-				duration: 2000
-			}).present();
 		});
 	}
 	

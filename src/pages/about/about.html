@@ -33,15 +33,29 @@
 
             <!--[columns]="columns" [columnMode]="'force'" [reorderable]="false" class="bootstrap">-->
     <!--</ngx-datatable>-->
-    <ion-list *ngFor="let data of DapaData ">
+    <ion-list class="deaList" *ngFor="let data of DapaData ">
       <ion-card>
-        <div class="card-title"> {{data.cardNo.substr(0,1)=='4'?'VISA':(data.cardNo.substr(0,1)=='5'?'MASTER':'CUP')}}</div>
-        <div class="card-title"> {{data.cardNo.substr(0,4)}}********{{data.cardNo.substr(-4)}}</div>
-        <div class="card-subtitle">交易金额{{data.txnAmount/100}}</div>
-        <div class="card-subtitle">小费金额{{data.feeAmount}}</div>
-        <div class="card-subtitle">交易日期{{data.txnDate}}</div>
-        <div class="card-subtitle">交易时间{{data.txnTime}}</div>
-        <div class="card-subtitle">交易流水号{{data.transactionRef}}</div>
+        <div class="left">
+          <p class="p1">{{data.cardNo.substr(0,1)=='4'?'VISA':(data.cardNo.substr(0,1)=='5'?'MASTER':'CUP')}}</p>
+          <p class="p2">{{data.cardNo.substr(0,4)}}********{{data.cardNo.substr(-4)}}</p>
+          <p class="p3">清算日期：<span class="span1">2017XXXX</span></p>
+          <p class="p3">交易日期：<span class="span1">{{data.txnDate}} {{data.txnTime}}</span></p>
+          <p class="p3">授權賬號：<span class="span1">0073XX</span></p>
+          <p class="p3">流水：<span class="span1">{{data.transactionRef}}</span></p>
+        </div>
+        <div class="right">
+          <div>
+            <div class="top">
+              <p><span class="span1">消費金额：</span><span class="span2">{{data.txnAmount/100}}</span></p>
+              <p><span class="span1">小费金额：</span><span class="span2">{{data.feeAmount}}</span></p>
+              <p><span class="span1">總金額：</span><span class="span2">150.0X</span></p>
+              <p><span class="span1">手續費：</span><span class="span2">2.5X</span></p>
+            </div>
+            <div class="bottom">
+              <p><span class="span1">凈收金額：</span><span class="span2">147.4X</span></p>
+            </div>
+          </div>
+        </div>
       </ion-card>
     </ion-list>
     <ion-infinite-scroll (ionInfinite)="doInfinite($event)">

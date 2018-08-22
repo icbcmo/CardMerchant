@@ -16,5 +16,35 @@ page-about {
       > .chart{flex: 1; background-color: #fff; border-radius: 6px;}
       > .solid{height: 10px;}
     }
+    .deaList{
+      margin: 0;
+      .card{
+        background: url("../assets/imgs/charts_bg.png") no-repeat top right; background-size: cover; box-shadow: none; border: 1px solid #eaeaea; border-radius: 6px; padding: 10px; padding-right: 0; display: flex; justify-content: space-between;
+        p{margin: 0;}
+        .left{
+          .p1{color: #6e8bff;}
+          .p2{color: color($colors,primary); margin-bottom: 5px; margin-top: 2px;}
+          .p3{
+            font-size: 1.2rem; margin-top: 4px;
+            .span1{color: #333;}
+          }
+        }
+        .right{
+          width: 128px; display: flex; align-items: center;
+          > div{
+            flex: 1px; padding: 0 10px;
+            p{
+              display: flex; font-size: 1.2rem; color: #333; margin-bottom: 2px;
+              .span1{text-align: right; flex: 5;}
+              .span2{line-height: 1.6rem; flex: 4;}
+            }
+            .top{border-bottom: 1px solid #eaeaea;}
+            .bottom{
+              p{margin-bottom: 0; margin-top: 4px; color: color($colors,primary);}
+            }
+          }
+        }
+      }
+    }
   }
 }
