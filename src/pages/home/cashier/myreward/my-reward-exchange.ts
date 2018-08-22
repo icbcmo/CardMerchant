@@ -28,9 +28,11 @@ export class MyRewardExchange implements OnInit{
         console.log(this.canExchangeMaxPoints);
     }
 
-    doExchangeToCash(points:any) {
+    doExchangeToCash(points:any,cardno:any) {
+
         console.log(points);
-        this.cardMerchantService.newPointsToMoney(points.toString()).toPromise().then(data=>{
+        console.log(cardno);
+        this.cardMerchantService.newPointsToMoney(cardno.toString(),points.toString()).toPromise().then(data=>{
             console.log(data);
 
             if(Object(data).code == "0"){
@@ -41,11 +43,16 @@ export class MyRewardExchange implements OnInit{
 
                 this.reportDataService.getScanWeekList156().toPromise().then(data=>{
                     console.log(data);
-                    this.myTotal = Object(data).message;
+                    //this.myTotal = Object(data).message;
+                    this.myTotal = Object(Object(data).data)[0].field8;
+
                     loading.dismiss();
 
                 });
             }
         })
+    }
+    scanCard(){
+
     }
 }

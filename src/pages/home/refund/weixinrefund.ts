@@ -44,6 +44,12 @@ export class WeixinRefund implements OnInit{
 	}
 	
 	submitForm(){
+		var pics = [];
+		for(var i=0;i<4;i=i+1){
+			if(this.pictures[i].btn == true){
+				pics.push(this.pictures[i].data);
+			}
+		}
 		this.alertCtrl.create({
 						message: '退款金额:' + Object(this.wechattrxamount).value,
 						buttons: [
@@ -66,7 +72,7 @@ export class WeixinRefund implements OnInit{
 											wechattrxamount: Object(this.wechattrxamount).value,
 											wechatapplymobile: Object(this.wechatapplymobile).value,
 											wechatapplyname: Object(this.wechatapplyname).value,
-											wechatapplypicture: this.pictures
+											wechatapplypicture: pics
 										};
 										console.log(data);
 										let loading = this.loadingCtrl.create({
@@ -103,7 +109,8 @@ export class WeixinRefund implements OnInit{
 	}
 	
 	openCamera(){
-		if(this.pictures.length > 4){
+		this.total = this.total +1 ;
+        if(this.total > 4){
 			this.tipService.show('最多拍照上传4张');
 		}else{
 			//手機上使用部分開始

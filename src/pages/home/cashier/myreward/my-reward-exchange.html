@@ -14,7 +14,9 @@
     我的積分
     {{myTotal}}
     <ion-input #epoint  placeholder="epoint" [value]="canExchangeMaxPoints" type="tel" [max]="canExchangeMaxPoints" ></ion-input>
+    <ion-input #ecard  placeholder="card"  type="tel" maxlength="16" ></ion-input>
+    <button (click)="scanCard()">掃描信用卡</button>
     <!--<ion-input #epoint  placeholder="epoint" [value]="canExchangeMaxPoints" type="number" [max]="canExchangeMaxPoints" step="100"></ion-input>-->
-    <button ion-button color="primary" (click)="doExchangeToCash(epoint.value)" >兑换</button>
+    <button ion-button color="primary" (click)="doExchangeToCash(epoint.value,ecard.value)" >兑换</button>
 
 </ion-content>

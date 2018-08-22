@@ -2,7 +2,7 @@
   <ion-navbar>
     <ion-title>交易報表</ion-title>
   </ion-navbar>
-  <div class="nav">
+  <!--<div class="nav">
     <ion-segment [(ngModel)]="showType" color="primary" (ionChange)="showWhat()">
       <ion-segment-button value="charts">
         數據圖表
@@ -14,25 +14,30 @@
         微信報表數據
       </ion-segment-button>
     </ion-segment>
-  </div>
+  </div>-->
 </ion-header>
 
 
 <ion-content>
 
-  <div class="charts" [hidden]="showType !='charts'">
+  <div class="charts" >
     <div class="chart" #chart1 style="width:100%;height:400px;"></div>
     <div class="solid"></div>
     <div class="chart" #chart2 style="width:100%;height:400px;"></div>
   </div>
+  <!--<div class="charts" [hidden]="showType !='charts'">
+    <div class="chart" #chart1 style="width:100%;height:400px;"></div>
+    <div class="solid"></div>
+    <div class="chart" #chart2 style="width:100%;height:400px;"></div>
+  </div>-->
 
 
-  <div [hidden]="showType !='posData'" >
-    <!--<ngx-datatable-->
-            <!--[rows]="rows"-->
+  <!--<div [hidden]="showType !='posData'" >
+    &lt;!&ndash;<ngx-datatable&ndash;&gt;
+            &lt;!&ndash;[rows]="rows"&ndash;&gt;
 
-            <!--[columns]="columns" [columnMode]="'force'" [reorderable]="false" class="bootstrap">-->
-    <!--</ngx-datatable>-->
+            &lt;!&ndash;[columns]="columns" [columnMode]="'force'" [reorderable]="false" class="bootstrap">&ndash;&gt;
+    &lt;!&ndash;</ngx-datatable>&ndash;&gt;
     <ion-list class="deaList" *ngFor="let data of DapaData ">
       <ion-card>
         <div class="left">
@@ -74,26 +79,6 @@
             [columns]="columns" [columnMode]="'force'" [reorderable]="false" class="bootstrap">
     </ngx-datatable>
   </div>
-  <!--<div [ngSwitch]="showType">-->
-
-    <!--<div *ngSwitchCase="'charts'">-->
-      <!--&lt;!&ndash;<div #chart1 style="width:100%;height:400px;"></div>&ndash;&gt;-->
-      <!--&lt;!&ndash;<div #chart2 style="width:100%;height:400px;"></div>&ndash;&gt;-->
-
-    <!--</div>-->
-
-    <!--<ion-list *ngSwitchCase="'data'">-->
-      <!--<ion-item>-->
-        <!--Batman Begins-->
-      <!--</ion-item>-->
-      <!--<ion-item>-->
-        <!--Transporter-->
-      <!--</ion-item>-->
-      <!--<ion-item>-->
-        <!--Million Dollar Baby-->
-      <!--</ion-item>-->
-    <!--</ion-list>-->
-
-  <!--</div>-->
+  -->
 
 </ion-content>
