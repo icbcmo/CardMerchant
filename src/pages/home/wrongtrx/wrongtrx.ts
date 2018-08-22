@@ -23,5 +23,7 @@ export class Wrongtrx implements OnInit{
 
     ngOnInit() {}
 
-
+    dismiss() {
+        this.viewCtrl.dismiss();
+    }
 }
