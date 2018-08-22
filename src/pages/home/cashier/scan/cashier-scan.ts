@@ -16,7 +16,8 @@ import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner';
 
 export class CashierScan implements OnInit{
 
-    constructor(public platform: Platform,
+    constructor(public cardMerchantService: CardMerchantService,
+                public platform: Platform,
                 public params: NavParams,
                 private qrScanner: QRScanner,
                 public viewCtrl: ViewController) {
@@ -29,6 +30,12 @@ export class CashierScan implements OnInit{
             this.qrScanner.hide(); // hide camera preview
             this.viewCtrl.dismiss();
             scanSub.unsubscribe(); // stop scanning
+            console.log(JSON.parse(text).orderid);
+            this.cardMerchantService.addCounterPoints(JSON.parse(text).orderid,JSON.parse(text).orderamount,JSON.parse(text).orderdate,JSON.parse(text).pointsnum).toPromise().then(
+                data => {
+                    console.log(data);
+                }
+            )
         });
     }
 
