@@ -58,6 +58,7 @@ import {RewardRanking} from "../pages/home/cashier/rewardranking/reward-ranking"
 import {Qrscanner} from "../pages/home/qrscanner/qrscanner";
 import {MyReward} from "../pages/home/cashier/myreward/my-reward";
 import {MyRewardExchange} from "../pages/home/cashier/myreward/my-reward-exchange";
+import {Trxdata} from "../pages/home/trxdata/trxdata";
 
 @NgModule({
     declarations: [
@@ -95,7 +96,8 @@ import {MyRewardExchange} from "../pages/home/cashier/myreward/my-reward-exchang
 		CashierScan,
 		RewardRanking,
         MyReward,
-        MyRewardExchange
+        MyRewardExchange,
+        Trxdata
     ],
     imports: [
         HttpClientModule,
@@ -148,7 +150,8 @@ import {MyRewardExchange} from "../pages/home/cashier/myreward/my-reward-exchang
 		CashierScan,
 		RewardRanking,
         MyReward,
-        MyRewardExchange
+        MyRewardExchange,
+        Trxdata
     ],
     providers: [
         StatusBar,

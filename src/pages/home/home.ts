@@ -22,6 +22,7 @@ import {CashierScan} from "./cashier/scan/cashier-scan";
 import {OrderList} from "./order/orderlist";
 import {RewardRanking} from "./cashier/rewardranking/reward-ranking";
 import {MyReward} from "./cashier/myreward/my-reward";
+import {Trxdata} from "./trxdata/trxdata";
 
 const EventSource: any = window['EventSource'];
 
@@ -339,6 +340,11 @@ export class HomePage implements OnInit{
     }
     openMyRewardModal(){
         let modal = this.modalCtrl.create(MyReward);
+        modal.present();
+    }
+
+    openTrxDataserviceModal(){
+        let modal = this.modalCtrl.create(Trxdata);
         modal.present();
     }
 }

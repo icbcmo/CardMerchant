@@ -1,0 +1,74 @@
+<ion-header>
+    <ion-navbar>
+        <button ion-button small clear (click)="goBack()">
+            <ion-icon ios="ios-arrow-back"></ion-icon>
+        </button>
+        <ion-title>交易報表</ion-title>
+    </ion-navbar>
+    <div class="nav">
+        <ion-segment [(ngModel)]="showType" color="primary" (ionChange)="showWhat()">
+
+            <ion-segment-button value="posData">
+                POS報表數據
+            </ion-segment-button>
+            <ion-segment-button value="wechatData">
+                微信報表數據
+            </ion-segment-button>
+        </ion-segment>
+    </div>
+</ion-header>
+
+
+<ion-content>
+
+
+
+    <div [hidden]="showType !='posData'" >
+        <!--<ngx-datatable-->
+        <!--[rows]="rows"-->
+
+        <!--[columns]="columns" [columnMode]="'force'" [reorderable]="false" class="bootstrap">-->
+        <!--</ngx-datatable>-->
+        <ion-list class="deaList" *ngFor="let data of DapaData ">
+            <ion-card>
+                <div class="left">
+                    <p class="p1">{{data.cardNo.substr(0,1)=='4'?'VISA':(data.cardNo.substr(0,1)=='5'?'MASTER':'CUP')}}</p>
+                    <p class="p2">{{data.cardNo.substr(0,4)}}********{{data.cardNo.substr(-4)}}</p>
+                    <p class="p3">清算日期：<span class="span1">{{data.setDate}}</span></p>
+                    <p class="p3">交易日期：<span class="span1">{{data.txnDate}} {{data.txnTime}}</span></p>
+                    <p class="p3">授權賬號：<span class="span1">{{data.authCode}}</span></p>
+                    <p class="p3">流水：<span class="span1">{{data.transactionRef}}</span></p>
+                </div>
+                <div class="right">
+                    <div>
+                        <div class="top">
+                            <p><span class="span1">消費金额：</span><span class="span2">{{data.txnAmount/100}}</span></p>
+                            <p><span class="span1">小费金额：</span><span class="span2">0.00</span></p>
+                            <p><span class="span1">總金額：</span><span class="span2">{{data.txnAmount/100}}</span></p>
+                            <p><span class="span1">手續費：</span><span class="span2">{{data.feeAmount}}</span></p>
+                        </div>
+                        <div class="bottom">
+                            <p><span class="span1">凈收金額：</span><span class="span2">{{data.txnAmount/100 - data.feeAmount}}</span></p>
+                        </div>
+                    </div>
+                </div>
+            </ion-card>
+        </ion-list>
+        <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+            <ion-infinite-scroll-content
+                    loadingSpinner="bubbles"
+                    loadingText="Loading more data...">
+            </ion-infinite-scroll-content>
+        </ion-infinite-scroll>
+
+    </div>
+
+    <div [hidden]="showType !='wechatData'" >
+        <ngx-datatable
+                [rows]="rows"
+
+                [columns]="columns" [columnMode]="'force'" [reorderable]="false" class="bootstrap">
+        </ngx-datatable>
+    </div>
+
+</ion-content>
