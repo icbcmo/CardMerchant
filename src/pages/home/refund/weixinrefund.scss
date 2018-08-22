@@ -13,35 +13,18 @@ page-weixinrefund {
 			}
 		}
 	}
-	.row{
-		&.custom{
-			flex-direction: row;
-			justify-content: space-between;
-			flex-wrap: wrap;
+	.camera{
+		.top{
+			.fr{width: 20px;}
 		}
-	}
-	.pic-wrapper{
-		width:80px;
-		height:80px;
-		overflow:hidden;
-		position: relative;
-		img{
-			width: 100%;
-			height: 100%;
-			object-fit: cover;
-		}
-		.delete{
-			position: absolute;
-			top: 5px;
-			right: 5px;
-			width: 18px;
-			height: 18px;
-			background: #000;
-			color: white;
-			font-size: 18px;
-			font-weight: bold;
-			text-align: right;
-			line-height: 18px;
+		.bottom{
+			li{
+				width: 44%; height: 0; padding-bottom: 42%; margin: 3%; position: relative; float: left; overflow: hidden;
+				.image1{width: 100%;}
+				.image2{width: 24px; position: absolute; left: 50%; top: 50%; margin-top: -12px; margin-left: -12px;}
+				.delete{position: absolute; right: 8px; top: 8px; width: 16px;}
+				&.li2{border: 1px dashed #eaeaea;}
+			}
 		}
 	}
 }
