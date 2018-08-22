@@ -13,7 +13,8 @@ import {TipService} from '../../../service/tip.service';
 export class MachineRequest implements OnInit{	
 	items: any;
 	pictures: any[] = [];
-	total: Number = 0;
+	total: number = 0;
+    base64Image: any;
 	
 	@ViewChild('machinerequesttype') machinerequesttype: ElementRef;
 	@ViewChild('machineno') machineno: ElementRef;
@@ -76,10 +77,10 @@ export class MachineRequest implements OnInit{
 			
 			//拍照
 			this.camera.getPicture(options).then((imageData) => {
-				var base64Image = imageData;
-				base64Image = 'data:image/jpeg;base64,' + base64Image;
+				this.base64Image = imageData;
+				this.base64Image = 'data:image/jpeg;base64,' + this.base64Image;
 				var obj = {
-					data:base64Image,
+					data:this.base64Image,
 					btn:true
 				};
 				for(var i=0;i<4;i++){
