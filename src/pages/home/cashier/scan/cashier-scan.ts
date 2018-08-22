@@ -16,6 +16,9 @@ import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner';
 
 export class CashierScan implements OnInit{
 
+    total : number = 0;
+    scanSub: any;
+
     constructor(public cardMerchantService: CardMerchantService,
                 public platform: Platform,
                 public params: NavParams,
@@ -25,15 +28,19 @@ export class CashierScan implements OnInit{
 
     ngOnInit() {
         // start scanning
-        let scanSub = this.qrScanner.scan().subscribe((text: string) => {
-            console.log('Scanned something', text);
-            this.qrScanner.hide(); // hide camera preview
-            this.viewCtrl.dismiss();
-            scanSub.unsubscribe(); // stop scanning
-            console.log(JSON.parse(text).orderid);
+        this.scanSub = this.qrScanner.scan().subscribe((text: string) => {
             this.cardMerchantService.addCounterPoints(JSON.parse(text).orderid,JSON.parse(text).orderamount,JSON.parse(text).orderdate,JSON.parse(text).pointsnum).toPromise().then(
                 data => {
                     console.log(data);
+                    if(Object(data).code == "0"){
+                        alert(JSON.parse(text).pointsnum);
+                        this.total = this.total + parseInt(JSON.parse(text).pointsnum);
+                    }else {
+                        alert(JSON.parse(text).message);
+                    }
+                    this.scanSub.unsubscribe(); // stop scanning
+                    this.qrScanner.hide(); // hide camera preview
+                    this.ngOnInit();
                 }
             )
         });
@@ -41,6 +48,8 @@ export class CashierScan implements OnInit{
 
     EndScan(): void {
         (window.document.querySelector('ion-nav') as HTMLElement).style.display = "";
+        this.scanSub.unsubscribe(); // stop scanning
+        this.qrScanner.hide(); // hide camera preview
         this.qrScanner.destroy();
         this.viewCtrl.dismiss();
     }

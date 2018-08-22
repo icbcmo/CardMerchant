@@ -6,9 +6,9 @@ import {CardMerchantService} from "../../../service/card-merchant.service";
 
 @Component({
   selector: 'page-wrongtrx',
-  templateUrl: 'wrongtrx.html'
+  templateUrl: 'help.html'
 })
-export class Wrongtrx implements OnInit{
+export class Help implements OnInit{
 	@ViewChild('billno') Billno: ElementRef;
 
     constructor(
