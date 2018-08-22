@@ -13,14 +13,22 @@ page-commonrefund {
 			}
 		}
 	}
+	.row{
+		&.custom{
+			flex-direction: row;
+			justify-content: space-between;
+			flex-wrap: wrap;
+		}
+	}
 	.pic-wrapper{
-		width:100px;
-		height:100px;
+		width:80px;
+		height:80px;
 		overflow:hidden;
 		position: relative;
 		img{
 			width: 100%;
 			height: 100%;
+			object-fit: cover;
 		}
 		.delete{
 			position: absolute;
@@ -30,8 +38,10 @@ page-commonrefund {
 			height: 18px;
 			background: #000;
 			color: white;
-			font-size: 15px;
+			font-size: 18px;
 			font-weight: bold;
+			text-align: right;
+			line-height: 18px;
 		}
 	}
 }

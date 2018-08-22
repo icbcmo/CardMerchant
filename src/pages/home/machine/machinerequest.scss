@@ -5,12 +5,35 @@ page-machinerequest{
 	.toolbar-title{
 		text-align: center;
 	}
+	.row{
+		&.custom{
+			flex-direction: row;
+			justify-content: space-between;
+			flex-wrap: wrap;
+		}
+	}
 	.pic-wrapper{
-		width: 100px;
-		height: 100px;
-		overflow: hidden;
+		width:80px;
+		height:80px;
+		overflow:hidden;
+		position: relative;
 		img{
+			width: 100%;
+			height: 100%;
 			object-fit: cover;
+		}
+		.delete{
+			position: absolute;
+			top: 5px;
+			right: 5px;
+			width: 18px;
+			height: 18px;
+			background: #000;
+			color: white;
+			font-size: 18px;
+			font-weight: bold;
+			text-align: right;
+			line-height: 18px;
 		}
 	}
 	
