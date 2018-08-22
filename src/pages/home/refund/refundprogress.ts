@@ -5,6 +5,7 @@ import {CardMerchantService} from "../../../service/card-merchant.service";
 import {NativeStorage} from "@ionic-native/native-storage";
 import {TipService} from '../../../service/tip.service';
 import {ShowImage} from "./showimage";
+import {RefundDetail} from "./refunddetail";
 
 @Component({
   selector: 'page-refundprogress',
@@ -65,6 +66,11 @@ export class RefundProgress implements OnInit{
 				duration: 2000
 			}).present();
 		});
+	}
+	
+	goRefundDetail(item){
+		let modal = this.modalCtrl.create(RefundDetail, {item: item, btn: false});
+        modal.present();
 	}
 
     dismiss() {

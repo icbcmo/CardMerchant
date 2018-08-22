@@ -68,7 +68,8 @@ export class RefundVerify implements OnInit{
 		});
 	}
 	
-	goApprove(requestid){
+	goApprove(e, requestid){
+		e.stopPropagation();
 		var data = {
 			Sessionid: localStorage.getItem('SESSIONID'),
 			requestid: requestid
@@ -109,7 +110,7 @@ export class RefundVerify implements OnInit{
 	}
 	
 	goRefundDetail(item){
-		let modal = this.modalCtrl.create(RefundDetail, {item: item});
+		let modal = this.modalCtrl.create(RefundDetail, {item: item, btn: true});
         modal.present();
 	}
 	
