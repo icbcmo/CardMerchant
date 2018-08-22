@@ -101,6 +101,12 @@ export class MachineRequest implements OnInit{
 	}
 	
 	submitForm(){
+		var pics = [];
+		for(var i=0;i<4;i=i+1){
+			if(this.pictures[i].btn == true){
+				pics.push(this.pictures[i].data);
+			}
+		}
 		var data = {
 			sessionid: localStorage.getItem('SESSIONID'),
 			machinemerchantid: localStorage.getItem("MERCHANTID"),
@@ -112,7 +118,7 @@ export class MachineRequest implements OnInit{
 			machineapplyname: Object(this.machineapplyname).value,
 			machineapplymobile: Object(this.machineapplymobile).value,
 			machinerequestdesc: Object(this.machinerequestdesc).value,
-			machineattach: this.base64Image
+			machineattach: pics
 		};
 		console.log(data);
 		let loading = this.loadingCtrl.create({

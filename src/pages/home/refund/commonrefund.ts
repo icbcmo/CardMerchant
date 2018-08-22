@@ -95,6 +95,12 @@ export class CommonRefund implements OnInit{
 	}
 	
 	submitForm(){
+		var pics = [];
+		for(var i=0;i<4;i=i+1){
+			if(this.pictures[i].btn == true){
+				pics.push(this.pictures[i].data);
+			}
+		}
 		this.alertCtrl.create({
 						message: '退款金额:' + Object(this.refundamount).value,
 						buttons: [
@@ -120,7 +126,7 @@ export class CommonRefund implements OnInit{
 										refundamount: Object(this.refundamount).value,
 										applymobile: Object(this.applymobile).value,
 										applyname: Object(this.applyname).value,
-										picture: this.pictures
+										picture: pics
 									};
 									console.log(data);
 									let loading = this.loadingCtrl.create({
