@@ -15,7 +15,7 @@ export class CommonRefund implements OnInit{
 	pictures: any[] = [];
 	tradeDate: any;
 	total: any = 0;
-	
+
 	@ViewChild('merchantname') merchantname: ElementRef;
 	@ViewChild('departmentname') departmentname: ElementRef;
 	@ViewChild('refundcardno4') refundcardno4: ElementRef;
@@ -42,18 +42,18 @@ export class CommonRefund implements OnInit{
 		Object(this.merchantname).value = localStorage.getItem('MERCHANTNAME');
 		Object(this.departmentname).value = localStorage.getItem('DEPARTMENTNAME');
 		//Object(this.merchantname).value = '测试商户名称';
-		//Object(this.departmentname).value = '测试部门名称'; 
+		//Object(this.departmentname).value = '测试部门名称';
 		Object(this.applymobile).value = localStorage.getItem('MOBILE');
 		this.tradeDate = BaseDate.getDateNow();
-		
+
 		this.pictures=[
-			{data:'../../../assets/imgs/refundverify1_1.png',btn:false},
-			{data:'../../../assets/imgs/refundverify1_1.png',btn:false},
-			{data:'../../../assets/imgs/refundverify1_1.png',btn:false},
-			{data:'../../../assets/imgs/refundverify1_1.png',btn:false}
+			{data:'assets/imgs/camera_img.png',btn:false},
+			{data:'assets/imgs/camera_img.png',btn:false},
+			{data:'assets/imgs/camera_img.png',btn:false},
+			{data:'assets/imgs/camera_img.png',btn:false}
 		];
 	}
-	
+
 	openCamera(){
 		this.total = this.total +1 ;
         if(this.total > 4){
@@ -70,7 +70,7 @@ export class CommonRefund implements OnInit{
 				encodingType: this.camera.EncodingType.JPEG,
 				mediaType: this.camera.MediaType.PICTURE
 			};
-	
+
 			this.camera.getPicture(options).then((imageData) => {
 				var base64Image = imageData;
 				base64Image = 'data:image/jpeg;base64,' + base64Image;
@@ -81,15 +81,16 @@ export class CommonRefund implements OnInit{
 				for(var i=0;i<4;i++){
 					if(this.pictures[i].btn == false){
 						this.pictures.splice(i,1,obj);
+                        this.pictures[i].btn = true;
 						break;
 					}
 				}
 			});
 		}
     }
-	
+
 	delPic(index){
-		this.pictures.splice(index,1,{data:'../../../assets/imgs/refundverify1_1.png',btn:false,id:index});
+		this.pictures.splice(index,1,{data:'assets/imgs/camera_img.png',btn:false,id:index});
 		this.total = (this.total -1);
 	}
 	

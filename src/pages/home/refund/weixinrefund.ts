@@ -36,10 +36,10 @@ export class WeixinRefund implements OnInit{
 		Object(this.wechatapplymobile).value = localStorage.getItem('MOBILE');
 		this.tradeDate = BaseDate.getDateNow();
 		this.pictures=[
-			{data:'../../../assets/imgs/refundverify1_1.png',btn:false},
-			{data:'../../../assets/imgs/refundverify1_1.png',btn:false},
-			{data:'../../../assets/imgs/refundverify1_1.png',btn:false},
-			{data:'../../../assets/imgs/refundverify1_1.png',btn:false}
+			{data:'assets/imgs/camera_img.png',btn:false},
+			{data:'assets/imgs/camera_img.png',btn:false},
+			{data:'assets/imgs/camera_img.png',btn:false},
+			{data:'assets/imgs/camera_img.png',btn:false}
 		];
 	}
 	
@@ -103,8 +103,8 @@ export class WeixinRefund implements OnInit{
 	}
 	
 	openCamera(){
-		if(this.pictures.length > 5){
-			this.tipService.show('最多拍照上传5张');
+		if(this.pictures.length > 4){
+			this.tipService.show('最多拍照上传4张');
 		}else{
 			//手機上使用部分開始
 			const options: CameraOptions = {
@@ -128,6 +128,7 @@ export class WeixinRefund implements OnInit{
 				for(var i=0;i<4;i++){
 					if(this.pictures[i].btn == false){
 						this.pictures.splice(i,1,obj);
+                        this.pictures[i].btn = true;
 						break;
 					}
 				}
@@ -136,7 +137,7 @@ export class WeixinRefund implements OnInit{
     }
 	
 	delPic(index){
-		this.pictures.splice(index,1,{data:'../../../assets/imgs/refundverify1_1.png',btn:false,id:index});
+		this.pictures.splice(index,1,{data:'assets/imgs/camera_img.png',btn:false,id:index});
 		this.total = this.total - 1 ;
 	}
 

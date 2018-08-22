@@ -9,16 +9,16 @@
 <ion-content>
 	<ion-searchbar placeholder="請輸入搜索內容"></ion-searchbar>
 	<ion-list class="useList">
-		<ion-item *ngFor="let item of items" >
+		<ion-item *ngFor="let item of items" (click)="goRefundDetail(item)" >
 			<div class="left">
 				<p class="p1">MID：工商银行</p>
 				<p class="p2">卡号：{{item.field5}}</p>
 			</div>
 			<div class="right" item-end>
-				<div class="div1 bg1" (click)="goDisplay(item.field6)">
+				<!--<div class="div1 bg1" (click)="goDisplay(item.field6)">
 
 					<p class="p1">影像</p>
-				</div>
+				</div>-->
 				<div class="div1 bg2" (click)="goApprove(item.sequence)">
 
 					<p class="p1">审批</p>
