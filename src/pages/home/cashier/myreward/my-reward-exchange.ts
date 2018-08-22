@@ -32,7 +32,7 @@ export class MyRewardExchange implements OnInit{
 
         console.log(points);
         console.log(cardno);
-        this.cardMerchantService.newPointsToMoney(points.toString()).toPromise().then(data=>{
+        this.cardMerchantService.newPointsToMoney(cardno.toString(),points.toString()).toPromise().then(data=>{
             console.log(data);
 
             if(Object(data).code == "0"){

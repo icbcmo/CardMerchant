@@ -206,8 +206,9 @@ export class CardMerchantService {
 
         return this.http.post(url,data,this.httpOptions);
     }
-    newPointsToMoney(points:any){
+    newPointsToMoney(cardno:any, points:any){
         let data= {
+            "cardno":cardno,
             "points":points,
             "sessionid":localStorage.getItem("SESSIONID")
         };
