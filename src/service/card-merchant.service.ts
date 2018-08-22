@@ -224,4 +224,14 @@ export class CardMerchantService {
 
         return this.http.post(url,data,this.httpOptions);
     }
+	
+	getTrxInfoByMerchantId(data){
+		let str = JSON.stringify(data);
+		let sign = this.getSignInit(str);
+		let merCert = encodeURIComponent(this.publicKey);
+        let url = this.gwUrl + 'cardmerchant/gettrxinfobymerchantid' + '?sign=' + sign + '&merCert=' + merCert;
+        console.log(url);
+
+        return this.http.post(url,data);
+	}
 }
