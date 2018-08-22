@@ -74,6 +74,7 @@ export class ContactPage {
     }
   test5() {
       localStorage.clear();
+
       let modal = this.modalCtrl.create(SigninPage);
       modal.present();
   }

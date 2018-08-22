@@ -54,6 +54,7 @@ import {MachineRequestDetail} from "../pages/home/machine/machinerequestdetail";
 import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner';
 import {ReportDataService} from "../service/report-data.service";
 import {CashierScan} from "../pages/home/cashier/scan/cashier-scan";
+import {RewardRanking} from "../pages/home/cashier/rewardranking/reward-ranking";
 
 @NgModule({
     declarations: [
@@ -86,7 +87,8 @@ import {CashierScan} from "../pages/home/cashier/scan/cashier-scan";
 		Machine,
 		MachineRequest,
 		MachineRequestDetail,
-		CashierScan
+		CashierScan,
+		RewardRanking
     ],
     imports: [
         HttpClientModule,
@@ -134,7 +136,8 @@ import {CashierScan} from "../pages/home/cashier/scan/cashier-scan";
 		Machine,
 		MachineRequest,
 		MachineRequestDetail,
-		CashierScan
+		CashierScan,
+		RewardRanking
     ],
     providers: [
         StatusBar,
