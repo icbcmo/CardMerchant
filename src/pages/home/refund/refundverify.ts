@@ -110,7 +110,7 @@ export class RefundVerify implements OnInit{
 	}
 	
 	goRefundDetail(item){
-		let modal = this.modalCtrl.create(RefundDetail, {item: item});
+		let modal = this.modalCtrl.create(RefundDetail, {item: item, btn: true});
         modal.present();
 	}
 	

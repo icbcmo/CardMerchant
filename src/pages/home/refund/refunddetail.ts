@@ -14,6 +14,7 @@ declare var localStorage: any;
 
 export class RefundDetail implements OnInit{
 	item: any;
+	btn: Boolean;
 
     constructor(
         public platform: Platform,
@@ -33,6 +34,7 @@ export class RefundDetail implements OnInit{
     ngOnInit() {
 		console.log(this.params.get('item'));
 		this.item = this.params.get('item');
+		this.btn = this.params.get('btn');
 	}
 	
 	goApprove(){

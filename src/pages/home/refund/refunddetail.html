@@ -144,7 +144,7 @@
 			</ion-col>
 		</ion-row>
 	</ion-grid>
-	<div padding>
+	<div *ngIf="btn" padding>
 		<button ion-button color="primary" (click)="goApprove()" block>审批</button>
 	</div>
 </ion-content>
