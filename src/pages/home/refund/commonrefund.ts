@@ -41,8 +41,7 @@ export class CommonRefund implements OnInit{
 		console.log(localStorage);
 		Object(this.merchantname).value = localStorage.getItem('MERCHANTNAME');
 		Object(this.departmentname).value = localStorage.getItem('DEPARTMENTNAME');
-		//Object(this.merchantname).value = '测试商户名称';
-		//Object(this.departmentname).value = '测试部门名称';
+        Object(this.applyname).value = localStorage.getItem('NAME');
 		Object(this.applymobile).value = localStorage.getItem('MOBILE');
 		this.tradeDate = BaseDate.getDateNow();
 
