@@ -6,185 +6,113 @@
 </ion-header>
 
 <ion-content>
-	<ion-grid *ngIf="item.field2 == '1'">
-		<ion-row>
-			<ion-col>
-				申請編號：
-			</ion-col>
-			<ion-col>
-				{{item.sequence}}
-			</ion-col>
-		</ion-row>
-		<ion-row>
-			<ion-col>
-				商戶編號：
-			</ion-col>
-			<ion-col>
-				{{item.field61}}
-			</ion-col>
-		</ion-row>
-		<ion-row>
-			<ion-col>
-				商戶名稱：
-			</ion-col>
-			<ion-col>
-				{{item.field62}}
-			</ion-col>
-		</ion-row>
-		<ion-row>
-			<ion-col>
-				部門編號：
-			</ion-col>
-			<ion-col>
-				{{item.field63}}
-			</ion-col>
-		</ion-row>
-		<ion-row>
-			<ion-col>
-				部門名稱：
-			</ion-col>
-			<ion-col>
-				{{item.field64}}
-			</ion-col>
-		</ion-row>
-		<ion-row>
-			<ion-col>
-				授權號：
-			</ion-col>
-			<ion-col>
-				{{item.field67}}
-			</ion-col>
-		</ion-row>
-		<ion-row>
-			<ion-col>
-				交易日期：
-			</ion-col>
-			<ion-col>
-				{{item.field66}}
-			</ion-col>
-		</ion-row>
-		<ion-row>
-			<ion-col>
-				卡號：
-			</ion-col>
-			<ion-col>
-				**** **** **** {{item.field65}}
-			</ion-col>
-		</ion-row>
-		<ion-row>
-			<ion-col>
-				交易金額：
-			</ion-col>
-			<ion-col>
-				{{item.field68}}
-			</ion-col>
-		</ion-row>
-		<ion-row>
-			<ion-col>
-				退款金額：
-			</ion-col>
-			<ion-col>
-				{{item.field69}}
-			</ion-col>
-		</ion-row>
-		<ion-row>
-			<ion-col>
-				經辦人手機號：
-			</ion-col>
-			<ion-col>
-				{{item.field70}}
-			</ion-col>
-		</ion-row>
 
-		<ion-row>
-			<ion-col *ngFor="let pic of item.pictures;let i=index" >
-				<img [src]="pic.data" (click)="showPicture(i)" />
-			</ion-col>
-		</ion-row>
-	</ion-grid>
+	<ion-list class="input_list" *ngIf="item.field2 == '1'">
 
-	<ion-grid *ngIf="item.field2 == '2'">
-		<ion-row>
-			<ion-col>
-				申請編號：
-			</ion-col>
-			<ion-col>
-				{{item.sequence}}
-			</ion-col>
-		</ion-row>
+		<ion-item>
+			<ion-label>申請編號</ion-label>
+			<ion-input [readonly]="true" [value]="item.sequence"></ion-input>
+		</ion-item>
+		<ion-item>
+			<ion-label>商戶編號</ion-label>
+			<ion-input [readonly]="true" [value]="item.field61"></ion-input>
+		</ion-item>
+		<ion-item>
+			<ion-label>商戶名稱</ion-label>
+			<ion-input [readonly]="true" [value]="item.field62"></ion-input>
+		</ion-item>
+		<ion-item>
+			<ion-label>部門編號</ion-label>
+			<ion-input [readonly]="true" [value]="item.field63"></ion-input>
+		</ion-item>
+		<ion-item>
+			<ion-label>部门名稱</ion-label>
+			<ion-input [readonly]="true" [value]="item.field64"></ion-input>
+		</ion-item>
+		<ion-item>
+			<ion-label>退款卡號</ion-label>
+			<ion-input [readonly]="true" [value]="'**** **** **** '+item.field65"></ion-input>
+		</ion-item>
+		<button ion-item class="item-ios" >
+			<ion-label>交易日期</ion-label>
+			 <ion-input [readonly]="true" [value]= "item.field66"></ion-input>
+		</button>
+		<ion-item>
+			<ion-label>授權號</ion-label>
+			<ion-input [readonly]="true" [value]="item.field67"></ion-input>
+		</ion-item>
+		<ion-item>
+			<ion-label>原交易金額</ion-label>
+			<ion-input [readonly]="true" [value]="item.field68"></ion-input>
+		</ion-item>
+		<ion-item>
+			<ion-label>退款金額</ion-label>
+			<ion-input [readonly]="true" [value]="item.field69"></ion-input>
+		</ion-item>
+		<ion-item>
+			<ion-label>經辦人聯絡電話</ion-label>
+			<ion-input [readonly]="true" [value]="item.field70" ></ion-input>
+		</ion-item>
+		<ion-item class="camera">
+			<ul class="bottom">
+				<li *ngFor="let pic of  item.pictures;let i = index" >
+					<img [src]="pic.data" (click)="showPicture(i)" />
+				</li>
+			</ul>
+		</ion-item>
 
-		<ion-row>
-			<ion-col>
-				部門編號：
-			</ion-col>
-			<ion-col>
-				{{item.field21}}
-			</ion-col>
-		</ion-row>
-		<ion-row>
-			<ion-col>
-				部門名稱：
-			</ion-col>
-			<ion-col>
-				{{item.field22}}
-			</ion-col>
-		</ion-row>
-		<ion-row>
-			<ion-col>
-				終端號：
-			</ion-col>
-			<ion-col>
-				{{item.field23}}
-			</ion-col>
-		</ion-row>
-		<ion-row>
-			<ion-col>
-				交易流水號：
-			</ion-col>
-			<ion-col>
-				{{item.field24}}
-			</ion-col>
-		</ion-row>
-		<ion-row>
-			<ion-col>
-				交易日期：
-			</ion-col>
-			<ion-col>
-				{{item.field25}}
-			</ion-col>
-		</ion-row>
+	</ion-list>
 
-		<ion-row>
-			<ion-col>
-				交易金額：
-			</ion-col>
-			<ion-col>
-				{{item.field26}}
-			</ion-col>
-		</ion-row>
-		<ion-row>
-			<ion-col>
-				退款金額：
-			</ion-col>
-			<ion-col>
-				{{item.field27}}
-			</ion-col>
-		</ion-row>
-		<ion-row>
-			<ion-col>
-				經辦人手機號：
-			</ion-col>
-			<ion-col>
-				{{item.field28}}
-			</ion-col>
-		</ion-row>
 
-		<ion-row>
-			<ion-col *ngFor="let pic of item.pictures;let i=index" >
-				<img [src]="pic.data" (click)="showPicture(i)" />
-			</ion-col>
-		</ion-row>
-	</ion-grid>
+	<ion-list class="input_list" *ngIf="item.field2 == '2'">
+
+		<ion-item>
+			<ion-label>申請編號</ion-label>
+			<ion-input [readonly]="true" [value]="item.sequence"></ion-input>
+		</ion-item>
+		<ion-item>
+			<ion-label>部門編號</ion-label>
+			<ion-input [readonly]="true" [value]="item.field21"></ion-input>
+		</ion-item>
+		<ion-item>
+			<ion-label>部门名稱</ion-label>
+			<ion-input [readonly]="true" [value]="item.field22"></ion-input>
+		</ion-item>
+		<ion-item>
+			<ion-label>終端號</ion-label>
+			<ion-input [readonly]="true" [value]="item.field23"></ion-input>
+		</ion-item>
+		<ion-item>
+			<ion-label>交易流水號</ion-label>
+			<ion-input [readonly]="true" [value]="item.field24"></ion-input>
+		</ion-item>
+		<button ion-item class="item-ios" >
+			<ion-label>交易日期</ion-label>
+			<ion-input [readonly]="true" [value]= "item.field25"></ion-input>
+		</button>
+
+		<ion-item>
+			<ion-label>原交易金額</ion-label>
+			<ion-input [readonly]="true" [value]="item.field26"></ion-input>
+		</ion-item>
+		<ion-item>
+			<ion-label>退款金額</ion-label>
+			<ion-input [readonly]="true" [value]="item.field27"></ion-input>
+		</ion-item>
+		<ion-item>
+			<ion-label>經辦人聯絡電話</ion-label>
+			<ion-input [readonly]="true" [value]="item.field28" ></ion-input>
+		</ion-item>
+		<ion-item class="camera">
+			<ul class="bottom">
+				<li *ngFor="let pic of  item.pictures;let i = index" >
+					<img [src]="pic.data" (click)="showPicture(i)" />
+				</li>
+			</ul>
+		</ion-item>
+
+	</ion-list>
+
 	<div *ngIf="btn" padding>
 		<button ion-button color="primary" (click)="goApprove()" block>审批</button>
 	</div>
