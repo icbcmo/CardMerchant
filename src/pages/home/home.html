@@ -44,7 +44,7 @@
 </ion-header>
 
 <ion-content class="page-home-content">
-  <ion-grid class="grid2">
+  <ion-grid class="grid2" *ngIf="userStatus">
     <ion-row class="row1">
       <ion-col>
         <span class="circle">●</span>基本服務
@@ -54,6 +54,7 @@
       <ion-col>
         <div class="top">
           <img class="image1" src="assets/imgs/index_pa1.png" alt="调单" (click)="openOrderRefundModal()">
+          <span class="title">20</span>
         </div>
         <p class="bottom">调单</p>
       </ion-col>
@@ -81,6 +82,50 @@
       <ion-col col-3>
         <div class="top">
           <img class="image1" src="assets/imgs/index_pa5.png" alt="交易查詢" (click)="openTrxDataserviceModal()">
+        </div>
+        <p class="bottom">交易查詢</p>
+      </ion-col>
+    </ion-row>
+
+  </ion-grid>
+  <ion-grid class="grid2" *ngIf="!userStatus">
+    <ion-row class="row1">
+      <ion-col>
+        <span class="circle">●</span>基本服務
+      </ion-col>
+    </ion-row>
+    <ion-row class="row2">
+      <ion-col>
+        <div class="top">
+          <img class="image1" src="assets/imgs/index_pa1_2.png" alt="调单">
+          <span class="title color">20</span>
+        </div>
+        <p class="bottom">调单</p>
+      </ion-col>
+      <ion-col col-3>
+        <div class="top">
+          <img class="image1" src="assets/imgs/index_pa2_2.png" alt="退款">
+        </div>
+        <p class="bottom">退款</p>
+      </ion-col>
+      <ion-col col-3>
+        <div class="top">
+          <img class="image1" src="assets/imgs/index_pa3_2.png" alt="差錯交易">
+        </div>
+        <p class="bottom">差錯交易</p>
+      </ion-col>
+      <ion-col col-3>
+        <div class="top">
+          <img class="image1" src="assets/imgs/index_pa4_2.png" alt="報修">
+        </div>
+        <p class="bottom">報修</p>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="row2">
+      <ion-col col-3>
+        <div class="top">
+          <img class="image1" src="assets/imgs/index_pa5_2.png" alt="交易查詢">
         </div>
         <p class="bottom">交易查詢</p>
       </ion-col>

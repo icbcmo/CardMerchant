@@ -42,6 +42,7 @@ export interface User {
 export class HomePage implements OnInit{
 
 	orderNum: any;
+    userStatus: boolean;
 	
     constructor(
         private store: Store<AppState> ,
@@ -53,6 +54,7 @@ export class HomePage implements OnInit{
         public modalCtrl: ModalController,
     ) {
         this.devicePlatform = device.platform;
+        this.userStatus = true;
 
         document.addEventListener(
             "jpush.receiveNotification",

@@ -52,7 +52,7 @@ export class ReportDataService {
     getTrxInfoByDepartmentId(data) {
         let str = "dateend="+data.dateend
             +"&datestart="+data.datestart
-            +"&departmentid"+data.departmentid
+            +"&departmentid="+data.departmentid
             +"&fetchnum="+data.fetchnum
             +"&sessionid="+data.sessionid
             +"&start="+data.start;
