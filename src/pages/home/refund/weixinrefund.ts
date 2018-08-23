@@ -14,10 +14,14 @@ export class WeixinRefund implements OnInit{
 	pictures: any[] = [];
 	tradeDate: any;
 	total: number = 0;
-	
+
+    @ViewChild('merchantname') merchantname: ElementRef;
+    @ViewChild('departmentname') departmentname: ElementRef;
+    @ViewChild('wechattid') wechattid: ElementRef;
 	@ViewChild('wechattrxno') wechattrxno: ElementRef;
 	@ViewChild('wechattrxdate') wechattrxdate: ElementRef;
 	@ViewChild('wechattrxamount') wechattrxamount: ElementRef;
+    @ViewChild('wechatrefundamount') wechatrefundamount: ElementRef;
     @ViewChild('wechatapplymobile') wechatapplymobile: ElementRef;
 	@ViewChild('wechatapplyname') wechatapplyname: ElementRef;
 
@@ -33,6 +37,9 @@ export class WeixinRefund implements OnInit{
 
 
     ngOnInit() {
+        Object(this.merchantname).value = localStorage.getItem('MERCHANTNAME');
+        Object(this.departmentname).value = localStorage.getItem('DEPARTMENTNAME');
+        Object(this.wechatapplyname).value = localStorage.getItem('NAME');
 		Object(this.wechatapplymobile).value = localStorage.getItem('MOBILE');
 		this.tradeDate = BaseDate.getDateNow();
 		this.pictures=[
@@ -64,12 +71,13 @@ export class WeixinRefund implements OnInit{
 								handler: () => {
 										var data = {
 											sessionid: localStorage.getItem('SESSIONID'),
-											wechatmid: localStorage.getItem("MERCHANTID"),
+											wechatmid: localStorage.getItem("WECHATMERCHANTID"),
 											wechatmerchantname: localStorage.getItem("MERCHANTNAME"),
-											wechattid: localStorage.getItem("WECHATTID"),
+											wechattid: Object(this.wechattid).value,
 											wechattrxno: Object(this.wechattrxno).value,
 											wechattrxdate: this.tradeDate,
 											wechattrxamount: Object(this.wechattrxamount).value,
+                                            wechatrefundamount: Object(this.wechatrefundamount).value,
 											wechatapplymobile: Object(this.wechatapplymobile).value,
 											wechatapplyname: Object(this.wechatapplyname).value,
 											wechatapplypicture: pics
