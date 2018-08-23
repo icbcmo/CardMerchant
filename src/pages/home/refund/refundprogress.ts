@@ -6,6 +6,8 @@ import {NativeStorage} from "@ionic-native/native-storage";
 import {TipService} from '../../../service/tip.service';
 import {ShowImage} from "./showimage";
 import {RefundDetail} from "./refunddetail";
+import {SigninPage} from "../../auth/signin";
+declare var localStorage: any;
 
 @Component({
   selector: 'page-refundprogress',
@@ -36,6 +38,11 @@ export class RefundProgress implements OnInit{
 		console.log(data);
 		this.cardMerchantService.getrequestlist(data).toPromise().then(data=> {
 			console.log(Object(data));
+			if(Object(data).code == 0){
+                localStorage.clear();
+                let modal = this.modalCtrl.create(SigninPage);
+                modal.present();
+			}
 			if(Object(data).code == 0){
 				this.items = Object(data).data;
 				if(this.items.length > 0){

@@ -2,10 +2,12 @@
 import {Component, OnInit, ElementRef, ViewChild} from '@angular/core';
 import {CardMerchantService} from "../../../service/card-merchant.service";
 import {Camera, CameraOptions} from '@ionic-native/camera';
-import { ViewController } from 'ionic-angular';
+import {ModalController, ViewController} from 'ionic-angular';
 import { AlertController, LoadingController } from 'ionic-angular';
 import {TipService} from '../../../service/tip.service';
 import {BaseDate} from '../../../service/BaseDate.service';
+import {SigninPage} from "../../auth/signin";
+declare var localStorage: any;
 
 @Component({
   selector: 'page-commonrefund',
@@ -32,7 +34,8 @@ export class CommonRefund implements OnInit{
 		public viewCtrl: ViewController,
 		public loadingCtrl: LoadingController,
 		private alertCtrl: AlertController,
-		public tipService: TipService
+		public tipService: TipService,
+        public modalCtrl: ModalController
     ) {
     }
 
@@ -136,7 +139,13 @@ export class CommonRefund implements OnInit{
 									this.cardMerchantService.addrefund(data).toPromise().then(data=> {
 										console.log(Object(data));
 										loading.dismiss();
-										if(Object(data).code == 0){
+                                        if(Object(data).code == 1){
+                                            localStorage.clear();
+                                            let modal = this.modalCtrl.create(SigninPage);
+                                            modal.present();
+										}
+
+                                        if(Object(data).code == 0){
 											this.tipService.show('提交成功').then( () => {
 													this.viewCtrl.dismiss();
 												});

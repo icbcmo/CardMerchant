@@ -5,6 +5,7 @@ import {NativeStorage} from "@ionic-native/native-storage";
 import { ModalController, Platform,NavController, ViewController, NavParams, AlertController, LoadingController } from 'ionic-angular';
 import {TipService} from '../../../service/tip.service';
 import {ShowImage} from './showimage';
+import {SigninPage} from "../../auth/signin";
 
 declare var localStorage: any;
 
@@ -58,6 +59,11 @@ export class RefundDetail implements OnInit{
 		this.cardMerchantService.approverequest(data).toPromise().then(data=> {
 			console.log(Object(data));
 			loading.dismiss();
+			if(Object(data).code == 1){
+                localStorage.clear();
+                let modal = this.modalCtrl.create(SigninPage);
+                modal.present();
+			}
 			if(Object(data).code == 0){
 				this.tipService.show('提交成功').then( () => {
 						//this.viewCtrl.dismiss();

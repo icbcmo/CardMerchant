@@ -1,8 +1,9 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
-import {LoadingController, NavController, ViewController,AlertController} from "ionic-angular";
+import {LoadingController, NavController, ViewController, AlertController, ModalController} from "ionic-angular";
 import {ReportDataService} from "../../../../service/report-data.service";
 import {MyRewardExchange} from "./my-reward-exchange";
 import {CardMerchantService} from "../../../../service/card-merchant.service";
+import {SigninPage} from "../../../auth/signin";
 declare var localStorage: any;
 
 @Component({
@@ -24,7 +25,9 @@ export class MyReward implements OnInit{
                 public viewCtrl: ViewController,
                 public navCtrl: NavController,
                 public alertCtrl: AlertController,
-                public cardMerchantService:CardMerchantService){
+                public cardMerchantService:CardMerchantService,
+                public modalCtrl: ModalController
+    ){
         this.showType ='weekData';
 
     }
@@ -42,6 +45,11 @@ export class MyReward implements OnInit{
 
         this.reportDataService.getScanWeekList156().toPromise().then(data=>{
             console.log(data);
+            if(Object(data).code == "1"){
+                localStorage.clear();
+                let modal = this.modalCtrl.create(SigninPage);
+                modal.present();
+            }
             this.weekData = Object(Object(data).data);
             //this.myTotal = Object(data).message;
             this.reportDataService.getCashier157().toPromise().then( data=>{
@@ -119,7 +127,11 @@ export class MyReward implements OnInit{
         console.log(cardno);
         this.cardMerchantService.newPointsToMoney(cardno.toString(),points.toString()).toPromise().then(data=>{
             console.log(data);
-
+            if(Object(data).code == "1"){
+                localStorage.clear();
+                let modal = this.modalCtrl.create(SigninPage);
+                modal.present();
+            }
             if(Object(data).code == "0"){
                 let loading = this.loadingCtrl.create({
                     content: '兌換成功',

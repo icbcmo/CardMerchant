@@ -8,6 +8,8 @@ import {CardMerchantService} from "../../../../service/card-merchant.service";
 import {NativeStorage} from "@ionic-native/native-storage";
 import {TipService} from '../../../../service/tip.service';
 import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner';
+import {SigninPage} from "../../../auth/signin";
+declare var localStorage: any;
 
 @Component({
     selector: 'page-cashier-scan',
@@ -23,6 +25,7 @@ export class CashierScan implements OnInit{
                 public platform: Platform,
                 public params: NavParams,
                 private qrScanner: QRScanner,
+                public modalCtrl: ModalController,
                 public viewCtrl: ViewController) {
     }
 
@@ -32,6 +35,11 @@ export class CashierScan implements OnInit{
             this.cardMerchantService.addCounterPoints(JSON.parse(text).orderid,JSON.parse(text).orderamount,JSON.parse(text).orderdate,JSON.parse(text).pointsnum).toPromise().then(
                 data => {
                     console.log(data);
+                    if(Object(data).code == "1"){
+                        localStorage.clear();
+                        let modal = this.modalCtrl.create(SigninPage);
+                        modal.present();
+                    }
                     if(Object(data).code == "0"){
                         alert(JSON.parse(text).pointsnum);
                         this.total = this.total + parseInt(JSON.parse(text).pointsnum);

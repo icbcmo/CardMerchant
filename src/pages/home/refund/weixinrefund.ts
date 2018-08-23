@@ -1,10 +1,11 @@
 
 import {Component, OnInit, ElementRef, ViewChild} from '@angular/core';
 import {CardMerchantService} from "../../../service/card-merchant.service";
-import { ViewController,  AlertController, LoadingController } from 'ionic-angular';
+import {ViewController, AlertController, LoadingController, ModalController} from 'ionic-angular';
 import {TipService} from '../../../service/tip.service';
 import {BaseDate} from '../../../service/BaseDate.service';
 import {Camera, CameraOptions} from "@ionic-native/camera";
+import {SigninPage} from "../../auth/signin";
 
 @Component({
   selector: 'page-weixinrefund',
@@ -29,6 +30,7 @@ export class WeixinRefund implements OnInit{
 		public cardMerchantService: CardMerchantService,
 		public viewCtrl: ViewController,
 		public loadingCtrl: LoadingController,
+        public modalCtrl: ModalController,
         private camera: Camera,
 		private alertCtrl: AlertController,
 		public tipService: TipService
@@ -91,6 +93,11 @@ export class WeixinRefund implements OnInit{
 										this.cardMerchantService.addwechatrefund(data).toPromise().then(data=> {
 											console.log(Object(data));
 											loading.dismiss();
+											if(Object(data).code == 1){
+                                                localStorage.clear();
+                                                let modal = this.modalCtrl.create(SigninPage);
+                                                modal.present();
+											}
 											if(Object(data).code == 0){
 												this.tipService.show('提交成功').then( () => {
 														this.viewCtrl.dismiss();

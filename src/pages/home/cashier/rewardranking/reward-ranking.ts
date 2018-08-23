@@ -1,6 +1,7 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
-import {LoadingController,ViewController} from "ionic-angular";
+import {LoadingController, ModalController, ViewController} from "ionic-angular";
 import {ReportDataService} from "../../../../service/report-data.service";
+import {SigninPage} from "../../../auth/signin";
 declare var localStorage: any;
 
 @Component({
@@ -15,8 +16,11 @@ export class RewardRanking implements OnInit{
     myWeekData:any;
     myDayData:any;
 
-    constructor(public reportDataService:ReportDataService,public loadingCtrl: LoadingController
-        ,public viewCtrl: ViewController){
+    constructor(public reportDataService:ReportDataService,
+                public loadingCtrl: LoadingController,
+                public viewCtrl: ViewController,
+                public modalCtrl: ModalController)
+    {
         this.showType ='weekData';
 
     }
@@ -29,6 +33,11 @@ export class RewardRanking implements OnInit{
 
         this.reportDataService.getScanWeekRanking156().toPromise().then(data=>{
             console.log(data);
+            if(Object(data).code == "1"){
+                localStorage.clear();
+                let modal = this.modalCtrl.create(SigninPage);
+                modal.present();
+            }
             this.weekData = Object(Object(data).data);
             for(let i=0 ;i<this.weekData.length;i++)
             {
@@ -52,6 +61,11 @@ export class RewardRanking implements OnInit{
         if(this.showType == 'weekData'){
             this.reportDataService.getScanWeekRanking156().toPromise().then(data=>{
                 console.log(data);
+                if(Object(data).code == "1"){
+                    localStorage.clear();
+                    let modal = this.modalCtrl.create(SigninPage);
+                    modal.present();
+                }
                 this.weekData = Object(Object(data).data);
                 for(let i=0 ;i<this.weekData.length;i++)
                 {
@@ -69,6 +83,11 @@ export class RewardRanking implements OnInit{
         else if(this.showType == 'todayData'){
             this.reportDataService.getScanDayRanking156().toPromise().then(data=>{
                 console.log(data);
+                if(Object(data).code == "1"){
+                    localStorage.clear();
+                    let modal = this.modalCtrl.create(SigninPage);
+                    modal.present();
+                }
                 this.dayData = Object(Object(data).data);
                 for(let i=0 ;i<this.dayData.length;i++)
                 {
