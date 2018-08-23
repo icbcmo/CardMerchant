@@ -244,6 +244,11 @@ export class AboutPage implements OnInit{
 
       for( let x=0;x<totalList.length;x++){
           x_data.push(totalList[x].trxdate);
+          // let xx =
+          //   totalList[x].trxdate.toString().substr(0,4)+'-'+
+          //   totalList[x].trxdate.toString().substr(4,2)+'-'+
+          //     totalList[x].trxdate.toString().substr(6,2);
+          // x_data.push(xx);
           y_data.push((parseInt(totalList[x].total)/100).toFixed(2));
       }
       console.log(x_data);
@@ -254,9 +259,9 @@ export class AboutPage implements OnInit{
       loading.dismiss();
 
       let option = {
-          title: {
-              text: ''
-          },
+          // title: {
+          //     text: '營銷金額'
+          // },
           tooltip: {},
           legend: {
               data:['销售额']
@@ -265,19 +270,36 @@ export class AboutPage implements OnInit{
               data: x_data,
               axisLabel: {
                   interval:0,
-                  rotate:90
+                  //rotate:90
+                  rotate:45
               }
           },
 
           grid: {
-
-              bottom:'35%'
+              left:'20%',
+              bottom:'30%'
           },
           yAxis: {},
           series: [{
               name: '销售额',
               type: 'bar',
-              data: y_data
+              data: y_data,
+              barWidth: 20,
+              itemStyle: {
+                  //barBorderRadius: [5, 5, 0, 0], //（顺时针左上，右上，右下，左下）
+                  normal: {
+                      barBorderRadius: [5, 5, 0, 0],
+                      color: new echarts.graphic.LinearGradient(
+                          0, 0, 0, 1,
+                          [
+                              {offset: 1, color: '#3977E6'},
+                              {offset: 0, color: '#37BBF8'}
+
+                          ]
+                      )
+                  }
+
+              }
           }],
 
       };
@@ -287,6 +309,7 @@ export class AboutPage implements OnInit{
       myChart.on('click', (param)=> {
           console.log(param);
           this.chart2setOption(loading,param.name);
+          // this.chart2setOption(loading,param.name.toString().replace('-',''));
 
       });
 
@@ -352,6 +375,7 @@ export class AboutPage implements OnInit{
         if(mytrxdate != ""){
             for(let i =0; i<this.chart2Data.length; i++){
                 if(this.chart2Data[i].txnDate == mytrxdate)
+                // if(this.chart2Data[i].txnDate == (mytrxdate.toString().replace("-","")))
                     tmp.push(this.chart2Data[i]);
             }
             title = mytrxdate+":各分店销售情况";
@@ -391,6 +415,8 @@ export class AboutPage implements OnInit{
 
         loading.dismiss();
         let option = {
+
+            //color:['#c1e4e9','#a0d8ef','89c3eb','84a3d4','#83ccd2','#84b9cb','698aab'],
             title:{
                 left: 'center',
                 top: 20,
@@ -401,7 +427,8 @@ export class AboutPage implements OnInit{
                 name:'',
                 type: 'pie',
                 data: totalList,
-                radius: ['70%', '90%'],
+                center:['50%', '60%'],
+                radius: ['60%', '80%'],
                 avoidLabelOverlap: false,
                 label: {
                     normal: {
