@@ -11,19 +11,19 @@ page-machinerequestdetail{
 				}
 				&:last-child .item-inner{border-bottom: 0;}
 			}
-		}
-	}
-	.camera{
-		.top{
-			.fr{width: 20px;}
-		}
-		.bottom{
-			li{
-				width: 44%; height: 0; padding-bottom: 42%; margin: 3%; position: relative; float: left; overflow: hidden;
-				.image1{width: 100%;}
-				.image2{width: 24px; position: absolute; left: 50%; top: 50%; margin-top: -12px; margin-left: -12px;}
-				.delete{position: absolute; right: 8px; top: 8px; width: 16px;}
-				&.li2{border: 1px dashed #eaeaea;}
+			.camera{
+				.top{
+					.fr{width: 20px;}
+				}
+				.bottom{
+					li{
+						width: 44%; height: 0; padding-bottom: 42%; margin: 3%; position: relative; float: left; overflow: hidden;
+						.image1{width: 100%;}
+						.image2{width: 24px; position: absolute; left: 50%; top: 50%; margin-top: -12px; margin-left: -12px;}
+						.delete{position: absolute; right: 8px; top: 8px; width: 16px;}
+						&.li2{border: 1px dashed #eaeaea;}
+					}
+				}
 			}
 		}
 	}

@@ -12,15 +12,17 @@
 <ion-content>
     <ion-list no-lines class="item_list">
         <ion-item *ngFor="let item of items" (click)="openMachineRequestDetail(item)">
-            <p class="p1">
-                問題類型：{{item.field45}}
-            </p>
-            <p class="p1">
-                問題描述：{{item.field49}}
-            </p>
-            <p class="p1">
-                提出時間：{{item.datetime}}
-            </p>
+            <div class="left">
+                <p class="p1">
+                    問題類型：{{item.field45}}
+                </p>
+                <p class="p2">
+                    問題描述：{{item.field49}}
+                </p>
+                <p class="p2">
+                    提出時間：{{item.datetime}}
+                </p>
+            </div>
         </ion-item>
     </ion-list>
 </ion-content>
