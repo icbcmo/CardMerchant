@@ -9,6 +9,8 @@ import {NativeStorage} from "@ionic-native/native-storage";
 import {TipService} from '../../../../service/tip.service';
 import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner';
 import {SigninPage} from "../../../auth/signin";
+import {ScanRecord} from "../scanrecord/scan-record";
+import {RefundDetail} from "../../refund/refunddetail";
 declare var localStorage: any;
 
 @Component({
@@ -60,6 +62,16 @@ export class CashierScan implements OnInit{
         this.qrScanner.hide(); // hide camera preview
         this.qrScanner.destroy();
         this.viewCtrl.dismiss();
+    }
+
+    ScanDetail():void{
+        (window.document.querySelector('ion-nav') as HTMLElement).style.display = "";
+        this.scanSub.unsubscribe(); // stop scanning
+        this.qrScanner.hide(); // hide camera preview
+        this.qrScanner.destroy();
+        this.viewCtrl.dismiss();
+        let modal = this.modalCtrl.create(ScanRecord);
+        modal.present();
     }
 
 }

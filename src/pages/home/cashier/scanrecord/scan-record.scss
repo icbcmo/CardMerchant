@@ -1,0 +1,26 @@
+scan-record{
+  p{margin: 0; padding: 0;}
+  .header{
+    .bottom{
+      text-align: center;
+      .p1{font-size: 4.6rem; color: #fff; margin-top: 5px;}
+      .p2{color: #efc1c2; font-size: 1.3rem; margin: 5px 0 18px;}
+      .a1{width: 120px; height: 36px; line-height: 36px; background: url("../assets/imgs/exchange_bg.png") no-repeat; background-size: cover; text-align: center; display: inline-block; color: #fff; margin-bottom: 15px; border-radius: 8px;}
+    }
+  }
+  .content{
+    .card-list{
+      border-radius: 8px; box-shadow: 0 0 10px 2px #f1e7e4;
+      .card-header{display: flex; justify-content: space-between; font-weight: bold;}
+      .card-content{
+        .row{
+          border-top: 1px solid #eeeeee; padding: 12px 0;
+          .col{
+            padding: 0; white-space: nowrap;
+            &.color{color: #548afe;}
+          }
+        }
+      }
+    }
+  }
+}
