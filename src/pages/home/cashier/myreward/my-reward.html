@@ -68,34 +68,56 @@
         <button ion-button small clear (click)="goBack()">
             <ion-icon ios="ios-arrow-back"></ion-icon>
         </button>
-        <ion-title>我的獎勵</ion-title>
+        <ion-title>我的積分</ion-title>
     </ion-navbar>
+    <div class="bottom">
+        <p class="p1">610{{myTotal}}</p>
+        <p class="p2">可兌換積分</p>
+        <a class="a1" (click)="toCash()">立即兌換</a>
+    </div>
 
 </ion-header>
 
 
 <ion-content>
+    <ion-card class="card-list">
 
+        <ion-card-header>
+            <span>分數</span>
+            <span>日期</span>
+            <span>狀態</span>
+        </ion-card-header>
 
-    我的積分
-    {{myTotal}}
-    <button ion-button color="primary" (click)="toCash()" >兑换</button>
+        <ion-card-content>
+            <ion-row>
+                <ion-col col-3>999分</ion-col>
+                <ion-col col-6 text-center>2018-10-12 19:20:25</ion-col>
+                <ion-col col-3 text-right class="color">已入賬</ion-col>
+            </ion-row>
+            <ion-row *ngFor="let data of weekData">
+                <ion-col col-3>{{data.FIELD4}}分</ion-col>
+                <ion-col col-6 text-center>{{data.DATETIME}}</ion-col>
+                <ion-col col-3 text-right>待入賬</ion-col>
+            </ion-row>
+        </ion-card-content>
 
-    <div  >
+    </ion-card>
 
-        <ion-list *ngFor="let data of weekData ">
-            <ion-item>
-                order id: {{data.FIELD3}},
-                order amount: {{data.FIELD4}},
-                order date: {{data.FIELD5}},
-                got points: {{data.FIELD6}},
-                scan date: {{data.DATETIME}},
+    <!--<div  >-->
 
-            </ion-item>
+        <!--<ion-list *ngFor="let data of weekData ">-->
+            <!--<ion-item>-->
+                <!--order id: {{data.FIELD3}},-->
+                <!--order amount: {{data.FIELD4}},-->
+                <!--order date: {{data.FIELD5}},-->
+                <!--got points: {{data.FIELD6}},-->
+                <!--scan date: {{data.DATETIME}},-->
 
-        </ion-list>
+            <!--</ion-item>-->
 
-    </div>
+        <!--</ion-list>-->
+
+    <!--</div>-->
 
 
 

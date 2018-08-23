@@ -66,6 +66,11 @@ export class AddUser implements OnInit{
 			this.cardMerchantService.addUser(data).toPromise().then(data=> {
 				console.log(Object(data));
 				loading.dismiss();
+                if(Object(data).code ==1){
+                    localStorage.clear();
+                    let modal = this.modalCtrl.create(SigninPage);
+                    modal.present();
+                }
 				if(Object(data).code == 0){
 					this.tipService.show('提交成功').then( () => {
 						this.viewCtrl.dismiss();
