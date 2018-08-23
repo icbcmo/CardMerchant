@@ -15,8 +15,10 @@ export class MachineRequest implements OnInit{
 	pictures: any[] = [];
 	total: number = 0;
     base64Image: any;
-	
-	@ViewChild('machinerequesttype') machinerequesttype: ElementRef;
+
+    @ViewChild('machinemerchantname') machinemerchantname: ElementRef;
+    @ViewChild('machinedepartmentname') machinedepartmentname: ElementRef;
+    @ViewChild('machinerequesttype') machinerequesttype: ElementRef;
 	@ViewChild('machineno') machineno: ElementRef;
 	@ViewChild('machineapplyname') machineapplyname: ElementRef;
 	@ViewChild('machineapplymobile') machineapplymobile: ElementRef;
@@ -34,6 +36,10 @@ export class MachineRequest implements OnInit{
 
 
     ngOnInit() {
+        Object(this.machinemerchantname).value = localStorage.getItem('MERCHANTNAME');
+        Object(this.machinedepartmentname).value = localStorage.getItem('DEPARTMENTNAME');
+        Object(this.machineapplyname).value = localStorage.getItem('NAME');
+        Object(this.machineapplymobile).value = localStorage.getItem('MOBILE');
 		console.log(this);
 		this.items = ["机器","纸张","屏幕"];
 	
