@@ -9,21 +9,23 @@
 <ion-content>
 	<ion-searchbar placeholder="請輸入搜索內容"></ion-searchbar>
 	<ion-list class="useList">
-		<ion-item *ngFor="let item of items" (click)="goRefundDetail(item)" >
+		<ion-item *ngFor="let item of items" >
 			<!--<div class="left">-->
 				<!--<p class="p1">MID：工商银行</p>-->
 				<!--<p class="p2">卡号：{{item.field5}}</p>-->
 			<!--</div>-->
-			<div class="left" *ngIf="item.field2 == '1'">
+			<div class="left" *ngIf="item.field2 == '1'" (click)="goRefundDetail(item)">
 				<p class="p1">普通退款</p>
 				<p class="p2">退款金額：{{item.field69}}</p>
 			</div>
-			<div class="left" *ngIf="item.field2 == '2'">
+			<div class="left" *ngIf="item.field2 == '2'" (click)="goRefundDetail(item)">
 				<p class="p1">微信退款</p>
 				<p class="p2">退款金額：{{item.field27}}</p>
 			</div>
 			<div class="right" item-end>
-				{{item.status}}
+				<div class="div1 bg2" (click)="goRefundDetail(item)">
+					<p class="p1">{{item.status}}</p>
+				</div>
 			</div>
 		</ion-item>
 	</ion-list>

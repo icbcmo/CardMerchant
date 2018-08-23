@@ -13,7 +13,26 @@ page-machine {
 						.p2{font-size: 1.3rem; color: #666; margin-top: 5px;}
 					}
 					.right{
-
+						display: flex; margin: 0; height: 100%;
+						.div1{
+							width: 50px; border-left: 1px solid #eee; display: flex; align-items: center; flex-direction: column; background: no-repeat top 15px center; background-size: 20px;
+							.image1{width: 20px;}
+							.p1{font-size: 1.2rem; margin-top: 40px;}
+							//&.bg1{background-image: url("../assets/imgs/refundverify1_1.png");}
+							//&.bg2{background-image: url("../assets/imgs/refundverify2_1.png");}
+						}
+						.div1:active{
+							&.bg1{
+								//background-image: url("../assets/imgs/refundverify1_2.png");
+								background-color: color($colors, primary);
+								.p1{color: #fff;}
+							}
+							&.bg2{
+								//background-image: url("../assets/imgs/refundverify2_2.png");
+								background-color: color($colors, primary);
+								.p1{color: #fff;}
+							}
+						}
 					}
 				}
 			}
