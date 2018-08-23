@@ -6,143 +6,179 @@
 </ion-header>
 
 <ion-content>
-	<ion-grid>
+	<ion-grid *ngIf="item.field2 == '1'">
 		<ion-row>
 			<ion-col>
-				branch：
+				申請編號：
 			</ion-col>
 			<ion-col>
-				{{item.branch}}
+				{{item.sequence}}
 			</ion-col>
 		</ion-row>
 		<ion-row>
 			<ion-col>
-				createby：
+				商戶編號：
 			</ion-col>
 			<ion-col>
-				{{item.createby}}
+				{{item.field61}}
 			</ion-col>
 		</ion-row>
 		<ion-row>
 			<ion-col>
-				currdept：
+				商戶名稱：
 			</ion-col>
 			<ion-col>
-				{{item.currdept}}
+				{{item.field62}}
 			</ion-col>
 		</ion-row>
 		<ion-row>
 			<ion-col>
-				currpeople：
+				部門編號：
 			</ion-col>
 			<ion-col>
-				{{item.currpeople}}
+				{{item.field63}}
 			</ion-col>
 		</ion-row>
 		<ion-row>
 			<ion-col>
-				datetime：
+				部門名稱：
 			</ion-col>
 			<ion-col>
-				{{item.datetime}}
+				{{item.field64}}
 			</ion-col>
 		</ion-row>
 		<ion-row>
 			<ion-col>
-				field1：
+				授權號：
 			</ion-col>
 			<ion-col>
-				{{item.field1}}
+				{{item.field67}}
 			</ion-col>
 		</ion-row>
 		<ion-row>
 			<ion-col>
-				field2：
+				交易日期：
 			</ion-col>
 			<ion-col>
-				{{item.field2}}
+				{{item.field66}}
 			</ion-col>
 		</ion-row>
 		<ion-row>
 			<ion-col>
-				field3：
+				卡號：
 			</ion-col>
 			<ion-col>
-				{{item.field3}}
+				**** **** **** {{item.field65}}
 			</ion-col>
 		</ion-row>
 		<ion-row>
 			<ion-col>
-				field4：
+				交易金額：
 			</ion-col>
 			<ion-col>
-				{{item.field4}}
+				{{item.field68}}
 			</ion-col>
 		</ion-row>
 		<ion-row>
 			<ion-col>
-				field5：
+				退款金額：
 			</ion-col>
 			<ion-col>
-				{{item.field5}}
+				{{item.field69}}
 			</ion-col>
 		</ion-row>
 		<ion-row>
 			<ion-col>
-				field6：
+				經辦人手機號：
 			</ion-col>
 			<ion-col>
-				{{item.field6}}
+				{{item.field70}}
+			</ion-col>
+		</ion-row>
+
+		<ion-row>
+			<ion-col *ngFor="let pic of item.pictures;let i=index" >
+				<img [src]="pic.data" (click)="showPicture(i)" />
+			</ion-col>
+		</ion-row>
+	</ion-grid>
+
+	<ion-grid *ngIf="item.field2 == '2'">
+		<ion-row>
+			<ion-col>
+				申請編號：
+			</ion-col>
+			<ion-col>
+				{{item.sequence}}
+			</ion-col>
+		</ion-row>
+
+		<ion-row>
+			<ion-col>
+				部門編號：
+			</ion-col>
+			<ion-col>
+				{{item.field21}}
 			</ion-col>
 		</ion-row>
 		<ion-row>
 			<ion-col>
-				field7：
+				部門名稱：
 			</ion-col>
 			<ion-col>
-				{{item.field7}}
+				{{item.field22}}
 			</ion-col>
 		</ion-row>
 		<ion-row>
 			<ion-col>
-				field8：
+				終端號：
 			</ion-col>
 			<ion-col>
-				{{item.field8}}
+				{{item.field23}}
 			</ion-col>
 		</ion-row>
 		<ion-row>
 			<ion-col>
-				field9：
+				交易流水號：
 			</ion-col>
 			<ion-col>
-				{{item.field9}}
+				{{item.field24}}
 			</ion-col>
 		</ion-row>
 		<ion-row>
 			<ion-col>
-				field10：
+				交易日期：
 			</ion-col>
 			<ion-col>
-				{{item.field10}}
+				{{item.field25}}
+			</ion-col>
+		</ion-row>
+
+		<ion-row>
+			<ion-col>
+				交易金額：
+			</ion-col>
+			<ion-col>
+				{{item.field26}}
 			</ion-col>
 		</ion-row>
 		<ion-row>
 			<ion-col>
-				field11：
+				退款金額：
 			</ion-col>
 			<ion-col>
-				{{item.field11}}
+				{{item.field27}}
 			</ion-col>
 		</ion-row>
 		<ion-row>
 			<ion-col>
-				field12：
+				經辦人手機號：
 			</ion-col>
 			<ion-col>
-				{{item.field12}}
+				{{item.field28}}
 			</ion-col>
 		</ion-row>
+
 		<ion-row>
 			<ion-col *ngFor="let pic of item.pictures;let i=index" >
 				<img [src]="pic.data" (click)="showPicture(i)" />
