@@ -1,8 +1,8 @@
 page-home {
 	.page-home-header{
 		padding-top: 0; background: transparent;
-		> .grid1{
-			background: url("../assets/imgs/index_header.png") no-repeat center; background-size: cover; padding-bottom: 20px; padding-top: 24px;
+		.grid1{
+			background: url("../assets/imgs/index_header.png") no-repeat center; background-size: cover; padding-top: 24px;
 			.row1{
 				.searchbar-ios{
 					background:transparent; border:0; padding: 0; min-height: auto; margin-top: 12px;
@@ -26,17 +26,21 @@ page-home {
 				}
 			}
 			.row3{
-				margin-top: 12px;
+				margin-top: 12px; margin-bottom: -26px;
 				.col{
 					.news{
-						border-radius: 6px; padding: 7px 5px 7px 36px; color: #666; background: url("../assets/imgs/index_news.png") no-repeat left 10px center #fff; background-size: 16px;
+						border-radius: 6px; padding: 8px 5px 8px 36px; color: #666; background: url("../assets/imgs/index_news.png") no-repeat left 10px center #fff; background-size: 16px;  box-shadow: 0 2px 10px 0px #e4d6d1;
 						.span2{display: inline-block; white-space:nowrap; text-overflow:ellipsis; overflow: hidden; vertical-align: top; margin-right: -80px; padding-right: 80px; width: 100%;}
 					}
 				}
 			}
 		}
-		> .grid2{
-			margin: 0 10px; width: auto; border-radius: 6px; background-color: #fff; margin-top: -16px; box-shadow: 5px 0 20px -4px #f1e7e4,-5px 0 20px -4px #f1e7e4,0 5px 10px -4px #f1e7e4;
+	}
+	.page-home-content{
+		background-color: #f3f3f3;
+		.scroll-content{padding-top: 14px;}
+		.grid2{
+			margin: 10px 10px 0; width: auto; border-radius: 6px; background-color: #fff; box-shadow: 0 0 0 1px #f1e7e4;
 			.row1{
 				.col{
 					.circle{color: #ff0000; margin-right: 5px;}
@@ -53,9 +57,4 @@ page-home {
 			}
 		}
 	}
-	.page-home-content{
-
-	}
-	
-	
 }
