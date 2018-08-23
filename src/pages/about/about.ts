@@ -417,6 +417,11 @@ export class AboutPage implements OnInit{
         let option = {
 
             //color:['#c1e4e9','#a0d8ef','89c3eb','84a3d4','#83ccd2','#84b9cb','698aab'],
+            color:['#38b48b','#38a1db','#eb6101','#316745',
+                    '#00a497','#0094c8','#e49e61','#68be8d',
+                    '#80aba9','#007bbb','#d3381c','#3eb370'
+
+            ],
             title:{
                 left: 'center',
                 top: 20,
