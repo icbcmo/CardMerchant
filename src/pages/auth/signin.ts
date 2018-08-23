@@ -35,7 +35,7 @@ export class SigninPage implements OnInit{
         console.log("SigninPage ionViewWillEnter")
         let sessionid = localStorage.getItem("SESSIONID")
 
-        this.cardMerchantService.checkLoginSession(sessionid).toPromise().then(data=>{
+       this.cardMerchantService.checkLoginSession(sessionid).toPromise().then(data=>{
             console.log(data);
             if(Object(data).code == "0")
                 this.navCtrl.push(TabsPage);

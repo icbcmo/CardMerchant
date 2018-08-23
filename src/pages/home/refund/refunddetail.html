@@ -145,7 +145,7 @@
 		</ion-row>
 		<ion-row>
 			<ion-col *ngFor="let pic of item.pictures;let i=index" >
-				<img [src]="pic.data" (click)="showPicture(pic.data)" />
+				<img [src]="pic.data" (click)="showPicture(i)" />
 			</ion-col>
 		</ion-row>
 	</ion-grid>
