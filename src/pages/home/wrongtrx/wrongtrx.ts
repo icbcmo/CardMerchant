@@ -11,6 +11,8 @@ import {CardMerchantService} from "../../../service/card-merchant.service";
 export class Wrongtrx implements OnInit{
 	@ViewChild('billno') Billno: ElementRef;
 
+	showType:any ='posData';
+
     constructor(
         public viewCtrl: ViewController,
 		public tipService: TipService,
