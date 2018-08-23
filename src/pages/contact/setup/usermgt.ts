@@ -6,6 +6,7 @@ import {NativeStorage} from "@ionic-native/native-storage";
 import {AddUser} from "./adduser";
 import {UserDetail} from "./userdetail";
 import {TipService} from '../../../service/tip.service';
+import {SigninPage} from "../../auth/signin";
 
 declare var localStorage: any;
 
@@ -39,8 +40,12 @@ export class UserMgt implements OnInit{
 		var data = localStorage.getItem('SESSIONID');
 		this.cardMerchantService.getSecondUsers(data).toPromise().then(data => {
             console.log(data);
-			if(Object(data).code == 0){
+			if(Object(data).code === "0"){
 				this.userList = Object(data).data;
+			}else if(Object(data).code === "1"){
+                localStorage.clear();
+                let modal = this.modalCtrl.create(SigninPage);
+                modal.present();
 			}else{
 				this.alertCtrl.create({
 						message: Object(data).message,
