@@ -50,11 +50,13 @@ export class SigninPage implements OnInit{
 
 
     }
-    // checkEnter(event,acc,psw){
-    //     console.log(event)
-    //     if(event.keyCode == 13)
-    //         this.signin(acc,psw);
-    // }
+    checkEnter(event,acc,psw){
+        console.log(event)
+        if(event.keyCode == 13)
+            this.signin(acc,psw);
+        if(psw.toString().length == 6)
+            this.signin(acc,psw);
+    }
 
     send(mobile) {
         console.log("test click!")

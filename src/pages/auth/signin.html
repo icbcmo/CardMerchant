@@ -14,9 +14,9 @@
         </ion-row>
         <ion-row class="row2">
             <ion-col col-10 offset-1>
-                <img src="assets/imgs/login_icon2.png" class="image2" alt="驗證碼">
+                <img src="assets/imgs/login_icon2.png" class="image2" alt="驗證碼"  >
                 <!--<ion-input #mypassword [type]="passwordtype" pattern="[0-9]*" inputmode="numeric" placeholder="Password Input" (keyup)="checkEnter($event,myaccount.value, mypassword.value)" ></ion-input>-->
-                <ion-input #mypassword type="tel" placeholder="請輸入驗證碼"></ion-input>
+                <ion-input #mypassword type="tel" placeholder="請輸入驗證碼" (keyup)="checkEnter($event,myaccount.value, mypassword.value)"></ion-input>
                 <span (click)="send(myaccount.value)">獲取驗證碼</span>
                 <!--<ion-icon [name]="eyetype" item-end (click)="eyeOnOff()"></ion-icon>-->
             </ion-col>
