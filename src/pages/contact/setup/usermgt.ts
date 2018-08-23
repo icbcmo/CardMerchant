@@ -40,12 +40,13 @@ export class UserMgt implements OnInit{
 		var data = localStorage.getItem('SESSIONID');
 		this.cardMerchantService.getSecondUsers(data).toPromise().then(data => {
             console.log(data);
-			if(Object(data).code === "0"){
-				this.userList = Object(data).data;
-			}else if(Object(data).code === "1"){
+            if(Object(data).code ==1){
                 localStorage.clear();
                 let modal = this.modalCtrl.create(SigninPage);
                 modal.present();
+            }
+			if(Object(data).code === "0"){
+				this.userList = Object(data).data;
 			}else{
 				this.alertCtrl.create({
 						message: Object(data).message,

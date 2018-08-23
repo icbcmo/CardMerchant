@@ -7,6 +7,9 @@ import {MachineRequestDetail} from "./machinerequestdetail";
 import {NativeStorage} from "@ionic-native/native-storage";
 import { AlertController, LoadingController } from 'ionic-angular';
 import {TipService} from '../../../service/tip.service';
+import {SigninPage} from "../../auth/signin";
+
+declare var localStorage: any;
 
 @Component({
   selector: 'page-machine',
@@ -40,6 +43,11 @@ export class Machine implements OnInit{
 		console.log(data);
 		this.cardMerchantService.getrequestlist(data).toPromise().then(data=> {
 			console.log(Object(data));
+			if(Object(data).code ==1){
+                localStorage.clear();
+                let modal = this.modalCtrl.create(SigninPage);
+                modal.present();
+			}
 			if(Object(data).code == 0){
 				this.items = Object(data).data;
 			}else{

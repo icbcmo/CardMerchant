@@ -1,9 +1,11 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {ReportDataService} from "../../service/report-data.service";
 import {DateFormatter} from "@angular/common/src/pipes/deprecated/intl";
-import {LoadingController} from "ionic-angular";
+import {LoadingController, ModalController} from "ionic-angular";
+import {SigninPage} from "../auth/signin";
 
 declare let echarts;
+declare var localStorage: any;
 
 @Component({
   selector: 'page-about',
@@ -34,7 +36,10 @@ export class AboutPage implements OnInit{
         var yyyyMMdd = curr_year + "" + curr_month +""+ curr_date;
         return yyyyMMdd;
     }
-    constructor(public reportDataService:ReportDataService,public loadingCtrl: LoadingController) {
+    constructor(
+        public reportDataService:ReportDataService,
+        public modalCtrl: ModalController,
+        public loadingCtrl: LoadingController) {
         this.showType ='charts';
     }
 
@@ -57,6 +62,12 @@ export class AboutPage implements OnInit{
 
             if("FIRSTCLASS"===localStorage.getItem('LEVEL')){
                 this.reportDataService.getTrxInfoByMerchantId(data).toPromise().then(data=>{
+                    if(Object(data).code ==1){
+                        localStorage.clear();
+                        let modal = this.modalCtrl.create(SigninPage);
+                        modal.present();
+                    }
+
                     console.log(data);
                     //this.DapaData = this.DapaData.addAll((Object(data).data)[0]);
 
@@ -68,6 +79,11 @@ export class AboutPage implements OnInit{
             }
             else if("SECONDCLASS" === localStorage.getItem('LEVEL')){
                 this.reportDataService.getTrxInfoByDepartmentId(data).toPromise().then(data=>{
+                    if(Object(data).code ==1){
+                        localStorage.clear();
+                        let modal = this.modalCtrl.create(SigninPage);
+                        modal.present();
+                    }
                     console.log(data);
                     //this.DapaData = (Object(data).data)[0];
                     this.DapaData = this.DapaData.addAll((Object(data).data)[0]);
@@ -127,6 +143,11 @@ export class AboutPage implements OnInit{
 
               if("FIRSTCLASS"===localStorage.getItem('LEVEL')){
                   this.reportDataService.getTrxInfoByMerchantId(data).toPromise().then(data=>{
+                      if(Object(data).code ==1){
+                          localStorage.clear();
+                          let modal = this.modalCtrl.create(SigninPage);
+                          modal.present();
+                      }
                       console.log(data);
                       this.DapaData = (Object(data).data)[0];
                       loading.dismiss();
@@ -135,6 +156,11 @@ export class AboutPage implements OnInit{
               }
               else if("SECONDCLASS" === localStorage.getItem('LEVEL')){
                   this.reportDataService.getTrxInfoByDepartmentId(data).toPromise().then(data=>{
+                      if(Object(data).code ==1){
+                          localStorage.clear();
+                          let modal = this.modalCtrl.create(SigninPage);
+                          modal.present();
+                      }
                       console.log(data);
                       this.DapaData = (Object(data).data)[0];
                       loading.dismiss();
@@ -166,6 +192,11 @@ export class AboutPage implements OnInit{
 
       if("FIRSTCLASS"===localStorage.getItem('LEVEL')){
           this.reportDataService.getTrxInfoByMerchantId(data).toPromise().then(data=>{
+              if(Object(data).code ==1){
+                  localStorage.clear();
+                  let modal = this.modalCtrl.create(SigninPage);
+                  modal.present();
+              }
               console.log(data);
               this.chart1Data = (Object(data).data)[0];
               this.chart1setOption(loading);
@@ -173,6 +204,11 @@ export class AboutPage implements OnInit{
       }
       else if("SECONDCLASS" === localStorage.getItem('LEVEL')){
           this.reportDataService.getTrxInfoByDepartmentId(data).toPromise().then(data=>{
+              if(Object(data).code ==1){
+                  localStorage.clear();
+                  let modal = this.modalCtrl.create(SigninPage);
+                  modal.present();
+              }
               console.log(data);
               this.chart1Data = (Object(data).data)[0];
               this.chart1setOption(loading);
@@ -279,6 +315,11 @@ export class AboutPage implements OnInit{
 
         if("FIRSTCLASS"===localStorage.getItem('LEVEL')){
             this.reportDataService.getTrxInfoByMerchantId(data).toPromise().then(data=>{
+                if(Object(data).code ==1){
+                    localStorage.clear();
+                    let modal = this.modalCtrl.create(SigninPage);
+                    modal.present();
+                }
                 console.log(data);
                 this.chart2Data = (Object(data).data)[0];
                 this.chart2setOption(loading,"");
@@ -286,6 +327,11 @@ export class AboutPage implements OnInit{
         }
         else if("SECONDCLASS" === localStorage.getItem('LEVEL')){
             this.reportDataService.getTrxInfoByDepartmentId(data).toPromise().then(data=>{
+                if(Object(data).code ==1){
+                    localStorage.clear();
+                    let modal = this.modalCtrl.create(SigninPage);
+                    modal.present();
+                }
                 console.log(data);
                 this.chart2Data = (Object(data).data)[0];
                 this.chart2setOption(loading,"");

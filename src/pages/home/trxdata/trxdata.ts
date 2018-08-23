@@ -1,9 +1,11 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {DateFormatter} from "@angular/common/src/pipes/deprecated/intl";
-import {LoadingController, ViewController} from "ionic-angular";
+import {LoadingController, ModalController, ViewController} from "ionic-angular";
 import {ReportDataService} from "../../../service/report-data.service";
+import {SigninPage} from "../../auth/signin";
 
 declare let echarts;
+declare var localStorage: any;
 
 @Component({
     selector: 'page-trxdata',
@@ -32,7 +34,9 @@ export class Trxdata implements OnInit{
         var yyyyMMdd = curr_year + "" + curr_month +""+ curr_date;
         return yyyyMMdd;
     }
-    constructor(public reportDataService:ReportDataService,public loadingCtrl: LoadingController,
+    constructor(public reportDataService:ReportDataService,
+                public loadingCtrl: LoadingController,
+                public modalCtrl: ModalController,
                 public viewCtrl: ViewController) {
         this.showType ='posData';
     }
@@ -60,6 +64,11 @@ export class Trxdata implements OnInit{
 
         if("FIRSTCLASS"===localStorage.getItem('LEVEL')){
             this.reportDataService.getTrxInfoByMerchantId(data).toPromise().then(data=>{
+                if(Object(data).code ==1){
+                    localStorage.clear();
+                    let modal = this.modalCtrl.create(SigninPage);
+                    modal.present();
+                }
                 console.log(data);
                 //this.DapaData = this.DapaData.addAll((Object(data).data)[0]);
 

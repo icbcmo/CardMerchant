@@ -2,9 +2,12 @@
 import {Component, OnInit, ElementRef, ViewChild} from '@angular/core';
 import {CardMerchantService} from "../../../service/card-merchant.service";
 import {Camera, CameraOptions} from '@ionic-native/camera';
-import { ViewController } from 'ionic-angular';
+import {ModalController, ViewController} from 'ionic-angular';
 import { AlertController, LoadingController } from 'ionic-angular';
 import {TipService} from '../../../service/tip.service';
+import {SigninPage} from "../../auth/signin";
+
+declare var localStorage: any;
 
 @Component({
   selector: 'page-machinerequest',
@@ -27,6 +30,7 @@ export class MachineRequest implements OnInit{
     constructor(
 		public cardMerchantService: CardMerchantService,
 		private camera: Camera,
+        public modalCtrl: ModalController,
 		public viewCtrl: ViewController,
 		public loadingCtrl: LoadingController,
 		private alertCtrl: AlertController,
@@ -136,6 +140,11 @@ export class MachineRequest implements OnInit{
 		this.cardMerchantService.addmachinerequest(data).toPromise().then(data=> {
 			console.log(Object(data));
 			loading.dismiss();
+            if(Object(data).code ==1){
+                localStorage.clear();
+                let modal = this.modalCtrl.create(SigninPage);
+                modal.present();
+            }
 			if(Object(data).code == 0){
 				this.tipService.show('提交成功').then( () => {
 						this.viewCtrl.dismiss();
