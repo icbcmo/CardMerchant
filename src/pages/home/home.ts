@@ -42,6 +42,7 @@ export interface User {
 export class HomePage implements OnInit{
 
 	orderNum: any;
+    userStatus: any;
 	
     constructor(
         private store: Store<AppState> ,
