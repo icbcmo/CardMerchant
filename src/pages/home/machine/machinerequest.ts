@@ -38,10 +38,10 @@ export class MachineRequest implements OnInit{
 		this.items = ["机器","纸张","屏幕"];
 	
 		this.pictures=[
-			{data:'../../../assets/imgs/refundverify1_1.png',btn:false},
-			{data:'../../../assets/imgs/refundverify1_1.png',btn:false},
-			{data:'../../../assets/imgs/refundverify1_1.png',btn:false},
-			{data:'../../../assets/imgs/refundverify1_1.png',btn:false}
+			{data:'assets/imgs/camera_img.png',btn:false},
+			{data:'assets/imgs/camera_img.png',btn:false},
+			{data:'assets/imgs/camera_img.png',btn:false},
+			{data:'assets/imgs/camera_img.png',btn:false}
 		];
 		
 	}
@@ -71,6 +71,7 @@ export class MachineRequest implements OnInit{
 			for(var i=0;i<4;i=i+1){
 				if(this.pictures[i].btn == false){
 					this.pictures.splice(i,1,obj);
+                    this.pictures[i].btn = true;
 					break;
 				}
 			} */
@@ -96,7 +97,7 @@ export class MachineRequest implements OnInit{
     }
 	
 	delPic(index){
-		this.pictures.splice(index,1,{data:'../../../assets/imgs/refundverify1_1.png',btn:false,id:index});
+		this.pictures.splice(index,1,{data:'assets/imgs/camera_img.png',btn:false,id:index});
 		this.total = this.total - 1 ;
 	}
 	

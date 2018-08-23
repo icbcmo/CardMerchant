@@ -10,10 +10,9 @@
     </ion-navbar>
 </ion-header>
 <ion-content>
-  <ion-list>
-		<button ion-item class="item item-block item-ios" *ngFor="let item of items" (click)="openMachineRequestDetail(item)">
-			{{item.datetime}}/{{item.currpeople}}
-			<div class="button-effect"></div>
-		</button>
-  </ion-list>
+    <ion-list no-lines class="item_list" *ngFor="let item of items">
+        <button ion-item (click)="openMachineRequestDetail(item)">
+            {{item.datetime}}/{{item.currpeople}}
+        </button>
+    </ion-list>
 </ion-content>
