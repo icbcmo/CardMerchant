@@ -5,6 +5,7 @@ import {CardMerchantService} from "../../../service/card-merchant.service";
 import {NativeStorage} from "@ionic-native/native-storage";
 import { AlertController, LoadingController } from 'ionic-angular';
 import {TipService} from '../../../service/tip.service';
+import {SigninPage} from "../../auth/signin";
 
 declare var localStorage: any;
 
@@ -69,7 +70,12 @@ export class AddUser implements OnInit{
 					this.tipService.show('提交成功').then( () => {
 						this.viewCtrl.dismiss();
 					});
-				}else{
+				}else if(Object(data).code === "1"){
+                    localStorage.clear();
+                    let modal = this.modalCtrl.create(SigninPage);
+                    modal.present();
+				}
+				else{
 					this.alertCtrl.create({
 						message: Object(data).message,
 						buttons: ['确定']
