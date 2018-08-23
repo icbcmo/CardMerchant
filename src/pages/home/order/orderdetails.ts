@@ -14,11 +14,13 @@ import { NavController, NavParams } from 'ionic-angular';
 })
 export class OrderdetailsPage {
 
+  item:any;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad OrderdetailsPage');
+      this.item = this.navParams.get('item');
+      console.log('ionViewDidLoad OrderdetailsPage');
   }
 
   goBack(){

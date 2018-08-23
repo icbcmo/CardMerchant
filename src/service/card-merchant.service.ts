@@ -235,4 +235,18 @@ export class CardMerchantService {
 
         return this.http.post(url,data);
 	}
+
+    getWeChatTrxList156(){
+
+        let str = "sessionid="+localStorage.getItem("SESSIONID");
+
+        let sign = this.getSignInit(str);
+        let merCert = encodeURIComponent(this.publicKey);
+
+        let url = this.gwUrl+'cardmerchant/getwechattrxlist156'+'?'+str+'&'
+            +'sign='+sign+'&merCert='+merCert;
+        console.log(url);
+
+        return this.http.get(url);
+    }
 }

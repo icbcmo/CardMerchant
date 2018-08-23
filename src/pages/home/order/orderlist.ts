@@ -37,10 +37,9 @@ export class OrderList implements OnInit{
 	ionViewWillEnter(){
 		var data = {
 			sessionid: localStorage.getItem('SESSIONID'),
-			field1: 2  //1-退款列表 2-机器问题列表
 		};
 		console.log(data);
-		this.cardMerchantService.getrequestlist(data).toPromise().then(data=> {
+		this.cardMerchantService.getWeChatTrxList156().toPromise().then(data=> {
 			console.log(Object(data));
             if(Object(data).code ==1){
                 localStorage.clear();
@@ -72,10 +71,14 @@ export class OrderList implements OnInit{
 		
 	}
 
-    toDetails(){
-        let modal = this.modalCtrl.create(OrderdetailsPage);
+    toDetails(item){
+        let modal = this.modalCtrl.create(OrderdetailsPage,{item:item});
         modal.present();
 	}
+    toDetails1(){
+        let modal = this.modalCtrl.create(OrderdetailsPage);
+        modal.present();
+    }
 
     dismiss() {
         this.viewCtrl.dismiss();
