@@ -89,6 +89,6 @@
     </plugin>
     <plugin name="cordova-plugin-camera" spec="^4.0.3" />
     <plugin name="cordova-plugin-qrscanner" spec="^2.6.0" />
-    <plugin name="cordova-plugin-nativestorage" spec="^2.3.2" />
     <plugin name="cordova-plugin-inappbrowser" spec="^3.0.0" />
+    <plugin name="cordova-plugin-nativestorage" spec="^2.3.2" />
 </widget>

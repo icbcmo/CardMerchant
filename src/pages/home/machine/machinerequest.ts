@@ -64,7 +64,7 @@ export class MachineRequest implements OnInit{
 			};
 			
 			//模拟测试
-			var obj = {
+			/* var obj = {
 					data:'../../../assets/imgs/juana.gif',
 					btn:true
 				};
@@ -73,7 +73,7 @@ export class MachineRequest implements OnInit{
 					this.pictures.splice(i,1,obj);
 					break;
 				}
-			}
+			} */
 			
 			//拍照
 			this.camera.getPicture(options).then((imageData) => {
