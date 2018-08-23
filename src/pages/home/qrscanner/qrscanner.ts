@@ -4,7 +4,7 @@ import {QRScanner, QRScannerStatus} from "@ionic-native/qr-scanner";
 
 
 @Component({
-    selector: 'page-qrcode',
+    selector: 'page-qrscanner',
     templateUrl: 'qrscanner.html',
 })
 export class Qrscanner implements OnInit {

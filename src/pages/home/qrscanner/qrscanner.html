@@ -1,31 +1,49 @@
+<ion-header>
+
+  <ion-navbar>
+    <button ion-button small clear (click)="EndScan()">
+      <ion-icon ios="ios-arrow-back"></ion-icon>
+    </button>
+    <ion-title>掃碼</ion-title>
+  </ion-navbar>
+
+</ion-header>
 <ion-content style="background: none transparent;" class="no-scroll">
-  <ion-grid style="height: 100%">
-    <ion-row>
-      <ion-col col-12 style="height: 100px;"></ion-col>
-    </ion-row>
-    <ion-row style="height: 220px;">
-      <ion-col col-2></ion-col>
-      <ion-col col-8>
-        <div style="width: 200px;height: 200px;margin:  auto;text-align: center;">
-          <ion-icon style="font-size: 220px; color: #f6f9fa;" name="qr-scanner"></ion-icon>
-        </div>
-      </ion-col>
-      <ion-col col-2></ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col col-12 style="height: 60px; color:#ffffff; text-align: center;">Place QR Code inside the box</ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col col-12 style="height: 180px;"></ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col col-12 style="height: 60px;">
-        <ion-fab right bottom>
-          <button ion-fab style="background-color: #ff6363;" (click)="EndScan()">
-            <ion-icon name="close"></ion-icon>
-          </button>
-        </ion-fab>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+  <div class="qr-content">
+
+    <div class="div1"><ion-icon name="qr-scanner"></ion-icon></div>
+    <button class="button1" ion-button color="primary" (click)="EndScan()" block>結束掃描</button>
+
+  </div>
+  <!--<ion-grid style="height: 100%">
+      <ion-row>
+          <ion-col col-12 style="height: 100px;"></ion-col>
+      </ion-row>
+      <ion-row style="height: 220px;">
+          <ion-col col-2></ion-col>
+          <ion-col col-8>
+              <div style="width: 200px;height: 200px;margin:  auto;text-align: center;">
+
+              </div>
+          </ion-col>
+          <ion-col col-2></ion-col>
+      </ion-row>
+      <ion-row>
+          <ion-col col-12 style="height: 60px; color:#ffffff; text-align: center;">Place QR Code inside the box</ion-col>
+      </ion-row>
+      <ion-row>
+          <ion-col col-12 style="height: 180px; text-align: center; color: #ff0000; font-weight: bold">
+
+          </ion-col>
+      </ion-row>
+      <ion-row>
+          <ion-col col-12 style="height: 60px;">
+              <ion-fab right bottom>
+                  <button ion-fab style="background-color: #ff6363;" (click)="EndScan()">
+                      <ion-icon name="close"></ion-icon>
+                  </button>
+              </ion-fab>
+          </ion-col>
+      </ion-row>
+  </ion-grid>-->
 </ion-content>
