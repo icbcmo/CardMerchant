@@ -13,65 +13,50 @@
 			<ion-label>
 				商戶名稱：
 			</ion-label>
-			<ion-label>
-				{{item.field42}}
-			</ion-label>
+			<ion-input [readonly]="true" [value]="item.field42"></ion-input>
 		</ion-item>
 		<ion-item>
 			<ion-label>
 				部门名稱：
 			</ion-label>
-			<ion-label>
-				{{item.field44}}
-			</ion-label>
+			<ion-input [readonly]="true" [value]="item.field44"></ion-input>
 		</ion-item>
 		<ion-item>
 			<ion-label>
 				問題種類：
 			</ion-label>
-			<ion-label>
-				{{item.field45}}
-			</ion-label>
+			<ion-input [readonly]="true" [value]="item.field45"></ion-input>
 		</ion-item>
 		<ion-item>
 			<ion-label>
 				終端號：
 			</ion-label>
-			<ion-label>
-				{{item.field46}}
-			</ion-label>
-		</ion-item>
-		<ion-item>
-			<ion-label>
-				机器编号：
-			</ion-label>
-			<ion-label>
-				{{item.field46}}
-			</ion-label>
+			<ion-input [readonly]="true" [value]="item.field46"></ion-input>
 		</ion-item>
 		<ion-item>
 			<ion-label>
 				申請人：
 			</ion-label>
-			<ion-label>
-				{{item.field47}}
-			</ion-label>
+			<ion-input [readonly]="true" [value]="item.field47"></ion-input>
 		</ion-item>
 		<ion-item>
 			<ion-label>
 				聯絡電話：
 			</ion-label>
-			<ion-label>
-				{{item.field48}}
-			</ion-label>
+			<ion-input [readonly]="true" [value]="item.field48"></ion-input>
 		</ion-item>
 		<ion-item>
 			<ion-label>
 				問題描述：
 			</ion-label>
-			<ion-label>
-				{{item.field49}}
-			</ion-label>
+			<ion-input [readonly]="true" [value]="item.field49"></ion-input>
+		</ion-item>
+		<ion-item class="camera">
+			<ul class="bottom">
+				<li *ngFor="let pic of  item.pictures;let i = index" >
+					<img [src]="pic.data" (click)="showPicture(i)" />
+				</li>
+			</ul>
 		</ion-item>
 	</ion-list>
 </ion-content>

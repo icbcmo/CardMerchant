@@ -59,6 +59,7 @@ import {MyReward} from "../pages/home/cashier/myreward/my-reward";
 import {MyRewardExchange} from "../pages/home/cashier/myreward/my-reward-exchange";
 import {Trxdata} from "../pages/home/trxdata/trxdata";
 import {Help} from "../pages/home/help/help";
+import {ScanRecord} from "../pages/home/cashier/scanrecord/scan-record";
 
 @NgModule({
     declarations: [
@@ -78,6 +79,7 @@ import {Help} from "../pages/home/help/help";
         Help,
 		RefundVerify,
 		RefundProgress,
+        ScanRecord,
 		RefundDetail,
 		CommonRefund,
 		WeixinRefund,
@@ -135,6 +137,7 @@ import {Help} from "../pages/home/help/help";
 		CommonRefund,
 		WeixinRefund,
 		ShowImage,
+        ScanRecord,
         Help,
 		UserMgt,
 		AddUser,

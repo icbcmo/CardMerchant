@@ -1,5 +1,25 @@
+<ion-header>
+
+	<ion-navbar>
+		<button ion-button small clear (click)="EndScan()">
+			<ion-icon ios="ios-arrow-back"></ion-icon>
+		</button>
+		<ion-title>獎勵掃碼</ion-title>
+		<button ion-button small clear>
+			<ion-icon ios="md-time" (click)="ScanDetail()"></ion-icon>
+		</button>
+	</ion-navbar>
+
+</ion-header>
 <ion-content style="background: none transparent;" class="no-scroll">
-	<ion-grid style="height: 100%">
+	<div class="qr-content">
+
+		<div class="div1"><ion-icon name="qr-scanner"></ion-icon></div>
+		<div class="div2">積分: <span class="red">{{total}}</span>分</div>
+		<button class="button1" ion-button color="primary" (click)="EndScan()" block>結束掃描</button>
+
+	</div>
+	<!--<ion-grid style="height: 100%">
 		<ion-row>
 			<ion-col col-12 style="height: 100px;"></ion-col>
 		</ion-row>
@@ -7,7 +27,7 @@
 			<ion-col col-2></ion-col>
 			<ion-col col-8>
 				<div style="width: 200px;height: 200px;margin:  auto;text-align: center;">
-					<ion-icon style="font-size: 220px; color: #f6f9fa;" name="qr-scanner"></ion-icon>
+
 				</div>
 			</ion-col>
 			<ion-col col-2></ion-col>
@@ -17,7 +37,7 @@
 		</ion-row>
 		<ion-row>
 			<ion-col col-12 style="height: 180px; text-align: center; color: #ff0000; font-weight: bold">
-				Total: {{total}}分
+
 			</ion-col>
 		</ion-row>
 		<ion-row>
@@ -29,5 +49,5 @@
 				</ion-fab>
 			</ion-col>
 		</ion-row>
-	</ion-grid>
+	</ion-grid>-->
 </ion-content>
