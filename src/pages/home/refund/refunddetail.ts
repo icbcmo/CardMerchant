@@ -37,9 +37,9 @@ export class RefundDetail implements OnInit{
 		this.item = this.params.get('item');
 		this.item['pictures']=[
 			{data:'../../../assets/imgs/refundverify1_1.png'},
-			{data:'../../../assets/imgs/refundverify1_1.png'},
-			{data:'../../../assets/imgs/refundverify1_1.png'},
-			{data:'../../../assets/imgs/refundverify1_1.png'}
+			{data:'../../../assets/imgs/juana.gif'},
+			{data:'../../../assets/imgs/banner.png'},
+			{data:'../../../assets/imgs/head.png'}
 		];
 		this.btn = this.params.get('btn');
 	}
@@ -79,8 +79,8 @@ export class RefundDetail implements OnInit{
 			});
 	}
 	
-	showPicture(data){
-		let modal = this.modalCtrl.create(ShowImage, {data:data});
+	showPicture(index){
+		let modal = this.modalCtrl.create(ShowImage, {items:this.item.pictures, index:index});
         modal.present();
 	}
 	
