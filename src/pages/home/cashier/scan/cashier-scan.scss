@@ -1,18 +1,13 @@
 page-cashier-scan {
-	.toolbar-content{
-		display: flex;
-		justify-content: space-between;
-	}
-	.toolbar-title{
-		text-align: center;
-	}
-	ion-icon {
-		font-size: 2.2em;
-		color: white;
-		line-height: 52px;
-		margin-right: 0.5rem;
-	}
-	.helper{
-		padding:2rem;
+	.content{
+		.qr-content{
+			text-align: center;
+			.div1{margin-top: 50px; font-size: 220px; color: #efabae;}
+			.div2{
+				font-size: 1.6rem;
+				.red{color:color($colors,primary);}
+			}
+			.button1{width: 70%; margin: 0 auto; font-size: 1.4rem; margin-top: 40px;}
+		}
 	}
 }
