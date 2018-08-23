@@ -7,42 +7,51 @@
     </ion-navbar>
 </ion-header>
 <ion-content>
-  <ion-list class="input_list">
-    <ion-item>
-      <ion-label>问题类型</ion-label>
-      <ion-select class="select select-ios ng-pristine ng-valid ng-touched" #machinerequesttype >
-		<ion-option *ngFor="let item of items" value="{{item}}" >{{item}}</ion-option>
-	  </ion-select>
-    </ion-item>
-	<ion-item>
-      <ion-label>机器编号</ion-label>
-      <ion-input type="text" placeholder="請輸入机器编号" #machineno ></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label>机器名称</ion-label>
-      <ion-input type="text" placeholder="請輸入机器名称" #machineapplyname ></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label>联系电话</ion-label>
-      <ion-input type="text" placeholder="請輸入联系电话" #machineapplymobile ></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label>机器问题描述</ion-label>
-      <ion-input type="text" placeholder="請輸入机器问题描述" #machinerequestdesc ></ion-input>
-    </ion-item>
-      <ion-item class="camera">
-          <div class="top">拍照<img class="fr" src="assets/imgs/camera.png" alt="拍照" (click)="openCamera()"></div>
-          <ul class="bottom">
-              <li *ngFor="let picture of pictures;let i = index" [ngClass]="{'li2':!picture.btn}">
-                  <img [class]="picture.btn?'image1':'image2'" [src]="picture.data" />
-                  <img class="delete" *ngIf="picture.btn" src="assets/imgs/close_red.png" alt="關閉" (click)="delPic(i)">
-              </li>
-          </ul>
-      </ion-item>
-  </ion-list>
+    <ion-list class="input_list">
+        <ion-item>
+            <ion-label>商戶名稱</ion-label>
+            <ion-input type="text" placeholder="請輸入商戶名稱" #machinemerchantname></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label>部门名稱</ion-label>
+            <ion-input type="text" placeholder="請輸入部门名稱" #machinedepartmentname></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label>問題種類</ion-label>
+            <ion-select class="select select-ios ng-pristine ng-valid ng-touched" #machinerequesttype>
+                <ion-option *ngFor="let item of items" value="{{item}}">{{item}}</ion-option>
+            </ion-select>
+        </ion-item>
+        <ion-item>
+            <ion-label>終端號</ion-label>
+            <ion-input type="text" placeholder="請輸入終端號" #machineno></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label>申請人</ion-label>
+            <ion-input type="text" placeholder="請輸入申請人" #machineapplyname></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label>聯絡電話</ion-label>
+            <ion-input type="text" placeholder="請輸入联系电话" #machineapplymobile></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label>問題描述</ion-label>
+            <ion-input type="text" placeholder="請輸入问题描述" #machinerequestdesc></ion-input>
+        </ion-item>
+        <ion-item class="camera">
+            <div class="top">拍照<img class="fr" src="assets/imgs/camera.png" alt="拍照" (click)="openCamera()"></div>
+            <ul class="bottom">
+                <li *ngFor="let picture of pictures;let i = index" [ngClass]="{'li2':!picture.btn}">
+                    <img [class]="picture.btn?'image1':'image2'" [src]="picture.data"/>
+                    <img class="delete" *ngIf="picture.btn" src="assets/imgs/close_red.png" alt="關閉"
+                         (click)="delPic(i)">
+                </li>
+            </ul>
+        </ion-item>
+    </ion-list>
 
-  <div padding>
-    <button ion-button color="primary" (click)="submitForm()" block>提交</button>
-  </div>
+    <div padding>
+        <button ion-button color="primary" (click)="submitForm()" block>提交</button>
+    </div>
 
 </ion-content>
