@@ -38,7 +38,7 @@ export class RefundProgress implements OnInit{
 		console.log(data);
 		this.cardMerchantService.getrequestlist(data).toPromise().then(data=> {
 			console.log(Object(data));
-			if(Object(data).code == 0){
+			if(Object(data).code == 1){
                 localStorage.clear();
                 let modal = this.modalCtrl.create(SigninPage);
                 modal.present();
