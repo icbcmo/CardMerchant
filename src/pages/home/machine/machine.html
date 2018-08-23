@@ -11,8 +11,8 @@
 </ion-header>
 <ion-content>
     <ion-list no-lines class="item_list">
-        <ion-item *ngFor="let item of items" (click)="openMachineRequestDetail(item)">
-            <div class="left">
+        <ion-item *ngFor="let item of items">
+            <div class="left" (click)="openMachineRequestDetail(item)">
                 <p class="p1">
                     問題類型：{{item.field45}}
                 </p>
@@ -22,6 +22,16 @@
                 <p class="p2">
                     提出時間：{{item.datetime}}
                 </p>
+            </div>
+            <div class="right" item-end>
+                <!--<div class="div1 bg1" (click)="goDisplay(item.field6)">
+
+                    <p class="p1">影像</p>
+                </div>-->
+                <!--<div class="div1 bg2" (click)="goApprove($event,item.sequence)">-->
+                <div class="div1 bg2" (click)="openMachineRequestDetail(item)">
+                    <p class="p1">待反饋</p>
+                </div>
             </div>
         </ion-item>
     </ion-list>
