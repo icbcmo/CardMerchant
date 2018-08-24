@@ -61,6 +61,7 @@ import {Trxdata} from "../pages/home/trxdata/trxdata";
 import {Help} from "../pages/home/help/help";
 import {ScanRecord} from "../pages/home/cashier/scanrecord/scan-record";
 import { TextToSpeech } from '@ionic-native/text-to-speech';
+import {PopoverPage} from "../pages/home/refund/popoverpage";
 
 @NgModule({
     declarations: [
@@ -75,6 +76,7 @@ import { TextToSpeech } from '@ionic-native/text-to-speech';
         IndexPage,
         OrderList,
         OrderdetailsPage,
+        PopoverPage,
         Custservice,
         Refund,
         Help,
@@ -129,6 +131,7 @@ import { TextToSpeech } from '@ionic-native/text-to-speech';
         IndexPage,
         OrderList,
         OrderdetailsPage,
+        PopoverPage,
         Binsearch,
         Custservice,
         Refund,

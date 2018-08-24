@@ -42,7 +42,7 @@ export class ContactPage {
     }
 
     speak(){
-        this.tts.speak({"text":"金额330.30元","locale":"zh-CN","rate":1})
+        this.tts.speak({text:"微信收款330.30元",locale:"zh-HK",rate:1.4})
             .then(() => console.log('Success'))
             .catch((reason: any) => console.log(reason));
     }
