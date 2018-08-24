@@ -16,7 +16,8 @@ declare var localStorage: any;
 })
 
 export class ContactPage {
-
+	BtnDisable: boolean = false;
+	
     constructor(
         public platform: Platform,
         public cardMerchantService: CardMerchantService,
@@ -29,6 +30,10 @@ export class ContactPage {
     }
 
     ngOnInit() {
+		var uid = localStorage.getItem('UID');
+		if(!uid){
+			this.BtnDisable = true;
+		}
     }
 
     openUserMgt(){

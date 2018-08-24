@@ -47,4 +47,24 @@ page-trxdata {
       }
     }
   }
+  #filterMenu{
+    .scroll-content{
+      padding: 15px;
+      .p1{font-size: 1.5rem;}
+      .p2{color: #666; font-size: 1.3rem;}
+      .input1{
+        border: 1px solid #e5e5e5;
+        .text-input{margin: 8px;}
+      }
+      .div1{
+        display: flex;
+        .input2{
+          border: 1px solid #e5e5e5; flex: 1px; padding: 8px;
+          .datetime-text{height: 1.1em; min-height: auto;}
+        }
+        .solid{margin: 0 5px; padding-top: 8px;}
+      }
+
+    }
+  }
 }
