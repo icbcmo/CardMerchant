@@ -6,6 +6,7 @@ import {NativeStorage} from "@ionic-native/native-storage";
 import { Router } from '@angular/router';
 import {UserMgt} from "./setup/usermgt";
 import {SigninPage} from "../auth/signin";
+import { TextToSpeech } from '@ionic-native/text-to-speech';
 
 declare var localStorage: any;
 
@@ -21,6 +22,7 @@ export class ContactPage {
         public cardMerchantService: CardMerchantService,
         public modalCtrl: ModalController,
         public navCtrl: NavController,
+        private tts: TextToSpeech,
         private nativeStorage: NativeStorage,
         public viewCtrl: ViewController
     ) {
@@ -32,6 +34,12 @@ export class ContactPage {
     openUserMgt(){
         let modal = this.modalCtrl.create(UserMgt);
         modal.present();
+    }
+
+    speak(){
+        this.tts.speak({"text":"金额330.30元","locale":"zh-CN","rate":1})
+            .then(() => console.log('Success'))
+            .catch((reason: any) => console.log(reason));
     }
 
     goBack(){

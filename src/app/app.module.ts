@@ -60,6 +60,7 @@ import {MyRewardExchange} from "../pages/home/cashier/myreward/my-reward-exchang
 import {Trxdata} from "../pages/home/trxdata/trxdata";
 import {Help} from "../pages/home/help/help";
 import {ScanRecord} from "../pages/home/cashier/scanrecord/scan-record";
+import { TextToSpeech } from '@ionic-native/text-to-speech';
 
 @NgModule({
     declarations: [
@@ -161,6 +162,7 @@ import {ScanRecord} from "../pages/home/cashier/scanrecord/scan-record";
         Camera,
         SplashScreen,
         JPush,
+        TextToSpeech,
         QRScanner,
         CounterService,//Sse,
         CardMerchantService,
