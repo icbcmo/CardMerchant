@@ -1,6 +1,6 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {DateFormatter} from "@angular/common/src/pipes/deprecated/intl";
-import {LoadingController, ModalController, ViewController} from "ionic-angular";
+import {LoadingController, ModalController, ViewController, MenuController} from "ionic-angular";
 import {ReportDataService} from "../../../service/report-data.service";
 import {SigninPage} from "../../auth/signin";
 
@@ -15,6 +15,7 @@ export class Trxdata implements OnInit{
 
 
     showType:any;
+    activeMenu: string;
 
     start_n = 1;
     fetch_num = 20;
@@ -37,8 +38,11 @@ export class Trxdata implements OnInit{
     constructor(public reportDataService:ReportDataService,
                 public loadingCtrl: LoadingController,
                 public modalCtrl: ModalController,
-                public viewCtrl: ViewController) {
+                public viewCtrl: ViewController,
+                public menu: MenuController) {
         this.showType ='posData';
+        this.activeMenu = 'filterMenu';
+        this.menu.enable(true, 'filterMenu');
     }
 
     ngOnInit() {

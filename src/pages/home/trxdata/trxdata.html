@@ -4,6 +4,10 @@
             <ion-icon ios="ios-arrow-back"></ion-icon>
         </button>
         <ion-title>交易報表</ion-title>
+        <button ion-button small clear>
+            <span [menuToggle]="activeMenu">篩選</span>
+            <!--<ion-icon ios="ios-funnel-outline"></ion-icon>-->
+        </button>
     </ion-navbar>
     <div class="nav">
         <ion-segment [(ngModel)]="showType" color="primary" (ionChange)="showWhat()">
@@ -71,4 +75,34 @@
         </ngx-datatable>
     </div>
 
+
 </ion-content>
+
+<ion-menu side="right" type="overlay" [content]="content" id="filterMenu" menuClose="filterMenu">
+
+    <ion-content (click)="$event.stopPropagation()">
+        <p class="p1">篩選</p>
+        <p class="p2">消費金額</p>
+        <ion-input class="input1" type="text" placeholder="請輸入消費金額"></ion-input>
+        <p class="p2">交易日期</p>
+        <div class="div1">
+            <ion-datetime class="input2" displayFormat="YYYY-MM-DD" pickerFormat="YYYY-MM-DD" [(ngModel)]="myDate1"></ion-datetime>
+            <div class="solid">-</div>
+            <ion-datetime class="input2" displayFormat="YYYY-MM-DD" pickerFormat="YYYY-MM-DD" [(ngModel)]="myDate2"></ion-datetime>
+        </div>
+        <p class="p2">交易方式</p>
+        <ul>
+            <li>CPU</li>
+            <li>VISA</li>
+            <li>MasterCard</li>
+            <li>微信交易</li>
+        </ul>
+
+        <button margin-top ion-button color="primary" block  menuClose="filterMenu">確定</button>
+
+    </ion-content>
+
+</ion-menu>
+<ion-nav #content swipeBackEnabled="false"></ion-nav>
+
+
