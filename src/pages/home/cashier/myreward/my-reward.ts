@@ -99,13 +99,13 @@ export class MyReward implements OnInit{
                 ],
                 buttons: [
                     {
-                        text: 'Cancel',
+                        text: '取消',
                         handler: data => {
                             console.log('Cancel clicked');
                         }
                     },
                     {
-                        text: 'Save',
+                        text: '兌換',
                         handler: data => {
                             console.log('Saved clicked');
                             console.log(data);
