@@ -35,12 +35,12 @@ page-trxdata {
             flex: 1px; padding: 0 10px;
             p{
               display: flex; font-size: 1.2rem; color: #333; margin-bottom: 2px;
-              .span1{text-align: right; flex: 5; white-space: nowrap;}
-              .span2{line-height: 1.6rem; flex: 4;}
+              .span1{text-align: right; flex: 6; white-space: nowrap;}
+              .span2{line-height: 1.6rem; flex: 4; white-space: nowrap;}
             }
-            .top{border-bottom: 1px solid #eaeaea;}
+            .top{border-bottom: 1px solid #eaeaea; padding-bottom: 2px;}
             .bottom{
-              p{margin-bottom: 0; margin-top: 4px; color: color($colors,primary);}
+              p{margin-bottom: 0; margin-top: 6px; color: color($colors,primary);}
             }
           }
         }
