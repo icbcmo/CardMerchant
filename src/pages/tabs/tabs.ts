@@ -21,7 +21,6 @@ export class TabsPage implements OnInit{
 		var uid = localStorage.getItem('UID');
 		if(!uid){
 			this.tab2Root = null;
-			this.tab3Root = null;
 		}
 	}
 }
