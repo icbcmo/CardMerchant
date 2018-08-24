@@ -43,6 +43,7 @@ export class HomePage implements OnInit{
 
 	orderNum: any;
     userStatus: boolean;
+	BtnDisable: boolean = false;
 	
     constructor(
         private store: Store<AppState> ,
@@ -244,6 +245,10 @@ export class HomePage implements OnInit{
 
     ngOnInit() {
 		this.orderNum = 12;  //模拟订单数量更新
+		var uid = localStorage.getItem('UID');
+		if(!uid){
+			this.BtnDisable = true;
+		}
 	}
 	
 	openScanner(){

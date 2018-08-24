@@ -57,7 +57,7 @@ export class CommonRefund implements OnInit{
 	}
 
 	openCamera(){
-		this.total = this.total +1 ;
+		this.total = (this.total + 1) ;
         if(this.total > 4){
 			this.tipService.show('最多拍照上传4张');
 		}else{
@@ -92,7 +92,7 @@ export class CommonRefund implements OnInit{
     }
 
 	delPic(index){
-		this.pictures.splice(index,1,{data:'assets/imgs/camera_img.png',btn:false,id:index});
+		this.pictures.splice(index,1,{data:'assets/imgs/camera_img.png',btn:false});
 		this.total = (this.total -1);
 	}
 	
