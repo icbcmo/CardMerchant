@@ -6,6 +6,7 @@ import { ViewController, NavParams, Slides } from 'ionic-angular';
   selector: 'page-showimage',
   templateUrl: 'showimage.html'
 })
+
 export class ShowImage implements OnInit{
 	items: any;
 	index: any;

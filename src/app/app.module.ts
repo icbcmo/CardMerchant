@@ -60,6 +60,7 @@ import {MyRewardExchange} from "../pages/home/cashier/myreward/my-reward-exchang
 import {Trxdata} from "../pages/home/trxdata/trxdata";
 import {Help} from "../pages/home/help/help";
 import {ScanRecord} from "../pages/home/cashier/scanrecord/scan-record";
+import {PopoverPage} from "../pages/home/refund/popoverpage";
 
 @NgModule({
     declarations: [
@@ -99,7 +100,8 @@ import {ScanRecord} from "../pages/home/cashier/scanrecord/scan-record";
 		RewardRanking,
         MyReward,
         MyRewardExchange,
-        Trxdata
+        Trxdata,
+		PopoverPage
     ],
     imports: [
         HttpClientModule,
@@ -154,7 +156,8 @@ import {ScanRecord} from "../pages/home/cashier/scanrecord/scan-record";
 		RewardRanking,
         MyReward,
         MyRewardExchange,
-        Trxdata
+        Trxdata,
+		PopoverPage
     ],
     providers: [
         StatusBar,
