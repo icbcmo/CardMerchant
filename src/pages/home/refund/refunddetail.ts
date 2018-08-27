@@ -36,13 +36,20 @@ export class RefundDetail implements OnInit{
     ngOnInit() {
 		console.log(this.params.get('item'));
 		this.item = this.params.get('item');
-		this.item['pictures']=[
-			{data:'assets/imgs/refundverify1_1.png'},
-			{data:'assets/imgs/juana.gif'},
-			{data:'assets/imgs/banner.png'},
-			{data:'assets/imgs/head.png'}
-		];
-		this.btn = this.params.get('btn');
+		// this.item['pictures']=[
+		// 	{data:'assets/imgs/refundverify1_1.png'},
+		// 	{data:'assets/imgs/juana.gif'},
+		// 	{data:'assets/imgs/banner.png'},
+		// 	{data:'assets/imgs/head.png'}
+		// ];
+        this.cardMerchantService.getPictures(this.item.sequence).toPromise().then(data=>{
+            console.log(data);
+            console.log((Object(Object(data).data)));
+            this.item['pictures']=[];
+            this.item['pictures'] = (Object(Object(data).data));
+        });
+
+        this.btn = this.params.get('btn');
 	}
 	
 	goApprove(){

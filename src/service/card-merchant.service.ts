@@ -249,4 +249,18 @@ export class CardMerchantService {
 
         return this.http.get(url);
     }
+
+    getPictures(requestId:any){
+
+        let str = "requestid="+requestId+"&sessionid="+localStorage.getItem("SESSIONID");
+
+        let sign = this.getSignInit(str);
+        let merCert = encodeURIComponent(this.publicKey);
+
+        let url = this.gwUrl+'cardmerchant/getpictures'+'?'+str+'&'
+            +'sign='+sign+'&merCert='+merCert;
+        console.log(url);
+
+        return this.http.get(url);
+    }
 }
