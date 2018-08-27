@@ -37,10 +37,10 @@ export class RefundDetail implements OnInit{
 		console.log(this.params.get('item'));
 		this.item = this.params.get('item');
 		this.item['pictures']=[
-			{data:'../../../assets/imgs/refundverify1_1.png'},
-			{data:'../../../assets/imgs/juana.gif'},
-			{data:'../../../assets/imgs/banner.png'},
-			{data:'../../../assets/imgs/head.png'}
+			{data:'assets/imgs/refundverify1_1.png'},
+			{data:'assets/imgs/juana.gif'},
+			{data:'assets/imgs/banner.png'},
+			{data:'assets/imgs/head.png'}
 		];
 		this.btn = this.params.get('btn');
 	}

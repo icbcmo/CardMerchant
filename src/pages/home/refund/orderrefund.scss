@@ -1,5 +1,5 @@
 page-orderrefund {
-	> .content{
+	/*> .content{
 		background-color: #f3f3f3;
 		.searchbar-ios{
 			padding: 10px 10px 0; border: 0; background: transparent;
@@ -39,6 +39,38 @@ page-orderrefund {
 								.p1{color: #fff;}
 							}
 						}
+					}
+				}
+			}
+		}
+	}*/
+	> .content{
+		background-color: #f3f3f3;
+		.hint{
+			font-size: 1rem; padding: 0 10px; color: color($colors,primary);
+			.color{color: #333;}
+		}
+		.single-list{
+			border: 1px solid #eaeaea; border-left: 0; border-right: 0;
+			.item{
+				border: 0; font-size: 1.4rem; color: #666; padding-right: 10px;
+				.item-inner{
+					border: 0; padding-right: 0; padding-left: 10px; border-bottom: 1px solid #eaeaea;
+					.left{
+						padding: 3px 0;
+						.p1{color: #333; .color{color: color($colors,primary);}}
+						.p2{color: #333; margin-top: 5px;}
+					}
+					.right{
+						.button1{
+							font-size: 1.2rem; width: 72px;
+							&.ok{background-color: #e2e1e1; color: #666;}
+						}
+					}
+				}
+				&:last-child{
+					.item-inner{
+						border-bottom: 0;
 					}
 				}
 			}
