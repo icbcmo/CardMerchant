@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
 /**
@@ -12,14 +12,19 @@ import { NavController, NavParams } from 'ionic-angular';
   selector: 'page-orderdetails',
   templateUrl: 'orderdetails.html',
 })
-export class OrderdetailsPage {
+export class OrderdetailsPage implements OnInit{
 
   item:any;
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public params: NavParams) {
+  }
+
+  ngOnInit() {
+        console.log(this.params.get('item'));
+        this.item = this.params.get('item');
   }
 
   ionViewDidLoad() {
-      this.item = this.navParams.get('item');
+      this.item = this.params.get('item');
       console.log('ionViewDidLoad OrderdetailsPage');
   }
 

@@ -17,22 +17,22 @@
 		</button>
   </ion-list>-->
     <ion-searchbar placeholder="請輸入搜索內容"></ion-searchbar>
-    <ion-list class="useList">
-        <ion-item *ngFor="let item of [1,2,3]" (click)="toDetails1()">
-            <div class="top">
-                撤銷<span class="fr">MOP 0.022</span>
-            </div>
-            <div class="bottom">
-                <p>賬單號<span class="fr">000031</span></p>
-                <p>原賬單號<span class="fr">000030</span></p>
-                <p>交易時間<span class="fr">2018-07-21 12:09:43</span></p>
-            </div>
-        </ion-item>
-    </ion-list>
+    <!--<ion-list class="useList">-->
+        <!--<ion-item *ngFor="let item of [1,2,3]" (click)="toDetails1()">-->
+            <!--<div class="top">-->
+                <!--撤銷<span class="fr">MOP 0.022</span>-->
+            <!--</div>-->
+            <!--<div class="bottom">-->
+                <!--<p>賬單號<span class="fr">000031</span></p>-->
+                <!--<p>原賬單號<span class="fr">000030</span></p>-->
+                <!--<p>交易時間<span class="fr">2018-07-21 12:09:43</span></p>-->
+            <!--</div>-->
+        <!--</ion-item>-->
+    <!--</ion-list>-->
     <ion-list class="useList">
         <ion-item *ngFor="let item of items" (click)="toDetails(item)">
             <div class="top">
-                <span class="fr">MOP {{item.field8}}</span>
+                測試<span class="fr">MOP {{item.field8}}</span>
             </div>
             <div class="bottom">
                 <p>終端號<span class="fr">{{item.field6}}</span></p>

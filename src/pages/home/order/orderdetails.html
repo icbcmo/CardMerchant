@@ -19,7 +19,7 @@
 <ion-content>
   <ion-list class="input_list">
 
-    <ion-item>
+    <!--<ion-item>
       支付狀態
       <span class="fr one">銷售<span class="red">（已撤銷）</span></span>
     </ion-item>
@@ -54,8 +54,43 @@
     <ion-item>
       交易時間
       <span class="fr">2018-07-26 12:09:23</span>
+    </ion-item>-->
+    <ion-item>
+      支付狀態
+      <span class="fr one">銷售<span class="red">（已撤銷）</span></span>
     </ion-item>
-
+    <ion-item>
+      金額
+      <span class="fr two">{{item.field7}} {{item.field8}}</span>
+    </ion-item>
+    <ion-item>
+      商戶名稱
+      <span class="fr">???</span>
+    </ion-item>
+    <ion-item>
+      商戶編號
+      <span class="fr">{{item.field4}}</span>
+    </ion-item>
+    <ion-item>
+      終端編號
+      <span class="fr">{{item.field6}}</span>
+    </ion-item>
+    <ion-item>
+      賬單號
+      <span class="fr">???</span>
+    </ion-item>
+    <ion-item>
+      商戶單號
+      <span class="fr">???</span>
+    </ion-item>
+    <ion-item>
+      交易單號
+      <span class="fr">{{item.field3}}</span>
+    </ion-item>
+    <ion-item>
+      交易時間
+      <span class="fr">{{item.field9}}</span>
+    </ion-item>
   </ion-list>
 
   <div padding>
