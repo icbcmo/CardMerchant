@@ -5,6 +5,7 @@ import {CardMerchantService} from "../../../service/card-merchant.service";
 import {NativeStorage} from "@ionic-native/native-storage";
 import {TipService} from '../../../service/tip.service';
 import {ShowImage} from "./showimage";
+import {OrderrefunddetatilPage} from './orderrefunddetatil';
 
 @Component({
   selector: 'page-orderrefund',
@@ -66,6 +67,11 @@ export class OrderRefund implements OnInit{
 			}).present();
 		});
 	}
+
+    toDetail(){
+        let modal = this.modalCtrl.create(OrderrefunddetatilPage);
+        modal.present();
+    }
 
     dismiss() {
         this.viewCtrl.dismiss();

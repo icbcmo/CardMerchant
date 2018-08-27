@@ -39,6 +39,7 @@ import {WeixinRefund} from "../pages/home/refund/weixinrefund";
 import {ShowImage} from "../pages/home/refund/showimage";
 import {Wrongtrx} from "../pages/home/wrongtrx/wrongtrx";
 import {OrderRefund} from "../pages/home/refund/orderrefund";
+import {OrderrefunddetatilPage} from '../pages/home/refund/orderrefunddetatil';
 import {Qrcode} from "../pages/home/qrcode/qrcode";
 import { QRCodeModule } from 'angular2-qrcode';
 import { Camera } from '@ionic-native/camera';
@@ -92,6 +93,7 @@ import {PopoverPage} from "../pages/home/refund/popoverpage";
 		UserDetail,
         Wrongtrx,
 		OrderRefund,
+        OrderrefunddetatilPage,
         Qrcode,
         Qrscanner,
 		Machine,
@@ -148,6 +150,7 @@ import {PopoverPage} from "../pages/home/refund/popoverpage";
 		UserDetail,
         Wrongtrx,
 		OrderRefund,
+        OrderrefunddetatilPage,
         Qrcode,
         Qrscanner,
 		Machine,

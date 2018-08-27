@@ -1,0 +1,49 @@
+page-orderrefunddetatil {
+  .content{
+    background-color: #f3f3f3;
+    .input_list{
+      padding: 10px; border-radius: 40px; overflow: hidden; margin-bottom: -10px;
+      .item{
+        font-size: 1.4rem; border: 0; padding-right: 16px;
+        .item-inner{
+          padding: 0; background: transparent; border-bottom: 1px solid #eeeeee;
+          .label{margin-right: 0;}
+        }
+        &:last-child .item-inner{border-bottom: 0;}
+      }
+      .datum{
+        .bottom{
+          .div1{
+            font-size: 1.3rem; margin-top: 8px;
+            .image1{width: 12px;vertical-align: top;position: relative;top: 3px; margin-right: 10px;}
+          }
+        }
+      }
+      .camera{
+        .top{
+          .fr{width: 20px;}
+        }
+        .bottom{
+          li{
+            width: 44%; height: 0; padding-bottom: 42%; margin: 3%; position: relative; float: left; overflow: hidden;
+            .image1{width: 100%;}
+            .image2{width: 24px; position: absolute; left: 50%; top: 50%; margin-top: -12px; margin-left: -12px;}
+            .delete{position: absolute; right: 8px; top: 8px; width: 16px;}
+            &.li2{border: 1px dashed #eaeaea;}
+          }
+        }
+      }
+      .explain{
+        .bottom{
+          margin-top: 7px;
+          .textarea1{
+            width: 100%; border: 1px solid #eaeaea; padding: 6px 10px; border-radius: 3px; font-size: 1.2rem;
+            &::-webkit-input-placeholder {
+              color: #ccc;
+            }
+          }
+        }
+      }
+    }
+  }
+}
