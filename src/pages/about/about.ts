@@ -330,8 +330,8 @@ export class AboutPage implements OnInit{
             sessionid:localStorage.getItem("SESSIONID"),
             merchantid:localStorage.getItem("MERCHANTID"),
             departmentid:localStorage.getItem("DEPARTMENTID"),
-            datestart:this.getyyyyMMdd(-1205),
-            dateend:this.getyyyyMMdd(-1198),
+            datestart:this.getyyyyMMdd(-1210),
+            dateend:this.getyyyyMMdd(-1203),
             start:1,
             fetchnum:99999999
         };
