@@ -3,26 +3,39 @@
 		<button ion-button small clear (click)="dismiss()">
 			<ion-icon ios="ios-arrow-back"></ion-icon>
 		</button>
-		<ion-title>调单/退款</ion-title>
+		<ion-title>调单</ion-title>
 	</ion-navbar>
 </ion-header>
 <ion-content>
-	<ion-searchbar placeholder="請輸入搜索內容"></ion-searchbar>
-		<ion-list class="useList">
-		<ion-item *ngFor="let item of items" (click)="goRefundDetail(item)" >
+	<!--<ion-searchbar placeholder="請輸入搜索內容"></ion-searchbar>
+	<ion-list class="useList">
+			<ion-item *ngFor="let item of items" (click)="goRefundDetail(item)" >
+				<div class="left">
+					<p class="p1">MID：工商银行</p>
+					<p class="p2">卡号：{{item.field5}}</p>
+				</div>
+				<div class="right" item-end>
+					<div class="div1 bg1" (click)="goDisplay(item.field6)">
+
+						<p class="p1">影像</p>
+					</div>
+					<div class="div1 bg2" (click)="goApprove(item.sequence)">
+
+						<p class="p1">审批</p>
+					</div>
+				</div>
+			</ion-item>
+	</ion-list>-->
+	<p class="hint">* 温馨提示：如未能在<span class="color">“调单到期日”</span>前提供相关文件，您有可能会承担<span class="color">“退款”</span>的后果。</p>
+	<ion-list class="single-list">
+		<ion-item *ngFor="let i of [1,2,3,4,5]; let key = index">
 			<div class="left">
-				<p class="p1">MID：工商银行</p>
-				<p class="p2">卡号：{{item.field5}}</p>
+				<p class="p1">交易金额：<span class="color">2000 元</span></p>
+				<p class="p2">调单到期日：2018.06.22</p>
 			</div>
 			<div class="right" item-end>
-				<div class="div1 bg1" (click)="goDisplay(item.field6)">
-
-					<p class="p1">影像</p>
-				</div>
-				<div class="div1 bg2" (click)="goApprove(item.sequence)">
-
-					<p class="p1">审批</p>
-				</div>
+				<button ion-button class="button1" *ngIf="key != 2">立即處理</button>
+				<button ion-button class="button1" *ngIf="key == 2" [ngClass]="{'ok':key == 2}">已處理</button>
 			</div>
 		</ion-item>
 	</ion-list>
