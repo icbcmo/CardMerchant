@@ -8,87 +8,46 @@
 </ion-header>
 
 <ion-content>
-	<ion-grid>
-
-		<ion-row>
-			<ion-col>
-				總公司編號：
-			</ion-col>
-			<ion-col>
-				{{user.field3}}
-			</ion-col>
-		</ion-row>
-		<ion-row>
-			<ion-col>
-				總公司：
-			</ion-col>
-			<ion-col>
-				{{user.field2}}
-			</ion-col>
-		</ion-row>
-		<ion-row>
-			<ion-col>
-				商戶編號：
-			</ion-col>
-			<ion-col>
-				{{user.field5}}
-			</ion-col>
-		</ion-row>
-		<ion-row>
-			<ion-col>
-				商戶名稱：
-			</ion-col>
-			<ion-col>
-				{{user.field4}}
-			</ion-col>
-		</ion-row>
-		<ion-row>
-			<ion-col>
-				部門編號：
-			</ion-col>
-			<ion-col>
-				{{user.field7}}
-			</ion-col>
-		</ion-row>
-		<ion-row>
-			<ion-col>
-				部門名稱：
-			</ion-col>
-			<ion-col>
-				{{user.field6}}
-			</ion-col>
-		</ion-row>
-		<ion-row>
-			<ion-col>
-				微信收單編號：
-			</ion-col>
-			<ion-col>
-				{{user.field11}}
-			</ion-col>
-		</ion-row>
-		<ion-row>
-			<ion-col>
-				姓名：
-			</ion-col>
-			<ion-col>
-				{{user.field9}}
-			</ion-col>
-		</ion-row>
-		<ion-row>
-			<ion-col>
-				電話：
-			</ion-col>
-			<ion-col>
-				{{user.field1}}
-			</ion-col>
-		</ion-row>
-		<ion-row>
-			<ion-col>
-				權限：
-			</ion-col>
-			<ion-col>
-				{{user.field8}}
-			</ion-col>
-		</ion-row>
-	</ion-grid>
+	<ion-list class="input_list">
+		<ion-item>
+			<ion-label>總公司編號</ion-label>
+			<ion-input [readonly]="true" [value]="user.field3"></ion-input>
+		</ion-item>
+		<ion-item>
+			<ion-label>總公司</ion-label>
+			<ion-input [readonly]="true" [value]="user.field2"></ion-input>
+		</ion-item>
+		<ion-item>
+			<ion-label>商戶編號</ion-label>
+			<ion-input [readonly]="true" [value]="user.field5"></ion-input>
+		</ion-item>
+		<ion-item>
+			<ion-label>商戶名稱</ion-label>
+			<ion-input [readonly]="true" [value]="user.field4"></ion-input>
+		</ion-item>
+		<ion-item>
+			<ion-label>部門編號</ion-label>
+			<ion-input [readonly]="true" [value]="user.field7"></ion-input>
+		</ion-item>
+		<ion-item>
+			<ion-label>部門名稱</ion-label>
+			<ion-input [readonly]="true" [value]="user.field6"></ion-input>
+		</ion-item>
+		<ion-item>
+			<ion-label>微信收單編號</ion-label>
+			<ion-input [readonly]="true" [value]="user.field11"></ion-input>
+		</ion-item>
+		<ion-item>
+			<ion-label>姓名</ion-label>
+			<ion-input [readonly]="true" [value]="user.field9"></ion-input>
+		</ion-item>
+		<ion-item>
+			<ion-label>電話</ion-label>
+			<ion-input [readonly]="true" [value]="user.field1"></ion-input>
+		</ion-item>
+		<ion-item>
+			<ion-label>權限</ion-label>
+			<ion-input [readonly]="true" [value]="user.field8"></ion-input>
+		</ion-item>
+	</ion-list>
 </ion-content>
