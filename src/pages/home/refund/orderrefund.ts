@@ -31,27 +31,27 @@ export class OrderRefund implements OnInit{
 		
 		var data = {
 			sessionid: localStorage.getItem('SESSIONID'),
-			field1: 1  //1-退款列表 2-机器问题列表
+			field1: 3  //1-退款列表 2-机器问题列表 3-调单
 		};
 		console.log(data);
 		this.cardMerchantService.getrequestlist(data).toPromise().then(data=> {
 			console.log(Object(data));
 			if(Object(data).code == 0){
 				this.items = Object(data).data;
-				if(this.items.length > 0){
-					for(var i=0;i<this.items.length;i++){
-						switch(this.items[i].status) {
-							case '0':
-								this.items[i].status = '已审批';
-								break;
-							case '1':
-								this.items[i].status = '审批中';
-								break;
-							default:
-								break;
-						}
-					}
-				}
+				// if(this.items.length > 0){
+				// 	for(var i=0;i<this.items.length;i++){
+				// 		switch(this.items[i].status) {
+				// 			case '0':
+				// 				this.items[i].status = '已审批';
+				// 				break;
+				// 			case '1':
+				// 				this.items[i].status = '审批中';
+				// 				break;
+				// 			default:
+				// 				break;
+				// 		}
+				// 	}
+				// }
 			}else{
 				this.alertCtrl.create({
 						message: Object(data).message,
@@ -68,8 +68,8 @@ export class OrderRefund implements OnInit{
 		});
 	}
 
-    toDetail(){
-        let modal = this.modalCtrl.create(OrderrefunddetatilPage);
+    toDetail(item){
+        let modal = this.modalCtrl.create(OrderrefunddetatilPage,{item: item});
         modal.present();
     }
 

@@ -272,4 +272,25 @@ export class CardMerchantService {
 
         return this.http.get(url);
     }
+
+    addPicture(data){
+        let str = JSON.stringify(data);
+        let sign = this.getSignInit(str);
+        let merCert = encodeURIComponent(this.publicKey);
+        let url = this.gwUrl + 'cardmerchant/addpictures' + '?sign=' + sign + '&merCert=' + merCert;
+        console.log(url);
+
+        return this.http.post(url,data);
+    }
+
+    //调单
+    uploadForRequest(data){
+        let str = JSON.stringify(data);
+        let sign = this.getSignInit(str);
+        let merCert = encodeURIComponent(this.publicKey);
+        let url = this.gwUrl + 'cardmerchant/uploadforrequest' + '?sign=' + sign + '&merCert=' + merCert;
+        console.log(url);
+
+        return this.http.post(url,data);
+    }
 }

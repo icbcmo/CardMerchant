@@ -12,60 +12,69 @@
   <ion-list class="input_list">
     <ion-item>
       <div class="fl">調單日期</div>
-      <div class="fr">2018.06.22</div>
+      <div class="fr">{{item.field86}}</div>
     </ion-item>
     <ion-item>
       <div class="fl">調單原因</div>
-      <div class="fr">Chargeback Request</div>
+      <div class="fr">{{item.field88}}</div>
     </ion-item>
     <ion-item>
       <div class="fl">MID</div>
-      <div class="fr">62052345678909146</div>
+      <div class="fr">{{item.field81}}</div>
     </ion-item>
     <ion-item>
       <div class="fl">交易金額</div>
-      <div class="fr">2000 元</div>
+      <div class="fr">{{item.field87}} 元</div>
     </ion-item>
     <ion-item>
       <div class="fl">交易日期</div>
-      <div class="fr">2018.06.22</div>
+      <div class="fr">{{item.field90}}</div>
     </ion-item>
     <ion-item>
       <div class="fl">授權號</div>
-      <div class="fr">12345678</div>
+      <div class="fr">{{item.field85}}</div>
     </ion-item>
     <ion-item class="datum">
-      <div class="top">请您勿必在<span class="colorRed">2018年6月30日</span>前上传提交以下资料:</div>
+      <div class="top">请您勿必在<span class="colorRed">{{item.field91}}</span>前上传提交以下资料:</div>
       <div class="bottom">
         <div class="div1" (click)="fleg = true"><img src="assets/imgs/radio_{{fleg?'yes':'no'}}.png" class="image1">交易單據</div>
         <div class="div1" (click)="fleg = false"><img src="assets/imgs/radio_{{fleg?'no':'yes'}}.png" class="image1">其他相關文件，如發票等</div>
       </div>
     </ion-item>
-  </ion-list>
-  <ion-list class="input_list">
     <ion-item class="camera">
       <div class="top">拍照<img class="fr" src="assets/imgs/camera.png" alt="拍照" (click)="openCamera()"></div>
       <ul class="bottom">
-        <li *ngFor="let pic of item.pictures;let i = index">
-          <img class="image1" [src]="pic.data" (click)="showPicture(i)" />
-          <img class="delete" src="assets/imgs/close_red.png" alt="關閉" (click)="delPic(i)">
-        </li>
-        <li class="li2" *ngFor="let pic of polishingPic(item.pictures)">
-          <img src="assets/imgs/camera_img.png" class="image2" />
+        <li *ngFor="let picture of pictures;let i = index" [ngClass]="{'li2':!picture.btn}">
+          <img [class]="picture.btn?'image1':'image2'" [src]="picture.data" />
+          <img class="delete" *ngIf="picture.btn" src="assets/imgs/close_red.png" alt="關閉" (click)="delPic(i)">
         </li>
       </ul>
     </ion-item>
   </ion-list>
+  <!--<ion-list class="input_list">-->
+    <!--<ion-item class="camera">-->
+      <!--<div class="top">拍照<img class="fr" src="assets/imgs/camera.png" alt="拍照" (click)="openCamera()"></div>-->
+      <!--<ul class="bottom">-->
+        <!--<li *ngFor="let pic of item.pictures;let i = index">-->
+          <!--<img class="image1" [src]="pic.data" (click)="showPicture(i)" />-->
+          <!--<img class="delete" src="assets/imgs/close_red.png" alt="關閉" (click)="delPic(i)">-->
+        <!--</li>-->
+        <!--<li class="li2" *ngFor="let pic of polishingPic(item.pictures)">-->
+          <!--<img src="assets/imgs/camera_img.png" class="image2" />-->
+        <!--</li>-->
+      <!--</ul>-->
+    <!--</ion-item>-->
+  <!--</ion-list>-->
   <ion-list class="input_list">
     <ion-item class="explain">
       <div class="top">补充说明 <span class="colorRed">(非必填项)</span></div>
       <div class="bottom">
-        <textarea class="textarea1" rows="3" placeholder="請輸入內容"></textarea>
+        <textarea class="textarea1" #usercomment rows="3" placeholder="請輸入內容"></textarea>
       </div>
     </ion-item>
   </ion-list>
 
   <div padding margin-top>
-    <button ion-button color="primary" block>提交</button>
+    <button ion-button color="primary" (click)="submitForm(usercomment.value)" block>提交</button>
   </div>
 </ion-content>

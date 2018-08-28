@@ -5,6 +5,7 @@ import { ModalController, Platform,NavController, ViewController, NavParams, Ale
 import {TipService} from '../../../service/tip.service';
 import {ShowImage} from './showimage';
 import {SigninPage} from "../../auth/signin";
+import {Camera, CameraOptions} from "@ionic-native/camera";
 
 declare var localStorage: any;
 
@@ -24,6 +25,8 @@ export class OrderrefunddetatilPage implements OnInit{
     btn: Boolean;
     fleg: boolean = true;
 
+    pictures: any[] = [];
+    total: number = 0;
     constructor(
         public platform: Platform,
         public cardMerchantService: CardMerchantService,
@@ -34,38 +37,149 @@ export class OrderrefunddetatilPage implements OnInit{
         public params: NavParams,
         public loadingCtrl: LoadingController,
         private alertCtrl: AlertController,
-        public tipService: TipService
+        public tipService: TipService,
+        private camera: Camera
     ) {
     }
 
 
     ngOnInit() {
+        this.item = this.params.get('item');
 
-        this.item['pictures']=[
-            {data:'assets/imgs/juana.gif'},
-            {data:'assets/imgs/juana.gif'}
+        this.pictures=[
+            {data:'assets/imgs/camera_img.png',btn:false},
+            {data:'assets/imgs/camera_img.png',btn:false},
+            {data:'assets/imgs/camera_img.png',btn:false},
+            {data:'assets/imgs/camera_img.png',btn:false}
         ];
 
     }
 
-    polishingPic(obj){
-        let num = 4 - this.item.pictures.length;
-        let arr = [];
-        if(num > 0){
-            for(let i=0;i<num;i++){
-                arr.push(i);
-            }
+
+    openCamera(){
+        this.total = (this.total + 1) ;
+        if(this.total > 4){
+            this.tipService.show('最多拍照上传4张');
+        }else{
+            //手機上使用部分開始
+            const options: CameraOptions = {
+                quality: 80,
+                targetWidth: 600,
+                targetHeight: 1200,
+                //allowEdit: true,
+                sourceType: 1,
+                destinationType: this.camera.DestinationType.DATA_URL,
+                encodingType: this.camera.EncodingType.JPEG,
+                mediaType: this.camera.MediaType.PICTURE
+            };
+
+            this.camera.getPicture(options).then((imageData) => {
+                var base64Image = imageData;
+                base64Image = 'data:image/jpeg;base64,' + base64Image;
+                var obj = {
+                    data:base64Image,
+                    btn:true
+                };
+                for(var i=0;i<4;i++){
+                    if(this.pictures[i].btn == false){
+                        this.pictures.splice(i,1,obj);
+                        this.pictures[i].btn = true;
+                        break;
+                    }
+                }
+            });
         }
-        return arr;
     }
 
-    showPicture(index){
-        let modal = this.modalCtrl.create(ShowImage, {items:this.item.pictures, index:index});
-        modal.present();
+    delPic(index){
+        this.pictures.splice(index,1,{data:'assets/imgs/camera_img.png',btn:false});
+        this.total = (this.total - 1) ;
     }
+
+    // polishingPic(obj){
+    //     let num = 4 - this.item.pictures.length;
+    //     let arr = [];
+    //     if(num > 0){
+    //         for(let i=0;i<num;i++){
+    //             arr.push(i);
+    //         }
+    //     }
+    //     return arr;
+    // }
+    //
+    // showPicture(index){
+    //     let modal = this.modalCtrl.create(ShowImage, {items:this.item.pictures, index:index});
+    //     modal.present();
+    // }
 
     goBack(){
         this.viewCtrl.dismiss();
+    }
+
+
+    submitForm(commentvalue){
+        var pics = [];
+        for(var i=0;i<4;i=i+1){
+            if(this.pictures[i].btn == true){
+                pics.push(this.pictures[i].data);
+            }
+        }
+        this.alertCtrl.create({
+            message: '确定提交',
+            buttons: [
+                {
+                    text: '返回修改',
+                    handler: () => {
+                        return;
+                    }
+                },
+                {
+                    text: '确认',
+                    handler: () => {
+                        var data = {
+                            comment:commentvalue,
+                            requestid:this.item.sequence,
+                            requesttype:3,
+                            sessionid: localStorage.getItem('SESSIONID'),
+                            pictures: pics
+                        };
+                        console.log(data);
+                        let loading = this.loadingCtrl.create({
+                            content: 'Please wait...',
+                        });
+                        loading.present();
+                        //this.cardMerchantService.addPicture(data).toPromise().then(data=> {
+                        this.cardMerchantService.uploadForRequest(data).toPromise().then(data=> {
+                            console.log(Object(data));
+                            loading.dismiss();
+                            if(Object(data).code == 1){
+                                localStorage.clear();
+                                let modal = this.modalCtrl.create(SigninPage);
+                                modal.present();
+                            }
+                            if(Object(data).code == 0){
+                                this.tipService.show('提交成功').then( () => {
+                                    this.viewCtrl.dismiss();
+                                });
+                            }else{
+                                this.alertCtrl.create({
+                                    message: Object(data).message,
+                                    buttons: ['确定']
+                                }).present();
+                            }
+                        }, ()=>{
+                            loading.dismiss();
+                            loading = this.loadingCtrl.create({
+                                spinner: 'hide',
+                                content: '网络故障',
+                                duration: 2000
+                            });
+                            loading.present();
+                        });
+                    }
+                }
+            ]
+        }).present();
     }
 
 }
