@@ -54,7 +54,7 @@
 		<ion-item class="camera">
 			<ul class="bottom">
 				<li *ngFor="let pic of  item.pictures;let i = index" >
-					<img [src]="pic.data" (click)="showPicture(i)" />
+					<img [src]="pic.PICTURE" (click)="showPicture(i)" />
 				</li>
 			</ul>
 		</ion-item>

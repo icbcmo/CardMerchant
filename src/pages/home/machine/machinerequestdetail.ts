@@ -29,6 +29,12 @@ export class MachineRequestDetail implements OnInit{
     ngOnInit() {
 		console.log(this.params.get('item'));
 		this.item = this.params.get('item');
+        this.cardMerchantService.getPictures(this.item.sequence).toPromise().then(data=>{
+            console.log(data);
+            console.log((Object(Object(data).data)));
+            this.item['pictures']=[];
+            this.item['pictures'] = (Object(Object(data).data));
+        });
 	}
 	
 	
