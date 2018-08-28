@@ -109,4 +109,12 @@ export class ReportDataService {
         return this.http.get(url);
     }
 
+    getPointsUsage() {
+        let str = "sessionid="+localStorage.getItem('SESSIONID');
+        let sign = this.getSignInit(str);
+        let merCert = encodeURIComponent(this.publicKey);
+        let url = this.gwUrl + 'cardmerchant/getpointsusage?' + str + '&sign=' + sign + '&merCert=' + merCert;
+        console.log(url);
+        return this.http.get(url);
+    }
 }

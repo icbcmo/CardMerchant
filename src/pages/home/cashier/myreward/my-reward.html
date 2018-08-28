@@ -94,9 +94,9 @@
                 <ion-col col-6 text-center>2018-10-12 19:20:25</ion-col>
                 <ion-col col-3 text-right class="color">已入賬</ion-col>
             </ion-row>
-            <ion-row *ngFor="let data of weekData">
-                <ion-col col-3>{{data.FIELD4}}分</ion-col>
-                <ion-col col-6 text-center>{{data.DATETIME}}</ion-col>
+            <ion-row *ngFor="let data of myData">
+                <ion-col col-3>{{data.field4}}分</ion-col>
+                <ion-col col-6 text-center>{{data.datetime}}</ion-col>
                 <ion-col col-3 text-right>待入賬</ion-col>
             </ion-row>
         </ion-card-content>

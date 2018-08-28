@@ -15,6 +15,7 @@ export class MyReward implements OnInit{
     showType = 'weekData';
     weekData =[];
     dayData =[];
+    myData = [];
     myTotal = 0;
     canExchangeMaxPoints=0;
     myWeekData:any;
@@ -43,7 +44,7 @@ export class MyReward implements OnInit{
         });
         loading.present();
 
-        this.reportDataService.getScanWeekList156().toPromise().then(data=>{
+        /*this.reportDataService.getScanWeekList156().toPromise().then(data=>{
             console.log(data);
             if(Object(data).code == "1"){
                 localStorage.clear();
@@ -51,6 +52,24 @@ export class MyReward implements OnInit{
                 modal.present();
             }
             this.weekData = Object(Object(data).data);
+            //this.myTotal = Object(data).message;
+            this.reportDataService.getCashier157().toPromise().then( data=>{
+                console.log(data);
+                this.myTotal = Object(Object(data).data)[0].field8;
+                loading.dismiss();
+            })
+
+
+        });*/
+
+        this.reportDataService.getPointsUsage().toPromise().then(data=>{
+            console.log(data);
+            if(Object(data).code == "1"){
+                localStorage.clear();
+                let modal = this.modalCtrl.create(SigninPage);
+                modal.present();
+            }
+            this.myData = Object(Object(data).data);
             //this.myTotal = Object(data).message;
             this.reportDataService.getCashier157().toPromise().then( data=>{
                 console.log(data);
