@@ -11,7 +11,7 @@ page-refundprogress {
 		.useList{
 			padding: 0 10px;
 			.item{
-				border: 0; border-radius: 8px; margin-top: 10px; border: 1px solid #eaeaea; font-size: 1.4rem; color: #666;
+				border: 0; border-radius: 8px; margin-top: 10px; border: 1px solid #eaeaea; font-size: 1.4rem; color: #666; min-height: 70px;
 				.item-inner{
 					border: 0; padding-right: 0;
 					.left{
@@ -21,24 +21,11 @@ page-refundprogress {
 					}
 					.right{
 						display: flex; margin: 0; height: 100%;
-						.div1{
-							width: 50px; border-left: 1px solid #eee; display: flex; align-items: center; flex-direction: column; background: no-repeat top 15px center; background-size: 20px;
-							.image1{width: 20px;}
-							.p1{font-size: 1.2rem; margin-top: 30px;}
-							//&.bg1{background-image: url("../assets/imgs/refundverify1_1.png");}
-							//&.bg2{background-image: url("../assets/imgs/refundverify2_1.png");}
-						}
-						.div1:active{
-							&.bg1{
-								//background-image: url("../assets/imgs/refundverify1_2.png");
-								background-color: color($colors, primary);
-								.p1{color: #fff;}
-							}
-							&.bg2{
-								//background-image: url("../assets/imgs/refundverify2_2.png");
-								background-color: color($colors, primary);
-								.p1{color: #fff;}
-							}
+						.div2{
+							width: 70px; border-left: 1px solid #eee; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; color: #fff;
+							&.one{background-color: #e65252;}
+							&.two{background-color: #cd3535;}
+							&.three{background-color: #96b4cb;}
 						}
 					}
 				}

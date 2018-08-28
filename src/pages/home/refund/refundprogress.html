@@ -23,8 +23,8 @@
 				<p class="p2">退款金額：{{item.field27}}</p>
 			</div>
 			<div class="right" item-end>
-				<div class="div1 bg2" (click)="goRefundDetail(item)">
-					<p class="p1">{{item.status}}</p>
+				<div class="div2 one" [ngClass]="{'three':item.status == '已审批'}">
+					{{item.status}}
 				</div>
 			</div>
 		</ion-item>
