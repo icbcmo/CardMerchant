@@ -100,7 +100,7 @@ export class OrderrefunddetatilPage implements OnInit{
                 var base64Image = imageData;
                 base64Image = 'data:image/jpeg;base64,' + base64Image;
                 var obj = {
-                    data:base64Image,
+                    PICTURE:base64Image,
                     btn:true
                 };
                 for(var i=0;i<4;i++){
@@ -115,7 +115,7 @@ export class OrderrefunddetatilPage implements OnInit{
     }
 
     delPic(index){
-        this.pictures.splice(index,1,{data:'assets/imgs/camera_img.png',btn:false});
+        this.pictures.splice(index,1,{PICTURE:'assets/imgs/camera_img.png',btn:false});
         this.total = (this.total - 1) ;
     }
 
@@ -144,7 +144,7 @@ export class OrderrefunddetatilPage implements OnInit{
         var pics = [];
         for(var i=0;i<4;i=i+1){
             if(this.pictures[i].btn == true){
-                pics.push(this.pictures[i].data);
+                pics.push(this.pictures[i].PICTURE);
             }
         }
         this.alertCtrl.create({

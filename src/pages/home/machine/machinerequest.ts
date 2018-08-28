@@ -48,10 +48,10 @@ export class MachineRequest implements OnInit{
 		this.items = ["机器","纸张","屏幕"];
 	
 		this.pictures=[
-			{data:'assets/imgs/camera_img.png',btn:false},
-			{data:'assets/imgs/camera_img.png',btn:false},
-			{data:'assets/imgs/camera_img.png',btn:false},
-			{data:'assets/imgs/camera_img.png',btn:false}
+			{PICTURE:'assets/imgs/camera_img.png',btn:false},
+			{PICTURE:'assets/imgs/camera_img.png',btn:false},
+			{PICTURE:'assets/imgs/camera_img.png',btn:false},
+			{PICTURE:'assets/imgs/camera_img.png',btn:false}
 		];
 		
 	}
@@ -91,7 +91,7 @@ export class MachineRequest implements OnInit{
 				this.base64Image = imageData;
 				this.base64Image = 'data:image/jpeg;base64,' + this.base64Image;
 				var obj = {
-					data:this.base64Image,
+					PICTURE:this.base64Image,
 					btn:true
 				};
 				for(var i=0;i<4;i++){
@@ -115,7 +115,7 @@ export class MachineRequest implements OnInit{
 		var pics = [];
 		for(var i=0;i<4;i=i+1){
 			if(this.pictures[i].btn == true){
-				pics.push(this.pictures[i].data);
+				pics.push(this.pictures[i].PICTURE);
 			}
 		}
 		var data = {

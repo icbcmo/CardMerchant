@@ -30,7 +30,8 @@
                 </div>-->
                 <!--<div class="div1 bg2" (click)="goApprove($event,item.sequence)">-->
                 <div class="div1 bg2" (click)="openMachineRequestDetail(item)">
-                    <p class="p1">待反饋</p>
+                    <p *ngIf="item.status == '10'" class="p1">待處理</p>
+                    <p *ngIf="item.status == '11'" class="p1">已完成</p>
                 </div>
             </div>
         </ion-item>

@@ -51,12 +51,18 @@ export class RefundVerify implements OnInit{
 				if(this.items.length > 0){
 					for(var i=0;i<this.items.length;i++){
 						switch(this.items[i].status) {
-							case '0':
-								this.items[i].status = '已审批';
-								break;
-							case '1':
+							case '12':
 								this.items[i].status = '审批中';
 								break;
+							case '6':
+								this.items[i].status = '待處理';
+								break;
+                            case '8':
+                                this.items[i].status = '已完成';
+                                break;
+                            case '9':
+                                this.items[i].status = '已取消';
+                                break;
 							default:
 								break;
 						}
