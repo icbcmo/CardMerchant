@@ -2,10 +2,11 @@
 import {Component, OnInit} from '@angular/core';
 import {CardMerchantService} from "../../../service/card-merchant.service";
 import {NativeStorage} from "@ionic-native/native-storage";
-import { ModalController, Platform,NavController, ViewController, NavParams, AlertController, LoadingController } from 'ionic-angular';
+import { ModalController, Platform,NavController, ViewController, NavParams, AlertController, LoadingController, PopoverController} from 'ionic-angular';
 import {TipService} from '../../../service/tip.service';
 import {ShowImage} from './showimage';
 import {SigninPage} from "../../auth/signin";
+import {PopoverPage} from "./popoverpage";
 
 declare var localStorage: any;
 
@@ -28,7 +29,8 @@ export class RefundDetail implements OnInit{
 		public params: NavParams,
 		public loadingCtrl: LoadingController,
 		private alertCtrl: AlertController,
-		public tipService: TipService
+		public tipService: TipService,
+        public popoverCtrl: PopoverController
     ) {
     }
 
@@ -91,6 +93,11 @@ export class RefundDetail implements OnInit{
 				loading.present();
 			});
 	}
+
+    goRefundReject(){
+        let popover = this.popoverCtrl.create(PopoverPage, {item:this.item});
+        popover.present();
+    }
 	
 	showPicture(index){
 		let modal = this.modalCtrl.create(ShowImage, {items:this.item.pictures, index:index});

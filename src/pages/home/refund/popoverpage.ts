@@ -6,19 +6,17 @@ import {TipService} from '../../../service/tip.service';
 
 @Component({
   template: `
-	<ion-list class="input_list">
-		<ion-item>
-			<ion-label>申请人姓名</ion-label>
-			<ion-input [readonly]="true" [value]="item.field6" ></ion-input>
-		</ion-item>
-		<ion-item>
-			<ion-label>联系电话</ion-label>
-			<ion-input [readonly]="true" [value]="item.field12" ></ion-input>
-		</ion-item>
-	</ion-list>
-	<div padding>
+	<ion-grid class="no-pass">
+	  <ion-row>
+		<ion-col col-12>申请人姓名：{{item.field6}}</ion-col>
+	  </ion-row>
+	  <ion-row>
+		<ion-col col-12>联系电话：{{item.field12}}</ion-col>
+	  </ion-row>
+	  <ion-row>
 		<button ion-button color="primary" (click)="close()" block>确定</button>
-	</div>
+	  </ion-row>
+	</ion-grid>
 	`
 })
 export class PopoverPage implements OnInit{	
@@ -37,6 +35,7 @@ export class PopoverPage implements OnInit{
 
     ngOnInit() {
 		this.item = this.params.get('item');
+		console.log(this.item);
 	}
 	
 	close(){
