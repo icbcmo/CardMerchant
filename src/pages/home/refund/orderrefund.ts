@@ -68,8 +68,8 @@ export class OrderRefund implements OnInit{
 		});
 	}
 
-    toDetail(item){
-        let modal = this.modalCtrl.create(OrderrefunddetatilPage,{item: item});
+    toDetail(item,isEdit){
+        let modal = this.modalCtrl.create(OrderrefunddetatilPage,{item: item,isEdit:isEdit});
         modal.present();
     }
 

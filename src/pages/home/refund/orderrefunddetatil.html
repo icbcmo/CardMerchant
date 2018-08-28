@@ -42,11 +42,14 @@
       </div>
     </ion-item>
     <ion-item class="camera">
-      <div class="top">拍照<img class="fr" src="assets/imgs/camera.png" alt="拍照" (click)="openCamera()"></div>
+      <div class="top" *ngIf="isEdit">拍照<img class="fr" src="assets/imgs/camera.png" alt="拍照" (click)="openCamera()"></div>
       <ul class="bottom">
-        <li *ngFor="let picture of pictures;let i = index" [ngClass]="{'li2':!picture.btn}">
-          <img [class]="picture.btn?'image1':'image2'" [src]="picture.data" />
-          <img class="delete" *ngIf="picture.btn" src="assets/imgs/close_red.png" alt="關閉" (click)="delPic(i)">
+        <!--<li *ngFor="let picture of pictures;let i = index" [ngClass]="{'li2':!picture.btn}">-->
+        <li *ngFor="let picture of pictures;let i = index" >
+          <!--<img [class]="picture.btn?'image1':'image2'" [src]="picture.data" />-->
+          <img [class]="picture.btn?'image1':'image2'" [src]="picture.PICTURE" (click)="showPicture(i)" />
+
+          <img class="delete" *ngIf="picture.btn" src="assets/imgs/close_red.png" alt="關閉" (click)="delPic(i)" [hidden]="!isEdit">
         </li>
       </ul>
     </ion-item>
@@ -69,12 +72,13 @@
     <ion-item class="explain">
       <div class="top">补充说明 <span class="colorRed">(非必填项)</span></div>
       <div class="bottom">
-        <textarea class="textarea1" #usercomment rows="3" placeholder="請輸入內容"></textarea>
+        <!--<textarea  class="textarea1" #usercomment rows="3" placeholder="請輸入內容"></textarea>-->
+        <textarea [readonly]="!isEdit" class="textarea1" #usercomment rows="3" placeholder="請輸入內容">{{item.field92}}</textarea>
       </div>
     </ion-item>
   </ion-list>
 
-  <div padding margin-top>
+  <div padding margin-top *ngIf="isEdit">
     <button ion-button color="primary" (click)="submitForm(usercomment.value)" block>提交</button>
   </div>
 </ion-content>

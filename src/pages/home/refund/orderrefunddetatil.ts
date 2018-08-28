@@ -27,6 +27,7 @@ export class OrderrefunddetatilPage implements OnInit{
 
     pictures: any[] = [];
     total: number = 0;
+    isEdit = false;
     constructor(
         public platform: Platform,
         public cardMerchantService: CardMerchantService,
@@ -44,14 +45,36 @@ export class OrderrefunddetatilPage implements OnInit{
 
 
     ngOnInit() {
+        let loading = this.loadingCtrl.create({
+            content: 'Please wait...',
+        });
+        loading.present();
         this.item = this.params.get('item');
+        this.isEdit = this.params.get('isEdit');
 
         this.pictures=[
-            {data:'assets/imgs/camera_img.png',btn:false},
-            {data:'assets/imgs/camera_img.png',btn:false},
-            {data:'assets/imgs/camera_img.png',btn:false},
-            {data:'assets/imgs/camera_img.png',btn:false}
+            {PICTURE:'assets/imgs/camera_img.png',btn:false},
+            {PICTURE:'assets/imgs/camera_img.png',btn:false},
+            {PICTURE:'assets/imgs/camera_img.png',btn:false},
+            {PICTURE:'assets/imgs/camera_img.png',btn:false}
         ];
+        if(!this.isEdit){
+            this.cardMerchantService.getPictures(this.item.sequence).toPromise().then(data=>{
+                console.log(data);
+                console.log((Object(Object(data).data)));
+                let tmp = Object(Object(data).data);
+                //this.pictures=[];
+                for(let i=0; i<tmp.length; i++){
+                    this.pictures[i].btn = true ;
+                    this.pictures[i].PICTURE=tmp[i].PICTURE.toString();
+                }
+                this.pictures.splice(tmp.length,4-tmp.length);
+                loading.dismiss();
+
+            });
+        }
+        loading.dismiss();
+
 
     }
 
@@ -181,5 +204,8 @@ export class OrderrefunddetatilPage implements OnInit{
             ]
         }).present();
     }
-
+    showPicture(index){
+        let modal = this.modalCtrl.create(ShowImage, {items:this.pictures, index:index});
+        modal.present();
+    }
 }
