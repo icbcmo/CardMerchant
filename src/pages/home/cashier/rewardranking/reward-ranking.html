@@ -5,17 +5,18 @@
         <button ion-button small clear (click)="goBack()">
             <ion-icon ios="ios-arrow-back"></ion-icon>
         </button>
-        <ion-title>排行榜</ion-title>
+        <ion-title>獎勵排名</ion-title>
     </ion-navbar>
     <div class="nav">
-        <ion-segment [(ngModel)]="showType" color="primary" (ionChange)="showWhat()">
+        <ion-segment [(ngModel)]="showType" (ionChange)="showWhat()">
 
-            <ion-segment-button value="weekData">
-                本週排行榜
-            </ion-segment-button>
             <ion-segment-button value="todayData">
-                今天排行榜
+                當天排名
             </ion-segment-button>
+            <ion-segment-button value="weekData">
+                每週排名
+            </ion-segment-button>
+
         </ion-segment>
     </div>
 </ion-header>
@@ -23,40 +24,54 @@
 
 <ion-content>
 
+    <ion-grid [hidden]="showType !='todayData'">
+        <ion-row class="row1" *ngIf="myDayData == undefined">
+            <ion-col col-12 text-center>你今日暫無排名</ion-col>
+        </ion-row>
+        <ion-row class="row1" *ngIf="myDayData != undefined">
+            <ion-col col-12 text-center>
+                你當前排名：<span class="colorRed">{{myDayData.R_POINTS}}</span>
+                &nbsp;&nbsp;
+                積分：<span class="colorRed">{{myDayData.SUM_POINTS}}</span></ion-col>
+        </ion-row>
+        <ion-row class="row1" *ngFor="let data of dayData.slice(0,3)">
+            <ion-col col-3 text-center><img src="assets/imgs/ranking_red.png" class="image1">{{data.R_POINTS}}</ion-col>
+            <ion-col col-5 text-center>{{data.MOBILE.substr(0,3)}}****{{data.MOBILE.substr(-4)}}</ion-col>
+            <ion-col col-4 text-center class="colorRed">{{data.SUM_POINTS}}積分</ion-col>
+        </ion-row>
+        <div class="div1">
+            <ion-row *ngFor="let data of dayData.slice(3)">
+                <ion-col col-3 text-center>{{data.R_POINTS}}</ion-col>
+                <ion-col col-5 text-center>{{data.MOBILE.substr(0,3)}}****{{data.MOBILE.substr(-4)}}</ion-col>
+                <ion-col col-4 text-center class="colorRed">{{data.SUM_POINTS}}積分</ion-col>
+            </ion-row>
+        </div>
+    </ion-grid>
 
-
-    <div [hidden]="showType !='weekData'" >
-
-        <div *ngIf="myWeekData == undefined">本週暫無排名</div>
-        <div *ngIf="myWeekData != undefined">你當前排名：{{myWeekData.R_POINTS}},
-            ****{{myWeekData.MOBILE.substr(-4)}},
-            {{myWeekData.SUM_POINTS}}</div>
-        <ion-list *ngFor="let data of weekData ">
-
-            <ion-item>
-                {{data.R_POINTS}},
-                ****{{data.MOBILE.substr(-4)}},
-                {{data.SUM_POINTS}}
-            </ion-item>
-        </ion-list>
-
-    </div>
-
-    <div [hidden]="showType !='todayData'" >
-        <div *ngIf="myDayData == undefined">今天暫無排名</div>
-        <div *ngIf="myDayData != undefined">你當前排名：{{myDayData.R_POINTS}},
-            ****{{myDayData.MOBILE.substr(-4)}},
-            {{myDayData.SUM_POINTS}}</div>
-        <ion-list *ngFor="let data of dayData ">
-
-            <ion-item>
-                {{data.R_POINTS}},
-                ****{{data.MOBILE.substr(-4)}},
-                {{data.SUM_POINTS}}
-            </ion-item>
-        </ion-list>
-    </div>
-
+    <ion-grid [hidden]="showType !='weekData'">
+        <ion-row class="row1" *ngIf="myWeekData == undefined">
+            <ion-col col-12 text-center>你本週暫無排名</ion-col>
+        </ion-row>
+        <ion-row class="row1" *ngIf="myWeekData != undefined">
+            <ion-col col-12 text-center>
+                你當前排名：<span class="colorRed">{{myWeekData.R_POINTS}}</span>
+                &nbsp;&nbsp;
+                積分：<span class="colorRed">{{myWeekData.SUM_POINTS}}</span>
+            </ion-col>
+        </ion-row>
+        <ion-row class="row1" *ngFor="let data of weekData.slice(0,3)">
+            <ion-col col-3 text-center><img src="assets/imgs/ranking_red.png" class="image1">{{data.R_POINTS}}</ion-col>
+            <ion-col col-5 text-center>{{data.MOBILE.substr(0,3)}}****{{data.MOBILE.substr(-4)}}</ion-col>
+            <ion-col col-4 text-center class="colorRed">{{data.SUM_POINTS}}</ion-col>
+        </ion-row>
+        <div class="div1">
+            <ion-row *ngFor="let data of weekData.slice(3)">
+                <ion-col col-3 text-center>{{data.R_POINTS}}</ion-col>
+                <ion-col col-5 text-center>{{data.MOBILE.substr(0,3)}}****{{data.MOBILE.substr(-4)}}</ion-col>
+                <ion-col col-4 text-center class="colorRed">{{data.SUM_POINTS}}積分</ion-col>
+            </ion-row>
+        </div>
+    </ion-grid>
 
 </ion-content>
 

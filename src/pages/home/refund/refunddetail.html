@@ -125,7 +125,8 @@
 
 	</ion-list>
 
-	<div *ngIf="btn" padding>
-		<button ion-button color="primary" (click)="goApprove()" block>审批</button>
+	<div class="footer-button" *ngIf="btn">
+		<button ion-button block outline color="primary" (click)="goRefundReject()">拒絕審批</button>
+		<button ion-button block color="primary" (click)="goApprove()">審批通過</button>
 	</div>
 </ion-content>

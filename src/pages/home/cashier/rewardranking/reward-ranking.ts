@@ -10,7 +10,7 @@ declare var localStorage: any;
 })
 
 export class RewardRanking implements OnInit{
-    showType = 'weekData';
+    showType = 'todayData';
     weekData =[];
     dayData =[];
     myWeekData:any;
@@ -21,7 +21,7 @@ export class RewardRanking implements OnInit{
                 public viewCtrl: ViewController,
                 public modalCtrl: ModalController)
     {
-        this.showType ='weekData';
+        this.showType ='todayData';
 
     }
     ngOnInit()
@@ -31,22 +31,23 @@ export class RewardRanking implements OnInit{
         });
         loading.present();
 
-        this.reportDataService.getScanWeekRanking156().toPromise().then(data=>{
+        this.reportDataService.getScanDayRanking156().toPromise().then(data=>{
             console.log(data);
             if(Object(data).code == "1"){
                 localStorage.clear();
                 let modal = this.modalCtrl.create(SigninPage);
                 modal.present();
             }
-            this.weekData = Object(Object(data).data);
-            for(let i=0 ;i<this.weekData.length;i++)
+            this.dayData = Object(Object(data).data);
+            for(let i=0 ;i<this.dayData.length;i++)
             {
-                if(this.weekData[i].MOBILE == localStorage.getItem("MOBILE"))
+                if(this.dayData[i].MOBILE == localStorage.getItem("MOBILE"))
                 {
-                    this.myWeekData = this.weekData[i];
+                    this.myDayData = this.dayData[i];
                 }
             }
             loading.dismiss();
+
         });
     }
 
