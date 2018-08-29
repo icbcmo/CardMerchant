@@ -1,4 +1,11 @@
 page-setup {
+  .header{
+    .bottom{
+      text-align: center;
+      .image1{width: 60px; margin-top: 8px;}
+      .p1{margin-top: 8px; margin-bottom: 15px; color: #fff;}
+    }
+  }
   .content{
     background-color: #f3f3f3;
     .item_list{
@@ -8,8 +15,5 @@ page-setup {
       }
     }
   }
-  .btn-disable{
-		pointer-events: none;
-		opacity:0.5;
-	}
+  .button1{position: absolute; width: calc(100% - 20px); margin: 0 10px; bottom: 20px;}
 }
