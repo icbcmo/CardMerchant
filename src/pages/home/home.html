@@ -8,19 +8,19 @@
       <ion-row class="row2">
         <ion-col>
           <div class="top">
-            <img class="image1" [ngClass]="{'btn-disable':BtnDisable}" src="assets/imgs/index_fn1.png" alt="掃碼" (click)="openScanner()">
+            <img class="image1" src="assets/imgs/index_fn1.png" alt="掃碼" (click)="openScanner()">
           </div>
           <p class="bottom">掃碼</p>
         </ion-col>
         <ion-col>
           <div class="top">
-            <img class="image1" [ngClass]="{'btn-disable':BtnDisable}" src="assets/imgs/index_fn2.png" alt="收款" (click)="openQrcodeModal()">
+            <img class="image1" src="assets/imgs/index_fn2.png" alt="收款" (click)="openQrcodeModal()">
           </div>
           <p class="bottom">收款</p>
         </ion-col>
         <ion-col>
           <div class="top">
-            <img class="image1" [ngClass]="{'btn-disable':BtnDisable}" src="assets/imgs/index_fn3.png" (click)="openOrderList()" alt="訂單">
+            <img class="image1" src="assets/imgs/index_fn3.png" (click)="openOrderList()" alt="訂單">
             <span class="title">{{orderNum}}</span>
           </div>
           <p class="bottom">微信</p>
@@ -44,7 +44,7 @@
 </ion-header>
 
 <ion-content class="page-home-content">
-  <ion-grid class="grid2" *ngIf="userStatus">
+  <ion-grid class="grid2" *ngIf="!BtnDisable">
     <ion-row class="row1">
       <ion-col>
         <span class="circle">●</span>基本服務
@@ -53,26 +53,26 @@
     <ion-row class="row2">
       <ion-col>
         <div class="top">
-          <img class="image1" [ngClass]="{'btn-disable':BtnDisable}" src="assets/imgs/index_pa1.png" alt="調單" (click)="openOrderRefundModal()">
+          <img class="image1" src="assets/imgs/index_pa1.png" alt="調單" (click)="openOrderRefundModal()">
           <span class="title">20</span>
         </div>
         <p class="bottom">调单</p>
       </ion-col>
       <ion-col col-3>
         <div class="top">
-          <img class="image1" [ngClass]="{'btn-disable':BtnDisable}" src="assets/imgs/index_pa2.png" alt="退款" (click)="openRefundModal()">
+          <img class="image1" src="assets/imgs/index_pa2.png" alt="退款" (click)="openRefundModal()">
         </div>
         <p class="bottom">退款</p>
       </ion-col>
       <ion-col col-3>
         <div class="top">
-          <img class="image1" [ngClass]="{'btn-disable':BtnDisable}" src="assets/imgs/index_pa3.png" alt="差錯交易" (click)="openWrongtrxModal()">
+          <img class="image1" src="assets/imgs/index_pa3.png" alt="差錯交易" (click)="openWrongtrxModal()">
         </div>
         <p class="bottom">差錯交易</p>
       </ion-col>
       <ion-col col-3>
         <div class="top">
-          <img class="image1" [ngClass]="{'btn-disable':BtnDisable}" src="assets/imgs/index_pa4.png" alt="報修" (click)="openCustserviceModal()">
+          <img class="image1" src="assets/imgs/index_pa4.png" alt="報修" (click)="openCustserviceModal()">
         </div>
         <p class="bottom">報修</p>
       </ion-col>
@@ -81,14 +81,14 @@
     <ion-row class="row2">
       <ion-col col-3>
         <div class="top">
-          <img class="image1" [ngClass]="{'btn-disable':BtnDisable}" src="assets/imgs/index_pa5.png" alt="交易查詢" (click)="openTrxDataserviceModal()">
+          <img class="image1" src="assets/imgs/index_pa5.png" alt="交易查詢" (click)="openTrxDataserviceModal()">
         </div>
         <p class="bottom">交易查詢</p>
       </ion-col>
     </ion-row>
 
   </ion-grid>
-  <ion-grid class="grid2" *ngIf="!userStatus">
+  <ion-grid class="grid2" *ngIf="BtnDisable">
     <ion-row class="row1">
       <ion-col>
         <span class="circle">●</span>基本服務
@@ -97,26 +97,26 @@
     <ion-row class="row2">
       <ion-col>
         <div class="top">
-          <img class="image1" [ngClass]="{'btn-disable':BtnDisable}" src="assets/imgs/index_pa1_2.png" alt="調單">
+          <img class="image1" src="assets/imgs/index_pa1_2.png" alt="調單">
           <span class="title color">20</span>
         </div>
         <p class="bottom">调单</p>
       </ion-col>
       <ion-col col-3>
         <div class="top">
-          <img class="image1" [ngClass]="{'btn-disable':BtnDisable}" src="assets/imgs/index_pa2_2.png" alt="退款">
+          <img class="image1" src="assets/imgs/index_pa2_2.png" alt="退款">
         </div>
         <p class="bottom">退款</p>
       </ion-col>
       <ion-col col-3>
         <div class="top">
-          <img class="image1" [ngClass]="{'btn-disable':BtnDisable}" src="assets/imgs/index_pa3_2.png" alt="差錯交易">
+          <img class="image1" src="assets/imgs/index_pa3_2.png" alt="差錯交易">
         </div>
         <p class="bottom">差錯交易</p>
       </ion-col>
       <ion-col col-3>
         <div class="top">
-          <img class="image1" [ngClass]="{'btn-disable':BtnDisable}" src="assets/imgs/index_pa4_2.png" alt="報修">
+          <img class="image1" src="assets/imgs/index_pa4_2.png" alt="報修">
         </div>
         <p class="bottom">報修</p>
       </ion-col>
@@ -125,7 +125,7 @@
     <ion-row class="row2">
       <ion-col col-3>
         <div class="top">
-          <img class="image1" [ngClass]="{'btn-disable':BtnDisable}" src="assets/imgs/index_pa5_2.png" alt="交易查詢">
+          <img class="image1" src="assets/imgs/index_pa5_2.png" alt="交易查詢">
         </div>
         <p class="bottom">交易查詢</p>
       </ion-col>
@@ -141,19 +141,19 @@
     <ion-row class="row2">
       <ion-col col-3>
         <div class="top">
-          <img class="image1" [ngClass]="{'btn-disable':BtnDisable}" src="assets/imgs/index_pa6.png" alt="掃碼" (click)="openCashierScanModal()">
+          <img class="image1" src="assets/imgs/index_pa6.png" alt="掃碼" (click)="openCashierScanModal()">
         </div>
         <p class="bottom">掃描獎勵</p>
       </ion-col>
       <ion-col col-3>
         <div class="top">
-          <img class="image1" [ngClass]="{'btn-disable':BtnDisable}" src="assets/imgs/index_pa7.png" alt="我的積分" (click)="openMyRewardModal()">
+          <img class="image1" src="assets/imgs/index_pa7.png" alt="我的積分" (click)="openMyRewardModal()">
         </div>
         <p class="bottom">我的積分</p>
       </ion-col>
       <ion-col col-3>
         <div class="top">
-          <img class="image1" [ngClass]="{'btn-disable':BtnDisable}" src="assets/imgs/index_pa8.png" alt="獎勵排名" (click)="openRewardRankingModal()">
+          <img class="image1" src="assets/imgs/index_pa8.png" alt="獎勵排名" (click)="openRewardRankingModal()">
         </div>
         <p class="bottom">獎勵排名</p>
       </ion-col>
