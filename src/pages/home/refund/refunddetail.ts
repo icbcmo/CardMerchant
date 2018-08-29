@@ -56,8 +56,9 @@ export class RefundDetail implements OnInit{
 	
 	goApprove(){
 		var data = {
-			Sessionid: localStorage.getItem('SESSIONID'),
-			requestid: this.item.sequence
+            requestid: this.item.sequence,
+			sessionid: localStorage.getItem('SESSIONID')
+
 		};
 		console.log(data);
 		let loading = this.loadingCtrl.create({
@@ -75,7 +76,7 @@ export class RefundDetail implements OnInit{
 			}
 			if(Object(data).code == 0){
 				this.tipService.show('提交成功').then( () => {
-						//this.viewCtrl.dismiss();
+						this.viewCtrl.dismiss();
 					});
 			}else{
 				this.alertCtrl.create({
@@ -95,8 +96,76 @@ export class RefundDetail implements OnInit{
 	}
 
     goRefundReject(){
-        let popover = this.popoverCtrl.create(PopoverPage, {item:this.item});
-        popover.present();
+        // let popover = this.popoverCtrl.create(PopoverPage, {item:this.item});
+        // popover.present();
+        var data = {
+            requestid: this.item.sequence,
+            sessionid: localStorage.getItem('SESSIONID')
+
+        };
+
+        let name="";
+        let phone="";
+
+        if(this.item.field2 == "1"){
+            name=this.item.field70;
+            phone=this.item.field71;
+        }else if(this.item.field2 == "2"){
+            name=this.item.field28;
+            phone=this.item.field29;
+        }
+        let alert = this.alertCtrl.create({
+            title: '聯繫人姓名：'+name,
+            message: '聯繫電話'+phone,
+            buttons: [
+                {
+                    text: '取消',
+                    role: 'cancel',
+                    handler: () => {
+                        console.log('Cancel clicked');
+                    }
+                },
+                {
+                    text: '拒絕審批',
+                    handler: () => {
+                        console.log('Reject clicked');
+                        let loading = this.loadingCtrl.create({
+                            content: 'Please wait...',
+                            duration: 2000
+                        });
+                        loading.present();
+                        this.cardMerchantService.deleterequest(data).toPromise().then(data=> {
+                            console.log(Object(data));
+                            loading.dismiss();
+                            if(Object(data).code == 1){
+                                localStorage.clear();
+                                let modal = this.modalCtrl.create(SigninPage);
+                                modal.present();
+                            }
+                            if(Object(data).code == 0){
+                                this.tipService.show('已拒絕審批成功').then( () => {
+                                    this.viewCtrl.dismiss();
+                                });
+                            }else{
+                                this.alertCtrl.create({
+                                    message: Object(data).message,
+                                    buttons: ['确定']
+                                }).present();
+                            }
+                        }, ()=>{
+                            loading.dismiss();
+                            loading = this.loadingCtrl.create({
+                                spinner: 'hide',
+                                content: '网络故障',
+                                duration: 2000
+                            });
+                            loading.present();
+                        });
+                    }
+                }
+            ]
+        });
+        alert.present();
     }
 	
 	showPicture(index){

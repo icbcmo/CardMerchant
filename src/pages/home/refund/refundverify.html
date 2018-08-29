@@ -10,16 +10,17 @@
 	<ion-searchbar placeholder="請輸入搜索內容"></ion-searchbar>
 	<ion-list class="useList">
 		<ion-item *ngFor="let item of items">
-			<div class="left" *ngIf="item.field2 == '1'">
+			<div class="left" *ngIf="item.field2 == '1'" (click)="goRefundDetail(item)">
 				<p class="p1">普通退款</p>
 				<p class="p2">金額：{{item.field69}}</p>
 			</div>
-			<div class="left" *ngIf="item.field2 == '2'">
+			<div class="left" *ngIf="item.field2 == '2'" (click)="goRefundDetail(item)">
 				<p class="p1">微信退款</p>
 				<p class="p2">金額：{{item.field27}}</p>
 			</div>
 			<div class="right" item-end>
-				<div class="div1 bg2" (click)="goRefundDetail(item)">
+				<!--<div class="div1 bg2" (click)="goRefundDetail(item)">-->
+				<div class="div1 bg2" (click)="alertGoApprove(item)">
 					<p class="p1">审批</p>
 				</div>
 			</div>

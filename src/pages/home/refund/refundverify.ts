@@ -31,64 +31,96 @@ export class RefundVerify implements OnInit{
     ) {
     }
 
-
-    ngOnInit() {
-		
-		var data = {
-			sessionid: localStorage.getItem('SESSIONID'),
-			field1: 1  //1-退款列表 2-机器问题列表
-		};
-		console.log(data);
-		this.cardMerchantService.getrequestlist(data).toPromise().then(data=> {
-			console.log(Object(data));
-			if(Object(data).code == 1){
+    loadData(){
+        var data = {
+            sessionid: localStorage.getItem('SESSIONID'),
+            field1: 1 //1-退款列表 2-机器问题列表
+        };
+        console.log(data);
+        this.cardMerchantService.getrequestlist(data).toPromise().then(data=> {
+            console.log(Object(data));
+            if(Object(data).code == 1){
                 localStorage.clear();
                 let modal = this.modalCtrl.create(SigninPage);
                 modal.present();
-			}
-			if(Object(data).code == 0){
-				this.items = Object(data).data;
-				if(this.items.length > 0){
-					for(var i=0;i<this.items.length;i++){
-						switch(this.items[i].status) {
-							case '12':
-								this.items[i].status = '审批中';
-								break;
-							case '6':
-								this.items[i].status = '待處理';
-								break;
-                            case '8':
-                                this.items[i].status = '已完成';
-                                break;
-                            case '9':
-                                this.items[i].status = '已取消';
-                                break;
-							default:
-								break;
-						}
-					}
-				}
-			}else{
-				this.alertCtrl.create({
-						message: Object(data).message,
-						buttons: ['确定']
-					}).present();
-			}
-			
-		}, ()=>{
-			this.loadingCtrl.create({
-				spinner: 'hide',
-				content: '网络故障',
-				duration: 2000
-			}).present();
-		});
+            }
+            if(Object(data).code == 0){
+                this.items = Object(data).data;
+                if(this.items.length > 0){
+                    for(var i=0;i<this.items.length;i++){
+
+                        // switch(this.items[i].status) {
+                        // 	case '12':
+                        // 		this.items[i].status = '审批中';
+                        // 		break;
+                        // 	case '6':
+                        // 		this.items[i].status = '待處理';
+                        // 		break;
+                        //    case '8':
+                        //        this.items[i].status = '已完成';
+                        //        break;
+                        //    case '9':
+                        //        this.items[i].status = '已取消';
+                        //        break;
+                        // 	default:
+                        // 		break;
+                        // }
+
+                        if(this.items[i].status != "12"){
+                            this.items.splice(i,1);
+                            i--;
+                        }
+                    }
+                }
+            }else{
+                this.alertCtrl.create({
+                    message: Object(data).message,
+                    buttons: ['确定']
+                }).present();
+            }
+
+        }, ()=>{
+            this.loadingCtrl.create({
+                spinner: 'hide',
+                content: '网络故障',
+                duration: 2000
+            }).present();
+        });
 	}
-	
-	goApprove(e, requestid){
-		e.stopPropagation();
+
+    ngOnInit() {
+		this.loadData();
+	}
+
+	alertGoApprove(item){
+
+        let alert = this.alertCtrl.create({
+            title: '確定審批該筆退款？',
+            //message: '點擊確定，立即審批',
+            buttons: [
+                {
+                    text: '查看詳情',
+                    role: '查看詳情',
+                    handler: () => {
+                        console.log('Cancel clicked');
+                        this.goRefundDetail(item);
+                    }
+                },
+                {
+                    text: '確定審批',
+                    handler: () => {
+                        console.log('Buy clicked');
+                        this.goApprove(item.sequence);
+                    }
+                }
+            ]
+        });
+        alert.present();
+	}
+	goApprove(requestid){
 		var data = {
-			Sessionid: localStorage.getItem('SESSIONID'),
-			requestid: requestid
+            requestid: requestid,
+			sessionid: localStorage.getItem('SESSIONID')
 		};
 		console.log(data);
 		let loading = this.loadingCtrl.create({
@@ -106,8 +138,9 @@ export class RefundVerify implements OnInit{
 			}
 			if(Object(data).code == 0){
 				this.tipService.show('提交成功').then( () => {
-						this.viewCtrl.dismiss();
-					});
+						//this.viewCtrl.dismiss();
+                    this.loadData();
+                });
 			}else{
 				this.alertCtrl.create({
 						message: Object(data).message,
@@ -125,16 +158,82 @@ export class RefundVerify implements OnInit{
 			});
 	}
 	
-	goRefundReject(e,item){
+	/*goRefundReject(e,item){
 		e.stopPropagation();
-		let popover = this.popoverCtrl.create(PopoverPage, {item:item});
-		popover.present();
-	}
-	
-	goDisplay(picurl){
-		let modal = this.modalCtrl.create(ShowImage, {picurl: picurl});
-        modal.present();
-	}
+		// let popover = this.popoverCtrl.create(PopoverPage, {item:item});
+		// popover.present();
+
+        var data = {
+            requestid: item.sequence,
+            sessionid: localStorage.getItem('SESSIONID')
+
+        };
+
+        let name="";
+        let phone="";
+
+		if(item.field2 == "1"){
+			name=item.field70;
+			phone=item.field71;
+		}else if(item.field2 == "2"){
+            name=item.field28;
+            phone=item.field29;
+        }
+            let alert = this.alertCtrl.create({
+                title: '聯繫人姓名：'+name,
+                message: '聯繫電話'+phone,
+                buttons: [
+                    {
+                        text: '取消',
+                        role: 'cancel',
+                        handler: () => {
+                            console.log('Cancel clicked');
+                        }
+                    },
+                    {
+                        text: '拒絕審批',
+                        handler: () => {
+                            console.log('Reject clicked');
+                            let loading = this.loadingCtrl.create({
+                                content: 'Please wait...',
+                                duration: 2000
+                            });
+                            loading.present();
+                            this.cardMerchantService.deleterequest(data).toPromise().then(data=> {
+                                console.log(Object(data));
+                                loading.dismiss();
+                                if(Object(data).code == 1){
+                                    localStorage.clear();
+                                    let modal = this.modalCtrl.create(SigninPage);
+                                    modal.present();
+                                }
+                                if(Object(data).code == 0){
+                                    this.tipService.show('已拒絕審批成功').then( () => {
+                                        this.viewCtrl.dismiss();
+                                    });
+                                }else{
+                                    this.alertCtrl.create({
+                                        message: Object(data).message,
+                                        buttons: ['确定']
+                                    }).present();
+                                }
+                            }, ()=>{
+                                loading.dismiss();
+                                loading = this.loadingCtrl.create({
+                                    spinner: 'hide',
+                                    content: '网络故障',
+                                    duration: 2000
+                                });
+                                loading.present();
+                            });
+                        }
+                    }
+                ]
+            });
+            alert.present();
+
+	}*/
+
 	
 	goRefundDetail(item){
 		let modal = this.modalCtrl.create(RefundDetail, {item: item, btn: true});

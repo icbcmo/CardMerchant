@@ -25,12 +25,9 @@ export class OrderRefund implements OnInit{
 		public cardMerchantService: CardMerchantService
     ) {
     }
-    ionViewDidLoad(){
-        console.log('触发ionViewDidLoad');
-    }
 
-    ionViewWillEnter(){
-        console.log('触发ionViewWillEnter');
+
+    loadData():any{
         var data = {
             sessionid: localStorage.getItem('SESSIONID'),
             field1: 3  //1-退款列表 2-机器问题列表 3-调单
@@ -46,7 +43,6 @@ export class OrderRefund implements OnInit{
                     buttons: ['确定']
                 }).present();
             }
-
         }, ()=>{
             this.loadingCtrl.create({
                 spinner: 'hide',
@@ -54,6 +50,14 @@ export class OrderRefund implements OnInit{
                 duration: 2000
             }).present();
         });
+    }
+    ionViewDidLoad(){
+        console.log('触发ionViewDidLoad');
+    }
+
+    ionViewWillEnter(){
+        console.log('触发ionViewWillEnter');
+        this.loadData();
     }
     ionViewDidEnter(){
         console.log('触发ionViewDidEnter');
@@ -72,44 +76,7 @@ export class OrderRefund implements OnInit{
     }
 
     ngOnInit() {
-		
-		var data = {
-			sessionid: localStorage.getItem('SESSIONID'),
-			field1: 3  //1-退款列表 2-机器问题列表 3-调单
-		};
-		console.log(data);
-		this.cardMerchantService.getrequestlist(data).toPromise().then(data=> {
-			console.log(Object(data));
-			if(Object(data).code == 0){
-				this.items = Object(data).data;
-				// if(this.items.length > 0){
-				// 	for(var i=0;i<this.items.length;i++){
-				// 		switch(this.items[i].status) {
-				// 			case '0':
-				// 				this.items[i].status = '已审批';
-				// 				break;
-				// 			case '1':
-				// 				this.items[i].status = '审批中';
-				// 				break;
-				// 			default:
-				// 				break;
-				// 		}
-				// 	}
-				// }
-			}else{
-				this.alertCtrl.create({
-						message: Object(data).message,
-						buttons: ['确定']
-					}).present();
-			}
-			
-		}, ()=>{
-			this.loadingCtrl.create({
-				spinner: 'hide',
-				content: '网络故障',
-				duration: 2000
-			}).present();
-		});
+		this.loadData();
 	}
 
     toDetail(item,isEdit){
