@@ -3,21 +3,25 @@
     <button ion-button small clear (click)="goBack()">
       <ion-icon ios="ios-arrow-back"></ion-icon>
     </button>
-    <ion-title>差錯交易</ion-title>
+    <ion-title>幫助</ion-title>
   </ion-navbar>
 </ion-header>
 <ion-content>
-  <ion-list class="input_list">
 
-    <ion-item>
-      <ion-label>賬單號</ion-label>
-      <ion-input placeholder="請輸入賬單號" type="text" #billno ></ion-input>
-    </ion-item>
-
+  <ion-list no-lines class="item_list">
+    <button ion-item>用戶管理</button>
   </ion-list>
-
-  <div padding>
-    <button ion-button color="primary" (click)="submitForm()" block>查詢</button>
-  </div>
+  <ion-list no-lines class="item_list">
+    <button ion-item>退款幫助</button>
+  </ion-list>
+  <ion-list no-lines class="item_list">
+    <button ion-item>調單幫助</button>
+  </ion-list>
+  <ion-list no-lines class="item_list">
+    <button ion-item>機器服務</button>
+  </ion-list>
+  <ion-list no-lines class="item_list">
+    <button ion-item>審批管理</button>
+  </ion-list>
 
 </ion-content>

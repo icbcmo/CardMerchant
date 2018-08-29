@@ -1,7 +1,14 @@
 <ion-header>
   <ion-navbar>
     <ion-title>我的信息</ion-title>
+    <button ion-button small clear (click)="speak()">
+      speak
+    </button>
   </ion-navbar>
+  <div class="bottom">
+    <img src="assets/imgs/head_me.png" class="image1">
+    <p class="p1">張三 &nbsp;&nbsp;&nbsp; 13756897211</p>
+  </div>
 </ion-header>
 
 <ion-content>
@@ -10,16 +17,5 @@
       用戶管理
     </button>
   </ion-list>
-  <button (click)="speak()">speak</button>
-  <ion-list no-lines class="item_list">
-    <button  ion-button color="primary" (click)="test5()" style="
-    width: 94%;
-    position: absolute;
-    bottom: 20px;
-    left: 10px;
-    right: 10px;
-">
-      退出登錄
-    </button>
-  </ion-list>
+  <button class="button1" block ion-button color="primary" (click)="test5()">退出登錄</button>
 </ion-content>

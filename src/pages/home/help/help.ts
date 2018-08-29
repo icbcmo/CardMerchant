@@ -5,7 +5,7 @@ import {TipService} from '../../../service/tip.service';
 import {CardMerchantService} from "../../../service/card-merchant.service";
 
 @Component({
-  selector: 'page-wrongtrx',
+  selector: 'page-help',
   templateUrl: 'help.html'
 })
 export class Help implements OnInit{
