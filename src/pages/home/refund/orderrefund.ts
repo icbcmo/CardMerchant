@@ -25,7 +25,51 @@ export class OrderRefund implements OnInit{
 		public cardMerchantService: CardMerchantService
     ) {
     }
+    ionViewDidLoad(){
+        console.log('触发ionViewDidLoad');
+    }
 
+    ionViewWillEnter(){
+        console.log('触发ionViewWillEnter');
+        var data = {
+            sessionid: localStorage.getItem('SESSIONID'),
+            field1: 3  //1-退款列表 2-机器问题列表 3-调单
+        };
+        console.log(data);
+        this.cardMerchantService.getrequestlist(data).toPromise().then(data=> {
+            console.log(Object(data));
+            if(Object(data).code == 0){
+                this.items = Object(data).data;
+            }else{
+                this.alertCtrl.create({
+                    message: Object(data).message,
+                    buttons: ['确定']
+                }).present();
+            }
+
+        }, ()=>{
+            this.loadingCtrl.create({
+                spinner: 'hide',
+                content: '网络故障',
+                duration: 2000
+            }).present();
+        });
+    }
+    ionViewDidEnter(){
+        console.log('触发ionViewDidEnter');
+    }
+
+    ionViewWillLeave(){
+        console.log('触发ionViewWillLeave');
+    }
+
+    ionViewDidLeave(){
+        console.log('触发ionViewDidLeave');
+    }
+
+    ionViewWillUnload(){
+        console.log('触发ionViewWillUnload');
+    }
 
     ngOnInit() {
 		
@@ -75,6 +119,35 @@ export class OrderRefund implements OnInit{
 
     dismiss() {
         this.viewCtrl.dismiss();
+    }
+
+    doRefresh(refresher) {
+        console.log('Begin async operation', refresher);
+        var data = {
+            sessionid: localStorage.getItem('SESSIONID'),
+            field1: 3  //1-退款列表 2-机器问题列表 3-调单
+        };
+        console.log(data);
+        this.cardMerchantService.getrequestlist(data).toPromise().then(data=> {
+            console.log(Object(data));
+            refresher.complete();
+            if(Object(data).code == 0){
+                this.items = Object(data).data;
+            }else{
+                this.alertCtrl.create({
+                    message: Object(data).message,
+                    buttons: ['确定']
+                }).present();
+            }
+
+        }, ()=>{
+            refresher.complete();
+            this.loadingCtrl.create({
+                spinner: 'hide',
+                content: '网络故障',
+                duration: 2000
+            }).present();
+        });
     }
 
 }

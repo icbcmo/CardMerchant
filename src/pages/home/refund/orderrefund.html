@@ -8,6 +8,10 @@
 </ion-header>
 <ion-content>
 	<p class="hint">* 温馨提示：如未能在<span class="color">“调单到期日”</span>前提供相关文件，您有可能会承担<span class="color">“退款”</span>的后果。</p>
+	<ion-refresher (ionRefresh)="doRefresh($event)">
+		<ion-refresher-content></ion-refresher-content>
+	</ion-refresher>
+
 	<!--<ion-list class="single-list">
 		<ion-item *ngFor="let i of [1,2,3,4,5]; let key = index">
 			<div class="left">
