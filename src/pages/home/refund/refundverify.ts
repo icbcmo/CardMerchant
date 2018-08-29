@@ -92,6 +92,42 @@ export class RefundVerify implements OnInit{
 		this.loadData();
 	}
 
+    alertGoReject(item){
+        let name="";
+        let phone="";
+
+        if(item.field2 == "1"){
+            name=item.field70;
+            phone=item.field71;
+        }else if(item.field2 == "2"){
+            name=item.field28;
+            phone=item.field29;
+        }
+
+        let msg = '經辦人:'+name+" ; 經辦人聯絡電話:"+phone;
+        let alert = this.alertCtrl.create({
+            title: '確定否決該筆退款？',
+            message: msg,
+            buttons: [
+                {
+                    text: '查看詳情',
+                    role: '查看詳情',
+                    handler: () => {
+                        console.log('Cancel clicked');
+                        this.goRefundDetail(item);
+                    }
+                },
+                {
+                    text: '確定否決',
+                    handler: () => {
+                        console.log('Buy clicked');
+                        this.goReject(item);
+                    }
+                }
+            ]
+        });
+        alert.present();
+    }
 	alertGoApprove(item){
 
         let alert = this.alertCtrl.create({
@@ -158,15 +194,11 @@ export class RefundVerify implements OnInit{
 			});
 	}
 	
-	/*goRefundReject(e,item){
-		e.stopPropagation();
-		// let popover = this.popoverCtrl.create(PopoverPage, {item:item});
-		// popover.present();
+	/*goRefundReject(item){
 
         var data = {
             requestid: item.sequence,
             sessionid: localStorage.getItem('SESSIONID')
-
         };
 
         let name="";
@@ -180,8 +212,8 @@ export class RefundVerify implements OnInit{
             phone=item.field29;
         }
             let alert = this.alertCtrl.create({
-                title: '聯繫人姓名：'+name,
-                message: '聯繫電話'+phone,
+                title: '聯繫人姓名:'+name,
+                message: '聯繫電話:'+phone,
                 buttons: [
                     {
                         text: '取消',
@@ -193,39 +225,7 @@ export class RefundVerify implements OnInit{
                     {
                         text: '拒絕審批',
                         handler: () => {
-                            console.log('Reject clicked');
-                            let loading = this.loadingCtrl.create({
-                                content: 'Please wait...',
-                                duration: 2000
-                            });
-                            loading.present();
-                            this.cardMerchantService.deleterequest(data).toPromise().then(data=> {
-                                console.log(Object(data));
-                                loading.dismiss();
-                                if(Object(data).code == 1){
-                                    localStorage.clear();
-                                    let modal = this.modalCtrl.create(SigninPage);
-                                    modal.present();
-                                }
-                                if(Object(data).code == 0){
-                                    this.tipService.show('已拒絕審批成功').then( () => {
-                                        this.viewCtrl.dismiss();
-                                    });
-                                }else{
-                                    this.alertCtrl.create({
-                                        message: Object(data).message,
-                                        buttons: ['确定']
-                                    }).present();
-                                }
-                            }, ()=>{
-                                loading.dismiss();
-                                loading = this.loadingCtrl.create({
-                                    spinner: 'hide',
-                                    content: '网络故障',
-                                    duration: 2000
-                                });
-                                loading.present();
-                            });
+                            this.goReject(item);
                         }
                     }
                 ]
@@ -244,4 +244,44 @@ export class RefundVerify implements OnInit{
         this.viewCtrl.dismiss();
     }
 
+    goReject(item){
+        var data = {
+            requestid: item.sequence,
+            sessionid: localStorage.getItem('SESSIONID')
+        };
+        console.log('Reject clicked');
+        let loading = this.loadingCtrl.create({
+            content: 'Please wait...',
+            duration: 2000
+        });
+        loading.present();
+        this.cardMerchantService.deleterequest(data).toPromise().then(data=> {
+            console.log(Object(data));
+            loading.dismiss();
+            if(Object(data).code == 1){
+                localStorage.clear();
+                let modal = this.modalCtrl.create(SigninPage);
+                modal.present();
+            }
+            if(Object(data).code == 0){
+                this.tipService.show('已拒絕審批成功').then( () => {
+                    //this.viewCtrl.dismiss();
+                    this.loadData();
+                });
+            }else{
+                this.alertCtrl.create({
+                    message: Object(data).message,
+                    buttons: ['确定']
+                }).present();
+            }
+        }, ()=>{
+            loading.dismiss();
+            loading = this.loadingCtrl.create({
+                spinner: 'hide',
+                content: '网络故障',
+                duration: 2000
+            });
+            loading.present();
+        });
+    }
 }
