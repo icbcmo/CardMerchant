@@ -40,7 +40,6 @@
     "@nrwl/nx": "^1.0.3",
     "@swimlane/ngx-datatable": "^13.0.1",
     "angular2-qrcode": "^2.0.1",
-    "cordova-android": "^6.3.0",
     "cordova-ios": "^4.5.5",
     "cordova-plugin-add-swift-support": "^1.7.2",
     "cordova-plugin-camera": "^4.0.3",
@@ -97,7 +96,7 @@
       "cordova-plugin-ionic-webview": {},
       "cordova-plugin-ionic-keyboard": {},
       "jpush-phonegap-plugin": {
-        "APP_KEY": "38ed55f30a5df83d4729ea55"
+        "APP_KEY": "c78616596208464be85e1a8e"
       },
       "cordova-plugin-camera": {},
       "cordova-plugin-qrscanner": {},
@@ -106,8 +105,7 @@
       "cordova-plugin-tts": {}
     },
     "platforms": [
-      "ios",
-      "android"
+      "ios"
     ]
   }
 }
