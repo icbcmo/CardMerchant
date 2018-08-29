@@ -12,33 +12,42 @@
   <ion-list class="input_list">
     <ion-item>
       <div class="fl">調單日期</div>
-      <div class="fr">{{item.field86}}</div>
+      <div class="fr">{{item.datetime.substr(0,10)}}</div>
     </ion-item>
     <ion-item>
       <div class="fl">調單原因</div>
-      <div class="fr">{{item.field88}}</div>
+      <div class="fr">{{item.field90}}</div>
     </ion-item>
     <ion-item>
       <div class="fl">MID</div>
       <div class="fr">{{item.field81}}</div>
     </ion-item>
     <ion-item>
+      <div class="fl">商戶名稱</div>
+      <div class="fr">{{item.field82}}</div>
+    </ion-item>
+    <ion-item>
+      <div class="fl">調單卡號</div>
+      <div class="fr">{{item.field83}}</div>
+    </ion-item>
+    <ion-item>
       <div class="fl">交易金額</div>
-      <div class="fr">{{item.field87}} 元</div>
+      <div class="fr">{{item.field85}} 元</div>
     </ion-item>
     <ion-item>
       <div class="fl">交易日期</div>
-      <div class="fr">{{item.field90}}</div>
+      <div class="fr">{{item.field84}}</div>
     </ion-item>
     <ion-item>
       <div class="fl">授權號</div>
-      <div class="fr">{{item.field85}}</div>
+      <div class="fr">{{item.field91}}</div>
     </ion-item>
     <ion-item class="datum">
-      <div class="top">请您勿必在<span class="colorRed">{{item.field91}}</span>前上传提交以下资料:</div>
+      <div class="top">请您勿必在<span class="colorRed">{{item.field92}}</span>前上传提交以下资料:</div>
       <div class="bottom">
-        <div class="div1" (click)="fleg = true"><img src="assets/imgs/radio_{{fleg?'yes':'no'}}.png" class="image1">交易單據</div>
-        <div class="div1" (click)="fleg = false"><img src="assets/imgs/radio_{{fleg?'no':'yes'}}.png" class="image1">其他相關文件，如發票等</div>
+        <div class="div1"> <img src="assets/imgs/radio_{{item.field86==2?'yes':'no'}}.png" class="image1">POS小票</div>
+        <div class="div1"> <img src="assets/imgs/radio_{{item.field87==2?'yes':'no'}}.png" class="image1">銷售收據</div>
+        <div class="div1"> <img src="assets/imgs/radio_{{item.field88==2?'yes':'no'}}.png" class="image1">其他:{{item.field89}}</div>
       </div>
     </ion-item>
     <ion-item class="camera">
@@ -73,7 +82,7 @@
       <div class="top">补充说明 <span class="colorRed">(非必填项)</span></div>
       <div class="bottom">
         <!--<textarea  class="textarea1" #usercomment rows="3" placeholder="請輸入內容"></textarea>-->
-        <textarea [readonly]="!isEdit" class="textarea1" #usercomment rows="3" placeholder="請輸入內容">{{item.field92}}</textarea>
+        <textarea [readonly]="!isEdit" class="textarea1" #usercomment rows="3" placeholder="請輸入內容">{{item.field93}}</textarea>
       </div>
     </ion-item>
   </ion-list>
