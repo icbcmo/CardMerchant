@@ -32,11 +32,11 @@
     </ion-item>
     <ion-item>
       <ion-label>原交易金額</ion-label>
-      <ion-input type="number" placeholder="請輸入原交易金額" #trxamount ></ion-input>
+      <ion-input type="text" placeholder="請輸入原交易金額" #trxamount (change)="fatMoney('trxamount')"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label>退款金額</ion-label>
-      <ion-input type="number" placeholder="請輸入退款金額" #refundamount ></ion-input>
+      <ion-input type="text" placeholder="請輸入退款金額" #refundamount (change)="fatMoney('refundamount')"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label>申請人</ion-label>

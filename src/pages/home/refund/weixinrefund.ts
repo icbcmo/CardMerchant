@@ -51,6 +51,10 @@ export class WeixinRefund implements OnInit{
 			{data:'assets/imgs/camera_img.png',btn:false}
 		];
 	}
+
+    fatMoney(oId){
+        Object(this[oId]).value = this.tipService.numberFormat(Object(this[oId]).value,2,'.',',','round');
+    }
 	
 	submitForm(){
 		var pics = [];
@@ -60,67 +64,68 @@ export class WeixinRefund implements OnInit{
 			}
 		}
 		this.alertCtrl.create({
-						message: '退款金额:' + Object(this.wechattrxamount).value,
-						buttons: [
-							{
-								text: '返回修改',
-								handler: () => {
-									return;
+			title: '退款金额',
+			message: Object(this.wechatrefundamount).value,
+			buttons: [
+				{
+					text: '返回修改',
+					handler: () => {
+						return;
+					}
+				},
+				{
+					text: '确认退款',
+					handler: () => {
+							var data = {
+								sessionid: localStorage.getItem('SESSIONID'),
+								wechatmid: localStorage.getItem("WECHATMERCHANTID"),
+								wechatmerchantname: localStorage.getItem("MERCHANTNAME"),
+								wechattid: Object(this.wechattid).value,
+								wechattrxno: Object(this.wechattrxno).value,
+								wechattrxdate: this.tradeDate,
+								wechattrxamount: Object(this.wechattrxamount).value.replace(/,/g,''),
+								wechatrefundamount: Object(this.wechatrefundamount).value.replace(/,/g,''),
+								wechatapplymobile: Object(this.wechatapplymobile).value,
+								wechatapplyname: Object(this.wechatapplyname).value,
+								wechatapplypicture: pics
+							};
+							console.log(data);
+							let loading = this.loadingCtrl.create({
+									content: 'Please wait...',
+									duration: 5000
+								});
+							loading.present();
+							this.cardMerchantService.addwechatrefund(data).toPromise().then(data=> {
+								console.log(Object(data));
+								loading.dismiss();
+								if(Object(data).code == 1){
+									localStorage.clear();
+									let modal = this.modalCtrl.create(SigninPage);
+									modal.present();
 								}
-							},
-							{
-								text: '确认退款',
-								handler: () => {
-										var data = {
-											sessionid: localStorage.getItem('SESSIONID'),
-											wechatmid: localStorage.getItem("WECHATMERCHANTID"),
-											wechatmerchantname: localStorage.getItem("MERCHANTNAME"),
-											wechattid: Object(this.wechattid).value,
-											wechattrxno: Object(this.wechattrxno).value,
-											wechattrxdate: this.tradeDate,
-											wechattrxamount: Object(this.wechattrxamount).value,
-                                            wechatrefundamount: Object(this.wechatrefundamount).value,
-											wechatapplymobile: Object(this.wechatapplymobile).value,
-											wechatapplyname: Object(this.wechatapplyname).value,
-											wechatapplypicture: pics
-										};
-										console.log(data);
-										let loading = this.loadingCtrl.create({
-												content: 'Please wait...',
-												duration: 5000
-											});
-										loading.present();
-										this.cardMerchantService.addwechatrefund(data).toPromise().then(data=> {
-											console.log(Object(data));
-											loading.dismiss();
-											if(Object(data).code == 1){
-                                                localStorage.clear();
-                                                let modal = this.modalCtrl.create(SigninPage);
-                                                modal.present();
-											}
-											if(Object(data).code == 0){
-												this.tipService.show('提交成功').then( () => {
-														this.viewCtrl.dismiss();
-													});
-											}else{
-												this.alertCtrl.create({
-														message: Object(data).message,
-														buttons: ['确定']
-													}).present();
-											}
-										}, ()=>{
-											loading.dismiss();
-											loading = this.loadingCtrl.create({
-												spinner: 'hide',
-												content: '网络故障',
-												duration: 2000
-											});
-											loading.present();
+								if(Object(data).code == 0){
+									this.tipService.show('提交成功').then( () => {
+											this.viewCtrl.dismiss();
 										});
+								}else{
+									this.alertCtrl.create({
+											message: Object(data).message,
+											buttons: ['确定']
+										}).present();
 								}
-							}
-						]
-					}).present();
+							}, ()=>{
+								loading.dismiss();
+								loading = this.loadingCtrl.create({
+									spinner: 'hide',
+									content: '网络故障',
+									duration: 2000
+								});
+								loading.present();
+							});
+					}
+				}
+			]
+		}).present();
 	}
 	
 	openCamera(){
