@@ -12,7 +12,7 @@
 
 		<ion-item>
 			<ion-label>手機號</ion-label>
-			<ion-input name="mobile" placeholder="請輸入手機號" type="number"  #mobile ></ion-input>
+			<ion-input name="mobile" placeholder="請輸入手機號" type="number" #mobile (change)="telInspect(mobile.value)"></ion-input>
 		</ion-item>
 		<ion-item>
 			<ion-label>姓名</ion-label>

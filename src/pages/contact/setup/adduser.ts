@@ -46,10 +46,17 @@ export class AddUser implements OnInit{
 		});
 	}
 
+    telInspect(value){
+    	console.log(value);
+        if(!/(^\d{8}$)|(^\d{11}$)/.test(value)){
+            this.tipService.show('手機號不合法，請重新輸入');
+            Object(this.Mobile).value = '';
+		}
+	}
 	
 	submitForm(){
-		if(!/^\d{8,11}$/.test(Object(this.Mobile).value)){
-			this.tipService.show('手机号至少8位');
+		if(!/(^\d{8}$)|(^\d{11}$)/.test(Object(this.Mobile).value)){
+			this.tipService.show('手機號不合法，請重新輸入');
 		}else{
 			var data = {
 				sessionid: localStorage.getItem('SESSIONID'),
