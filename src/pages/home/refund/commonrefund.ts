@@ -17,9 +17,6 @@ export class CommonRefund implements OnInit{
 	pictures: any[] = [];
 	tradeDate: any;
 	total: any = 0;
-    moneys: object = {
-        trxamount: ''
-	};
 
 	@ViewChild('merchantname') merchantname: ElementRef;
 	@ViewChild('departmentname') departmentname: ElementRef;
@@ -100,7 +97,7 @@ export class CommonRefund implements OnInit{
 	}
 
     fatMoney(oId){
-        Object(this[oId]).value = this.tipService.numberFormat(Object(this[oId]).value,2,'.',',','round');
+        Object(this[oId]).value = this.tipService.mone(Object(this[oId]).value,2,'.',',','round');
 	}
 	
 	submitForm(){
