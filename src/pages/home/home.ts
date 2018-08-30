@@ -45,9 +45,8 @@ export class HomePage implements OnInit{
     orderNumOB: Observable<number>;
     retrievalNumOB: Observable<number>;
 
-
-
     getObservableWechat(): Observable<number> {
+
         return Observable
             .interval(1000)
             .map(v => parseInt(localStorage.getItem('WECHATBADGE')));
@@ -73,6 +72,8 @@ export class HomePage implements OnInit{
         this.retrievalNumOB = this.getObservableRetrieval();
         this.devicePlatform = device.platform;
 
+        console.log('this.orderNumOB:',this.orderNumOB);
+
         document.addEventListener(
             "jpush.receiveNotification",
             (event: any) => {
@@ -86,11 +87,13 @@ export class HomePage implements OnInit{
                 if(event.extras.from == 'WECHATPAYMENT'){
                     let tmpNum=parseInt(localStorage.getItem('WECHATBADGE'))+1;
                     localStorage.setItem('WECHATBADGE',tmpNum.toString());
+                    //this.orderNum = localStorage.getItem('WECHATBADGE');
                     // alert("Receive notification: Extra: " + event.extras.from +parseInt(localStorage.getItem('WECHATBADGE')));
                 }
-                if(event.extras.from == 'FLOW'){
+                if(event.extras.from == 'RETRIEVAL'){
                     let tmpNum=parseInt(localStorage.getItem('RETRIEVALBADGE'))+1;
                     localStorage.setItem('RETRIEVALBADGE',tmpNum.toString());
+                    //this.retrievalNum=localStorage.getItem('RETRIEVALBADGE');
                 }
             },
             false
@@ -121,7 +124,7 @@ export class HomePage implements OnInit{
                     modal.present();
                 }
 
-                if(event.extras.from == 'FLOW'){
+                if(event.extras.from == 'RETRIEVAL'){
                     let modal = this.modalCtrl.create(OrderRefund);
                     modal.present();
                 }
@@ -390,6 +393,7 @@ export class HomePage implements OnInit{
             this.jpush.setBadge(num3);
             this.jpush.setApplicationIconBadgeNumber(num3);
             //alert('onDidDismiss:'+localStorage.getItem('WECHATBADGE'));
+            //this.retrievalNum = localStorage.getItem('RETRIEVALBADGE');
         });
         modal.present();
     }
@@ -420,6 +424,9 @@ export class HomePage implements OnInit{
             let num3 = num1+num2;
             this.jpush.setBadge(num3);
             this.jpush.setApplicationIconBadgeNumber(num3);
+
+            //this.orderNum = localStorage.getItem('WECHATBADGE');
+
         });
         modal.present();
 	}
