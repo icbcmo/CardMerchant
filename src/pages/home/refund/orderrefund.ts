@@ -35,8 +35,14 @@ export class OrderRefund implements OnInit{
         console.log(data);
         this.cardMerchantService.getrequestlist(data).toPromise().then(data=> {
             console.log(Object(data));
+            let x=0;
             if(Object(data).code == 0){
                 this.items = Object(data).data;
+                this.items.forEach(data=>{
+                    if(data.status == 3)
+                        x++;
+                })
+                localStorage.setItem('RETRIEVALBADGE',x.toString());
             }else{
                 this.alertCtrl.create({
                     message: Object(data).message,
@@ -58,6 +64,7 @@ export class OrderRefund implements OnInit{
     ionViewWillEnter(){
         console.log('触发ionViewWillEnter');
         this.loadData();
+        //localStorage.setItem('RETRIEVALBADGE','0');
     }
     ionViewDidEnter(){
         console.log('触发ionViewDidEnter');

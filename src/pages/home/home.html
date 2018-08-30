@@ -21,7 +21,7 @@
         <ion-col>
           <div class="top">
             <img class="image1" src="assets/imgs/index_fn3.png" (click)="openOrderList()" alt="訂單">
-            <span class="title">{{orderNum}}</span>
+            <span class="title" >{{orderNumOB| async}}</span>
           </div>
           <p class="bottom">微信</p>
         </ion-col>
@@ -54,7 +54,7 @@
       <ion-col>
         <div class="top">
           <img class="image1" src="assets/imgs/index_pa1.png" alt="調單" (click)="openOrderRefundModal()">
-          <span class="title">20</span>
+          <span class="title">{{retrievalNumOB| async}}</span>
         </div>
         <p class="bottom">调单</p>
       </ion-col>
@@ -98,7 +98,7 @@
       <ion-col>
         <div class="top">
           <img class="image1" src="assets/imgs/index_pa1_2.png" alt="調單">
-          <span class="title color">20</span>
+          <span class="title color">{{retrievalNumOB| async}}</span>
         </div>
         <p class="bottom">调单</p>
       </ion-col>
@@ -157,7 +157,12 @@
         </div>
         <p class="bottom">獎勵排名</p>
       </ion-col>
-
+      <!--<ion-col col-3>-->
+        <!--<div class="top">-->
+          <!--<img class="image2" src="assets/imgs/index_pa8.png" alt="獎勵排名" (click)="test()">-->
+        <!--</div>-->
+        <!--<p class="bottom">獎勵排名</p>-->
+      <!--</ion-col>-->
     </ion-row>
   </ion-grid>
   <ion-grid class="grid1">

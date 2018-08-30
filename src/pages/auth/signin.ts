@@ -91,6 +91,8 @@ export class SigninPage implements OnInit{
             localStorage.setItem('NAME', Object(Object(data).data).name);
             localStorage.setItem('UID', Object(Object(data).data).uid);
             localStorage.setItem('UID2', Object(Object(data).data).uid2);
+            localStorage.setItem('WECHATBADGE', 0);
+            localStorage.setItem('RETRIEVALBADGE', 0);
 
             if(Object(data).code === "0")
                 this.navCtrl.push(TabsPage);

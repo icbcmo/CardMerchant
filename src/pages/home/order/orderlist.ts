@@ -35,6 +35,8 @@ export class OrderList implements OnInit{
 	}
 	
 	ionViewWillEnter(){
+    	localStorage.setItem('WECHATBADGE',0);
+
 		var data = {
 			sessionid: localStorage.getItem('SESSIONID'),
 		};
