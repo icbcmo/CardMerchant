@@ -45,9 +45,15 @@
     <ion-item class="datum">
       <div class="top">请您勿必在<span class="colorRed">{{item.field92}}</span>前上传提交以下资料:</div>
       <div class="bottom">
-        <div class="div1"> <img src="assets/imgs/radio_{{item.field86==2?'yes':'no'}}.png" class="image1">POS小票</div>
-        <div class="div1"> <img src="assets/imgs/radio_{{item.field87==2?'yes':'no'}}.png" class="image1">銷售收據</div>
-        <div class="div1"> <img src="assets/imgs/radio_{{item.field88==2?'yes':'no'}}.png" class="image1">其他:{{item.field89}}</div>
+        <div class="div1" [hidden]="item.field86 !=1" > <img src="assets/imgs/radio_{{item.field86==1?'yes':'no'}}.png" class="image1">POS小票</div>
+        <div class="div1" [hidden]="item.field87 !=1" > <img src="assets/imgs/radio_{{item.field87==1?'yes':'no'}}.png" class="image1">POS小票</div>
+        <div class="div1" [hidden]="item.field88 !=1" > <img src="assets/imgs/radio_{{item.field88==1?'yes':'no'}}.png" class="image1">POS小票</div>
+        <div class="div1" [hidden]="item.field86 !=2" > <img src="assets/imgs/radio_{{item.field86==2?'yes':'no'}}.png" class="image1">銷售收據</div>
+        <div class="div1" [hidden]="item.field87 !=2" > <img src="assets/imgs/radio_{{item.field87==2?'yes':'no'}}.png" class="image1">銷售收據</div>
+        <div class="div1" [hidden]="item.field88 !=2" > <img src="assets/imgs/radio_{{item.field88==2?'yes':'no'}}.png" class="image1">銷售收據</div>
+        <div class="div1" [hidden]="item.field86 !=3" > <img src="assets/imgs/radio_{{item.field86==3?'yes':'no'}}.png" class="image1">其他:{{item.field89}}</div>
+        <div class="div1" [hidden]="item.field87 !=3" > <img src="assets/imgs/radio_{{item.field87==3?'yes':'no'}}.png" class="image1">其他:{{item.field89}}</div>
+        <div class="div1" [hidden]="item.field88 !=3" > <img src="assets/imgs/radio_{{item.field88==3?'yes':'no'}}.png" class="image1">其他:{{item.field89}}</div>
       </div>
     </ion-item>
     <ion-item class="camera">
