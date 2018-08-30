@@ -53,7 +53,7 @@ export class WeixinRefund implements OnInit{
 	}
 
     fatMoney(oId){
-        Object(this[oId]).value = this.tipService.numberFormat(Object(this[oId]).value,2,'.',',','round');
+        Object(this[oId]).value = this.tipService.mone(Object(this[oId]).value,2,'.',',','round');
     }
 	
 	submitForm(){

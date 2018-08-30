@@ -83,7 +83,7 @@ export class HomePage implements OnInit{
                 } else {
                     content = event.aps.alert;
                 }
-                alert("Receive notification: " + JSON.stringify(event));
+                //alert("Receive notification: " + JSON.stringify(event));
                 if(event.extras.from == 'WECHATPAYMENT'){
                     let tmpNum=parseInt(localStorage.getItem('WECHATBADGE'))+1;
                     localStorage.setItem('WECHATBADGE',tmpNum.toString());
@@ -117,7 +117,7 @@ export class HomePage implements OnInit{
                         this.jpush.setApplicationIconBadgeNumber(event.aps.badge-1);
                     }
                 }
-                alert("open notification: " + JSON.stringify(event));
+                //alert("open notification: " + JSON.stringify(event));
                 if(event.extras.from == 'WECHATPAYMENT'){
                     //alert("Receive notification: Extra: " + event.extras.from +localStorage.getItem('WECHATBADGE'));
                     let modal = this.modalCtrl.create(OrderList);
@@ -182,21 +182,21 @@ export class HomePage implements OnInit{
     tagResultHandler = function(result) {
         var sequence: number = result.sequence;
         var tags: Array<string> = result.tags == null ? [] : result.tags;
-        alert(
-            "Success!" + "\nSequence: " + sequence + "\nTags: " + tags.toString()
-        );
+        // alert(
+        //     "Success!" + "\nSequence: " + sequence + "\nTags: " + tags.toString()
+        // );
     };
 
     aliasResultHandler = function(result) {
         var sequence: number = result.sequence;
         var alias: string = result.alias;
-        alert("Success!" + "\nSequence: " + sequence + "\nAlias: " + alias);
+        //alert("Success!" + "\nSequence: " + sequence + "\nAlias: " + alias);
     };
 
     errorHandler = function(err) {
         var sequence: number = err.sequence;
         var code = err.code;
-        alert("Error!" + "\nSequence: " + sequence + "\nCode: " + code);
+        //alert("Error!" + "\nSequence: " + sequence + "\nCode: " + code);
     };
 
 
@@ -227,9 +227,9 @@ export class HomePage implements OnInit{
                 var sequence = result.sequence;
                 var tag = result.tag;
                 var isBind = result.isBind;
-                alert(
-                    "Sequence: " + sequence + "\nTag: " + tag + "\nIsBind: " + isBind
-                );
+                // alert(
+                //     "Sequence: " + sequence + "\nTag: " + tag + "\nIsBind: " + isBind
+                // );
             })
             .catch(this.errorHandler);
     }

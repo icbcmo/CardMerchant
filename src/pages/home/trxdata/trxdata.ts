@@ -3,6 +3,7 @@ import {DateFormatter} from "@angular/common/src/pipes/deprecated/intl";
 import {LoadingController, ModalController, ViewController, MenuController} from "ionic-angular";
 import {ReportDataService} from "../../../service/report-data.service";
 import {SigninPage} from "../../auth/signin";
+import {BaseDate} from "../../../service/BaseDate.service";
 
 declare let echarts;
 declare var localStorage: any;
@@ -24,6 +25,32 @@ export class Trxdata implements OnInit{
     chart2Data = null;
     date1:any;
     date2:any;
+    cpuClick = true;
+    visaClick = false;
+    masterClick = false;
+
+    tradeDate1: any;
+    tradeDate2: any;
+
+    cpuSelect(){
+        this.cpuClick = this.cpuClick?false:true;
+    }
+    visaSelect(){
+        this.visaClick = this.visaClick?false:true;
+    }
+    masterSelect(){
+        this.masterClick = this.masterClick?false:true;
+    }
+
+    doFilter(eee){
+        console.log(eee);
+        console.log(this.tradeDate1);
+        console.log(this.tradeDate2);
+        console.log(this.cpuClick);
+        console.log(this.visaClick);
+        console.log(this.masterClick);
+    }
+
     getyyyyMMdd(n){
         var d = new Date();
         d.setDate(d.getDate()+n);
@@ -46,7 +73,8 @@ export class Trxdata implements OnInit{
     }
 
     ngOnInit() {
-
+        this.tradeDate1 = BaseDate.getDateNow();
+        this.tradeDate2 = BaseDate.getDateNow();
     }
 
     goBack() {
@@ -154,6 +182,7 @@ export class Trxdata implements OnInit{
             }
         }
     }
+
 
 
 

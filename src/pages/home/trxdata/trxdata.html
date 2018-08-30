@@ -82,22 +82,23 @@
     <ion-content (click)="$event.stopPropagation()">
         <p class="p1">篩選</p>
         <p class="p2">消費金額</p>
-        <ion-input class="input1" type="text" placeholder="請輸入消費金額" #eeee></ion-input>
+        <ion-input class="input1" type="number" placeholder="請輸入消費金額" #eeee></ion-input>
         <p class="p2">交易日期</p>
         <div class="div1">
-            <ion-datetime class="input2" displayFormat="YYYY-MM-DD" pickerFormat="YYYY-MM-DD"></ion-datetime>
+            <ion-datetime class="input2" displayFormat="YYYY-MM-DD" pickerFormat="YYYY-MM-DD" [(ngModel)]="tradeDate1" ></ion-datetime>
             <div class="solid">ㅡ</div>
-            <ion-datetime class="input2" displayFormat="YYYY-MM-DD" pickerFormat="YYYY-MM-DD"></ion-datetime>
+            <ion-datetime class="input2" displayFormat="YYYY-MM-DD" pickerFormat="YYYY-MM-DD" [(ngModel)]="tradeDate2"></ion-datetime>
         </div>
         <p class="p2">交易方式</p>
         <ul class="ul1">
-            <li class="select">CPU</li>
-            <li>VISA</li>
-            <li>MasterCard</li>
-            <li>微信交易</li>
+            <li [class]="cpuClick?'select':''" (click)="cpuSelect()">CPU</li>
+            <li [class]="visaClick?'select':''" (click)="visaSelect()">VISA</li>
+            <li [class]="masterClick?'select':''" (click)="masterSelect()">MasterCard</li>
+            <!--<li>微信交易</li>-->
         </ul>
 
-        <button class="button1" ion-button color="primary" block  menuClose="filterMenu">確定</button>
+        <button class="button1" ion-button color="primary" block  menuClose="filterMenu"
+                (click)="doFilter(eeee.value)">確定</button>
 
     </ion-content>
 
