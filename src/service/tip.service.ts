@@ -25,7 +25,7 @@ export class TipService{
 		});
 	}
 
-    numberFormat(number, decimals, dec_point, thousands_sep,roundtag) {
+    mone(number, decimals, dec_point, thousands_sep,roundtag) {
         /*
         * 参数说明：
         * number：要格式化的数字
