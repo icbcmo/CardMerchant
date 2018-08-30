@@ -55,8 +55,8 @@ export class AddUser implements OnInit{
 	}
 	
 	submitForm(){
-		if(!/(^\d{8}$)|(^\d{11}$)/.test(Object(this.Mobile).value)){
-			this.tipService.show('手機號不合法，請重新輸入');
+		if(Object(this.Mobile).value == ''){
+			this.tipService.show('手機號不能為空，請重新輸入');
 		}else{
 			var data = {
 				sessionid: localStorage.getItem('SESSIONID'),
