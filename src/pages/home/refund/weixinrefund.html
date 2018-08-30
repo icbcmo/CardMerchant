@@ -31,11 +31,11 @@
     </button>
     <ion-item>
       <ion-label>原交易金額</ion-label>
-      <ion-input type="number" placeholder="請輸入原交易金額" #wechattrxamount ></ion-input>
+      <ion-input type="text" placeholder="請輸入原交易金額" #wechattrxamount (change)="fatMoney('wechattrxamount')"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label>退款金額</ion-label>
-      <ion-input type="number" placeholder="請輸入退款金額" #wechatrefundamount ></ion-input>
+      <ion-input type="text" placeholder="請輸入退款金額" #wechatrefundamount (change)="fatMoney('wechatrefundamount')"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label >申請人</ion-label>

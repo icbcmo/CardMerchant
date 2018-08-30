@@ -17,6 +17,9 @@ export class CommonRefund implements OnInit{
 	pictures: any[] = [];
 	tradeDate: any;
 	total: any = 0;
+    moneys: object = {
+        trxamount: ''
+	};
 
 	@ViewChild('merchantname') merchantname: ElementRef;
 	@ViewChild('departmentname') departmentname: ElementRef;
@@ -95,6 +98,10 @@ export class CommonRefund implements OnInit{
 		this.pictures.splice(index,1,{data:'assets/imgs/camera_img.png',btn:false});
 		this.total = (this.total -1);
 	}
+
+    fatMoney(oId){
+        Object(this[oId]).value = this.tipService.numberFormat(Object(this[oId]).value,2,'.',',','round');
+	}
 	
 	submitForm(){
 		var pics = [];
@@ -104,70 +111,71 @@ export class CommonRefund implements OnInit{
 			}
 		}
 		this.alertCtrl.create({
-						message: '退款金额:' + Object(this.refundamount).value,
-						buttons: [
-							{
-								text: '返回修改',
-								handler: () => {
-									return;
-								}
-							},
-							{
-								text: '确认退款',
-								handler: () => {
-									var data = {
-										sessionid: localStorage.getItem('SESSIONID'),
-										merchantid: localStorage.getItem("MERCHANTID"),
-										merchantname: localStorage.getItem("MERCHANTNAME"),
-										departmentid: localStorage.getItem("DEPARTMENTID"),
-										departmentname: Object(this.departmentname).value,
-										refundcardno4: Object(this.refundcardno4).value,
-										trxdate: this.tradeDate,
-										authno: Object(this.authno).value,
-										trxamount: Object(this.trxamount).value,
-										refundamount: Object(this.refundamount).value,
-										applymobile: Object(this.applymobile).value,
-										applyname: Object(this.applyname).value,
-										picture: pics
-									};
-									console.log(data);
-									let loading = this.loadingCtrl.create({
-											content: 'Please wait...',
-											duration: 5000
-										});
-									loading.present();
-									this.cardMerchantService.addrefund(data).toPromise().then(data=> {
-										console.log(Object(data));
-										loading.dismiss();
-                                        if(Object(data).code == 1){
-                                            localStorage.clear();
-                                            let modal = this.modalCtrl.create(SigninPage);
-                                            modal.present();
-										}
-
-                                        if(Object(data).code == 0){
-											this.tipService.show('提交成功').then( () => {
-													this.viewCtrl.dismiss();
-												});
-										}else{
-											this.alertCtrl.create({
-													message: Object(data).message,
-													buttons: ['确定']
-												}).present();
-										}
-									}, ()=>{
-										loading.dismiss();
-										loading = this.loadingCtrl.create({
-											spinner: 'hide',
-											content: '网络故障',
-											duration: 2000
-										});
-										loading.present();
-									});
-								}
+			title:'退款金额',
+			message: Object(this.refundamount).value,
+			buttons: [
+				{
+					text: '返回修改',
+					handler: () => {
+						return;
+					}
+				},
+				{
+					text: '确认退款',
+					handler: () => {
+						var data = {
+							sessionid: localStorage.getItem('SESSIONID'),
+							merchantid: localStorage.getItem("MERCHANTID"),
+							merchantname: localStorage.getItem("MERCHANTNAME"),
+							departmentid: localStorage.getItem("DEPARTMENTID"),
+							departmentname: Object(this.departmentname).value,
+							refundcardno4: Object(this.refundcardno4).value,
+							trxdate: this.tradeDate,
+							authno: Object(this.authno).value,
+							trxamount: Object(this.trxamount).value.replace(/,/g,''),
+							refundamount: Object(this.refundamount).value.replace(/,/g,''),
+							applymobile: Object(this.applymobile).value,
+							applyname: Object(this.applyname).value,
+							picture: pics
+						};
+						console.log(data);
+						let loading = this.loadingCtrl.create({
+								content: 'Please wait...',
+								duration: 5000
+							});
+						loading.present();
+						this.cardMerchantService.addrefund(data).toPromise().then(data=> {
+							console.log(Object(data));
+							loading.dismiss();
+							if(Object(data).code == 1){
+								localStorage.clear();
+								let modal = this.modalCtrl.create(SigninPage);
+								modal.present();
 							}
-						]
-					}).present();
+
+							if(Object(data).code == 0){
+								this.tipService.show('提交成功').then( () => {
+										this.viewCtrl.dismiss();
+									});
+							}else{
+								this.alertCtrl.create({
+										message: Object(data).message,
+										buttons: ['确定']
+									}).present();
+							}
+						}, ()=>{
+							loading.dismiss();
+							loading = this.loadingCtrl.create({
+								spinner: 'hide',
+								content: '网络故障',
+								duration: 2000
+							});
+							loading.present();
+						});
+					}
+				}
+			]
+		}).present();
 	}
 
     goBack() {
