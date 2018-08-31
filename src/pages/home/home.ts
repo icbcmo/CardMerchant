@@ -23,6 +23,7 @@ import { OrderList} from "./order/orderlist";
 import {RewardRanking} from "./cashier/rewardranking/reward-ranking";
 import {MyReward} from "./cashier/myreward/my-reward";
 import {Trxdata} from "./trxdata/trxdata";
+import {TextToSpeech} from "@ionic-native/text-to-speech";
 
 const EventSource: any = window['EventSource'];
 
@@ -65,6 +66,7 @@ export class HomePage implements OnInit{
         private qrScanner: QRScanner,
         public jpush: JPush,
         device: Device,
+        private tts: TextToSpeech,
         public modalCtrl: ModalController,
     ) {
 
@@ -87,13 +89,12 @@ export class HomePage implements OnInit{
                 if(event.extras.from == 'WECHATPAYMENT'){
                     let tmpNum=parseInt(localStorage.getItem('WECHATBADGE'))+1;
                     localStorage.setItem('WECHATBADGE',tmpNum.toString());
-                    //this.orderNum = localStorage.getItem('WECHATBADGE');
-                    // alert("Receive notification: Extra: " + event.extras.from +parseInt(localStorage.getItem('WECHATBADGE')));
+                    let speakString  = "微信收款"+event.extras.speaktext.toString()+"元";
+                    this.speak(speakString);
                 }
                 if(event.extras.from == 'RETRIEVAL'){
                     let tmpNum=parseInt(localStorage.getItem('RETRIEVALBADGE'))+1;
                     localStorage.setItem('RETRIEVALBADGE',tmpNum.toString());
-                    //this.retrievalNum=localStorage.getItem('RETRIEVALBADGE');
                 }
             },
             false
@@ -443,5 +444,11 @@ export class HomePage implements OnInit{
     openTrxDataserviceModal(){
         let modal = this.modalCtrl.create(Trxdata);
         modal.present();
+    }
+
+    speak(mytext){
+        this.tts.speak({text:mytext,locale:"zh-HK",rate:1.4})
+            .then(() => console.log('Success'))
+            .catch((reason: any) => console.log(reason));
     }
 }
