@@ -5,7 +5,7 @@
           <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
         </ion-col>
       </ion-row>
-      <ion-row class="row2">
+      <ion-row class="row2" *ngIf="BtnDisable">
         <ion-col>
           <div class="top">
             <img class="image1" src="assets/imgs/index_fn1.png" alt="掃碼" (click)="openScanner()">
@@ -32,6 +32,26 @@
           <p class="bottom">幫助</p>
         </ion-col>
       </ion-row>
+      <ion-row class="row2" *ngIf="!BtnDisable">
+        <ion-col col-3>
+          <div class="top">
+            <img class="image1" src="assets/imgs/index_pa6_2.png" alt="掃碼" (click)="openCashierScanModal()">
+          </div>
+          <p class="bottom">掃描獎勵</p>
+        </ion-col>
+        <ion-col col-3>
+          <div class="top">
+            <img class="image1" src="assets/imgs/index_pa7_2.png" alt="我的積分" (click)="openMyRewardModal()">
+          </div>
+          <p class="bottom">我的積分</p>
+        </ion-col>
+        <ion-col col-3>
+          <div class="top">
+            <img class="image1" src="assets/imgs/index_pa8_2.png" alt="獎勵排名" (click)="openRewardRankingModal()">
+          </div>
+          <p class="bottom">獎勵排名</p>
+        </ion-col>
+      </ion-row>
       <ion-row class="row3">
         <ion-col>
           <div class="news">
@@ -44,7 +64,7 @@
 </ion-header>
 
 <ion-content class="page-home-content">
-  <ion-grid class="grid2" *ngIf="!BtnDisable">
+  <ion-grid class="grid2" *ngIf="BtnDisable">
     <ion-row class="row1">
       <ion-col>
         <span class="circle">●</span>基本服務
@@ -89,50 +109,6 @@
 
   </ion-grid>
   <ion-grid class="grid2" *ngIf="BtnDisable">
-    <ion-row class="row1">
-      <ion-col>
-        <span class="circle">●</span>基本服務
-      </ion-col>
-    </ion-row>
-    <ion-row class="row2">
-      <ion-col>
-        <div class="top">
-          <img class="image1" src="assets/imgs/index_pa1_2.png" alt="調單">
-          <span class="title color">{{retrievalNumOB| async}}</span>
-        </div>
-        <p class="bottom">調單</p>
-      </ion-col>
-      <ion-col col-3>
-        <div class="top">
-          <img class="image1" src="assets/imgs/index_pa2_2.png" alt="退款">
-        </div>
-        <p class="bottom">退款</p>
-      </ion-col>
-      <ion-col col-3>
-        <div class="top">
-          <img class="image1" src="assets/imgs/index_pa3_2.png" alt="差錯交易">
-        </div>
-        <p class="bottom">差錯交易</p>
-      </ion-col>
-      <ion-col col-3>
-        <div class="top">
-          <img class="image1" src="assets/imgs/index_pa4_2.png" alt="報修">
-        </div>
-        <p class="bottom">報修</p>
-      </ion-col>
-    </ion-row>
-
-    <ion-row class="row2">
-      <ion-col col-3>
-        <div class="top">
-          <img class="image1" src="assets/imgs/index_pa5_2.png" alt="交易查詢">
-        </div>
-        <p class="bottom">交易查詢</p>
-      </ion-col>
-    </ion-row>
-
-  </ion-grid>
-  <ion-grid class="grid2">
     <ion-row class="row1">
       <ion-col>
         <span class="circle2">●</span>收銀員獎勵計劃

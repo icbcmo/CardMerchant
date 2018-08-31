@@ -16,7 +16,7 @@ declare var localStorage: any;
 })
 
 export class ContactPage {
-	BtnDisable: boolean = false;
+	BtnDisable: boolean = true;
     Mobile: String = "";
     User: String = "";
 	
@@ -34,7 +34,7 @@ export class ContactPage {
     ngOnInit() {
 		var uid = localStorage.getItem('UID');
 		if(!uid){
-			this.BtnDisable = true;
+			this.BtnDisable = false;
 		}
 		this.Mobile = localStorage.getItem("MOBILE");
 		this.User = localStorage.getItem("NAME");

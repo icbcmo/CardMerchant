@@ -12,8 +12,8 @@
 </ion-header>
 
 <ion-content>
-  <ion-list no-lines class="item_list">
-    <button ion-item [ngClass]="{'btn-disable':BtnDisable}" (click)="openUserMgt()">
+  <ion-list no-lines class="item_list" *ngIf="BtnDisable">
+    <button ion-item (click)="openUserMgt()">
       用戶管理
     </button>
   </ion-list>

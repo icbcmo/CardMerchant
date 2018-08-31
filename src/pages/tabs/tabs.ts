@@ -12,6 +12,7 @@ export class TabsPage implements OnInit{
   tab1Root = HomePage;
   tab2Root = AboutPage;
   tab3Root = ContactPage;
+  BtnDisable: boolean = true;
 
   constructor() {
 
@@ -21,6 +22,7 @@ export class TabsPage implements OnInit{
 		var uid = localStorage.getItem('UID');
 		if(!uid){
 			this.tab2Root = null;
+            this.BtnDisable = false;
 		}
 	}
 }

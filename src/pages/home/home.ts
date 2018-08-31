@@ -37,12 +37,12 @@ export interface User {
 
 
 @Component({
-  selector: 'page-home',
-  templateUrl: 'home.html',
+    selector: 'page-home',
+    templateUrl: 'home.html',
 })
 export class HomePage implements OnInit{
 
-	BtnDisable: boolean = false;
+    BtnDisable: boolean = true;
     orderNumOB: Observable<number>;
     retrievalNumOB: Observable<number>;
 
@@ -284,7 +284,7 @@ export class HomePage implements OnInit{
             this.jpush.addLocalNotificationForIOS(5, "Hello JPush", 1, "localNoti1");
         }
     }
-	
+
 
 
     ngOnInit() {
@@ -292,11 +292,11 @@ export class HomePage implements OnInit{
 
         //this.orderNum = parseInt(localStorage.getItem('WECHATBADGE'));  //模拟订单数量更新
         //this.orderNum = this.getObservable2();
-		var uid = localStorage.getItem('UID');
-		if(!uid){
-			this.BtnDisable = true;
-		}
-	}
+        var uid = localStorage.getItem('UID');
+        if(!uid){
+            this.BtnDisable = false;
+        }
+    }
     ionViewDidLoad(){
         console.log('触发ionViewDidLoad');
     }
@@ -320,7 +320,7 @@ export class HomePage implements OnInit{
     }
 
 
-	openScanner(){
+    openScanner(){
         // Optionally request the permission early
         this.qrScanner.prepare()
             .then((status: QRScannerStatus) => {
@@ -345,10 +345,10 @@ export class HomePage implements OnInit{
                 }
             })
             .catch((e: any) => console.log('Error is', e));
-		
+
     }
-	
-	openCashierScanModal(){
+
+    openCashierScanModal(){
         // Optionally request the permission early
         this.qrScanner.prepare()
             .then((status: QRScannerStatus) => {
@@ -384,8 +384,8 @@ export class HomePage implements OnInit{
         let modal = this.modalCtrl.create(Wrongtrx);
         modal.present();
     }
-	
-	openOrderRefundModal() {
+
+    openOrderRefundModal() {
         let modal = this.modalCtrl.create(OrderRefund);
         modal.onDidDismiss(() => {
             let num1 = parseInt(localStorage.getItem('WECHATBADGE'));
@@ -408,14 +408,14 @@ export class HomePage implements OnInit{
         let modal = this.modalCtrl.create(Qrcode);
         modal.present();
     }
-	
-	goSetup() {
+
+    goSetup() {
         let modal = this.modalCtrl.create(Help);
         modal.present();
     }
-	
-	openOrderList(){
-		let modal = this.modalCtrl.create(OrderList);
+
+    openOrderList(){
+        let modal = this.modalCtrl.create(OrderList);
         modal.onDidDismiss(() => {
             // this.jpush.setBadge(parseInt(localStorage.getItem('WECHATBADGE')));
             // this.jpush.setApplicationIconBadgeNumber(parseInt(localStorage.getItem('WECHATBADGE')));
@@ -430,7 +430,7 @@ export class HomePage implements OnInit{
 
         });
         modal.present();
-	}
+    }
 
     openRewardRankingModal(){
         let modal = this.modalCtrl.create(RewardRanking);
