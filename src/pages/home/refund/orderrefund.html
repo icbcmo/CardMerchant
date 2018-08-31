@@ -3,15 +3,14 @@
 		<button ion-button small clear (click)="dismiss()">
 			<ion-icon ios="ios-arrow-back"></ion-icon>
 		</button>
-		<ion-title>调单</ion-title>
+		<ion-title>調單</ion-title>
 	</ion-navbar>
 </ion-header>
 <ion-content>
-	<p class="hint">* 温馨提示：如未能在<span class="color">“调单到期日”</span>前提供相关文件，您有可能会承担<span class="color">“退款”</span>的后果。</p>
+	<p class="hint">* 溫馨提示：如未能在<span class="color">“調單到期日”</span>前提供相關文件，您有可能會承擔<span class="color">“退款”</span>的後果。</p>
 	<ion-refresher (ionRefresh)="doRefresh($event)">
 		<ion-refresher-content></ion-refresher-content>
 	</ion-refresher>
-
 	<!--<ion-list class="single-list">
 		<ion-item *ngFor="let i of [1,2,3,4,5]; let key = index">
 			<div class="left">
@@ -27,8 +26,8 @@
 	<ion-list class="single-list">
 		<ion-item *ngFor="let item of items;">
 			<div class="left">
-				<p class="p1">交易金额：<span class="color">{{item.field85}} 元</span></p>
-				<p class="p2">调单到期日：{{item.field92}}</p>
+				<p class="p1">交易金額：<span class="color">{{item.field85}} 元</span></p>
+				<p class="p2">調單到期日：{{item.field92}}</p>
 			</div>
 			<div class="right" item-end>
 				<button ion-button class="button1" *ngIf="item.status == 3 " (click)="toDetail(item,true)">立即處理</button>

@@ -17,6 +17,8 @@ declare var localStorage: any;
 
 export class ContactPage {
 	BtnDisable: boolean = false;
+    Mobile: String = "";
+    User: String = "";
 	
     constructor(
         public platform: Platform,
@@ -34,6 +36,8 @@ export class ContactPage {
 		if(!uid){
 			this.BtnDisable = true;
 		}
+		this.Mobile = localStorage.getItem("MOBILE");
+		this.User = localStorage.getItem("NAME");
     }
 
     openUserMgt(){
