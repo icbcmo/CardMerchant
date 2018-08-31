@@ -37,8 +37,8 @@
                 <div class="left">
                     <p class="p1">{{data.cardNo.substr(0,1)=='4'?'VISA':(data.cardNo.substr(0,1)=='5'?'MASTER':'CUP')}}</p>
                     <p class="p2">{{data.cardNo.substr(0,4)}}********{{data.cardNo.substr(-4)}}</p>
-                    <p class="p3">清算日期：<span class="span1">{{data.setDate}}</span></p>
-                    <p class="p3">交易日期：<span class="span1">{{data.txnDate}} {{data.txnTime}}</span></p>
+                    <p class="p3">清算日期：<span class="span1">{{data.setDate.substr(0,4)}}-{{data.setDate.substr(4,2)}}-{{data.setDate.substr(6,2)}}</span></p>
+                    <p class="p3">交易日期：<span class="span1">{{data.txnDate.substr(0,4)}}-{{data.txnDate.substr(4,2)}}-{{data.txnDate.substr(6,2)}} {{data.txnTime.substr(0,2)}}:{{data.txnTime.substr(2,2)}}:{{data.txnTime.substr(4,2)}}</span></p>
                     <p class="p3">授權賬號：<span class="span1">{{data.authCode}}</span></p>
                     <p class="p3">流水：<span class="span1">{{data.transactionRef}}</span></p>
                 </div>
@@ -82,7 +82,9 @@
     <ion-content (click)="$event.stopPropagation()">
         <p class="p1">篩選</p>
         <p class="p2">消費金額</p>
-        <ion-input class="input1" type="number" placeholder="請輸入消費金額" #eeee></ion-input>
+        <ion-input class="input1" type="number" placeholder="請輸入消費金額" #filteramount></ion-input>
+        <p class="p2">流水號</p>
+        <ion-input class="input1" type="tel" placeholder="請輸入流水號" #filtertrxno></ion-input>
         <p class="p2">交易日期</p>
         <div class="div1">
             <ion-datetime class="input2" displayFormat="YYYY-MM-DD" pickerFormat="YYYY-MM-DD" [(ngModel)]="tradeDate1" ></ion-datetime>
@@ -98,7 +100,7 @@
         </ul>
 
         <button class="button1" ion-button color="primary" block  menuClose="filterMenu"
-                (click)="doFilter(eeee.value)">確定</button>
+                (click)="doFilter(filteramount.value,filtertrxno.value)">確定</button>
 
     </ion-content>
 

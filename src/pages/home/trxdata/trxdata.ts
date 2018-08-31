@@ -42,8 +42,9 @@ export class Trxdata implements OnInit{
         this.masterClick = this.masterClick?false:true;
     }
 
-    doFilter(eee){
-        console.log(eee);
+    doFilter(filteramount,filtertrxno){
+        console.log(filteramount);
+        console.log(filtertrxno);
         console.log(this.tradeDate1);
         console.log(this.tradeDate2);
         console.log(this.cpuClick);

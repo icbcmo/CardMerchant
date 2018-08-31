@@ -21,6 +21,8 @@ export class MyReward implements OnInit{
     myWeekData:any;
     myDayData:any;
 
+
+    //待入賬-1；已入賬-2
     constructor(public reportDataService:ReportDataService,
                 public loadingCtrl: LoadingController,
                 public viewCtrl: ViewController,
