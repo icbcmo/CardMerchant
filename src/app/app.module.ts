@@ -36,6 +36,7 @@ import {RefundProgress} from "../pages/home/refund/refundprogress";
 import {RefundDetail} from "../pages/home/refund/refunddetail";
 import {CommonRefund} from "../pages/home/refund/commonrefund";
 import {WeixinRefund} from "../pages/home/refund/weixinrefund";
+import {RefundqrscannerPage} from "../pages/home/refund/refundqrscanner/refundqrscanner";
 import {ShowImage} from "../pages/home/refund/showimage";
 import {Wrongtrx} from "../pages/home/wrongtrx/wrongtrx";
 import {OrderRefund} from "../pages/home/refund/orderrefund";
@@ -87,6 +88,7 @@ import {PopoverPage} from "../pages/home/refund/popoverpage";
 		RefundDetail,
 		CommonRefund,
 		WeixinRefund,
+        RefundqrscannerPage,
 		ShowImage,
 		UserMgt,
 		AddUser,
@@ -142,6 +144,7 @@ import {PopoverPage} from "../pages/home/refund/popoverpage";
 		RefundDetail,
 		CommonRefund,
 		WeixinRefund,
+        RefundqrscannerPage,
 		ShowImage,
         ScanRecord,
         Help,
