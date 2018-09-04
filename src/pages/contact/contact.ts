@@ -32,8 +32,9 @@ export class ContactPage {
     }
 
     ngOnInit() {
-		var uid = localStorage.getItem('UID');
-		if(!uid){
+		let uid = localStorage.getItem('UID');
+        let level = localStorage.getItem('LEVEL');
+		if(!uid || level == 'SECONDCLASS'){
 			this.BtnDisable = false;
 		}
 		this.Mobile = localStorage.getItem("MOBILE");

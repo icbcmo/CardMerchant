@@ -17,7 +17,7 @@
             微信退款
         </button>
     </ion-list>
-    <ion-list no-lines class="item_list">
+    <ion-list no-lines class="item_list" *ngIf="BtnDisable">
         <button ion-item (click)="goRefundVerify()">
             退款审批
         </button>
