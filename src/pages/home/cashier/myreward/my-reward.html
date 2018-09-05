@@ -97,7 +97,7 @@
             <ion-row *ngFor="let data of myData">
                 <ion-col col-3>{{data.field4}}分</ion-col>
                 <ion-col col-6 text-center>{{data.datetime}}</ion-col>
-                <ion-col col-3 text-right [class]="data.status==1?'':'color'" >{{data.status==1?'待入賬':'已入賬'}}</ion-col>
+                <ion-col col-3 text-right [ngClass]="data.status==1?'':'color'" >{{data.status==1?'待入賬':'已入賬'}}</ion-col>
             </ion-row>
         </ion-card-content>
 

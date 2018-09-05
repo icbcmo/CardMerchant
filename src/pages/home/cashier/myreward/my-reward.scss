@@ -13,8 +13,9 @@ my-reward{
       border-radius: 8px; box-shadow: 0 0 10px 2px #f1e7e4;
       .card-header{display: flex; justify-content: space-between; font-weight: bold;}
       .card-content{
+        padding-bottom: 0px;
         .row{
-          border-top: 1px solid #eeeeee; padding: 12px 0;
+          border-top: 1px solid #eeeeee; padding: 14px 0;
           .col{
             padding: 0; white-space: nowrap;
             &.color{color: #548afe;}
