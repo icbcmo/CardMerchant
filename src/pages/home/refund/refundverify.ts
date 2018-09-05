@@ -31,7 +31,7 @@ export class RefundVerify implements OnInit{
     ) {
     }
 
-    loadData(){
+    loadData(fn?:any){
         var data = {
             sessionid: localStorage.getItem('SESSIONID'),
             field1: 1 //1-退款列表 2-机器问题列表
@@ -72,6 +72,9 @@ export class RefundVerify implements OnInit{
                         }
                     }
                 }
+                setTimeout(() => {
+                    if(fn) fn();
+                },0);
             }else{
                 this.alertCtrl.create({
                     message: Object(data).message,
@@ -166,18 +169,19 @@ export class RefundVerify implements OnInit{
 		loading.present();
 		this.cardMerchantService.approverequest(data).toPromise().then(data=> {
 			console.log(Object(data));
-			loading.dismiss();
 			if(Object(data).code == 1){
+                loading.dismiss();
                 localStorage.clear();
                 let modal = this.modalCtrl.create(SigninPage);
                 modal.present();
 			}
 			if(Object(data).code == 0){
-				this.tipService.show('提交成功').then( () => {
-						//this.viewCtrl.dismiss();
-                    this.loadData();
+                this.loadData( () => {
+                    loading.dismiss();
+                    this.tipService.show('提交成功');
                 });
 			}else{
+                loading.dismiss();
 				this.alertCtrl.create({
 						message: Object(data).message,
 						buttons: ['确定']
@@ -237,6 +241,9 @@ export class RefundVerify implements OnInit{
 	
 	goRefundDetail(item){
 		let modal = this.modalCtrl.create(RefundDetail, {item: item, btn: true});
+        modal.onDidDismiss(data => {
+            this.loadData();
+        });
         modal.present();
 	}
 	
@@ -257,18 +264,19 @@ export class RefundVerify implements OnInit{
         loading.present();
         this.cardMerchantService.deleterequest(data).toPromise().then(data=> {
             console.log(Object(data));
-            loading.dismiss();
             if(Object(data).code == 1){
+                loading.dismiss();
                 localStorage.clear();
                 let modal = this.modalCtrl.create(SigninPage);
                 modal.present();
             }
             if(Object(data).code == 0){
-                this.tipService.show('已拒絕審批成功').then( () => {
-                    //this.viewCtrl.dismiss();
-                    this.loadData();
+                this.loadData( () => {
+                    loading.dismiss();
+                    this.tipService.show('已拒絕審批成功');
                 });
             }else{
+                loading.dismiss();
                 this.alertCtrl.create({
                     message: Object(data).message,
                     buttons: ['确定']

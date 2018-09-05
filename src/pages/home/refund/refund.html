@@ -7,12 +7,12 @@
     </ion-navbar>
 </ion-header>
 <ion-content>
-    <ion-list no-lines class="item_list">
+    <ion-list no-lines class="item_list" *ngIf="!BtnDisable">
         <button ion-item (click)="goCommonRefund()">
             普通退款
         </button>
     </ion-list>
-    <ion-list no-lines class="item_list">
+    <ion-list no-lines class="item_list" *ngIf="!BtnDisable">
         <button ion-item (click)="goWeixinRefund()">
             微信退款
         </button>
