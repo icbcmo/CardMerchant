@@ -3,6 +3,7 @@ import {Component, OnInit} from '@angular/core';
 import {CardMerchantService} from "../../../service/card-merchant.service";
 import {NativeStorage} from "@ionic-native/native-storage";
 import { ModalController, Platform,NavController, ViewController, NavParams } from 'ionic-angular';
+import {ShowImage} from "../refund/showimage";
 
 declare var localStorage: any;
 
@@ -43,4 +44,8 @@ export class MachineRequestDetail implements OnInit{
 		this.viewCtrl.dismiss();
 	}
 
+    showPicture(index){
+        let modal = this.modalCtrl.create(ShowImage, {items:this.item.pictures, index:index});
+        modal.present();
+    }
 }
