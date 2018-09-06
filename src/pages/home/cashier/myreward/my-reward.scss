@@ -25,3 +25,11 @@ my-reward{
     }
   }
 }
+.my-reward-alert{
+  .alert-message{
+    span{
+      position: absolute; bottom: 54px; right: 22px; font-size: 12px; color: color($colors,primary); text-decoration: underline;
+    }
+  }
+  .alert-input-group{padding-bottom: 32px;}
+}

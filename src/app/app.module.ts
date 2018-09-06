@@ -46,6 +46,7 @@ import { QRCodeModule } from 'angular2-qrcode';
 import { Camera } from '@ionic-native/camera';
 import {NativeStorage} from "@ionic-native/native-storage";
 import { Device } from '@ionic-native/device';
+import { InAppBrowser } from '@ionic-native/in-app-browser';
 import {OrderList} from '../pages/home/order/orderlist';
 import {OrderdetailsPage} from '../pages/home/order/orderdetails';
 //import {CounterService,Sse} from "../service/counter.service";
@@ -179,6 +180,7 @@ import {PopoverPage} from "../pages/home/refund/popoverpage";
 		TipService,
         NativeStorage,
         Device,
+        InAppBrowser,
         {provide: ErrorHandler, useClass: IonicErrorHandler}
     ]
 })
