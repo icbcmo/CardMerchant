@@ -18,15 +18,17 @@ export class CommonRefund implements OnInit{
 	tradeDate: any;
 	total: any = 0;
 
+	CARDNO:any;
 	@ViewChild('merchantname') merchantname: ElementRef;
 	@ViewChild('departmentname') departmentname: ElementRef;
 	@ViewChild('refundcardno4') refundcardno4: ElementRef;
-	//@ViewChild('trxdate') trxdate: ElementRef;
+	@ViewChild('trxdate') trxdate: ElementRef;
 	@ViewChild('authno') authno: ElementRef;
 	@ViewChild('trxamount') trxamount: ElementRef;
 	@ViewChild('refundamount') refundamount: ElementRef;
 	@ViewChild('applymobile') applymobile: ElementRef;
 	@ViewChild('applyname') applyname: ElementRef;
+	@ViewChild('transactionref') transactionref: ElementRef;
 
     constructor(
 		public cardMerchantService: CardMerchantService,
@@ -107,6 +109,16 @@ export class CommonRefund implements OnInit{
 				pics.push(this.pictures[i].data);
 			}
 		}
+		if(Object(this.refundamount).value == "" || Object(this.refundamount).value == undefined || Object(this.refundamount).value == "0" ){
+            this.alertCtrl.create({
+                title: '請輸入正確的退款金額!',
+                //subTitle: 'Your friend, Obi wan Kenobi, just accepted your friend request!',
+                buttons: ['OK']
+            }).present();
+		}
+		else{
+
+
 		this.alertCtrl.create({
 			title:'退款金额',
 			message: Object(this.refundamount).value,
@@ -126,7 +138,8 @@ export class CommonRefund implements OnInit{
 							merchantname: localStorage.getItem("MERCHANTNAME"),
 							departmentid: localStorage.getItem("DEPARTMENTID"),
 							departmentname: Object(this.departmentname).value,
-							refundcardno4: Object(this.refundcardno4).value,
+							//refundcardno4: Object(this.refundcardno4).value.replace(/\*/g,''),
+							refundcardno4: this.CARDNO,
 							trxdate: this.tradeDate,
 							authno: Object(this.authno).value,
 							trxamount: Object(this.trxamount).value.replace(/,/g,''),
@@ -173,10 +186,34 @@ export class CommonRefund implements OnInit{
 				}
 			]
 		}).present();
+
+        }
 	}
 
     goBack() {
         this.viewCtrl.dismiss();
     }
 
+    checkTrx(){
+        this.cardMerchantService.getRecordByDepartmentIdTransactionRef(Object(this.transactionref).value)
+			.toPromise().then(data=>{
+				console.log(data);
+				console.log(Object(data).data);
+				console.log(Object(data).data[0]);
+				console.log(Object(Object(data).data[0])[0]);
+				console.log(Object(Object(data).data[0])[0].ROW_ID);
+				let mydata = Object(Object(data).data[0])[0];
+            	this.CARDNO = mydata.CARD_NO;
+
+            	Object(this.refundcardno4).value = mydata.CARD_NO.substr(0,6)+"******"+mydata.CARD_NO.substr(-4);
+            	//this.tradeDate = mydata.TXN_DATE.substr(0,4)+"-"+mydata.TXN_DATE.substr(4,2)+"-"+mydata.TXN_DATE.substr(6,2);
+            	Object(this.trxdate).value = mydata.TXN_DATE.substr(0,4)+"-"+mydata.TXN_DATE.substr(4,2)+"-"+mydata.TXN_DATE.substr(6,2);
+                Object(this.authno).value = mydata.AUTH_CODE;
+            	//Object(this.trxamount).value = this.tipService.mone(mydata.TXN_AMOUNT/100,2,'.',',','round');
+				 Object(this.trxamount).value = (mydata.TXN_AMOUNT/100).toString();
+            	this.fatMoney('trxamount');
+
+		})
+
+	}
 }

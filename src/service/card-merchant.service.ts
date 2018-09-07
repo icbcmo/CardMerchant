@@ -293,4 +293,13 @@ export class CardMerchantService {
 
         return this.http.post(url,data);
     }
+
+    getRecordByDepartmentIdTransactionRef(trxRef) {
+        let str = "sessionId="+localStorage.getItem('SESSIONID')+"&trxRef="+trxRef;
+        let sign = this.getSignInit(str);
+        let merCert = encodeURIComponent(this.publicKey);
+        let url = this.gwUrl + 'cardmerchant/inqbytrxref?' + str + '&sign=' + sign + '&merCert=' + merCert;
+        console.log(url);
+        return this.http.get(url);
+    }
 }

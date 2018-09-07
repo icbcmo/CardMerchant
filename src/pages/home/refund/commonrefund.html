@@ -1,3 +1,4 @@
+<!--
 <ion-header>
   <ion-navbar>
     <button ion-button small clear (click)="goBack()">
@@ -24,7 +25,7 @@
     <button ion-item class="item-ios" >
       <ion-label>交易日期</ion-label>
 	  <ion-datetime displayFormat="YYYY-MM-DD" pickerFormat="YYYY-MM-DD" [(ngModel)]="tradeDate"></ion-datetime>
-      <!-- <ion-input type="text" #trxdate ></ion-input> -->
+      &lt;!&ndash; <ion-input type="text" #trxdate ></ion-input> &ndash;&gt;
     </button>
     <ion-item>
       <ion-label>授權號</ion-label>
@@ -63,3 +64,87 @@
   </div>
 
 </ion-content>
+-->
+
+
+<ion-header>
+  <ion-navbar>
+    <button ion-button small clear (click)="goBack()">
+      <ion-icon ios="ios-arrow-back"></ion-icon>
+    </button>
+    <ion-title>退款</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  <ion-list class="input_list">
+
+    <ion-item>
+      <ion-label>商戶名稱</ion-label>
+      <ion-input type="text" placeholder="請輸入商戶名稱" #merchantname ></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>部门名稱</ion-label>
+      <ion-input type="text" placeholder="請輸入部门名稱" #departmentname ></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>交易流水號</ion-label>
+      <ion-input type="text" placeholder="请输入交易流水號" #transactionref ></ion-input>
+    </ion-item>
+
+    <div padding>
+      <button ion-button color="primary" (click)="checkTrx()" block>檢查</button>
+    </div>
+
+    <ion-item>
+      <ion-label>退款卡號后4位</ion-label>
+      <ion-input type="tel" [readonly]="true" placeholder="请输入退款卡号后4位" #refundcardno4 maxlength="4"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>交易日期</ion-label>
+      <ion-input type="text" [readonly]="true"  placeholder="交易日期"  #trxdate></ion-input>
+    </ion-item>
+
+    <!--<button ion-item class="item-ios" >
+      <ion-label>交易日期</ion-label>
+      <ion-datetime  displayFormat="YYYY-MM-DD" pickerFormat="YYYY-MM-DD" [(ngModel)]="tradeDate"></ion-datetime>
+    </button>-->
+
+    <ion-item>
+      <ion-label>授權號</ion-label>
+      <ion-input type="tel" [readonly]="true" placeholder="請輸入授權號" #authno ></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>原交易金額</ion-label>
+      <ion-input type="text" [readonly]="true" placeholder="請輸入原交易金額" #trxamount (change)="fatMoney('trxamount')"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>退款金額</ion-label>
+      <ion-input type="text" placeholder="請輸入退款金額" #refundamount (change)="fatMoney('refundamount')"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>申請人</ion-label>
+      <ion-input type="text" [readonly]="true" placeholder="請輸入申請人" #applyname ></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>聯絡電話</ion-label>
+      <ion-input type="text" [readonly]="true" placeholder="請輸入聯絡電話" #applymobile ></ion-input>
+    </ion-item>
+    <ion-item class="camera">
+      <div class="top">拍照<img class="fr" src="assets/imgs/camera.png" alt="拍照" (click)="openCamera()"></div>
+      <ul class="bottom">
+        <li *ngFor="let picture of pictures;let i = index" [ngClass]="{'li2':!picture.btn}">
+          <img [class]="picture.btn?'image1':'image2'" [src]="picture.data" />
+          <img class="delete" *ngIf="picture.btn" src="assets/imgs/close_red.png" alt="關閉" (click)="delPic(i)">
+        </li>
+      </ul>
+    </ion-item>
+
+  </ion-list>
+
+  <div padding>
+    <button ion-button color="primary" (click)="submitForm()" block>提交</button>
+  </div>
+
+</ion-content>
+
