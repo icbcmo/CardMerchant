@@ -194,27 +194,12 @@ export class CardMerchantService {
         return this.http.get(url);
     }
 
-    addCounterPoints( orderid:any, orderamount:any, orderdate:any, pointsnum:any){
-        let data= {
-            "orderamount":orderamount,
-            "orderdate":orderdate,
-            "orderid":orderid,
-            "pointsnum":pointsnum,
-            "sessionid":localStorage.getItem("SESSIONID")
-        };
-
-        let str = JSON.stringify(data);
-        console.log("str:" ,str);
-
-        let sign = this.getSignInit(str);
-        let merCert = encodeURIComponent(this.publicKey);
-
-        let url = this.gwUrl+'cardmerchant/addcounterpoints'
-            +'?sign='+sign+'&merCert='+merCert;
+    addCounterPoints( data:any){
+        let url = this.gwUrl+'cardmerchant/addcounterpoints?sessionid='+localStorage.getItem("SESSIONID");
         console.log(url);
-
         return this.http.post(url,data,this.httpOptions);
     }
+
     newPointsToMoney(cardno:any, points:any){
         let data= {
             "cardno":cardno,

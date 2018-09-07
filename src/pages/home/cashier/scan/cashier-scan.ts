@@ -34,7 +34,8 @@ export class CashierScan implements OnInit{
     ngOnInit() {
         // start scanning
         this.scanSub = this.qrScanner.scan().subscribe((text: string) => {
-            this.cardMerchantService.addCounterPoints(JSON.parse(text).orderid,JSON.parse(text).orderamount,JSON.parse(text).orderdate,JSON.parse(text).pointsnum).toPromise().then(
+            console.log(text);
+            this.cardMerchantService.addCounterPoints(JSON.parse(text)).toPromise().then(
                 data => {
                     console.log(data);
                     if(Object(data).code == "1"){
@@ -43,8 +44,8 @@ export class CashierScan implements OnInit{
                         modal.present();
                     }
                     if(Object(data).code == "0"){
-                        alert(JSON.parse(text).pointsnum);
-                        this.total = this.total + parseInt(JSON.parse(text).pointsnum);
+                        alert(data);
+                        this.total = this.total + parseInt(Object(data).data.this_point);
                     }else {
                         alert(JSON.parse(text).message);
                     }
