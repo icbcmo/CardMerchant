@@ -47,8 +47,16 @@ export class CashierScan implements OnInit{
                         console.log(data);
                         alert("掃描成功，增加"+Object(data).data.this_point+"分"+",可進行下一張掃描");
                         this.total = this.total + parseInt(Object(data).data.this_point);
-                    }else {
-                        alert(JSON.parse(text).message);
+                    } else if(Object(data).code == "1"){
+                        alert("用戶已過期，請重新登錄");
+                        localStorage.clear();
+                        let modal = this.modalCtrl.create(SigninPage);
+                        modal.present();
+                    }else if(Object(data).code == "2"){
+                        alert("已失效：此二維碼已被掃描過");
+                    }
+                    else{
+                        alert(Object(data).message);
                     }
                     this.scanSub.unsubscribe(); // stop scanning
                     this.qrScanner.hide(); // hide camera preview
