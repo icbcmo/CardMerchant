@@ -1,5 +1,6 @@
-import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild, Renderer2} from '@angular/core';
 import {LoadingController, NavController, ViewController, AlertController, ModalController} from "ionic-angular";
+import { InAppBrowser } from '@ionic-native/in-app-browser';
 import {ReportDataService} from "../../../../service/report-data.service";
 import {MyRewardExchange} from "./my-reward-exchange";
 import {CardMerchantService} from "../../../../service/card-merchant.service";
@@ -29,7 +30,10 @@ export class MyReward implements OnInit{
                 public navCtrl: NavController,
                 public alertCtrl: AlertController,
                 public cardMerchantService:CardMerchantService,
-                public modalCtrl: ModalController
+                public modalCtrl: ModalController,
+                public element: ElementRef,
+                public renderer2: Renderer2,
+                private iab: InAppBrowser
     ){
         this.showType ='weekData';
 
@@ -111,12 +115,13 @@ export class MyReward implements OnInit{
         let msg = "是否兌換"+this.canExchangeMaxPoints.toString()+"積分？";
             const prompt = this.alertCtrl.create({
                 title: '兌換',
-                message: msg,
+                message: msg+`<span>申請信用卡</span>`,
+                cssClass: 'my-reward-alert',
                 inputs: [
                     {
                         name: 'cardno',
                         placeholder: '金沙聯名信用卡卡號'
-                    },
+                    }
                 ],
                 buttons: [
                     {
@@ -137,10 +142,18 @@ export class MyReward implements OnInit{
                 ]
             });
             prompt.present();
-
-
+            setTimeout(()=>{
+                let ele = document.body.querySelector(".my-reward-alert .alert-message span");
+                this.renderer2.listen(ele,"click",()=> {
+                    this.toCreditCard();
+                })
+            },0);
     }
 
+    toCreditCard(){
+        const browser = this.iab.create('https://cardstyle.icbc.com.mo/#/sub-fun/creditapply', '_blank', 'location=yes');
+        browser.show();
+    }
 
     doExchangeToCash(points:any,cardno:any) {
 
