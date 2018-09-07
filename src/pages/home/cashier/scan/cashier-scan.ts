@@ -44,7 +44,8 @@ export class CashierScan implements OnInit{
                         modal.present();
                     }
                     if(Object(data).code == "0"){
-                        alert(data);
+                        console.log(data);
+                        alert("掃描成功，增加"+Object(data).data.this_point+"分"+",可進行下一張掃描");
                         this.total = this.total + parseInt(Object(data).data.this_point);
                     }else {
                         alert(JSON.parse(text).message);
