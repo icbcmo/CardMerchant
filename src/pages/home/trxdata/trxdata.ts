@@ -21,6 +21,7 @@ export class Trxdata implements OnInit{
     start_n = 1;
     fetch_num = 20;
     DapaData =null;
+    WechatData = null;
     chart1Data = null;
     chart2Data = null;
     date1:any;
@@ -145,7 +146,7 @@ export class Trxdata implements OnInit{
             if(this.DapaData  === null || this.DapaData ==="" || this.DapaData === undefined ){
                 let loading = this.loadingCtrl.create({
                     content: 'Please wait...',
-                    //duration: 5000
+                    duration: 5000
                 });
                 loading.present();
 
@@ -180,6 +181,34 @@ export class Trxdata implements OnInit{
                         console.log(this.DapaData);
                     });
                 }
+            }
+        }
+        if(this.showType == 'wechatData'){
+            if(this.WechatData  === null || this.WechatData ==="" || this.WechatData === undefined ){
+                let loading = this.loadingCtrl.create({
+                    content: 'Please wait...',
+                    duration: 5000
+                });
+                loading.present();
+
+                this.date1 = this.getyyyyMMdd(0);
+                this.date2 = this.getyyyyMMdd(0);
+
+                let data = {
+                    sessionid:localStorage.getItem("SESSIONID"),
+                    merchantid:localStorage.getItem("MERCHANTID"),
+                    datestart:this.date2,
+                    dateend:this.date1,
+                    ref:"",
+                    amount:""
+                };
+                console.log(data);
+                this.reportDataService.getWechatTrxInfoByConditions(data).toPromise().then(data=>{
+                    console.log(data);
+                    this.WechatData = (Object(data).data)[0];
+                    loading.dismiss();
+                    console.log(this.WechatData);
+                });
             }
         }
     }

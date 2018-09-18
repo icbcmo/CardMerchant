@@ -67,11 +67,24 @@
     </div>
 
     <div [hidden]="showType !='wechatData'" >
-        <ngx-datatable
+        <!--<ngx-datatable
                 [rows]="rows"
 
                 [columns]="columns" [columnMode]="'force'" [reorderable]="false" class="bootstrap">
-        </ngx-datatable>
+        </ngx-datatable>-->
+        <ion-list class="deaList" *ngFor="let data of WechatData ">
+            <ion-card>
+                <div class="left">
+
+                    <p class="p3">金額：<span class="span1">{{data.AMOUNT}}</span></p>
+                    <p class="p3">類型：<span class="span1">{{data.TRANSTYPE}}</span></p>
+                    <p class="p3">時間：<span class="span1">{{data.TRANSTIME}}</span></p>
+                    <p class="p3">微信訂單號：<span class="span1">{{data.ALIPAY_ORDER}}</span></p>
+                    <p class="p3">參考號：<span class="span1">{{data.REFNO}}</span></p>
+                </div>
+
+            </ion-card>
+        </ion-list>
     </div>
 
 

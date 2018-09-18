@@ -20,7 +20,8 @@ export class ReportDataService {
     };
 
 
-    private gwUrl = 'http://202.175.59.29:10443/gwinternet/cardmerchant-svc/';
+    //private gwUrl = 'http://202.175.59.29:10443/gwinternet/cardmerchant-svc/';
+    private gwUrl = 'http://202.175.59.29:10443/gwinternet/mere-main-svc/';
 
     getSignInit(str:any) :any{
 
@@ -35,6 +36,20 @@ export class ReportDataService {
         return sign;
     }
 
+
+    getWechatTrxInfoByConditions(data) {
+        let str = "amount="+data.amount
+            +"&date_end_yyyymmdd="+data.dateend
+            +"&date_start_yyyymmdd="+data.datestart
+            +"&merchantid="+data.merchantid
+            +"&ref="+data.ref
+            +"&sessionid="+data.sessionid;
+        let sign = this.getSignInit(str);
+        let merCert = encodeURIComponent(this.publicKey);
+        let url = this.gwUrl + 'cardmerchant/getwechatdatabyconditions?' + str + '&sign=' + sign + '&merCert=' + merCert;
+        console.log(url);
+        return this.http.get(url);
+    }
 
     getTrxInfoByMerchantId(data) {
         let str = "dateend="+data.dateend
@@ -58,7 +73,7 @@ export class ReportDataService {
             +"&start="+data.start;
         let sign = this.getSignInit(str);
         let merCert = encodeURIComponent(this.publicKey);
-        let url = this.gwUrl + 'cardmerchant/getTrxInfoByMerchantId?' + str + '&sign=' + sign + '&merCert=' + merCert;
+        let url = this.gwUrl + 'cardmerchant/getTrxInfoByDepartmentId?' + str + '&sign=' + sign + '&merCert=' + merCert;
         console.log(url);
         return this.http.get(url);
     }

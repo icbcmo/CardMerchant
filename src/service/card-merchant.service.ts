@@ -20,7 +20,8 @@ export class CardMerchantService {
     };
 
 
-    private gwUrl = 'http://202.175.59.29:10443/gwinternet/cardmerchant-svc/';
+    //private gwUrl = 'http://202.175.59.29:10443/gwinternet/cardmerchant-svc/';
+    private gwUrl = 'http://202.175.59.29:10443/gwinternet/mere-main-svc/';
 
     getSignInit(str:any) :any{
 
