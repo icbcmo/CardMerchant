@@ -1,13 +1,29 @@
 page-qrscanner {
+  @keyframes pointer {
+    from {top: 12%;}
+    to {top: 56.5%;}
+  }
+  .all-bg{background-color: color($colors,background);}
   .content{
-    .qr-content{
-      text-align: center;
-      .div1{margin-top: 50px; font-size: 220px; color: #efabae;}
-      .div2{
-        font-size: 1.6rem;
-        .red{color:color($colors,primary);}
+    background: none transparent;
+    .vertical{
+      display: flex; flex-direction: column; position: absolute; top: 0; bottom: 0; left: 0; right: 0;
+      &:before{content: ""; display: block; height: 10px; @extend .all-bg;}
+      .bg-center{
+        display: flex;
+        &:before, &:after{content: ""; display: block; width: 10px; @extend .all-bg;}
+        .qr-content{
+          text-align: center; flex: 1; position: relative;
+          .image1{vertical-align: top; width: 100%; overflow: hidden; border: 1px solid #eaeaea;}
+          .details{
+            position: absolute; top: 0; bottom: 0; left: 0; right: 0;
+            .image2{animation: pointer 1.5s infinite alternate linear; position: absolute; left: 15%; width: 70%;}
+            .div1{font-size: 1.6rem; margin-top: 95%; min-height: 1px;}
+            .button1{width: 70%; margin: 0 auto; font-size: 1.4rem; margin-top: 40px;}
+          }
+        }
       }
-      .button1{width: 70%; margin: 0 auto; font-size: 1.4rem; margin-top: 40px;}
+      &:after{content: ""; display: block; height: 10px; flex: 1; @extend .all-bg;}
     }
   }
 }
