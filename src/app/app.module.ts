@@ -62,6 +62,7 @@ import {MyReward} from "../pages/home/cashier/myreward/my-reward";
 import {MyRewardExchange} from "../pages/home/cashier/myreward/my-reward-exchange";
 import {Trxdata} from "../pages/home/trxdata/trxdata";
 import {Help} from "../pages/home/help/help";
+import {HelpdetailPage} from "../pages/home/help/helpdetail";
 import {ScanRecord} from "../pages/home/cashier/scanrecord/scan-record";
 import { TextToSpeech } from '@ionic-native/text-to-speech';
 import {PopoverPage} from "../pages/home/refund/popoverpage";
@@ -83,6 +84,7 @@ import {PopoverPage} from "../pages/home/refund/popoverpage";
         Custservice,
         Refund,
         Help,
+        HelpdetailPage,
 		RefundVerify,
 		RefundProgress,
         ScanRecord,
@@ -149,6 +151,7 @@ import {PopoverPage} from "../pages/home/refund/popoverpage";
 		ShowImage,
         ScanRecord,
         Help,
+        HelpdetailPage,
 		UserMgt,
 		AddUser,
 		UserDetail,

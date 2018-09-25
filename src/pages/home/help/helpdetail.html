@@ -1,0 +1,17 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button small clear (click)="goBack()">
+      <ion-icon ios="ios-arrow-back"></ion-icon>
+    </button>
+    <ion-title>幫助</ion-title>
+  </ion-navbar>
+  <div class="bottom">产品使用说明</div>
+</ion-header>
+
+<ion-content>
+
+  <ul class="help-list">
+    <li *ngFor="let i of [1,2,3,4,5,6];let key = index"><img src="assets/imgs/help_detail{{key+1}}.jpg"></li>
+  </ul>
+
+</ion-content>
