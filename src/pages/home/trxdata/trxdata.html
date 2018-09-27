@@ -79,12 +79,19 @@
                     <p class="p3">金額：<span class="span1">{{data.AMOUNT}}</span></p>
                     <p class="p3">類型：<span class="span1">{{data.TRANSTYPE}}</span></p>
                     <p class="p3">時間：<span class="span1">{{data.TRANSTIME}}</span></p>
+                    <p class="p3">终端号：<span class="span1">{{data.TID}}</span></p>
                     <p class="p3">微信訂單號：<span class="span1">{{data.ALIPAY_ORDER}}</span></p>
                     <p class="p3">參考號：<span class="span1">{{data.REFNO}}</span></p>
                 </div>
 
             </ion-card>
         </ion-list>
+        <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+            <ion-infinite-scroll-content
+                    loadingSpinner="bubbles"
+                    loadingText="Loading more data...">
+            </ion-infinite-scroll-content>
+        </ion-infinite-scroll>
     </div>
 
 
@@ -94,26 +101,43 @@
 
     <ion-content (click)="$event.stopPropagation()">
         <p class="p1">篩選</p>
-        <p class="p2">消費金額</p>
-        <ion-input class="input1" type="number" placeholder="請輸入消費金額" #filteramount></ion-input>
-        <p class="p2">流水號</p>
-        <ion-input class="input1" type="tel" placeholder="請輸入流水號" #filtertrxno></ion-input>
+
+        <p class="p2" >消費金額</p>
+        <ion-input *ngIf="showType =='posData'" class="input1" type="number" placeholder="請輸入消費金額" [(ngModel)]="filteramount"></ion-input>
+        <ion-input *ngIf="showType =='wechatData'" class="input1" type="number" placeholder="請輸入消費金額" [(ngModel)]="filteramount_wechat"></ion-input>
+
+        <p class="p2" *ngIf="showType =='posData'">流水號</p>
+        <ion-input *ngIf="showType =='posData'" class="input1" type="tel" placeholder="請輸入流水號"  [(ngModel)]="filtertrxno" ></ion-input>
+
+        <p class="p2" *ngIf="showType =='wechatData'">微信訂單號</p>
+        <ion-input *ngIf="showType =='wechatData'" class="input1" type="tel" placeholder="請輸入微信訂單號" [(ngModel)]="filterwechattrxno" ></ion-input>
+        <p class="p2" *ngIf="showType =='wechatData'">參考號</p>
+        <ion-input *ngIf="showType =='wechatData'" class="input1" type="tel" placeholder="請輸入參考號" [(ngModel)]="filterrefno" ></ion-input>
+
+
         <p class="p2">交易日期</p>
-        <div class="div1">
+        <div class="div1" *ngIf="showType =='posData'">
             <ion-datetime class="input2" displayFormat="YYYY-MM-DD" pickerFormat="YYYY-MM-DD" [(ngModel)]="tradeDate1" ></ion-datetime>
             <div class="solid">ㅡ</div>
             <ion-datetime class="input2" displayFormat="YYYY-MM-DD" pickerFormat="YYYY-MM-DD" [(ngModel)]="tradeDate2"></ion-datetime>
         </div>
-        <p class="p2">交易方式</p>
-        <ul class="ul1">
+        <div class="div1" *ngIf="showType =='wechatData'">
+            <ion-datetime class="input2" displayFormat="YYYY-MM-DD" pickerFormat="YYYY-MM-DD" [(ngModel)]="tradeDate1_wechat" ></ion-datetime>
+            <div class="solid">ㅡ</div>
+            <ion-datetime class="input2" displayFormat="YYYY-MM-DD" pickerFormat="YYYY-MM-DD" [(ngModel)]="tradeDate2_wechat"></ion-datetime>
+        </div>
+
+        <p class="p2" *ngIf="showType =='posData'">交易方式</p>
+        <ul class="ul1" *ngIf="showType =='posData'">
             <li [class]="cpuClick?'select':''" (click)="cpuSelect()">CPU</li>
             <li [class]="visaClick?'select':''" (click)="visaSelect()">VISA</li>
             <li [class]="masterClick?'select':''" (click)="masterSelect()">MasterCard</li>
             <!--<li>微信交易</li>-->
         </ul>
 
-        <button class="button1" ion-button color="primary" block  menuClose="filterMenu"
-                (click)="doFilter(filteramount.value,filtertrxno.value)">確定</button>
+        <button  class="button1" ion-button color="primary" block  menuClose="filterMenu"
+                (click)="doFilter()">確定</button>
+
 
     </ion-content>
 

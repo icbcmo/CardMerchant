@@ -38,6 +38,7 @@ export class ReportDataService {
 
 
     getWechatTrxInfoByConditions(data) {
+
         let str = "amount="+data.amount
             +"&date_end_yyyymmdd="+data.dateend
             +"&date_start_yyyymmdd="+data.datestart
@@ -47,6 +48,23 @@ export class ReportDataService {
         let sign = this.getSignInit(str);
         let merCert = encodeURIComponent(this.publicKey);
         let url = this.gwUrl + 'cardmerchant/getwechatdatabyconditions?' + str + '&sign=' + sign + '&merCert=' + merCert;
+        console.log(url);
+        return this.http.get(url);
+    }
+
+    getWechatTrxInfoByConditionsAndPages(data) {
+
+        let str = "amount="+data.amount
+            +"&date_end_yyyymmdd="+data.dateend
+            +"&date_start_yyyymmdd="+data.datestart
+            +"&fetchnum="+data.fetchnum
+            +"&merchantid="+data.merchantid
+            +"&ref="+data.ref
+            +"&sessionid="+data.sessionid
+            +"&startnum="+data.startnum;
+        let sign = this.getSignInit(str);
+        let merCert = encodeURIComponent(this.publicKey);
+        let url = this.gwUrl + 'cardmerchant/getwechatdatabyconditionsandpages?' + str + '&sign=' + sign + '&merCert=' + merCert;
         console.log(url);
         return this.http.get(url);
     }
@@ -133,5 +151,23 @@ export class ReportDataService {
         return this.http.get(url);
     }
 
+    getTrxRecordByDepartmentIdTransactionConditions(data) {
+
+
+        let str = "dateEnd="+data.dateend
+            +"&dateStart="+data.datestart
+            +"&fetchNum="+data.fetchnum
+            +"&sessionId="+data.sessionId
+            +"&start="+data.start
+            +"&transactionAmount="+data.transactionAmount
+            +"&transactionChannel="+data.transactionChannel
+            +"&transactionRef="+data.transactionRef
+        ;
+        let sign = this.getSignInit(str);
+        let merCert = encodeURIComponent(this.publicKey);
+        let url = this.gwUrl + 'cardmerchant/inqbytrxconditions?' + str + '&sign=' + sign + '&merCert=' + merCert;
+        console.log(url);
+        return this.http.get(url);
+    }
 
 }

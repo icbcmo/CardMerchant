@@ -35,6 +35,7 @@ export class CashierScan implements OnInit{
         // start scanning
         this.scanSub = this.qrScanner.scan().subscribe((text: string) => {
             console.log(text);
+            console.log(JSON.parse(text));
             this.cardMerchantService.addCounterPoints(JSON.parse(text)).toPromise().then(
                 data => {
                     console.log(data);
