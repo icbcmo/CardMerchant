@@ -8,20 +8,23 @@
 </ion-header>
 <ion-content>
 
-  <ion-list no-lines class="item_list">
-    <button ion-item>用戶管理</button>
+  <ion-list no-lines class="item_list" (click)="toDetail(0)">
+    <button ion-item>账户管理</button>
   </ion-list>
-  <ion-list no-lines class="item_list">
-    <button ion-item>退款幫助</button>
-  </ion-list>
-  <ion-list no-lines class="item_list">
+  <ion-list no-lines class="item_list" (click)="toDetail(1)">
     <button ion-item>調單幫助</button>
   </ion-list>
-  <ion-list no-lines class="item_list">
-    <button ion-item>機器服務</button>
+  <ion-list no-lines class="item_list" (click)="toDetail(2)">
+    <button ion-item>退款幫助</button>
   </ion-list>
-  <ion-list no-lines class="item_list">
-    <button ion-item>審批管理</button>
+  <ion-list no-lines class="item_list" (click)="toDetail(3)">
+    <button ion-item>报修帮助</button>
+  </ion-list>
+  <ion-list no-lines class="item_list" (click)="toDetail(4)">
+    <button ion-item>交易查询</button>
+  </ion-list>
+  <ion-list no-lines class="item_list" (click)="toDetail(5)">
+    <button ion-item>收银员奖励计划</button>
   </ion-list>
 
 </ion-content>

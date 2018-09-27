@@ -1,0 +1,15 @@
+page-helpdetail {
+  > .header{
+    .bottom{padding: 20px 0 45px; text-align: center; color: #fff; font-size: 2.4rem;}
+  }
+  > .content{
+    background-color: color($colors,background);
+    .help-list{
+      padding: 11px 10px 0;
+      li{
+        margin-bottom: 10px; border-radius: 6px; border: 1px solid #eaeaea; overflow: hidden;
+        img{vertical-align: top;}
+      }
+    }
+  }
+}
