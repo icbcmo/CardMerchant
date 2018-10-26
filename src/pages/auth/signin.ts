@@ -5,6 +5,8 @@ import { NavController, AlertController, LoadingController } from 'ionic-angular
 import {TabsPage} from "../tabs/tabs";
 import {Device} from "@ionic-native/device";
 import {JPush} from "@jiguang-ionic/jpush";
+import CryptoJS from 'crypto-js';
+import {debug} from "util";
 
 declare var localStorage: any;
 
@@ -14,6 +16,8 @@ declare var localStorage: any;
 })
 export class SigninPage implements OnInit{
 
+    private secureKey: string;
+    private secureIV: string;
 
     // @ViewChild('eyes') eyes: ElementRef;
     // @ViewChild('ps') ps: ElementRef;
@@ -28,8 +32,11 @@ export class SigninPage implements OnInit{
                 public jpush: JPush,
                 device: Device
 	){
-        console.log("SigninPage constructor")
+        this.secureKey = "2a039a0225dadab2251b426dbf291f9d";
+        this.secureIV = "34c219ae63a240cb";
+        console.log("SigninPage constructor");
     }
+
 
     ionViewWillEnter(){
         console.log("SigninPage ionViewWillEnter")
@@ -41,9 +48,6 @@ export class SigninPage implements OnInit{
                 this.navCtrl.push(TabsPage);
         })
     }
-
-
-
 
     ngOnInit(){
         console.log("SigninPage Oninit")
@@ -75,9 +79,10 @@ export class SigninPage implements OnInit{
 		loading.present();
 		
         this.cardMerchantService.checkVerifyCode_rsa(acc,psw).toPromise().then(data=> {
+            Object(data).data = this.decryption(Object(data).data);
             console.log(data);
-			loading.dismiss();
-			//localStorage.clear();
+            loading.dismiss();
+            //localStorage.clear();
             localStorage.setItem('MERCHANTCIF', Object(Object(data).data).merchantCif);
             localStorage.setItem('MERCHANTCIFNAME', Object(Object(data).data).merchantCifName);
             localStorage.setItem('MERCHANTID', Object(Object(data).data).merchantId);
@@ -94,16 +99,17 @@ export class SigninPage implements OnInit{
             localStorage.setItem('WECHATBADGE', 0);
             localStorage.setItem('RETRIEVALBADGE', 0);
 
-            if(Object(data).code === "0")
+            if (Object(data).code === "0")
                 this.navCtrl.push(TabsPage);
-            else if(Object(data).code === "1")
+            else if (Object(data).code === "1")
                 this.presentAlert("手機號碼不合法")
-            else if(Object(data).code === "2")
+            else if (Object(data).code === "2")
                 this.presentAlert("驗證碼不正確")
             else if (Object(data).code === "3")
                 this.presentAlert("驗證碼已過期，請重新獲取")
             else
                 this.presentAlert("網絡故障，請稍後再試")
+
         }, ()=>{
 			loading.dismiss();
 			loading = this.loadingCtrl.create({
@@ -120,6 +126,20 @@ export class SigninPage implements OnInit{
     //     this.passwordtype = this.passwordtype == 'password'? 'tel':'password';
     //
     // }
+
+    decryption(data) {
+        let key = "34c219ae63a240cb";  // 加密秘钥
+
+        var encrypted1 = CryptoJS.enc.Base64.parse(data);
+        var decrypted = CryptoJS.AES.decrypt(data, CryptoJS.enc.Utf8.parse(key), {
+            iv:CryptoJS.enc.Utf8.parse(key),
+            mode: CryptoJS.mode.CBC,
+            padding: CryptoJS.pad.NoPadding
+        });
+        decrypted = CryptoJS.enc.Utf8.stringify(decrypted);// 转换为 utf8 字符串
+        console.log("decrypted="+decrypted);
+        return decrypted;
+    }
 
     presentAlert(note) {
         let alert = this.alertCtrl.create({
