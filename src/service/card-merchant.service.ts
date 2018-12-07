@@ -48,7 +48,19 @@ export class CardMerchantService {
 
         return this.http.get(url);
     }
-	
+
+
+    scancoupon(data){
+        let str = JSON.stringify(data);
+        let sign = this.getSignInit(str);
+        let merCert = encodeURIComponent(this.publicKey);
+        let url = this.gwUrl + 'cardmerchant/eshopgetproductcode' + '?sign=' + sign + '&merCert=' + merCert;
+        console.log(url);
+
+        return this.http.post(url,data);
+    }
+
+
 	addUser(data) {
 		let str = JSON.stringify(data);
 		let sign = this.getSignInit(str);
@@ -287,5 +299,15 @@ export class CardMerchantService {
         let url = this.gwUrl + 'cardmerchant/inqbytrxref?' + str + '&sign=' + sign + '&merCert=' + merCert;
         console.log(url);
         return this.http.get(url);
+    }
+
+    scanEshopCode() {
+        let url = this.gwUrl + 'cardmerchant/eshopgetproductcode';
+        console.log(url);
+        let data = {
+            comment:"1234"
+        }
+
+        return this.http.post(url,data);
     }
 }

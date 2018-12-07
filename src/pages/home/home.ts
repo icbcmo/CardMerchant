@@ -24,6 +24,7 @@ import {RewardRanking} from "./cashier/rewardranking/reward-ranking";
 import {MyReward} from "./cashier/myreward/my-reward";
 import {Trxdata} from "./trxdata/trxdata";
 import {TextToSpeech} from "@ionic-native/text-to-speech";
+import {CardMerchantService} from "../../service/card-merchant.service";
 
 const EventSource: any = window['EventSource'];
 
@@ -68,6 +69,7 @@ export class HomePage implements OnInit{
         device: Device,
         private tts: TextToSpeech,
         public modalCtrl: ModalController,
+        public cardMerchantService:CardMerchantService
     ) {
 
         this.orderNumOB = this.getObservableWechat();
@@ -451,4 +453,9 @@ export class HomePage implements OnInit{
             .then(() => console.log('Success'))
             .catch((reason: any) => console.log(reason));
     }
+    testVerifySign(){
+        //let s ="{\"DATE\":\"2018-11-06 18:49:53\",\"TRXAMOUNT\":\"0.04\",\"sign\":\"eQIWHaIXiBCrd0DXm1VsiqlMj5bOpGRfrMf1hsfro1HKYOoCXttfGFj7smA0WtX3n1r953yI1SlzWvbBIJF8/BIRXbAa6y696/5BW78Iwr4byI5SaJK/8l3GU8BZxbB0opGPVy9fIqV5tBnmq3pTzfmi/x4xrQBuUckwLP+yKfA=\",\"MID\":\"1000440001\",\"DELIVERYCODE\":\"a5256ece581a415f893020c06069a2f0\",\"REF_ID\":\"ESHOP20181106184852713574204\"}";
+        let result = this.cardMerchantService.scanEshopCode();
+    }
+
 }
