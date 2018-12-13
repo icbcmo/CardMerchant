@@ -25,21 +25,21 @@ export namespace CounterActions {
 
     export class ResetAction implements Action {
         constructor(public payload: number){
-            console.log('ResetAction')
+            //console.log('ResetAction')
         }
         readonly type = Types.RESET;
     }
 
     export class ResetSuccessAction implements Action {
         constructor(public payload: number){
-            console.log('ResetSuccessAction')
+            //console.log('ResetSuccessAction')
         }
         readonly type = Types.RESET_SUCCESS;
     }
 
     export class IncrementSuccessAction implements Action {
         constructor(public payload: number){
-            console.log('IncrementSuccessAction',payload)
+            //console.log('IncrementSuccessAction',payload)
         }
         readonly type = Types.INCREMENT_SUCCESS;
         readonly ss = this.payload;

@@ -39,15 +39,15 @@ export class AddUser implements OnInit{
 			merchantId: localStorage.getItem('MERCHANTID'),
 			sessionId: localStorage.getItem('SESSIONID')
 		};
-		console.log(data);
+		//console.log(data);
 		this.cardMerchantService.getShopList(data).toPromise().then(data=> {
-			console.log(Object(data));
+			//console.log(Object(data));
 			this.shopList = Object(data).data[0];
 		});
 	}
 
     telInspect(value){
-    	console.log(value);
+    	//console.log(value);
         if(!/(^\d{8}$)|(^\d{11}$)/.test(value)){
             this.tipService.show('手機號不合法，請重新輸入');
             Object(this.Mobile).value = '';
@@ -64,14 +64,14 @@ export class AddUser implements OnInit{
 				name: Object(this.Name).value,
 				departmentid: Object(this.Departmentid).value,
 			};
-			console.log(data);
+			//console.log(data);
 			let loading = this.loadingCtrl.create({
 				content: 'Please wait...',
 				duration: 5000
 			});
 			loading.present();
 			this.cardMerchantService.addUser(data).toPromise().then(data=> {
-				console.log(Object(data));
+				//console.log(Object(data));
 				loading.dismiss();
                 if(Object(data).code ==1){
                     localStorage.clear();

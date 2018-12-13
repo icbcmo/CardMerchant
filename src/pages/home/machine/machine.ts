@@ -40,9 +40,9 @@ export class Machine implements OnInit{
 			sessionid: localStorage.getItem('SESSIONID'),
 			field1: 2  //1-退款列表 2-机器问题列表
 		};
-		console.log(data);
+		//console.log(data);
 		this.cardMerchantService.getrequestlist(data).toPromise().then(data=> {
-			console.log(Object(data));
+			//console.log(Object(data));
 			if(Object(data).code ==1){
                 localStorage.clear();
                 let modal = this.modalCtrl.create(SigninPage);

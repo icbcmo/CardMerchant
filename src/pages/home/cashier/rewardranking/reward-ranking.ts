@@ -32,7 +32,7 @@ export class RewardRanking implements OnInit{
         loading.present();
 
         this.reportDataService.getScanDayRanking156().toPromise().then(data=>{
-            console.log(data);
+            //console.log(data);
             if(Object(data).code == "1"){
                 localStorage.clear();
                 let modal = this.modalCtrl.create(SigninPage);
@@ -58,10 +58,10 @@ export class RewardRanking implements OnInit{
         });
         loading.present();
 
-        console.log(this.showType);
+        //console.log(this.showType);
         if(this.showType == 'weekData'){
             this.reportDataService.getScanWeekRanking156().toPromise().then(data=>{
-                console.log(data);
+                //console.log(data);
                 if(Object(data).code == "1"){
                     localStorage.clear();
                     let modal = this.modalCtrl.create(SigninPage);
@@ -83,7 +83,7 @@ export class RewardRanking implements OnInit{
         }
         else if(this.showType == 'todayData'){
             this.reportDataService.getScanDayRanking156().toPromise().then(data=>{
-                console.log(data);
+                //console.log(data);
                 if(Object(data).code == "1"){
                     localStorage.clear();
                     let modal = this.modalCtrl.create(SigninPage);

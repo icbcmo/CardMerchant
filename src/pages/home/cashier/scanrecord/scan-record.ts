@@ -35,18 +35,18 @@ export class ScanRecord implements OnInit{
     }
     //沟崽子们
     ionViewDidLoad(){
-        console.log('触发ionViewDidLoad');
+        //console.log('触发ionViewDidLoad');
     }
 
     ionViewWillEnter(){
-        console.log('触发ionViewWillEnter');
+        //console.log('触发ionViewWillEnter');
         let loading = this.loadingCtrl.create({
             content: 'Please wait...',
         });
         loading.present();
 
         this.reportDataService.getScanWeekList156().toPromise().then(data=>{
-            console.log(data);
+            //console.log(data);
             if(Object(data).code == "1"){
                 localStorage.clear();
                 let modal = this.modalCtrl.create(SigninPage);
@@ -55,7 +55,7 @@ export class ScanRecord implements OnInit{
             this.weekData = Object(Object(data).data);
             //this.myTotal = Object(data).message;
             this.reportDataService.getCashier157().toPromise().then( data=>{
-                console.log(data);
+                //console.log(data);
                 this.myTotal = Object(Object(data).data)[0].field8;
                 loading.dismiss();
             })
@@ -65,19 +65,19 @@ export class ScanRecord implements OnInit{
     }
 
     ionViewDidEnter(){
-        console.log('触发ionViewDidEnter');
+        //console.log('触发ionViewDidEnter');
     }
 
     ionViewWillLeave(){
-        console.log('触发ionViewWillLeave');
+        //console.log('触发ionViewWillLeave');
     }
 
     ionViewDidLeave(){
-        console.log('触发ionViewDidLeave');
+        //console.log('触发ionViewDidLeave');
     }
 
     ionViewWillUnload(){
-        console.log('触发ionViewWillUnload');
+        //console.log('触发ionViewWillUnload');
     }
 
     ngOnInit()

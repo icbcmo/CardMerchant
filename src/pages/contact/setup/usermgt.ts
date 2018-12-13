@@ -39,7 +39,7 @@ export class UserMgt implements OnInit{
 	ionViewWillEnter(){
 		var data = localStorage.getItem('SESSIONID');
 		this.cardMerchantService.getSecondUsers(data).toPromise().then(data => {
-            console.log(data);
+            //console.log(data);
             if(Object(data).code ==1){
                 localStorage.clear();
                 let modal = this.modalCtrl.create(SigninPage);
@@ -63,7 +63,7 @@ export class UserMgt implements OnInit{
 	}
 	
 	openUserDetail(user){
-		console.log(user);
+		//console.log(user);
 		let modal = this.modalCtrl.create(UserDetail, {user:user});
         modal.present();
 	}
@@ -74,7 +74,7 @@ export class UserMgt implements OnInit{
 	}
 	
 	delUser(e,userid){
-		console.log(e);
+		//console.log(e);
 		e.stopPropagation();
 		this.alertCtrl.create({
 						message: '您确定要删除用户？',
@@ -83,7 +83,7 @@ export class UserMgt implements OnInit{
 							text: '取消',
 							role: 'cancel',
 							handler: () => {
-								console.log('Cancel clicked');
+								//console.log('Cancel clicked');
 							}
 						},
 						{
@@ -94,13 +94,13 @@ export class UserMgt implements OnInit{
 									Sessionid: localStorage.getItem('SESSIONID'),
 									deleteuid: userid
 								};
-								console.log(data);
+								//console.log(data);
 								let loading = this.loadingCtrl.create({
 									content: 'Please wait...'
 								});
 								loading.present();
 								this.cardMerchantService.deleteseconduser(data).toPromise().then(data=> {
-									console.log(Object(data));
+									//console.log(Object(data));
 									loading.dismiss();
 									if(Object(data).code == 0){
 										this.tipService.show('提交成功').then( () => {

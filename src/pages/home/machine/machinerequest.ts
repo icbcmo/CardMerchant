@@ -44,7 +44,7 @@ export class MachineRequest implements OnInit{
         Object(this.machinedepartmentname).value = localStorage.getItem('DEPARTMENTNAME');
         Object(this.machineapplyname).value = localStorage.getItem('NAME');
         Object(this.machineapplymobile).value = localStorage.getItem('MOBILE');
-		console.log(this);
+		//console.log(this);
 		this.items = ["机器","纸张","屏幕"];
 	
 		this.pictures=[
@@ -131,14 +131,14 @@ export class MachineRequest implements OnInit{
 			machinerequestdesc: Object(this.machinerequestdesc).value,
 			machineattach: pics
 		};
-		console.log(data);
+		//console.log(data);
 		let loading = this.loadingCtrl.create({
 				content: 'Please wait...',
 				duration: 5000
 			});
 		loading.present();
 		this.cardMerchantService.addmachinerequest(data).toPromise().then(data=> {
-			console.log(Object(data));
+			//console.log(Object(data));
 			loading.dismiss();
             if(Object(data).code ==1){
                 localStorage.clear();

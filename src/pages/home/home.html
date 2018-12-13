@@ -32,26 +32,26 @@
           <p class="bottom">幫助</p>
         </ion-col>
       </ion-row>
-      <ion-row class="row2" *ngIf="!BtnDisable">
-        <ion-col col-3>
-          <div class="top">
-            <img class="image1" src="assets/imgs/index_pa6_2.png" alt="掃碼" (click)="openCashierScanModal()">
-          </div>
-          <p class="bottom">掃描獎勵</p>
-        </ion-col>
-        <ion-col col-3>
-          <div class="top">
-            <img class="image1" src="assets/imgs/index_pa7_2.png" alt="我的積分" (click)="openMyRewardModal()">
-          </div>
-          <p class="bottom">我的積分</p>
-        </ion-col>
-        <ion-col col-3>
-          <div class="top">
-            <img class="image1" src="assets/imgs/index_pa8_2.png" alt="獎勵排名" (click)="openRewardRankingModal()">
-          </div>
-          <p class="bottom">獎勵排名</p>
-        </ion-col>
-      </ion-row>
+      <!--<ion-row class="row2" *ngIf="!BtnDisable">-->
+        <!--<ion-col col-3>-->
+          <!--<div class="top">-->
+            <!--<img class="image1" src="assets/imgs/index_pa6_2.png" alt="掃碼" (click)="openCashierScanModal()">-->
+          <!--</div>-->
+          <!--<p class="bottom">掃描獎勵</p>-->
+        <!--</ion-col>-->
+        <!--<ion-col col-3>-->
+          <!--<div class="top">-->
+            <!--<img class="image1" src="assets/imgs/index_pa7_2.png" alt="我的積分" (click)="openMyRewardModal()">-->
+          <!--</div>-->
+          <!--<p class="bottom">我的積分</p>-->
+        <!--</ion-col>-->
+        <!--<ion-col col-3>-->
+          <!--<div class="top">-->
+            <!--<img class="image1" src="assets/imgs/index_pa8_2.png" alt="獎勵排名" (click)="openRewardRankingModal()">-->
+          <!--</div>-->
+          <!--<p class="bottom">獎勵排名</p>-->
+        <!--</ion-col>-->
+      <!--</ion-row>-->
       <ion-row class="row3">
         <ion-col>
           <div class="news">
@@ -107,49 +107,40 @@
       </ion-col>
     </ion-row>
 
+  </ion-grid>
+  <!--<ion-grid class="grid2" *ngIf="BtnDisable">-->
+    <!--<ion-row class="row1">-->
+      <!--<ion-col>-->
+        <!--<span class="circle2">●</span>收銀員獎勵計劃-->
+      <!--</ion-col>-->
+    <!--</ion-row>-->
     <!--<ion-row class="row2">-->
       <!--<ion-col col-3>-->
         <!--<div class="top">-->
-          <!--<img class="image1" src="assets/imgs/index_pa5.png" alt="test" (click)="testVerifySign()">-->
+          <!--<img class="image2" src="assets/imgs/index_pa6.png" alt="掃碼" (click)="openCashierScanModal()">-->
         <!--</div>-->
-        <!--<p class="bottom">test</p>-->
+        <!--<p class="bottom">掃描獎勵</p>-->
       <!--</ion-col>-->
-    <!--</ion-row>-->
-
-  </ion-grid>
-  <ion-grid class="grid2" *ngIf="BtnDisable">
-    <ion-row class="row1">
-      <ion-col>
-        <span class="circle2">●</span>收銀員獎勵計劃
-      </ion-col>
-    </ion-row>
-    <ion-row class="row2">
-      <ion-col col-3>
-        <div class="top">
-          <img class="image2" src="assets/imgs/index_pa6.png" alt="掃碼" (click)="openCashierScanModal()">
-        </div>
-        <p class="bottom">掃描獎勵</p>
-      </ion-col>
-      <ion-col col-3>
-        <div class="top">
-          <img class="image2" src="assets/imgs/index_pa7.png" alt="我的積分" (click)="openMyRewardModal()">
-        </div>
-        <p class="bottom">我的積分</p>
-      </ion-col>
-      <ion-col col-3>
-        <div class="top">
-          <img class="image2" src="assets/imgs/index_pa8.png" alt="獎勵排名" (click)="openRewardRankingModal()">
-        </div>
-        <p class="bottom">獎勵排名</p>
-      </ion-col>
       <!--<ion-col col-3>-->
         <!--<div class="top">-->
-          <!--<img class="image2" src="assets/imgs/index_pa8.png" alt="獎勵排名" (click)="test()">-->
+          <!--<img class="image2" src="assets/imgs/index_pa7.png" alt="我的積分" (click)="openMyRewardModal()">-->
+        <!--</div>-->
+        <!--<p class="bottom">我的積分</p>-->
+      <!--</ion-col>-->
+      <!--<ion-col col-3>-->
+        <!--<div class="top">-->
+          <!--<img class="image2" src="assets/imgs/index_pa8.png" alt="獎勵排名" (click)="openRewardRankingModal()">-->
         <!--</div>-->
         <!--<p class="bottom">獎勵排名</p>-->
       <!--</ion-col>-->
-    </ion-row>
-  </ion-grid>
+      <!--&lt;!&ndash;<ion-col col-3>&ndash;&gt;-->
+        <!--&lt;!&ndash;<div class="top">&ndash;&gt;-->
+          <!--&lt;!&ndash;<img class="image2" src="assets/imgs/index_pa8.png" alt="獎勵排名" (click)="test()">&ndash;&gt;-->
+        <!--&lt;!&ndash;</div>&ndash;&gt;-->
+        <!--&lt;!&ndash;<p class="bottom">獎勵排名</p>&ndash;&gt;-->
+      <!--&lt;!&ndash;</ion-col>&ndash;&gt;-->
+    <!--</ion-row>-->
+  <!--</ion-grid>-->
   <ion-grid class="grid1">
     <ion-row class="row1">
       <ion-col>

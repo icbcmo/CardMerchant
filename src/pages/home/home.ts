@@ -76,7 +76,7 @@ export class HomePage implements OnInit{
         this.retrievalNumOB = this.getObservableRetrieval();
         this.devicePlatform = device.platform;
 
-        console.log('this.orderNumOB:',this.orderNumOB);
+        //console.log('this.orderNumOB:',this.orderNumOB);
 
         document.addEventListener(
             "jpush.receiveNotification",
@@ -172,7 +172,7 @@ export class HomePage implements OnInit{
             mytags.push(localStorage.getItem("UID"));
         if(localStorage.getItem("UID2") != "")
             mytags.push(localStorage.getItem("UID2"));
-        console.log(mytags);
+        //console.log(mytags);
         this.setTags(mytags);
 
     }
@@ -290,7 +290,7 @@ export class HomePage implements OnInit{
 
 
     ngOnInit() {
-        console.log('触发ngOnInit');
+        //console.log('触发ngOnInit');
 
         //this.orderNum = parseInt(localStorage.getItem('WECHATBADGE'));  //模拟订单数量更新
         //this.orderNum = this.getObservable2();
@@ -300,25 +300,25 @@ export class HomePage implements OnInit{
         }
     }
     ionViewDidLoad(){
-        console.log('触发ionViewDidLoad');
+        //console.log('触发ionViewDidLoad');
     }
     ionViewWillEnter(){
-        console.log('触发ionViewWillEnter');
+        //console.log('触发ionViewWillEnter');
     }
     ionViewDidEnter(){
-        console.log('触发ionViewDidEnter');
+        //console.log('触发ionViewDidEnter');
     }
 
     ionViewWillLeave(){
-        console.log('触发ionViewWillLeave');
+        //console.log('触发ionViewWillLeave');
     }
 
     ionViewDidLeave(){
-        console.log('触发ionViewDidLeave');
+        //console.log('触发ionViewDidLeave');
     }
 
     ionViewWillUnload(){
-        console.log('触发ionViewWillUnload');
+        //console.log('触发ionViewWillUnload');
     }
 
 
@@ -453,9 +453,9 @@ export class HomePage implements OnInit{
             .then(() => console.log('Success'))
             .catch((reason: any) => console.log(reason));
     }
-    testVerifySign(){
-        //let s ="{\"DATE\":\"2018-11-06 18:49:53\",\"TRXAMOUNT\":\"0.04\",\"sign\":\"eQIWHaIXiBCrd0DXm1VsiqlMj5bOpGRfrMf1hsfro1HKYOoCXttfGFj7smA0WtX3n1r953yI1SlzWvbBIJF8/BIRXbAa6y696/5BW78Iwr4byI5SaJK/8l3GU8BZxbB0opGPVy9fIqV5tBnmq3pTzfmi/x4xrQBuUckwLP+yKfA=\",\"MID\":\"1000440001\",\"DELIVERYCODE\":\"a5256ece581a415f893020c06069a2f0\",\"REF_ID\":\"ESHOP20181106184852713574204\"}";
-        let result = this.cardMerchantService.scanEshopCode();
-    }
+    // testVerifySign(){
+    //     //let s ="{\"DATE\":\"2018-11-06 18:49:53\",\"TRXAMOUNT\":\"0.04\",\"sign\":\"eQIWHaIXiBCrd0DXm1VsiqlMj5bOpGRfrMf1hsfro1HKYOoCXttfGFj7smA0WtX3n1r953yI1SlzWvbBIJF8/BIRXbAa6y696/5BW78Iwr4byI5SaJK/8l3GU8BZxbB0opGPVy9fIqV5tBnmq3pTzfmi/x4xrQBuUckwLP+yKfA=\",\"MID\":\"1000440001\",\"DELIVERYCODE\":\"a5256ece581a415f893020c06069a2f0\",\"REF_ID\":\"ESHOP20181106184852713574204\"}";
+    //     let result = this.cardMerchantService.scanEshopCode();
+    // }
 
 }

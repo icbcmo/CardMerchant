@@ -5,7 +5,7 @@ import * as cnt from '../actions/counter.actions'
 
 export function counterReducer(state = counterInitialState, action: CounterActions.Actions ): CounterState {
 
-    console.log(action);
+    //console.log(action);
     switch (action.type) {
 
         // case CounterActions.Types.INCREMENT:
@@ -26,7 +26,7 @@ export function counterReducer(state = counterInitialState, action: CounterActio
 
         case CounterActions.Types.INCREMENT_SUCCESS:
 
-            console.log(action.payload);
+            //console.log(action.payload);
             return {
                 ...state,
                 total: action.payload
@@ -34,7 +34,7 @@ export function counterReducer(state = counterInitialState, action: CounterActio
 
         case CounterActions.Types.RESET_SUCCESS:
 
-            console.log(action.payload);
+            //console.log(action.payload);
             return {
                 ...state,
                 total: action.payload

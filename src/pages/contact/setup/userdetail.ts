@@ -27,7 +27,7 @@ export class UserDetail implements OnInit{
 
 
     ngOnInit() {
-		console.log(this.params.get('user'));
+		//console.log(this.params.get('user'));
 		this.user = this.params.get('user');
 	}
 	

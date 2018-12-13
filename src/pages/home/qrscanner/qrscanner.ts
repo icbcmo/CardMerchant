@@ -22,10 +22,10 @@ export class Qrscanner implements OnInit {
 
     ngOnInit() {
 
-        console.log('Scanned start');
+        //console.log('Scanned start');
         // start scanning
         let scanSub = this.qrScanner.scan().subscribe((text: string) => {
-            console.log('Scanned something', text);
+            //console.log('Scanned something', text);
             //let mytext = '{"data":{"MID":"1000440001","date":"2018-12-06 16:17:57","ref_id":"ESHOP20181206161730131265988","terminalid":"bcf5f061e03840e597dce9532a51907a","trxamount":"52.00"},"sign":"a91a912a27819a8e739e97b63f064a69"}';
             var data = {
                 signdata: text

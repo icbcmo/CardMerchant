@@ -48,7 +48,7 @@ export class AboutPage implements OnInit{
     }
 
     doInfinite(infiniteScroll) {
-        console.log('Begin async operation');
+        //console.log('Begin async operation');
         this.start_n = this.start_n + this.fetch_num;
         let data = {
             sessionid:localStorage.getItem("SESSIONID"),
@@ -68,13 +68,13 @@ export class AboutPage implements OnInit{
                         modal.present();
                     }
 
-                    console.log(data);
+                    //console.log(data);
                     //this.DapaData = this.DapaData.addAll((Object(data).data)[0]);
 
                     this.DapaData = this.DapaData.concat((Object(data).data)[0]);
                     infiniteScroll.complete();
 
-                    console.log(this.DapaData);
+                    //console.log(this.DapaData);
                 });
             }
             else if("SECONDCLASS" === localStorage.getItem('LEVEL')){
@@ -84,16 +84,16 @@ export class AboutPage implements OnInit{
                         let modal = this.modalCtrl.create(SigninPage);
                         modal.present();
                     }
-                    console.log(data);
+                    //console.log(data);
                     //this.DapaData = (Object(data).data)[0];
                     this.DapaData = this.DapaData.addAll((Object(data).data)[0]);
                     infiniteScroll.complete();
 
-                    console.log(this.DapaData);
+                    //console.log(this.DapaData);
                 });
             }
 
-            console.log('Async operation has ended');
+            //console.log('Async operation has ended');
 
 
     }
@@ -112,7 +112,7 @@ export class AboutPage implements OnInit{
     }
 
     showWhat(){
-      console.log(this.showType);
+      //console.log(this.showType);
       if(this.showType == 'charts'){
 
           this.initChart1()
@@ -127,7 +127,7 @@ export class AboutPage implements OnInit{
               loading.present();
 
               this.date1 = this.getyyyyMMdd(0);
-              this.date2 = this.getyyyyMMdd(-2000);
+              this.date2 = this.getyyyyMMdd(-7);
 
 
 
@@ -148,10 +148,10 @@ export class AboutPage implements OnInit{
                           let modal = this.modalCtrl.create(SigninPage);
                           modal.present();
                       }
-                      console.log(data);
+                      //console.log(data);
                       this.DapaData = (Object(data).data)[0];
                       loading.dismiss();
-                      console.log(this.DapaData);
+                      //console.log(this.DapaData);
                   });
               }
               else if("SECONDCLASS" === localStorage.getItem('LEVEL')){
@@ -161,10 +161,10 @@ export class AboutPage implements OnInit{
                           let modal = this.modalCtrl.create(SigninPage);
                           modal.present();
                       }
-                      console.log(data);
+                      //console.log(data);
                       this.DapaData = (Object(data).data)[0];
                       loading.dismiss();
-                      console.log(this.DapaData);
+                      //console.log(this.DapaData);
                   });
               }
           }
@@ -184,8 +184,8 @@ export class AboutPage implements OnInit{
           sessionid:localStorage.getItem("SESSIONID"),
           merchantid:localStorage.getItem("MERCHANTID"),
           departmentid:localStorage.getItem("DEPARTMENTID"),
-          datestart:this.getyyyyMMdd(-1335),
-          dateend:this.getyyyyMMdd(-1328),
+          datestart:this.getyyyyMMdd(-7),
+          dateend:this.getyyyyMMdd(0),
           start:1,
           fetchnum:99999999
       };
@@ -209,7 +209,7 @@ export class AboutPage implements OnInit{
                   let modal = this.modalCtrl.create(SigninPage);
                   modal.present();
               }
-              console.log(data);
+              //console.log(data);
               this.chart1Data = (Object(data).data)[0];
               this.chart1setOption(loading);
           });
@@ -251,10 +251,10 @@ export class AboutPage implements OnInit{
           // x_data.push(xx);
           y_data.push((parseInt(totalList[x].total)/100).toFixed(2));
       }
-      console.log(x_data);
-      console.log(y_data);
-      console.log(this.chart1Data);
-      console.log(dateList);
+      //console.log(x_data);
+      //console.log(y_data);
+      //console.log(this.chart1Data);
+      //console.log(dateList);
 
       loading.dismiss();
 
@@ -307,7 +307,7 @@ export class AboutPage implements OnInit{
 
 
       myChart.on('click', (param)=> {
-          console.log(param);
+          //console.log(param);
           this.chart2setOption(loading,param.name);
           // this.chart2setOption(loading,param.name.toString().replace('-',''));
 
@@ -330,8 +330,8 @@ export class AboutPage implements OnInit{
             sessionid:localStorage.getItem("SESSIONID"),
             merchantid:localStorage.getItem("MERCHANTID"),
             departmentid:localStorage.getItem("DEPARTMENTID"),
-            datestart:this.getyyyyMMdd(-1335),
-            dateend:this.getyyyyMMdd(-1328),
+            datestart:this.getyyyyMMdd(0),
+            dateend:this.getyyyyMMdd(-7),
             start:1,
             fetchnum:99999999
         };
@@ -343,7 +343,7 @@ export class AboutPage implements OnInit{
                     let modal = this.modalCtrl.create(SigninPage);
                     modal.present();
                 }
-                console.log(data);
+                //console.log(data);
                 this.chart2Data = (Object(data).data)[0];
                 this.chart2setOption(loading,"");
             });
@@ -355,7 +355,7 @@ export class AboutPage implements OnInit{
                     let modal = this.modalCtrl.create(SigninPage);
                     modal.present();
                 }
-                console.log(data);
+                //console.log(data);
                 this.chart2Data = (Object(data).data)[0];
                 this.chart2setOption(loading,"");
             });
@@ -365,7 +365,7 @@ export class AboutPage implements OnInit{
     }
 
     chart2setOption(loading,mytrxdate){
-        console.log(this.chart2Data);
+        //console.log(this.chart2Data);
         let myChart = echarts.init(this.chart2.nativeElement);
         let departmantList=[];
         let totalList=[];
@@ -404,9 +404,9 @@ export class AboutPage implements OnInit{
         }
 
 
-        console.log(tmp);
-        console.log(departmantList);
-        console.log(totalList);
+        //console.log(tmp);
+        //console.log(departmantList);
+        //console.log(totalList);
 
         for( let x=0;x<totalList.length;x++){
 

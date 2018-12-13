@@ -13,7 +13,7 @@ export class CounterEffects {
 
     constructor(private actions$: Actions , private counterService:CounterService) {
     //constructor(private actions$: Actions ) {
-        console.log('CounterEffects')
+        //console.log('CounterEffects')
     }
 
 

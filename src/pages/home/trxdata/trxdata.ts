@@ -56,16 +56,16 @@ export class Trxdata implements OnInit{
     }
 
     doFilter(){
-        console.log(this.filteramount);
-        console.log(this.filteramount_wechat);
-        console.log(this.filtertrxno);
-        console.log(this.tradeDate1);
-        console.log(this.tradeDate2);
-        console.log(this.cpuClick);
-        console.log(this.visaClick);
-        console.log(this.masterClick);
-        console.log(this.filterwechattrxno);
-        console.log(this.filterrefno);
+        //console.log(this.filteramount);
+        //console.log(this.filteramount_wechat);
+        //console.log(this.filtertrxno);
+        //console.log(this.tradeDate1);
+        //console.log(this.tradeDate2);
+        //console.log(this.cpuClick);
+        //console.log(this.visaClick);
+        //console.log(this.masterClick);
+        //console.log(this.filterwechattrxno);
+        //console.log(this.filterrefno);
 
         let channelType = "undefined";
         if(this.cpuClick) channelType="CUP";
@@ -92,10 +92,10 @@ export class Trxdata implements OnInit{
             };
 
             this.reportDataService.getTrxRecordByDepartmentIdTransactionConditions(data).toPromise().then(data=>{
-                console.log(data);
+                //console.log(data);
                 this.DapaData = (Object(data).data)[0];
                 loading.dismiss();
-                console.log(this.DapaData);
+                //console.log(this.DapaData);
             });
         }
 
@@ -115,12 +115,12 @@ export class Trxdata implements OnInit{
                 startnum:this.wechat_start_n,
                 fetchnum:this.wechat_fetch_num
             };
-            console.log(data);
+            //console.log(data);
             this.reportDataService.getWechatTrxInfoByConditionsAndPages(data).toPromise().then(data=>{
-                console.log(data);
+                //console.log(data);
                 this.WechatData = (Object(data).data)[0];
                 loading.dismiss();
-                console.log(this.WechatData);
+                //console.log(this.WechatData);
             });
         }
     }
@@ -158,7 +158,7 @@ export class Trxdata implements OnInit{
     }
 
     doInfinite(infiniteScroll) {
-        console.log('Begin async operation');
+        //console.log('Begin async operation');
         if(this.showType == 'posData')
         {
             this.start_n = this.start_n + this.fetch_num;
@@ -179,21 +179,21 @@ export class Trxdata implements OnInit{
                         let modal = this.modalCtrl.create(SigninPage);
                         modal.present();
                     }
-                    console.log(data);
+                    //console.log(data);
                     //this.DapaData = this.DapaData.addAll((Object(data).data)[0]);
                     this.DapaData = this.DapaData.concat((Object(data).data)[0]);
                     infiniteScroll.complete();
 
-                    console.log(this.DapaData);
+                    //console.log(this.DapaData);
                 });
             }
             else if("SECONDCLASS" === localStorage.getItem('LEVEL')){
                 this.reportDataService.getTrxInfoByDepartmentId(data).toPromise().then(data=>{
-                    console.log(data);
+                    //console.log(data);
                     this.DapaData = this.DapaData.concat((Object(data).data)[0]);
                     infiniteScroll.complete();
 
-                    console.log(this.DapaData);
+                    //console.log(this.DapaData);
                 });
             }
         }
@@ -212,14 +212,14 @@ export class Trxdata implements OnInit{
                 fetchnum:this.wechat_fetch_num
             };
             this.reportDataService.getWechatTrxInfoByConditionsAndPages(data).toPromise().then(data=>{
-                console.log(data);
+                //console.log(data);
                 this.WechatData = this.WechatData.concat((Object(data).data)[0]);
                 infiniteScroll.complete();
-                console.log(this.WechatData);
+                //console.log(this.WechatData);
             });
         }
 
-        console.log('Async operation has ended');
+        //console.log('Async operation has ended');
 
 
     }
@@ -229,7 +229,7 @@ export class Trxdata implements OnInit{
     }
 
     showWhat(){
-        console.log(this.showType);
+        //console.log(this.showType);
         if(this.showType == 'posData'){
             if(this.DapaData  === null || this.DapaData ==="" || this.DapaData === undefined ){
                 let loading = this.loadingCtrl.create({
@@ -239,7 +239,7 @@ export class Trxdata implements OnInit{
                 loading.present();
 
                 this.date1 = this.getyyyyMMdd(0);
-                this.date2 = this.getyyyyMMdd(-2000);
+                this.date2 = this.getyyyyMMdd(-7);
 
                 let data = {
                     sessionid:localStorage.getItem("SESSIONID"),
@@ -252,10 +252,10 @@ export class Trxdata implements OnInit{
                 };
 
                 this.reportDataService.getTrxInfoByDepartmentId(data).toPromise().then(data=>{
-                    console.log(data);
+                    //console.log(data);
                     this.DapaData = (Object(data).data)[0];
                     loading.dismiss();
-                    console.log(this.DapaData);
+                    //console.log(this.DapaData);
                 });
 
                 /*if("FIRSTCLASS"===localStorage.getItem('LEVEL')){
@@ -285,7 +285,7 @@ export class Trxdata implements OnInit{
                 loading.present();
 
                 this.date1 = this.getyyyyMMdd(0);
-                this.date2 = this.getyyyyMMdd(-500);
+                this.date2 = this.getyyyyMMdd(-7);
 
                 let data = {
                     sessionid:localStorage.getItem("SESSIONID"),
@@ -297,13 +297,13 @@ export class Trxdata implements OnInit{
                     startnum:this.wechat_start_n,
                     fetchnum:this.wechat_fetch_num
                 };
-                console.log(data);
+                //console.log(data);
                 // this.reportDataService.getWechatTrxInfoByConditions(data).toPromise().then(data=>{
                 this.reportDataService.getWechatTrxInfoByConditionsAndPages(data).toPromise().then(data=>{
-                    console.log(data);
+                    //console.log(data);
                     this.WechatData = (Object(data).data)[0];
                     loading.dismiss();
-                    console.log(this.WechatData);
+                    //console.log(this.WechatData);
                 });
             }
         }
