@@ -8,6 +8,7 @@ import {SigninPage} from "../pages/auth/signin";
 import { JPush } from '@jiguang-ionic/jpush';
 import {NativeStorage} from "@ionic-native/native-storage";
 import { GoogleAnalytics } from '@ionic-native/google-analytics';
+import { BackgroundMode } from '@ionic-native/background-mode';
 
 @Component({
   templateUrl: 'app.html'
@@ -20,6 +21,7 @@ export class MyApp {
   constructor(platform: Platform,
               statusBar: StatusBar,
               splashScreen: SplashScreen,
+              private backgroundMode: BackgroundMode,
               jpush: JPush,
               private ga: GoogleAnalytics,
               nativeStorage: NativeStorage) {
@@ -35,6 +37,7 @@ export class MyApp {
             })
             .catch(e => console.log('Error starting GoogleAnalytics', e));
       statusBar.styleDefault();
+      this.backgroundMode.enable();
       splashScreen.hide();
         jpush.init();
         jpush.setDebugMode(true);

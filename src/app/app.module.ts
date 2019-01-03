@@ -67,6 +67,7 @@ import {ScanRecord} from "../pages/home/cashier/scanrecord/scan-record";
 import { TextToSpeech } from '@ionic-native/text-to-speech';
 import {PopoverPage} from "../pages/home/refund/popoverpage";
 import { GoogleAnalytics } from '@ionic-native/google-analytics';
+import { BackgroundMode } from '@ionic-native/background-mode';
 
 @NgModule({
     declarations: [
@@ -184,6 +185,7 @@ import { GoogleAnalytics } from '@ionic-native/google-analytics';
 		TipService,
         NativeStorage,
         Device,
+        BackgroundMode,
         GoogleAnalytics,
         InAppBrowser,
         {provide: ErrorHandler, useClass: IonicErrorHandler}

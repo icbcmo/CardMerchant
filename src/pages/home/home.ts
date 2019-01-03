@@ -102,6 +102,27 @@ export class HomePage implements OnInit{
             false
         );
 
+        document.addEventListener("jpush.backgroundNotification", (event: any) => {
+                var content;
+                if (this.devicePlatform == "Android") {
+                    content = event.alert;
+                } else {
+                    content = event.aps.alert;
+                }
+                //alert("Receive notification: " + JSON.stringify(event));
+                if(event.extras.from == 'WECHATPAYMENT'){
+                    let tmpNum=parseInt(localStorage.getItem('WECHATBADGE'))+1;
+                    localStorage.setItem('WECHATBADGE',tmpNum.toString());
+                    let speakString  = "微信收款"+event.extras.speaktext.toString()+"元";
+                    this.speak(speakString);
+                }
+                if(event.extras.from == 'RETRIEVAL'){
+                    let tmpNum=parseInt(localStorage.getItem('RETRIEVALBADGE'))+1;
+                    localStorage.setItem('RETRIEVALBADGE',tmpNum.toString());
+                }
+            },
+            false);
+
         document.addEventListener(
             "jpush.openNotification",
             (event: any) => {
