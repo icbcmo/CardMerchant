@@ -87,7 +87,7 @@ export class HomePage implements OnInit{
                 } else {
                     content = event.aps.alert;
                 }
-                //alert("Receive notification: " + JSON.stringify(event));
+                alert("Receive notification: " + JSON.stringify(event));
                 if(event.extras.from == 'WECHATPAYMENT'){
                     let tmpNum=parseInt(localStorage.getItem('WECHATBADGE'))+1;
                     localStorage.setItem('WECHATBADGE',tmpNum.toString());
@@ -98,6 +98,7 @@ export class HomePage implements OnInit{
                     let tmpNum=parseInt(localStorage.getItem('RETRIEVALBADGE'))+1;
                     localStorage.setItem('RETRIEVALBADGE',tmpNum.toString());
                 }
+
             },
             false
         );
