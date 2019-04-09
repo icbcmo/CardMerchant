@@ -42,7 +42,7 @@
             <div class="top">拍照<img class="fr" src="assets/imgs/camera.png" alt="拍照" (click)="openCamera()"></div>
             <ul class="bottom">
                 <li *ngFor="let picture of pictures;let i = index" [ngClass]="{'li2':!picture.btn}">
-                    <img [class]="picture.btn?'image1':'image2'" [src]="picture.data"/>
+                    <img [class]="picture.btn?'image1':'image2'" [src]="picture.PICTURE"/>
                     <img class="delete" *ngIf="picture.btn" src="assets/imgs/close_red.png" alt="關閉"
                          (click)="delPic(i)">
                 </li>
