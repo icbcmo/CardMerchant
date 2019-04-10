@@ -77,50 +77,19 @@ export class HomePage implements OnInit{
         this.devicePlatform = device.platform;
 
         //console.log('this.orderNumOB:',this.orderNumOB);
+        this.getRegistrationID();
 
         document.addEventListener(
             "jpush.receiveNotification",
             (event: any) => {
-                var content;
-                if (this.devicePlatform == "Android") {
-                    content = event.alert;
-                } else {
-                    content = event.aps.alert;
-                }
-                alert("Receive notification: " + JSON.stringify(event));
-                if(event.extras.from == 'WECHATPAYMENT'){
-                    let tmpNum=parseInt(localStorage.getItem('WECHATBADGE'))+1;
-                    localStorage.setItem('WECHATBADGE',tmpNum.toString());
-                    let speakString  = "微信收款"+event.extras.speaktext.toString()+"元";
-                    this.speak(speakString);
-                }
-                if(event.extras.from == 'RETRIEVAL'){
-                    let tmpNum=parseInt(localStorage.getItem('RETRIEVALBADGE'))+1;
-                    localStorage.setItem('RETRIEVALBADGE',tmpNum.toString());
-                }
-
+                this.jpushNotification(event, false);
             },
-            false
-        );
+            false);
 
-        document.addEventListener("jpush.backgroundNotification", (event: any) => {
-                var content;
-                if (this.devicePlatform == "Android") {
-                    content = event.alert;
-                } else {
-                    content = event.aps.alert;
-                }
-                //alert("Receive notification: " + JSON.stringify(event));
-                if(event.extras.from == 'WECHATPAYMENT'){
-                    let tmpNum=parseInt(localStorage.getItem('WECHATBADGE'))+1;
-                    localStorage.setItem('WECHATBADGE',tmpNum.toString());
-                    let speakString  = "微信收款"+event.extras.speaktext.toString()+"元";
-                    this.speak(speakString);
-                }
-                if(event.extras.from == 'RETRIEVAL'){
-                    let tmpNum=parseInt(localStorage.getItem('RETRIEVALBADGE'))+1;
-                    localStorage.setItem('RETRIEVALBADGE',tmpNum.toString());
-                }
+        document.addEventListener(
+            "jpush.backgroundNotification", 
+            (event: any) => {
+                this.jpushNotification(event, false);
             },
             false);
 
@@ -228,6 +197,7 @@ export class HomePage implements OnInit{
     getRegistrationID() {
         this.jpush.getRegistrationID().then(rId => {
             this.registrationId = rId;
+            console.log("registrationId: " + rId);
         });
     }
 
@@ -475,6 +445,32 @@ export class HomePage implements OnInit{
             .then(() => console.log('Success'))
             .catch((reason: any) => console.log(reason));
     }
+
+    jpushNotification(event, alert) {
+        var content;
+        if (this.devicePlatform == "Android") {
+            content = event.alert;
+        } else {
+            content = event.aps.alert;
+        }
+        if (alert) {
+            alert("Receive notification: " + JSON.stringify(event));
+        }
+        var from = event.extras.from;
+        if (from == 'WECHATPAYMENT' 
+            || from == 'ICBCPAYMENT'
+            || from == 'AOMIPAYMENT') {
+            let tmpNum=parseInt(localStorage.getItem('WECHATBADGE'))+1;
+            localStorage.setItem('WECHATBADGE',tmpNum.toString());
+            let speakString  = (from == 'WECHATPAYMENT' ? "微信" : "工銀E支付") + "收款" + event.extras.speaktext.toString()+"元";
+            this.speak(speakString);
+        }
+        if (event.extras.from == 'RETRIEVAL'){
+            let tmpNum=parseInt(localStorage.getItem('RETRIEVALBADGE'))+1;
+            localStorage.setItem('RETRIEVALBADGE',tmpNum.toString());
+        }
+    }
+    
     // testVerifySign(){
     //     //let s ="{\"DATE\":\"2018-11-06 18:49:53\",\"TRXAMOUNT\":\"0.04\",\"sign\":\"eQIWHaIXiBCrd0DXm1VsiqlMj5bOpGRfrMf1hsfro1HKYOoCXttfGFj7smA0WtX3n1r953yI1SlzWvbBIJF8/BIRXbAa6y696/5BW78Iwr4byI5SaJK/8l3GU8BZxbB0opGPVy9fIqV5tBnmq3pTzfmi/x4xrQBuUckwLP+yKfA=\",\"MID\":\"1000440001\",\"DELIVERYCODE\":\"a5256ece581a415f893020c06069a2f0\",\"REF_ID\":\"ESHOP20181106184852713574204\"}";
     //     let result = this.cardMerchantService.scanEshopCode();
