@@ -22,12 +22,13 @@
     "@angular/platform-browser": "5.2.11",
     "@angular/platform-browser-dynamic": "5.2.11",
     "@angular/router": "5.2.11",
-    "@ionic-native/background-mode": "^4.18.0",
+    "@ionic-native/background-mode": "^4.20.0",
     "@ionic-native/camera": "^4.11.0",
     "@ionic-native/core": "^4.9.1",
     "@ionic-native/device": "^4.11.0",
     "@ionic-native/google-analytics": "^4.18.0",
     "@ionic-native/in-app-browser": "^4.12.0",
+    "@ionic-native/native-audio": "^3.14.0",
     "@ionic-native/native-storage": "^4.11.0",
     "@ionic-native/qr-scanner": "^4.12.0",
     "@ionic-native/splash-screen": "4.9.1",
@@ -43,6 +44,7 @@
     "@swimlane/ngx-datatable": "^13.0.1",
     "angular2-qrcode": "^2.0.1",
     "cordova-android": "6.3.0",
+    "cordova-browser": "5.0.4",
     "cordova-ios": "^4.5.5",
     "cordova-plugin-add-swift-support": "^1.7.2",
     "cordova-plugin-background-mode": "~0.7.2",
@@ -53,6 +55,7 @@
     "cordova-plugin-ionic-keyboard": "^2.1.2",
     "cordova-plugin-ionic-webview": "^1.2.1",
     "cordova-plugin-jcore": "^1.2.3",
+    "cordova-plugin-nativeaudio": "3.0.9",
     "cordova-plugin-nativestorage": "^2.3.2",
     "cordova-plugin-qrscanner": "^2.6.0",
     "cordova-plugin-splashscreen": "^5.0.2",
@@ -65,7 +68,8 @@
     "jpush-phonegap-plugin": "^3.4.3",
     "js-sha256": "^0.9.0",
     "jsrsasign": "^8.0.12",
-    "rxjs": "^5.5.11",
+    "rxjs": "^5.5.12",
+    "rxjs-compat": "^6.4.0",
     "sw-toolbox": "3.6.0",
     "zone.js": "0.8.26"
   },
@@ -112,11 +116,13 @@
       "cordova-plugin-google-analytics": {
         "GMS_VERSION": "11.0.1"
       },
-      "cordova-plugin-background-mode": {}
+      "cordova-plugin-background-mode": {},
+      "cordova-plugin-nativeaudio": {}
     },
     "platforms": [
       "android",
-      "ios"
+      "ios",
+      "browser"
     ]
   }
 }

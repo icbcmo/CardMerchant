@@ -462,7 +462,7 @@ export class HomePage implements OnInit{
             || from == 'AOMIPAYMENT') {
             let tmpNum=parseInt(localStorage.getItem('WECHATBADGE'))+1;
             localStorage.setItem('WECHATBADGE',tmpNum.toString());
-            let speakString  = (from == 'WECHATPAYMENT' ? "微信" : "工銀E支付") + "收款" + event.extras.speaktext.toString()+"元";
+            let speakString  = (from == 'WECHATPAYMENT' ? "微信" : "工銀易支付") + "收款" + event.extras.speaktext.toString()+"元";
             this.speak(speakString);
         }
         if (event.extras.from == 'RETRIEVAL'){
