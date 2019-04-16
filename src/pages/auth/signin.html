@@ -17,7 +17,8 @@
                 <img src="assets/imgs/login_icon2.png" class="image2" alt="驗證碼"  >
                 <!--<ion-input #mypassword [type]="passwordtype" pattern="[0-9]*" inputmode="numeric" placeholder="Password Input" (keyup)="checkEnter($event,myaccount.value, mypassword.value)" ></ion-input>-->
                 <ion-input #mypassword type="tel" placeholder="請輸入驗證碼" (keyup)="checkEnter($event,myaccount.value, mypassword.value)"></ion-input>
-                <span (click)="send(myaccount.value)">獲取驗證碼</span>
+                <span class="span1" *ngIf="countdown == 60" (click)="send(myaccount.value)">獲取驗證碼</span>
+                <span class="span2" *ngIf="countdown != 60" >{{countdown}}s後重新穫取</span>
                 <!--<ion-icon [name]="eyetype" item-end (click)="eyeOnOff()"></ion-icon>-->
             </ion-col>
         </ion-row>
