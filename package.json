@@ -1,6 +1,6 @@
 {
   "name": "cardMerchant",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "author": "Ionic Framework",
   "homepage": "http://ionicframework.com/",
   "private": true,
@@ -57,6 +57,7 @@
     "cordova-plugin-jcore": "^1.2.3",
     "cordova-plugin-nativeaudio": "3.0.9",
     "cordova-plugin-nativestorage": "^2.3.2",
+    "cordova-plugin-pgyer": "git+https://github.com/charleyw/cordova-plugin-pgyer.git",
     "cordova-plugin-qrscanner": "^2.6.0",
     "cordova-plugin-splashscreen": "^5.0.2",
     "cordova-plugin-tts": "^0.2.3",
@@ -117,7 +118,11 @@
         "GMS_VERSION": "11.0.1"
       },
       "cordova-plugin-background-mode": {},
-      "cordova-plugin-nativeaudio": {}
+      "cordova-plugin-nativeaudio": {},
+      "wang.imchao.plugin.pgyer": {
+        "ANDROID_APP_ID": "2adfc0d0940b39a47a6f8e395e9b3861",
+        "IOS_APP_ID": "dbd350bf9e03bdcff8362ea366da2589"
+      }
     },
     "platforms": [
       "android",
