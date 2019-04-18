@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.icbc.MerchantE" version="0.0.3" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="com.icbc.MerchantE" version="0.1.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>工銀澳門商戶易</name>
     <description>工銀澳門商戶易</description>
     <author email="hi@ionicframework" href="http://ionicframework.com/">Ionic Framework Team</author>
@@ -85,7 +85,6 @@
         <variable name="APP_KEY" value="c78616596208464be85e1a8e" />
     </plugin>
     <plugin name="cordova-plugin-camera" spec="^4.0.3" />
-    <plugin name="cordova-plugin-qrscanner" spec="^2.6.0" />
     <plugin name="cordova-plugin-nativestorage" spec="^2.3.2" />
     <plugin name="cordova-plugin-inappbrowser" spec="^3.0.0" />
     <plugin name="cordova-plugin-tts" spec="^0.2.3" />
@@ -93,12 +92,13 @@
         <variable name="GMS_VERSION" value="11.0.1" />
     </plugin>
     <plugin name="cordova-plugin-nativeaudio" spec="3.0.9" />
-    <plugin name="cordova-plugin-background-mode" spec="~0.7.2" />
     <plugin name="wang.imchao.plugin.pgyer" spec="https://github.com/charleyw/cordova-plugin-pgyer.git">
         <variable name="ANDROID_APP_ID" value="2adfc0d0940b39a47a6f8e395e9b3861" />
         <variable name="IOS_APP_ID" value="dbd350bf9e03bdcff8362ea366da2589" />
     </plugin>
-    <engine name="android" spec="6.3.0" />
-    <engine name="ios" spec="^4.5.5" />
+    <plugin name="cordova-plugin-background-mode" spec="https://github.com/chy89310/cordova-plugin-background-mode.git" />
+    <plugin name="cordova-plugin-qrscanner" spec="3.0.1" />
     <engine name="browser" spec="5.0.4" />
+    <engine name="ios" spec="4.5.5" />
+    <engine name="android" spec="7.1.4" />
 </widget>
