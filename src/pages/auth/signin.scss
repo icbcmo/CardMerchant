@@ -18,6 +18,9 @@ page-signin {
         margin-top: 20px;
         .button-ios{height: 2.5em; border-radius: 6px;}
       }
+      .version{
+        text-align: center; color: #d1d1d1; position: absolute; bottom: 10px; left: 0; width: 100%;
+      }
     }
   }
 }

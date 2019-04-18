@@ -27,5 +27,6 @@
                 <button ion-button block (click)="signin(myaccount.value, mypassword.value)">登錄</button>
             </ion-col>
         </ion-row>
+        <div class="version" *ngIf="showVersion">version {{nowVersion}}</div>
     </ion-grid>
 </ion-content>

@@ -32,13 +32,19 @@
     <ion-list class="useList">
         <ion-item *ngFor="let item of items" (click)="toDetails(item)">
             <div class="top">
-                測試<span class="fr">MOP {{item.field8}}</span>
+                {{item.PAY_TYPE}}<span class="fr">MOP {{item.PAY_AMOUNT}}</span>
             </div>
             <div class="bottom">
-                <p>終端號<span class="fr">{{item.field6}}</span></p>
-                <p>賬單號<span class="fr">{{item.field3}}</span></p>
-                <p>交易時間<span class="fr">{{item.field9}}</span></p>
+                <p>商戶號<span class="fr">{{item.MERCHANT_ID1}}</span></p>
+                <p>交易訂單號<span class="fr">{{item.PAY_ID}}</span></p>
+                <p>交易時間<span class="fr">{{item.CREATE_TIME}}</span></p>
             </div>
         </ion-item>
     </ion-list>
+    <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+        <ion-infinite-scroll-content
+            loadingSpinner="bubbles"
+            loadingText="Loading more..."
+        ></ion-infinite-scroll-content>
+    </ion-infinite-scroll>
 </ion-content>
