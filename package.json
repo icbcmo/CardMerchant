@@ -19,7 +19,9 @@
     "ionic:ios:prepare": "cross-env ENV='prod' ionic cordova prepare ios",
     "ionic:ios:release": "cross-env ENV='prod' ionic cordova build ios --device --release",
     "ionic:android": "cross-env ENV='prod' ionic cordova run android",
-    "ionic:android:build": "cross-env ENV='prod' ionic cordova build android"
+    "ionic:android:build": "cross-env ENV='prod' ionic cordova build android",
+    "ionic:android:prepare": "cross-env ENV='prod' ionic cordova prepare android",
+    "ionic:android:release": "cross-env ENV='prod' ionic cordova build android --device"
   },
   "dependencies": {
     "@angular/animations": "5.2.11",
