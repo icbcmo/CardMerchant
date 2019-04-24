@@ -10,6 +10,9 @@ import { NativeStorage } from "@ionic-native/native-storage";
 import { GoogleAnalytics } from '@ionic-native/google-analytics';
 import { BackgroundMode } from '@ionic-native/background-mode';
 import { NativeAudio } from '@ionic-native/native-audio';
+import { CodePush, InstallMode } from '@ionic-native/code-push';
+import { environment as ENV } from '../environments/environment';
+import { Device } from '@ionic-native/device';
 
 @Component({
   templateUrl: 'app.html'
@@ -26,11 +29,43 @@ export class MyApp {
     jpush: JPush,
     private ga: GoogleAnalytics,
     nativeStorage: NativeStorage,
-    private nativeAudio: NativeAudio
+    private nativeAudio: NativeAudio,
+    private codePush: CodePush,
+    private device: Device
     ) {
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
+
+      this.codePush.notifyApplicationReady();
+      const deploymentKey = device.platform == 'Android' ? ENV.codePushAndroid : ENV.codePushIOS;
+      platform.resume.subscribe(() => {
+        this.codePush.sync({
+          deploymentKey: deploymentKey,
+          updateDialog: false,
+          installMode: InstallMode.ON_NEXT_RESUME,
+        }, (downloadProgress => {
+          console.log("downloadProgress: " + JSON.stringify(downloadProgress));
+          // if (downloadProgress.receivedBytes == downloadProgress.totalBytes) {
+          //   alert('Download finished!');
+          // }
+        })).subscribe(syncStatus => {
+          console.log('syncStatus: ' + syncStatus);
+        });  
+      })
+      this.codePush.sync({
+        deploymentKey: deploymentKey,
+        updateDialog: false,
+        installMode: InstallMode.ON_NEXT_RESUME,
+      }, (downloadProgress => {
+        console.log("downloadProgress: " + JSON.stringify(downloadProgress));
+        // if (downloadProgress.receivedBytes == downloadProgress.totalBytes) {
+        //   alert('Download finished!');
+        // }
+      })).subscribe(syncStatus => {
+        console.log('syncStatus: ' + syncStatus);
+      });
+
       this.ga.startTrackerWithId('UA-100686759-5')
         .then(() => {
           console.log('Google analytics is ready now');

@@ -7,6 +7,7 @@ import { Router } from "@angular/router";
 import { UserMgt } from "./setup/usermgt";
 import { SigninPage } from "../auth/signin";
 import { TextToSpeech } from "@ionic-native/text-to-speech";
+import { CodePush, ILocalPackage } from "@ionic-native/code-push";
 
 declare var localStorage: any;
 
@@ -29,7 +30,8 @@ export class ContactPage {
     private tts: TextToSpeech,
     private nativeStorage: NativeStorage,
     public appVersion: AppVersion,
-    public viewCtrl: ViewController
+    public viewCtrl: ViewController,
+    public codePush: CodePush
   ) {
   }
 
@@ -44,6 +46,12 @@ export class ContactPage {
 
     this.appVersion.getVersionNumber().then((version: string) => {
       this.nowVersion = version
+      this.codePush.getCurrentPackage().then((current: ILocalPackage) => {
+        // replace the last version number with the code push label
+        this.nowVersion = version.substr(0, 4) + current.label.substr(1);
+      }).catch(err => {
+        console.log('getCurrentPackage:' + err);
+      })
     }).catch(err => {
       console.log('getVersionNumber:' + err);
     });

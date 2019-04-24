@@ -99,6 +99,9 @@
     <plugin name="cordova-plugin-qrscanner" spec="3.0.1" />
     <plugin name="cordova-plugin-app-version" spec="~0.1.9" />
     <plugin name="cordova-plugin-ionic-keyboard" spec="~2.1.3" />
+    <plugin name="cordova-plugin-code-push" spec="git+https://github.com/Microsoft/cordova-plugin-code-push.git" />
+    <hook src="/src/scripts/before_prepare.js" type="before_prepare" />
+    <hook src="/src/scripts/after_prepare.js" type="after_prepare" />
     <engine name="browser" spec="5.0.4" />
     <engine name="ios" spec="4.5.5" />
     <engine name="android" spec="7.1.4" />

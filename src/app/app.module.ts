@@ -71,6 +71,7 @@ import { PopoverPage } from "../pages/home/refund/popoverpage";
 import { GoogleAnalytics } from "@ionic-native/google-analytics";
 import { BackgroundMode } from "@ionic-native/background-mode";
 import { NativeAudio } from "@ionic-native/native-audio";
+import { CodePush } from "@ionic-native/code-push";
 
 @NgModule({
   declarations: [
@@ -194,6 +195,7 @@ import { NativeAudio } from "@ionic-native/native-audio";
     GoogleAnalytics,
     InAppBrowser,
     NativeAudio,
+    CodePush,
     { provide: ErrorHandler, useClass: IonicErrorHandler }
   ]
 })
