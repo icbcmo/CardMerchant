@@ -55,13 +55,13 @@
       交易時間
       <span class="fr">2018-07-26 12:09:23</span>
     </ion-item>-->
-    <ion-item>
-      支付狀態
-      <span class="fr one">銷售<span class="red">（已撤銷）</span></span>
-    </ion-item>
+    <!--<ion-item>-->
+      <!--支付狀態-->
+      <!--<span class="fr one">銷售<span class="red">（已撤銷）</span></span>-->
+    <!--</ion-item>-->
     <ion-item>
       金額
-      <span class="fr two">{{item.field7}} {{item.field8}}</span>
+      <span class="fr two">{{item.PAY_AMOUNT/100}}</span>
     </ion-item>
     <ion-item>
       商戶名稱
@@ -69,9 +69,9 @@
     </ion-item>
     <ion-item>
       商戶編號
-      <span class="fr">{{item.field4}}</span>
+      <span class="fr">{{item.MERCHANT_ID1}}</span>
     </ion-item>
-    <ion-item>
+    <!--<ion-item>
       終端編號
       <span class="fr">{{item.field6}}</span>
     </ion-item>
@@ -82,14 +82,14 @@
     <ion-item>
       商戶單號
       <span class="fr">???</span>
-    </ion-item>
+    </ion-item>-->
     <ion-item>
       交易單號
-      <span class="fr">{{item.field3}}</span>
+      <span class="fr">{{item.PAY_ID}}</span>
     </ion-item>
     <ion-item>
       交易時間
-      <span class="fr">{{item.field9}}</span>
+      <span class="fr">{{item.CREATE_TIME}}</span>
     </ion-item>
   </ion-list>
 

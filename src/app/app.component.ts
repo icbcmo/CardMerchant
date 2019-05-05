@@ -51,7 +51,7 @@ export class MyApp {
           // }
         })).subscribe(syncStatus => {
           console.log('syncStatus: ' + syncStatus);
-        });  
+        });
       })
       this.codePush.sync({
         deploymentKey: deploymentKey,
