@@ -39,7 +39,21 @@ export class MyApp {
 
       this.codePush.notifyApplicationReady();
       const deploymentKey = device.platform == 'Android' ? ENV.codePushAndroid : ENV.codePushIOS;
-      platform.resume.subscribe(() => {
+      if (device.platform) {
+        platform.resume.subscribe(() => {
+          this.codePush.sync({
+            deploymentKey: deploymentKey,
+            updateDialog: false,
+            installMode: InstallMode.ON_NEXT_RESUME,
+          }, (downloadProgress => {
+            console.log("downloadProgress: " + JSON.stringify(downloadProgress));
+            // if (downloadProgress.receivedBytes == downloadProgress.totalBytes) {
+            //   alert('Download finished!');
+            // }
+          })).subscribe(syncStatus => {
+            console.log('syncStatus: ' + syncStatus);
+          });
+        })
         this.codePush.sync({
           deploymentKey: deploymentKey,
           updateDialog: false,
@@ -52,19 +66,7 @@ export class MyApp {
         })).subscribe(syncStatus => {
           console.log('syncStatus: ' + syncStatus);
         });
-      })
-      this.codePush.sync({
-        deploymentKey: deploymentKey,
-        updateDialog: false,
-        installMode: InstallMode.ON_NEXT_RESUME,
-      }, (downloadProgress => {
-        console.log("downloadProgress: " + JSON.stringify(downloadProgress));
-        // if (downloadProgress.receivedBytes == downloadProgress.totalBytes) {
-        //   alert('Download finished!');
-        // }
-      })).subscribe(syncStatus => {
-        console.log('syncStatus: ' + syncStatus);
-      });
+      }
 
       this.ga.startTrackerWithId('UA-100686759-5')
         .then(() => {
