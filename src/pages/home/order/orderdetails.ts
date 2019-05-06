@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, LoadingController } from 'ionic-angular';
+import { SigninPage } from "../../auth/signin";
+import { CardMerchantService } from "../../../service/card-merchant.service";
 
 /**
  * Generated class for the OrderdetailsPage page.
@@ -15,12 +17,28 @@ import { NavController, NavParams } from 'ionic-angular';
 export class OrderdetailsPage implements OnInit{
 
   item:any;
-  constructor(public navCtrl: NavController, public params: NavParams) {
+  constructor(
+    public navCtrl: NavController,
+    public params: NavParams,
+    public loadingCtrl: LoadingController,
+    public cardMerchantService: CardMerchantService
+  ) {
   }
 
   ngOnInit() {
-        console.log(this.params.get('item'));
-        this.item = this.params.get('item');
+      this.item = this.params.get('item');
+      console.log(this.item);
+
+      this.cardMerchantService.getMerchantName(this.item.MERCHANT_ID).toPromise().then(data => {
+        console.log(Object(data));
+        this.item.MERCHANT_NAME = Object(data).data
+      }, () => {
+        this.loadingCtrl.create({
+          spinner: "hide",
+          content: "网络故障",
+          duration: 2000
+        }).present();
+      });
   }
 
   ionViewDidLoad() {

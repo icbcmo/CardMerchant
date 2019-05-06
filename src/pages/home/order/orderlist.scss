@@ -26,13 +26,20 @@ page-orderlist {
 				border: 0; border-radius: 8px; margin-top: 10px; border: 1px solid #eaeaea; font-size: 1.4rem; color: #666;
 				.item-inner{
 					border: 0;
-					.top{
-						font-size: 1.5rem; padding-bottom: 10px; border-bottom: 1px solid #eaeaea; color: #333;
-						.fr{color: #6e8bff; font-size: 1.6rem; line-height: 1.8rem;}
-					}
-					.bottom{
-						padding-top: 5px;
-						> p{font-size: 1.3rem; margin-top: 6px;}
+					.label{
+						margin-top: 0;
+						.top{
+							font-size: 1.5rem; padding: 10px 0; border-bottom: 1px solid #eaeaea; color: #333;
+							&.e-payment{background: url("../assets/imgs/e-payment.jpg") no-repeat left 5px center; background-size: 24px;}
+							&.alipay{background: url("../assets/imgs/alipay.jpg") no-repeat left 5px center; background-size: 24px;}
+							&.wechatpay{background: url("../assets/imgs/wechatpay.jpg") no-repeat left 5px center; background-size: 24px;}
+							&:after{content: ''; display: block; clear: both;}
+							.fr{color: #6e8bff; font-size: 1.6rem; line-height: 1.8rem;}
+						}
+						.bottom{
+							padding-top: 5px;
+							> p{font-size: 1.3rem; margin-top: 6px;}
+						}
 					}
 				}
 			}

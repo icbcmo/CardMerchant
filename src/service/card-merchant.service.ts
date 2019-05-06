@@ -253,6 +253,18 @@ export class CardMerchantService {
     return this.http.get(url);
   }
 
+  getMerchantName(mid: any) {
+
+    let str = `mid=${mid}`
+
+    let sign = this.getSignInit(str);
+    let merCert = encodeURIComponent(this.publicKey);
+
+    let url = this.gwUrl + "cardmerchant/getMerchantName?" + str + "&sign=" + sign + "&merCert=" + merCert;
+
+    return this.http.get(url);
+  }
+
   getPictures(requestId: any) {
 
     let str = "requestid=" + requestId + "&sessionid=" + localStorage.getItem("SESSIONID");

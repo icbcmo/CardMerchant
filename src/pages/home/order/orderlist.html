@@ -31,8 +31,12 @@
     <!--</ion-list>-->
     <ion-list class="useList">
         <ion-item *ngFor="let item of items" (click)="toDetails(item)">
-            <div class="top">
-                {{item.PAY_TYPE}}<span class="fr">MOP {{item.PAY_AMOUNT/100}}</span>
+            <div class="top" [ngClass]="{
+            'e-payment':item.PAY_TYPE.toLowerCase() == 'e-payment',
+            'alipay':item.PAY_TYPE.toLowerCase() == 'alipay',
+            'wechatpay':item.PAY_TYPE.toLowerCase() == 'wechatpay'
+            }">
+                <span class="fr">MOP {{item.PAY_AMOUNT/100}}</span>
             </div>
             <div class="bottom">
                 <p>商戶號<span class="fr">{{item.MERCHANT_ID1}}</span></p>
