@@ -3,7 +3,7 @@
         <button ion-button small clear (click)="dismiss()">
             <ion-icon ios="ios-arrow-back"></ion-icon>
         </button>
-        <ion-title>交易明細</ion-title>
+        <ion-title>收款明細</ion-title>
         <!--<button ion-button small clear (click)="goMachineRequest()">-->
             <!--<ion-icon ios="md-add"></ion-icon>-->
         <!--</button>-->
@@ -39,7 +39,7 @@
                 <span class="fr">MOP {{item.PAY_AMOUNT/100}}</span>
             </div>
             <div class="bottom">
-                <p>商戶號<span class="fr">{{item.MERCHANT_ID1}}</span></p>
+                <p>商戶號<span class="fr">{{item.MERCHANT_ID}}</span></p>
                 <p>交易訂單號<span class="fr">{{item.PAY_ID}}</span></p>
                 <p>交易時間<span class="fr">{{item.CREATE_TIME}}</span></p>
             </div>
