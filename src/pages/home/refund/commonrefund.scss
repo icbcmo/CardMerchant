@@ -7,7 +7,14 @@ page-commonrefund {
 				font-size: 1.4rem; border: 0; padding-right: 16px;
 				.item-inner{
 					padding: 0; background: transparent; border-bottom: 1px solid #eeeeee;
-					.text-input{text-align: right; margin-right: 0; margin-left: 22px;}
+					.input-wrapper{
+						> .input{
+							.text-input{text-align: right; margin-left: 0; width: 100% !important;}
+						}
+						> .cloned-input{
+							left: auto !important; right: 16px;
+						}
+					}
 				}
 				&:last-child .item-inner{border-bottom: 0;}
 			}
