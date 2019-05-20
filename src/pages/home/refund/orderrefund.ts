@@ -12,8 +12,8 @@ import {OrderrefunddetatilPage} from './orderrefunddetatil';
   templateUrl: 'orderrefund.html'
 })
 export class OrderRefund implements OnInit{
-	items: any;
-	
+	items: any = [];
+
     constructor(
         public viewCtrl: ViewController,
 		public modalCtrl: ModalController,

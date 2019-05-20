@@ -7,7 +7,7 @@
 	</ion-navbar>
 </ion-header>
 <ion-content>
-	<p class="hint">* 溫馨提示：如未能在<span class="color">“調單到期日”</span>前提供相關文件，您有可能會承擔<span class="color">“退款”</span>的後果。</p>
+	<p class="hint">* 溫馨提示：銀行基於合理之要求，可能會向商戶發起<span class="color">“調單”</span>，懇請貴商戶及時處理。如未能在<span class="color">“調單到期日”</span>之前進行處理，并按要求提供相關交易信息，貴商戶有可能承擔<span class="color">“退款”</span>的後果。</p>
 	<ion-refresher (ionRefresh)="doRefresh($event)">
 		<ion-refresher-content></ion-refresher-content>
 	</ion-refresher>
@@ -35,4 +35,5 @@
 			</div>
 		</ion-item>
 	</ion-list>
+	<div class="no-data" *ngIf="items.length == 0">-------暫未收到銀⾏調單-------</div>
 </ion-content>

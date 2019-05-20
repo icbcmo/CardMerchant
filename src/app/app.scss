@@ -45,6 +45,15 @@ ul,li{padding:0;margin:0;list-style:none}
 
 .button-block{height: 2.5em; border-radius: 6px;}
 .show-page ion-backdrop{display: none;}
+.toast-ios .toast-wrapper{background: rgba(0,0,0,0.7); width: 230px; text-align: center;}
+.input-wrapper{
+  > .input{
+    .text-input{width: 100% !important; margin-left: 0 !important;}
+  }
+  > .cloned-input{
+    left: auto !important; right: 16px !important;
+  }
+}
 
 .tabs-ios .tabbar{
   background-color: #fff; box-shadow: 0px 1px 10px 2px #ddd; border-top: 0; padding-bottom: 5px;

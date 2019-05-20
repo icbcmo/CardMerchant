@@ -10,7 +10,7 @@
   </ion-navbar>
 </ion-header>
 <ion-content>
-  <ion-list class="input_list">
+  <ion-list class="input_list" style="margin-bottom: -10px;">
     <ion-item>
       <ion-label>商戶名稱</ion-label>
       <ion-input type="text" placeholder="請輸入商戶名稱" #merchantname ></ion-input>
@@ -24,12 +24,14 @@
       <ion-input type="tel" placeholder="請輸入終端號" #wechattid ></ion-input>
     </ion-item>
     <ion-item>
-      <ion-label>交易流水號</ion-label>
-      <ion-input type="tel" placeholder="請輸入交易流水號" #wechattrxno ></ion-input>
+      <ion-label>交易單號</ion-label>
+      <ion-input type="tel" placeholder="請輸入交易單號" #wechattrxno ></ion-input>
     </ion-item>
+  </ion-list>
+  <ion-list class="input_list">
     <button ion-item class="item-ios" >
       <ion-label>交易日期</ion-label>
-	  <ion-datetime displayFormat="YYYY-MM-DD" pickerFormat="YYYY-MM-DD" [(ngModel)]="tradeDate"></ion-datetime>
+	  <ion-datetime displayFormat="YYYY-MM-DD" pickerFormat="YYYY-MM-DD" [(ngModel)]="tradeDate" placeholder="請選擇交易日期"></ion-datetime>
       <!-- <ion-input class="input-date" type="text" #wechattrxdate placeholder="请按格式yyyy-mm-dd输入日期" ></ion-input> -->
     </button>
     <ion-item>

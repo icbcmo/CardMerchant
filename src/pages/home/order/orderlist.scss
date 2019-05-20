@@ -20,6 +20,12 @@ page-orderlist {
 				color: #ccc;
 			}
 		}
+		.user-hint{
+			font-size: 12px; padding: 10px 15px 0; color: #999; line-height: 1.6;
+			.red{
+				color: #ff0000;
+			}
+		}
 		.useList{
 			padding: 0 10px;
 			.item{
