@@ -25,6 +25,7 @@ import {MyReward} from "./cashier/myreward/my-reward";
 import {Trxdata} from "./trxdata/trxdata";
 import {TextToSpeech} from "@ionic-native/text-to-speech";
 import {CardMerchantService} from "../../service/card-merchant.service";
+import {NativeAudio} from "@ionic-native/native-audio";
 
 const EventSource: any = window['EventSource'];
 
@@ -69,7 +70,8 @@ export class HomePage implements OnInit{
         device: Device,
         private tts: TextToSpeech,
         public modalCtrl: ModalController,
-        public cardMerchantService:CardMerchantService
+        public cardMerchantService:CardMerchantService,
+        private nativeAudio: NativeAudio
     ) {
 
         this.orderNumOB = this.getObservableWechat();
@@ -457,13 +459,15 @@ export class HomePage implements OnInit{
             alert("Receive notification: " + JSON.stringify(event));
         }
         var from = event.extras.from;
-        if (from == 'WECHATPAYMENT' 
+        if (this.devicePlatform.toLocaleLowerCase() == "android" &&
+            (from == 'WECHATPAYMENT' 
             || from == 'ICBCPAYMENT'
-            || from == 'AOMIPAYMENT') {
+            || from == 'AOMIPAYMENT')) {
             let tmpNum=parseInt(localStorage.getItem('WECHATBADGE'))+1;
             localStorage.setItem('WECHATBADGE',tmpNum.toString());
-            let speakString  = (from == 'WECHATPAYMENT' ? "微信" : "工銀易支付") + "收款" + event.extras.speaktext.toString()+"元";
-            this.speak(speakString);
+            // let speakString  = (from == 'WECHATPAYMENT' ? "微信" : "工銀易支付") + "收款" + event.extras.speaktext.toString()+"元";
+            // this.speak(speakString);
+            this.nativeAudio.play(from);
         }
         if (event.extras.from == 'RETRIEVAL'){
             let tmpNum=parseInt(localStorage.getItem('RETRIEVALBADGE'))+1;

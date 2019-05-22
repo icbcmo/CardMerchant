@@ -91,7 +91,11 @@ export class MyApp {
       //nativeStorage.getItem("SESSIONID").then(data=>console.log(data));
       this.rootPage = SigninPage;
       //this.rootPage = TabsPage;
-      // this.nativeAudio.preloadComplex('silence', 'assets/audio/silence.mp3', 0.1, 1, 0);
+      if (device.platform.toLocaleLowerCase() == 'android') {
+        this.nativeAudio.preloadSimple('AOMIPAYMENT', 'assets/audio/AOMIPAYMENT.mp3');
+        this.nativeAudio.preloadSimple('ICBCPAYMENT', 'assets/audio/ICBCPAYMENT.mp3');
+        this.nativeAudio.preloadSimple('WECHATPAYMENT', 'assets/audio/WECHATPAYMENT.mp3');
+      }
     });
   }
 }
