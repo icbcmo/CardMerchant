@@ -12,23 +12,22 @@ page-qrcode {
     .row1{
       margin-top: 20px;
       .qr_bg{
-        .top{
-          position: relative;
-          .image1{vertical-align: top;}
-          .title{position: absolute; left: 0; right: 0; top: 0; bottom: 0; display: flex; align-items: center; justify-content: center;}
-        }
+        .top{ position: relative; background-color: #fff; text-align: center; padding: 18px 0 12px; border-top-left-radius: 6px; border-top-right-radius: 6px;}
+        > .image1{width: 100%; display: block;}
         .bottom{
-          position: relative;
-          .con{
-            position: absolute; left: 0; right: 0; top: 0; bottom: 0; display: flex; align-items: center; text-align: center;
-            qr-code{display: inline-block;}
-            img{width: 70%; height: auto;}
+          position: relative; background-color: #fff; display: flex; flex-direction: column;; align-items: center; padding-bottom: 20px; border-bottom-left-radius: 6px; border-bottom-right-radius: 6px;
+          qr-code{
+            display: block; width: 80%; height: 80%; margin-top: 20px;
+            img { width: 100%; height: 100%;}
           }
+          .p1 {margin: 10px 0 0;}
+          .p2 {margin: 3px 0 0;}
         }
       }
     }
     .row2{
-      .image1{width: 100%; border-radius: 6px; border: 1px solid #fff; height: 50px;}
+      margin-top: 20px;
+      .image1{width: 100%;}
     }
   }
 }

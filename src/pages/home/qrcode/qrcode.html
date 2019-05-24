@@ -11,23 +11,20 @@
     <ion-row class="row1">
       <ion-col col-10 offset-1>
         <div class="qr_bg">
-          <div class="top">
-            <img src="assets/imgs/qrcode_bg1.png" class="image1" alt="">
-            <div class="title">請掃描以下二維碼</div>
-          </div>
+          <div class="top">請掃描以下二維碼</div>
+          <img src="assets/imgs/qrcode_bg0.png" class="image1" alt="">
           <div class="bottom">
-            <img src="assets/imgs/qrcode_bg2.png" class="image1" alt="">
-            <div class="con">
-              <qr-code [value]="'All QR Code data goes here!'" [size]="500" style="margin: 0 auto;"></qr-code>
-            </div>
+            <qr-code [value]="'All QR Code data goes here!'" [size]="500"></qr-code>
+            <p class="p1">商戶名</p>
+            <p class="p2">MID：7842575154245154</p>
           </div>
         </div>
       </ion-col>
     </ion-row>
-    <!--<ion-row class="row2">-->
-      <!--<ion-col col-10 offset-1>-->
-        <!--<img src="assets/imgs/banner.png" class="image1">-->
-      <!--</ion-col>-->
-    <!--</ion-row>-->
+    <ion-row class="row2">
+      <ion-col col-10 offset-1>
+        <img src="assets/imgs/qrcode_logo.png" class="image1">
+      </ion-col>
+    </ion-row>
   </ion-grid>
 </ion-content>

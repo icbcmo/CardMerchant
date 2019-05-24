@@ -18,17 +18,21 @@
         </ion-item>
         <ion-item>
             <ion-label>問題種類</ion-label>
-            <ion-select class="select select-ios ng-pristine ng-valid ng-touched" #machinerequesttype>
-                <ion-option *ngFor="let item of items" value="{{item}}">{{item}}</ion-option>
+            <ion-select cancelText="取消" okText="確認" class="select select-ios ng-pristine ng-valid ng-touched" #machinerequesttype>
+                <ion-option *ngFor="let item of items" value="{{item.id}}">{{item.value}}</ion-option>
             </ion-select>
+        </ion-item>
+        <ion-item *ngIf="machinerequesttype.value == 1 || machinerequesttype.value == 2 || machinerequesttype.value == 3">
+            <ion-label>補充數量</ion-label>
+            <ion-input type="number" max="10" min="1" placeholder="請輸入補充數量(1-10)" #machinerequestnumber></ion-input>
         </ion-item>
         <ion-item>
             <ion-label>終端號</ion-label>
             <ion-input type="text" placeholder="請輸入終端號" #machineno></ion-input>
         </ion-item>
         <ion-item>
-            <ion-label>申請人</ion-label>
-            <ion-input type="text" placeholder="請輸入申請人" #machineapplyname></ion-input>
+            <ion-label>聯絡人</ion-label>
+            <ion-input type="text" placeholder="請輸入聯絡人" #machineapplyname></ion-input>
         </ion-item>
         <ion-item>
             <ion-label>聯絡電話</ion-label>
