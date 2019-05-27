@@ -91,7 +91,7 @@ export class MyApp {
       //nativeStorage.getItem("SESSIONID").then(data=>console.log(data));
       this.rootPage = SigninPage;
       //this.rootPage = TabsPage;
-      if (device.platform.toLocaleLowerCase() == 'android') {
+      if (device.platform && device.platform.toLocaleLowerCase() == 'android') {
         this.nativeAudio.preloadSimple('AOMIPAYMENT', 'assets/audio/AOMIPAYMENT.mp3');
         this.nativeAudio.preloadSimple('ICBCPAYMENT', 'assets/audio/ICBCPAYMENT.mp3');
         this.nativeAudio.preloadSimple('WECHATPAYMENT', 'assets/audio/WECHATPAYMENT.mp3');

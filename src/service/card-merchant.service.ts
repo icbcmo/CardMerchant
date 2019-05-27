@@ -309,6 +309,16 @@ export class CardMerchantService {
     return this.http.get(url);
   }
 
+  // 穫取商戶二維碼
+  getMerchantID1(mid) {
+    let str = "mid=" + mid;
+    let sign = this.getSignInit(str);
+    let merCert = encodeURIComponent(this.publicKey);
+    let url = this.gwUrl + "cardmerchant/getMerchantID1?" + str + "&sign=" + sign + "&merCert=" + merCert;
+    //console.log(url);
+    return this.http.get(url);
+  }
+
   // scanEshopCode() {
   //     let url = this.gwUrl + 'cardmerchant/eshopgetproductcode';
   //     //console.log(url);

@@ -20,6 +20,7 @@ page-qrcode {
             display: block; width: 80%; height: 80%; margin-top: 20px;
             img { width: 100%; height: 100%;}
           }
+          .error{ width: 70%; height: 60vw; display: flex; justify-content: center; align-items: center; text-align: center; line-height: 1.6; font-size: 14px;}
           .p1 {margin: 10px 0 0;}
           .p2 {margin: 3px 0 0;}
         }

@@ -8,15 +8,26 @@
 </ion-header>
 <ion-content>
   <ion-grid class="grid1">
-    <ion-row class="row1">
+    <ion-row class="row1" *ngIf="qrcodeUrl">
       <ion-col col-10 offset-1>
         <div class="qr_bg">
           <div class="top">請掃描以下二維碼</div>
           <img src="assets/imgs/qrcode_bg0.png" class="image1" alt="">
           <div class="bottom">
-            <qr-code [value]="'All QR Code data goes here!'" [size]="500"></qr-code>
-            <p class="p1">商戶名</p>
-            <p class="p2">MID：7842575154245154</p>
+            <qr-code [value]="qrcodeUrl" [size]="500"></qr-code>
+            <p class="p1">{{merchantName}}</p>
+            <p class="p2">MID：{{merchantId}}</p>
+          </div>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row class="row1" *ngIf="!qrcodeUrl">
+      <ion-col col-10 offset-1>
+        <div class="qr_bg">
+          <div class="top">提示</div>
+          <img src="assets/imgs/qrcode_bg0.png" class="image1" alt="">
+          <div class="bottom">
+            <div class="error">貴商戶尚未開通“收款二維碼”服務，如有疑問，請聯絡銀行客戶經理</div>
           </div>
         </div>
       </ion-col>
