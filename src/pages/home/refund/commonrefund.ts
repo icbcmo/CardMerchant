@@ -13,7 +13,7 @@ declare var localStorage: any;
   selector: 'page-commonrefund',
   templateUrl: 'commonrefund.html'
 })
-export class CommonRefund implements OnInit{	
+export class CommonRefund implements OnInit{
 	pictures: any[] = [];
 	tradeDate: any;
 	total: any = 0;
@@ -48,7 +48,7 @@ export class CommonRefund implements OnInit{
 		Object(this.departmentname).value = localStorage.getItem('DEPARTMENTNAME');
         Object(this.applyname).value = localStorage.getItem('NAME');
 		Object(this.applymobile).value = localStorage.getItem('MOBILE');
-		this.tradeDate = BaseDate.getDateNow();
+		this.tradeDate = '';
 
 		this.pictures=[
 			{data:'assets/imgs/camera_img.png',btn:false},
@@ -101,7 +101,7 @@ export class CommonRefund implements OnInit{
     fatMoney(oId){
         Object(this[oId]).value = this.tipService.mone(Object(this[oId]).value,2,'.',',','round');
 	}
-	
+
 	submitForm(){
 		var pics = [];
 		for(var i=0;i<4;i=i+1){
@@ -139,7 +139,7 @@ export class CommonRefund implements OnInit{
 							departmentid: localStorage.getItem("DEPARTMENTID"),
 							departmentname: Object(this.departmentname).value,
 							//refundcardno4: Object(this.refundcardno4).value.replace(/\*/g,''),
-							refundcardno4: this.CARDNO,
+							refundcardno4: this.CARDNO || '',
 							trxdate: this.tradeDate,
 							authno: Object(this.authno).value,
 							trxamount: Object(this.trxamount).value.replace(/,/g,''),

@@ -17,7 +17,9 @@ export class WeixinRefund implements OnInit {
   pictures: any[] = [];
   tradeDate: any;
   total: number = 0;
+  items: any;
 
+  @ViewChild("refundtype") refundtype: ElementRef;
   @ViewChild("merchantname") merchantname: ElementRef;
   @ViewChild("departmentname") departmentname: ElementRef;
   @ViewChild("wechattid") wechattid: ElementRef;
@@ -26,7 +28,6 @@ export class WeixinRefund implements OnInit {
   @ViewChild("wechattrxamount") wechattrxamount: ElementRef;
   @ViewChild("wechatrefundamount") wechatrefundamount: ElementRef;
   @ViewChild("wechatapplymobile") wechatapplymobile: ElementRef;
-  @ViewChild("wechatapplyname") wechatapplyname: ElementRef;
 
   constructor(
     public cardMerchantService: CardMerchantService,
@@ -46,7 +47,6 @@ export class WeixinRefund implements OnInit {
   ngOnInit() {
     Object(this.merchantname).value = localStorage.getItem("MERCHANTNAME");
     Object(this.departmentname).value = localStorage.getItem("DEPARTMENTNAME");
-    Object(this.wechatapplyname).value = localStorage.getItem("NAME");
     Object(this.wechatapplymobile).value = localStorage.getItem("MOBILE");
     this.tradeDate = "";
     this.pictures = [
@@ -54,6 +54,11 @@ export class WeixinRefund implements OnInit {
       { data: "assets/imgs/camera_img.png", btn: false },
       { data: "assets/imgs/camera_img.png", btn: false },
       { data: "assets/imgs/camera_img.png", btn: false }
+    ];
+    this.items = [
+      {id: 2, value: "微信退款"},
+      {id: 3, value: "工銀e支付退款"},
+      {id: 4, value: "支付寶退款"}
     ];
   }
 
@@ -68,26 +73,25 @@ export class WeixinRefund implements OnInit {
         pics.push(this.pictures[i].data);
       }
     }
-    var dataS = {
+    var dataAll = {
       sessionid: localStorage.getItem("SESSIONID"),
-      wechatmid: localStorage.getItem("WECHATMERCHANTID"),
-      wechatmerchantname: localStorage.getItem("MERCHANTNAME"),
-      wechattid: Object(this.wechattid).value,
-      wechattrxno: Object(this.wechattrxno).value,
-      wechattrxdate: this.tradeDate,
-      wechattrxamount: Object(this.wechattrxamount).value.replace(/,/g, ""),
-      wechatrefundamount: Object(this.wechatrefundamount).value.replace(/,/g, ""),
-      wechatapplymobile: Object(this.wechatapplymobile).value,
-      wechatapplyname: Object(this.wechatapplyname).value,
-      wechatapplypicture: pics
+      channelmid: localStorage.getItem("WECHATMERCHANTID"),
+      refundtype: Object(this.refundtype).value,
+      channelmerchantname: localStorage.getItem("MERCHANTNAME"),
+      channeltid: Object(this.wechattid).value,
+      channeltrxno: Object(this.wechattrxno).value,
+      channeltrxdate: this.tradeDate,
+      channeltrxamount: Object(this.wechattrxamount).value.replace(/,/g, ""),
+      channelrefundamount: Object(this.wechatrefundamount).value.replace(/,/g, ""),
+      channelapplymobile: Object(this.wechatapplymobile).value,
+      picture: pics
     };
-    console.log(dataS);
     var flegg = false
-    for (let i in dataS) {
-      if(typeof dataS[i] == 'string') {
-        if (!dataS[i]) flegg = true
+    for (let i in dataAll) {
+      if(typeof dataAll[i] == 'string') {
+        if (!dataAll[i]) flegg = true
       } else {
-        if (dataS[i].length == 0) flegg = true
+        if (dataAll[i].length == 0) flegg = true
       }
     }
     if (flegg) {
@@ -112,7 +116,7 @@ export class WeixinRefund implements OnInit {
               duration: 5000
             });
             loading.present();
-            this.cardMerchantService.addwechatrefund(dataS).toPromise().then(data => {
+            this.cardMerchantService.addchannelrefund(dataAll).toPromise().then(data => {
               console.log(Object(data));
               loading.dismiss();
               if (Object(data).code == 1) {

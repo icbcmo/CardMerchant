@@ -319,6 +319,16 @@ export class CardMerchantService {
     return this.http.get(url);
   }
 
+  // 增加渠道退款記錄
+  addchannelrefund(data) {
+    let str = JSON.stringify(data);
+    let sign = this.getSignInit(str);
+    let merCert = encodeURIComponent(this.publicKey);
+    let url = this.gwUrl + "cardmerchant/addchannelrefund" + "?sign=" + sign + "&merCert=" + merCert;
+    //console.log(url);
+    return this.http.post(url, data);
+  }
+
   // scanEshopCode() {
   //     let url = this.gwUrl + 'cardmerchant/eshopgetproductcode';
   //     //console.log(url);

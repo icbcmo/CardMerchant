@@ -3,7 +3,7 @@
     <button ion-button small clear (click)="goBack()">
       <ion-icon ios="ios-arrow-back"></ion-icon>
     </button>
-    <ion-title>微信退款</ion-title>
+    <ion-title>渠道退款</ion-title>
     <button ion-button small clear (click)="toQrScanner()">
       <ion-icon ios="md-qr-scanner"></ion-icon>
     </button>
@@ -21,11 +21,17 @@
     </ion-item>
     <ion-item>
       <ion-label>終端號</ion-label>
-      <ion-input type="tel" placeholder="請輸入終端號" #wechattid ></ion-input>
+      <ion-input type="number" pattern="\d*" placeholder="請輸入終端號" #wechattid ></ion-input>
     </ion-item>
     <ion-item>
       <ion-label>交易單號</ion-label>
-      <ion-input type="tel" placeholder="請輸入交易單號" #wechattrxno ></ion-input>
+      <ion-input type="number" pattern="\d*" placeholder="請輸入交易單號" #wechattrxno ></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>退款類型</ion-label>
+      <ion-select cancelText="取消" okText="確認" class="select select-ios ng-pristine ng-valid ng-touched" #refundtype>
+        <ion-option *ngFor="let item of items" value="{{item.id}}">{{item.value}}</ion-option>
+      </ion-select>
     </ion-item>
   </ion-list>
   <ion-list class="input_list">
@@ -36,15 +42,11 @@
     </button>
     <ion-item>
       <ion-label>原交易金額</ion-label>
-      <ion-input type="text" placeholder="請輸入原交易金額" #wechattrxamount (change)="fatMoney('wechattrxamount')"></ion-input>
+      <ion-input type="number" pattern="\d*" placeholder="請輸入原交易金額" #wechattrxamount (change)="fatMoney('wechattrxamount')"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label>退款金額</ion-label>
-      <ion-input type="text" placeholder="請輸入退款金額" #wechatrefundamount (change)="fatMoney('wechatrefundamount')"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label >申請人</ion-label>
-      <ion-input type="text" placeholder="請輸入申請人" #wechatapplyname ></ion-input>
+      <ion-input type="number" pattern="\d*" placeholder="請輸入退款金額" #wechatrefundamount (change)="fatMoney('wechatrefundamount')"></ion-input>
     </ion-item>
 	<ion-item>
       <ion-label >聯絡電話</ion-label>
