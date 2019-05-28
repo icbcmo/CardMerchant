@@ -9,9 +9,9 @@ import { CardMerchantService } from "../../../service/card-merchant.service";
 })
 export class Qrcode implements OnInit {
 
-  qrcodeUrl: any
-  merchantId: any = localStorage.getItem("MERCHANTID")
-  merchantName: any = localStorage.getItem("MERCHANTNAME")
+  qrcodeData: any = {
+    merchantId1: ''
+  }
 
   constructor(
     public platform: Platform,
@@ -23,8 +23,8 @@ export class Qrcode implements OnInit {
 
 
   ngOnInit() {
-    this.cardMerchantService.getMerchantID1(this.merchantId).toPromise().then(data => {
-      this.qrcodeUrl = Object(data).data
+    this.cardMerchantService.getCardMerchant().toPromise().then(data => {
+      this.qrcodeData = Object(data).data[0]
     });
   }
 

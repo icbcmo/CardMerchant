@@ -8,20 +8,20 @@
 </ion-header>
 <ion-content>
   <ion-grid class="grid1">
-    <ion-row class="row1" *ngIf="qrcodeUrl">
+    <ion-row class="row1" *ngIf="qrcodeData.merchantId1">
       <ion-col col-10 offset-1>
         <div class="qr_bg">
           <div class="top">請掃描以下二維碼</div>
           <img src="assets/imgs/qrcode_bg0.png" class="image1" alt="">
           <div class="bottom">
             <qr-code [value]="qrcodeUrl" [size]="500"></qr-code>
-            <p class="p1">{{merchantName}}</p>
-            <p class="p2">MID：{{merchantId}}</p>
+            <p class="p1">{{qrcodeData.merchantName}}</p>
+            <p class="p2">MID：{{qrcodeData.merchantId1}}</p>
           </div>
         </div>
       </ion-col>
     </ion-row>
-    <ion-row class="row1" *ngIf="!qrcodeUrl">
+    <ion-row class="row1" *ngIf="!qrcodeData.merchantId1">
       <ion-col col-10 offset-1>
         <div class="qr_bg">
           <div class="top">提示</div>

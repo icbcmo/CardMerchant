@@ -309,12 +309,12 @@ export class CardMerchantService {
     return this.http.get(url);
   }
 
-  // 穫取商戶二維碼
-  getMerchantID1(mid) {
-    let str = "mid=" + mid;
+  // 獲取卡商戶信息
+  getCardMerchant() {
+    let str = "sessionId=" + localStorage.getItem("SESSIONID");
     let sign = this.getSignInit(str);
     let merCert = encodeURIComponent(this.publicKey);
-    let url = this.gwUrl + "cardmerchant/getMerchantID1?" + str + "&sign=" + sign + "&merCert=" + merCert;
+    let url = this.gwUrl + "cardmerchant/getCardMerchant?" + str + "&sign=" + sign + "&merCert=" + merCert;
     //console.log(url);
     return this.http.get(url);
   }
