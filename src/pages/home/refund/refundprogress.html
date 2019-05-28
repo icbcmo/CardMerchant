@@ -7,7 +7,7 @@
 	</ion-navbar>
 </ion-header>
 <ion-content>
-	<ion-searchbar placeholder="請輸入搜索內容"></ion-searchbar>
+	<!--<ion-searchbar placeholder="請輸入搜索內容"></ion-searchbar>-->
 	<ion-list class="useList">
 		<ion-item *ngFor="let item of items" >
 			<!--<div class="left">-->
@@ -20,6 +20,14 @@
 			</div>
 			<div class="left" *ngIf="item.field2 == '2'" (click)="goRefundDetail(item)">
 				<p class="p1">微信退款</p>
+				<p class="p2">退款金額：{{item.field27}}</p>
+			</div>
+			<div class="left" *ngIf="item.field2 == '3'" (click)="goRefundDetail(item)">
+				<p class="p1">工銀e支付退款</p>
+				<p class="p2">退款金額：{{item.field27}}</p>
+			</div>
+			<div class="left" *ngIf="item.field2 == '4'" (click)="goRefundDetail(item)">
+				<p class="p1">支付寶退款</p>
 				<p class="p2">退款金額：{{item.field27}}</p>
 			</div>
 			<div class="right" item-end>
