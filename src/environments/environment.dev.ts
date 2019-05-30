@@ -5,5 +5,6 @@ export var environment = {
     -----END PRIVATE KEY-----`,
     publicKey: 'MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAhFIdzUn4cWD1vOV5T5S+QDPW8qnY4qzda7YUye1bbKjyy67inCOuI/Rtj5ruBlz6QFQCBzYKfbT8IhOMIb//ENlY0T0LAgs82eWscvxta5lgXlZWeeNt0zz/YxbCRlXRg2e1CjBir7TL0fZ8mwVC/9lXtY93BC2UrT9xS972MkaGKIqwosn8T9CaqtT1cTTg3w6gOwshLa3zDtjMVp5u18bwPDJOvHCf1evNej7HsFoWNg8StU6PVxJpRBKmU97Wlm9lLP0bukikMYObp2l/CzseJMOre6owO9PTvGA14fkOMuA0E/KpmyAixZ6EpvpMkbo/hbI44lvjHXxNOxwfYwIDAQAB',
     codePushIOS: 'bZg88rCjbzvMOVqTpe4ZBk7AqjNue7ffccd4-6807-4c23-997c-4d51dcf05766',
-    codePushAndroid: 'Jc2Uca-FN_u0rQi0-cBX29DPnCCqe7ffccd4-6807-4c23-997c-4d51dcf05766'
+    codePushAndroid: 'Jc2Uca-FN_u0rQi0-cBX29DPnCCqe7ffccd4-6807-4c23-997c-4d51dcf05766',
+    qrCodeUrl: 'http://139.217.5.41:8080/#/qr?add=icbc.com.mo&id='
 }
