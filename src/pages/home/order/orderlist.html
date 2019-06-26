@@ -4,32 +4,15 @@
             <ion-icon ios="ios-arrow-back"></ion-icon>
         </button>
         <ion-title>收款明細</ion-title>
-        <!--<button ion-button small clear (click)="goMachineRequest()">-->
-            <!--<ion-icon ios="md-add"></ion-icon>-->
-        <!--</button>-->
+        <button ion-button small clear (click)="goMachineRequest()">
+            <ion-icon name="ios-search"></ion-icon>
+            <ion-nav id="nav" #menuContent [root]="rootPage"></ion-nav>
+        </button>
     </ion-navbar>
 </ion-header>
 <ion-content>
-  <!--<ion-list>
-		<button ion-item class="item item-block item-ios" *ngFor="let item of items" (click)="openMachineRequestDetail(item)">
-			{{item.datetime}}/{{item.currpeople}}
-			<div class="button-effect"></div>
-		</button>
-  </ion-list>-->
-    <ion-searchbar placeholder="請輸入搜索內容"></ion-searchbar>
+    <!--<ion-searchbar placeholder="請輸入搜索內容"></ion-searchbar>-->
     <div class="user-hint"><span class="red">*溫馨提示：</span>現僅提供商戶<span class="red">收款二維碼</span>之收款明細，如有疑問，請聯絡銀行客戶經理。</div>
-    <!--<ion-list class="useList">-->
-        <!--<ion-item *ngFor="let item of [1,2,3]" (click)="toDetails1()">-->
-            <!--<div class="top">-->
-                <!--撤銷<span class="fr">MOP 0.022</span>-->
-            <!--</div>-->
-            <!--<div class="bottom">-->
-                <!--<p>賬單號<span class="fr">000031</span></p>-->
-                <!--<p>原賬單號<span class="fr">000030</span></p>-->
-                <!--<p>交易時間<span class="fr">2018-07-21 12:09:43</span></p>-->
-            <!--</div>-->
-        <!--</ion-item>-->
-    <!--</ion-list>-->
     <ion-list class="useList">
         <ion-item *ngFor="let item of items" (click)="toDetails(item)">
             <div class="top" [ngClass]="{
@@ -53,3 +36,36 @@
         ></ion-infinite-scroll-content>
     </ion-infinite-scroll>
 </ion-content>
+<ion-menu [content]="menuContent" side="right" persistent="true" type="overlay">
+    <ion-header>
+        <ion-toolbar>
+            <ion-title>篩選</ion-title>
+        </ion-toolbar>
+    </ion-header>
+    <ion-content>
+        <ion-list>
+            <ion-item class="menu-item">
+                <ion-label>支付方式</ion-label>
+                <ion-select cancelText="取消" okText="確認" placeholder="请選擇支付方式" [(ngModel)]="payType">
+                    <ion-option value="WeChatPay">微信</ion-option>
+                    <ion-option value="E-Payment">e支付</ion-option>
+                    <ion-option value="AliPay">支付寶</ion-option>
+                </ion-select>
+            </ion-item>
+
+            <ion-item class="menu-item">
+                <ion-label>開始日期</ion-label>
+                <ion-datetime displayFormat="YYYY-MM-DD" pickerFormat="YYYY-MM-DD" placeholder="请選擇開始日期" [(ngModel)]="startDate"></ion-datetime>
+            </ion-item>
+
+            <ion-item class="menu-item">
+                <ion-label>結束日期</ion-label>
+                <ion-datetime displayFormat="YYYY-MM-DD" pickerFormat="YYYY-MM-DD" placeholder="请選擇結束日期" [(ngModel)]="endDate"></ion-datetime>
+            </ion-item>
+        </ion-list>
+
+        <div padding>
+            <button ion-button color="primary" (click)="submitForm()" block>確定</button>
+        </div>
+    </ion-content>
+</ion-menu>

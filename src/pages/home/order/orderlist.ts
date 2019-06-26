@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { ModalController, Platform, NavController, ViewController } from "ionic-angular";
+import { ModalController, Platform, NavController, ViewController, MenuController } from "ionic-angular";
 import { CardMerchantService } from "../../../service/card-merchant.service";
 import { NativeStorage } from "@ionic-native/native-storage";
 import { AlertController, LoadingController } from "ionic-angular";
@@ -14,9 +14,12 @@ declare var localStorage: any;
   templateUrl: "orderlist.html"
 })
 export class OrderList implements OnInit {
-  items: any = []
-  pageNum: number = 1
-  isMore: boolean = true
+  items: any = [];
+  pageNum: number = 1;
+  isMore: boolean = true;
+  payType: string = '';
+  startDate: string = '';
+  endDate: string = '';
 
   constructor(
     public viewCtrl: ViewController,
@@ -26,7 +29,8 @@ export class OrderList implements OnInit {
     public loadingCtrl: LoadingController,
     private alertCtrl: AlertController,
     public tipService: TipService,
-    public cardMerchantService: CardMerchantService
+    public cardMerchantService: CardMerchantService,
+    private menuCtrl: MenuController
   ) {
   }
 
@@ -35,14 +39,10 @@ export class OrderList implements OnInit {
 
   }
 
-  ionViewWillEnter(fn = ()=>{}) {
+  ionViewWillEnter (fn = () => {}) {
     localStorage.setItem("WECHATBADGE", 0);
 
-    var data = {
-      sessionid: localStorage.getItem("SESSIONID")
-    };
-    console.log(data);
-    this.cardMerchantService.getPaymentList(this.pageNum,6).toPromise().then(data => {
+    this.cardMerchantService.getPaymentList(this.pageNum, 6, this.payType, this.startDate, this.endDate).toPromise().then(data => {
       console.log(Object(data));
       if (Object(data).code == 1) {
         localStorage.clear();
@@ -51,10 +51,10 @@ export class OrderList implements OnInit {
       }
       if (Object(data).code == 0) {
         if (Object(data).data[0].length == 0) {
-          this.isMore = false
+          this.isMore = false;
         } else {
           this.items = [...this.items, ...Object(data).data[0]];
-          this.pageNum++
+          this.pageNum++;
         }
       } else {
         this.alertCtrl.create({
@@ -62,14 +62,14 @@ export class OrderList implements OnInit {
           buttons: ["确定"]
         }).present();
       }
-      fn()
+      fn();
     }, () => {
       this.loadingCtrl.create({
         spinner: "hide",
         content: "网络故障",
         duration: 2000
       }).present();
-      fn()
+      fn();
     });
   }
 
@@ -77,14 +77,32 @@ export class OrderList implements OnInit {
     if (this.isMore) {
       this.ionViewWillEnter(() => {
         infiniteScroll.complete();  // 停止上拉加載
-      })
+      });
     } else {
-      infiniteScroll.enable(false)
+      infiniteScroll.enable(false);
     }
   }
 
   goMachineRequest() {
+    this.payType = ''
+    this.startDate = ''
+    this.endDate = ''
+    this.menuCtrl.open();
+  }
 
+  submitForm () {
+    if (this.startDate && new Date(this.startDate) > new Date(this.endDate)) {
+      return this.loadingCtrl.create({
+        spinner: "hide",
+        content: "開始日期不得大於結束日期",
+        duration: 2000
+      }).present();
+    }
+    this.items = []
+    this.pageNum = 1;
+    this.ionViewWillEnter(() => {
+      this.menuCtrl.close();
+    })
   }
 
   openMachineRequestDetail(item) {

@@ -240,9 +240,14 @@ export class CardMerchantService {
     return this.http.post(url, data);
   }
 
-  getPaymentList(pageNum: number, pageSize: number) {
+  getPaymentList(pageNum: number, pageSize: number, payType: string = '', startDate: string = '', endDate: string = '') {
 
-    let str = `pageNum=${pageNum}&pageSize=${pageSize}&sessionid=${localStorage.getItem("SESSIONID")}`
+    let str = ''
+    if (endDate) str += `endDate=${endDate}&`
+    str += `pageNum=${pageNum}&pageSize=${pageSize}&`
+    if (payType) str += `payType=${payType}&`
+    str += `sessionid=${localStorage.getItem("SESSIONID")}`
+    if (startDate) str += `&startDate=${startDate}`
 
     let sign = this.getSignInit(str);
     let merCert = encodeURIComponent(this.publicKey);
