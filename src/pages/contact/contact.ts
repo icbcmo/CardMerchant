@@ -8,6 +8,7 @@ import { UserMgt } from "./setup/usermgt";
 import { SigninPage } from "../auth/signin";
 import { TextToSpeech } from "@ionic-native/text-to-speech";
 import { CodePush, ILocalPackage } from "@ionic-native/code-push";
+import { JPush } from "@jiguang-ionic/jpush";
 
 declare var localStorage: any;
 
@@ -31,7 +32,8 @@ export class ContactPage {
     private nativeStorage: NativeStorage,
     public appVersion: AppVersion,
     public viewCtrl: ViewController,
-    public codePush: CodePush
+    public codePush: CodePush,
+    public jpush: JPush,
   ) {
   }
 
@@ -77,5 +79,17 @@ export class ContactPage {
     let modal = this.modalCtrl.create(SigninPage);
     modal.present();
   }
+
+  jpushDebug() {
+    this.jpush.getRegistrationID().then(rId => {
+      alert(rId);
+    });
+    this.jpush.getAllTags({ sequence: 0 })
+    .then(result => {
+      alert(JSON.stringify(result));
+    }).catch(error => {
+      alert(JSON.stringify(error));
+    });
+}
 
 }
