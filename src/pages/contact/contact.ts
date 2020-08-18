@@ -5,6 +5,7 @@ import { NativeStorage } from "@ionic-native/native-storage";
 import { AppVersion } from "@ionic-native/app-version";
 import { Router } from "@angular/router";
 import { UserMgt } from "./setup/usermgt";
+import { MerchantSet } from "./setup/merchantset";
 import { SigninPage } from "../auth/signin";
 import { TextToSpeech } from "@ionic-native/text-to-speech";
 import { CodePush, ILocalPackage } from "@ionic-native/code-push";
@@ -18,7 +19,8 @@ declare var localStorage: any;
 })
 
 export class ContactPage {
-  BtnDisable: boolean = true;
+  isUserMgt: boolean = false;
+  isShopList: boolean = false;
   Mobile: String = "";
   User: String = "";
   nowVersion: any;
@@ -40,9 +42,8 @@ export class ContactPage {
   ngOnInit() {
     let uid = localStorage.getItem("UID");
     let level = localStorage.getItem("LEVEL");
-    if (!uid || level == "SECONDCLASS") {
-      this.BtnDisable = false;
-    }
+    if (uid || level != "SECONDCLASS") this.isUserMgt = true;
+    if (level == "FIRSTCLASS") this.isShopList = true;
     this.Mobile = localStorage.getItem("MOBILE");
     this.User = localStorage.getItem("NAME");
 
@@ -59,8 +60,15 @@ export class ContactPage {
     });
   }
 
+  // 用戶管理
   openUserMgt() {
     let modal = this.modalCtrl.create(UserMgt);
+    modal.present();
+  }
+
+  // 商戶列表
+  openMerchantSet() {
+    let modal = this.modalCtrl.create(MerchantSet, {entrance: 'mine'});
     modal.present();
   }
 
@@ -74,7 +82,7 @@ export class ContactPage {
     this.viewCtrl.dismiss();
   }
 
-  test5() {
+  loginOut() {
     localStorage.clear();
     let modal = this.modalCtrl.create(SigninPage);
     modal.present();

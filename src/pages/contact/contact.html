@@ -12,11 +12,16 @@
 </ion-header>
 
 <ion-content>
-  <ion-list no-lines class="item_list" *ngIf="BtnDisable">
+  <ion-list no-lines class="item_list" *ngIf="isUserMgt">
     <button ion-item (click)="openUserMgt()">
       用戶管理
     </button>
   </ion-list>
+  <ion-list no-lines class="item_list" *ngIf="isShopList">
+    <button ion-item (click)="openMerchantSet()">
+      商戶設置
+    </button>
+  </ion-list>
   <div class="version">version {{nowVersion}}</div>
-  <button class="button1" block ion-button color="primary" (click)="test5()">退出登錄</button>
+  <button class="button1" block ion-button color="primary" (click)="loginOut()">退出登錄</button>
 </ion-content>

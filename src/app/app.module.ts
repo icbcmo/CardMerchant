@@ -11,6 +11,7 @@ import { SigninPage } from "../pages/auth/signin";
 import { UserMgt } from "../pages/contact/setup/usermgt";
 import { AddUser } from "../pages/contact/setup/adduser";
 import { UserDetail } from "../pages/contact/setup/userdetail";
+import { MerchantSet } from "../pages/contact/setup/merchantset";
 import { StatusBar } from "@ionic-native/status-bar";
 import { SplashScreen } from "@ionic-native/splash-screen";
 import { IndexPage } from "../pages/index/index";
@@ -102,6 +103,7 @@ import { CodePush } from "@ionic-native/code-push";
     UserMgt,
     AddUser,
     UserDetail,
+    MerchantSet,
     Wrongtrx,
     OrderRefund,
     OrderrefunddetatilPage,
@@ -161,6 +163,7 @@ import { CodePush } from "@ionic-native/code-push";
     UserMgt,
     AddUser,
     UserDetail,
+    MerchantSet,
     Wrongtrx,
     OrderRefund,
     OrderrefunddetatilPage,

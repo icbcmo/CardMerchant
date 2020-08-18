@@ -1,0 +1,14 @@
+<ion-header>
+    <ion-navbar>
+        <button ion-button small clear (click)="goBack()" *ngIf="entrance == 'mine'">
+            <ion-icon ios="ios-arrow-back"></ion-icon>
+        </button>
+        <ion-title>商戶設置</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <ion-list>
+        <button ion-item *ngFor="let d of merchantList" (click)="setMerchant(d)">{{d.field2}}</button>
+    </ion-list>
+</ion-content>

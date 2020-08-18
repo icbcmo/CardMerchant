@@ -334,6 +334,24 @@ export class CardMerchantService {
     return this.http.post(url, data);
   }
 
+  // 獲取所屬商戶列表
+  getMerchantList() {
+    let str = "sessionId=" + localStorage.getItem("SESSIONID");
+    let sign = this.getSignInit(str);
+    let merCert = encodeURIComponent(this.publicKey);
+    let url = this.gwUrl + "cardmerchant/getMerchantList?" + str + "&sign=" + sign + "&merCert=" + merCert;
+    return this.http.get(url);
+  }
+
+  // 更新session中的商戶信息
+  updateUserSession(data) {
+    let str = JSON.stringify(data);
+    let sign = this.getSignInit(str);
+    let merCert = encodeURIComponent(this.publicKey);
+    let url = this.gwUrl + "cardmerchant/updateUserSession" + "?sign=" + sign + "&merCert=" + merCert;
+    return this.http.post(url, data);
+  }
+
   // scanEshopCode() {
   //     let url = this.gwUrl + 'cardmerchant/eshopgetproductcode';
   //     //console.log(url);
